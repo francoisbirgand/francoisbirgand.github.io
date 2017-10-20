@@ -9,10 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Julie Lowndes at NCEAS, 12/14/16" />
 
 
-<title>Making free websites with RStudio’s R Markdown</title>
+<title>Now it’s your turn</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
@@ -164,6 +166,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -232,33 +329,44 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Making free websites with RStudio’s R Markdown</h1>
-<h4 class="author"><em><a href="https://github.com/jules32">Julie Lowndes</a> at <a href="https://www.nceas.ucsb.edu/">NCEAS</a>, 12/14/16</em></h4>
+<h1 class="title toc-ignore">Now it’s your turn</h1>
 
 </div>
 
 
-<hr />
-<p>It’s possible to create well-designed websites for free using <a href="http://rmarkdown.rstudio.com/">RStudio’s R Markdown</a> and hosting them on <a href="http://github.com">Github</a>. This is very new and incredibly cool. It is a really powerful way to communicate science using the same reproducible workflow you use for your analyses and collaborations.</p>
-<p><strong><em>Creating websites with R Markdown can be done without knowing R or HTML, CSS, etc,</em></strong> and that’s where we’ll start. However, R Markdown integrates with these tools so the more you know the more complex and beautiful your website can be. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too – there are links throughout.</p>
-<p>The best way to learn is to follow along with your own laptop, but all are welcome. We’ll spend half the time with the tutorial and half the time for you to work on your own website and get help. If you bring your laptop please do this beforehand:</p>
+<p><br></p>
+<center>
+<img src="images/practicalDev_changingstuff.jpg" width="350px">
+</center>
+<p>Try changing a few things and reknitting a single page or rebuilding the whole site. Do your own thing, or here are a few things to try:</p>
+<p><br></p>
+<div id="add-a-new-page" class="section level3">
+<h3>Add a new page</h3>
+<p>You’ll need to add it to the nav bar in <code>_site.yml</code> too.</p>
+<p><br></p>
+</div>
+<div id="add-a-footer" class="section level3">
+<h3>Add a footer</h3>
 <ol style="list-style-type: decimal">
-<li>install <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a></li>
-<li>create a <a href="(http://github.com)">GitHub</a> account (<a href="http://happygitwithr.com/github-acct.html">advice</a>)</li>
-<li>set up your computer to talk to GitHub
-<ul>
-<li>have RStudio linked directly (preferred) (<a href="http://happygitwithr.com/hello-git.html">instructions sections 8-14</a>)</li>
-<li>or install the <a href="https://desktop.github.com/">Desktop App</a></li>
-<li>or be familiar with git commands for the command line (<a href="https://try.github.io/levels/1/challenges/1">tutorial</a>)</li>
-</ul></li>
+<li>move <code>./advanced/_footer.html</code> to <code>./_footer.html</code> (or create a new one)</li>
+<li>uncomment the footer in <code>_site.yml</code></li>
 </ol>
-<hr />
-<p><strong>Examples:</strong></p>
-<p>We have been using R Markdown for the Ocean Health Index: <a href="http://ohi-science.org/ohi-global"><strong>ohi-science.org/ohi-global</strong></a>.<br />
-And R Markdown is much more than just websites – here’s a <a href="http://rmarkdown.rstudio.com/lesson-1.html"><strong>one-minute video about R Markdown</strong></a> to get you excited.</p>
+<p><br></p>
+</div>
+<div id="add-three-columns" class="section level3">
+<h3>Add three columns</h3>
+<p>How would you approach this? See what we did for 3 columns, or Google it.</p>
+<p><br></p>
+</div>
+<div id="what-else-did-you-learn" class="section level3">
+<h3>What else did you learn?</h3>
+<p><a href="https://help.github.com/articles/creating-a-pull-request/">Submit a pull request</a> to <a href="https://github.com/jules32/rmarkdown-website-tutorial">this tutorial</a> and we can update it with what you learn!</p>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 

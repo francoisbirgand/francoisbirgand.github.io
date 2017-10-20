@@ -1,4 +1,5 @@
 name: "François_Birgand"
+output_dir: .
 navbar:
   title: "François Birgand"
   left:
