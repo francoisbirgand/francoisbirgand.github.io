@@ -72,7 +72,7 @@ Our core method is the deployment of 'continuous' water quality sensors to obtai
 
 <div class = "col-md-4">
 <br/><br/><br/><br/>
-<img style="align: center; width: 100%;" src="images/CLMD_surf.jpg">
+<img style="align: center; width: 100%;" src="images/CLMD_surf1.jpg">
 </div>
 </div>
 
