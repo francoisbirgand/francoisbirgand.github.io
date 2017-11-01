@@ -1,0 +1,37 @@
+---
+title: "Tutorials and blog posts"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+tutblog$date <- as.POSIXlt(as.Date(tutblog$date))
+year<-(tutblog$date)$year + 1900
+tutblog <- cbind(tutblog,year)
+types <- unlist(unique(tutblog$type))[order(unique(tutblog$type),decreasing = TRUE)]
+
+for (type in types){
+  tmp_tutblog <- tutblog[tutblog$type == type,]
+  years <- unlist(unique(tmp_tutblog$year))[order(unlist(unique(tmp_tutblog$year)),decreasing = TRUE)]
+  cat("\n") 
+  cat("###",type,"\n")
+  for (year in years){
+    tmp_tutblog <- tmp_tutblog[order(tmp_tutblog$date, decreasing = TRUE),]
+    cat("*",year,"\n")
+    for (i in 1:nrow(tmp_tutblog)){
+      cat("    + ",paste0("[",tmp_tutblog[i,]$name,"](",tmp_tutblog[i,]$reference,")"),paste0(" -- *updated ",tmp_tutblog[i,]$date,"*"), sep = "")
+      cat("\n")
+    } # end nb of item per year
+    
+  } # end year loop
+
+} # end type loop
+
+```
+<br>
+
+

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publications
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="people.html">People</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fa fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fa fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fa fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fa fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fa fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fa fa-map-marker"></span>
+         
+        158 Weaver
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="current-personnel" class="section level1">
+<h1>Current personnel</h1>
+<hr />
+<div id="staff" class="section level2">
+<h2>Staff</h2>
+<p><br/></p>
+<div class="row">
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/FrancoisBirgand2016.jpg"> <br/><br/> <a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>   <a href='https://github.com/francoisbirgand'><i class="fa fa-github fa-2x"></i></a>   <a href='https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos'><i class="fa fa-youtube fa-2x"></i></a>   <a href='https://twitter.com/birgandwaterlab'><i class="fa fa-twitter fa-2x"></i></a>   <a href='https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en'><i class="fa fa-google fa-2x"></i></a>   <a href='https://www.linkedin.com/in/françois-birgand-72836a63/'><i class="fa fa-linkedin fa-2x"></i></a>   <a href='https://maps.ncsu.edu/#/buildings/dsw'><i class="fa fa-map-marker fa-2x"></i></a>
+</center>
+</div>
+<div class="col-md-8">
+<h3 id="francois-birgand">François Birgand</h3>
+<p>I am an Associate Professor of Hydrology and Ecological Engineering and I direct the Biogeochemistry and Ecological Engineering Water lab since 2008 where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors. There are three main reasons why I am in academia: I have an insatiable need to know more (the scientist in me), I want to provide smart solutions (the <em>ingénieur</em> in me), and I love to teach what I have understood (teacher in me). <br/> On <a href="https://en.wikipedia.org/wiki/Theory_of_multiple_intelligences">Howard Garner’s theory of multiple intelligences</a>, I score the highest on the <em>naturalistic</em> one. Much of my research approaches are rooted in the unquenchable need to observe and quest to better understand nature. I am not particularly good at conceptualizing, and I tend to believe things for which there is or I can find/provide very strong evidence. Naturally (!), I like birds, botany, classical music, singing, and R!</p>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-8">
+<h3 id="samuel-garvey">Samuel Garvey</h3>
+<p>I direct the instrumentation, installation and field maintenance of our equipment in the field. etc.</p>
+</div>
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/profilepic.jpg"> <br/><br/> <a href='mailto:sjgarvey@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+</div>
+<div id="graduate-students" class="section level2">
+<h2>Graduate Students</h2>
+<p><br/></p>
+<div class="row">
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/female-sil-gray.png"> <br/><br/> <a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+<div class="col-md-8">
+<h3 id="beth-allen">Beth Allen</h3>
+<p>Ph.D. candidate, I am the main developer of the <em>Water Quality Rating Curve</em> package to predict concentrations from absorbance data.</p>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-8">
+<h3 id="bryan-maxwell">Bryan Maxwell</h3>
+<p>Ph.D. student, I currently work on ‘looking inside the blackbox’ of woodchip bioreactors.</p>
+</div>
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/profilepic.jpg"> <br/><br/> <a href='mailto:bmmaxwel@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/female-sil-gray.png"> <br/><br/> <a href='mailto:smoin@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+<div class="col-md-8">
+<h3 id="sheida-moin">Sheida Moin</h3>
+<p>Ph.D. student, I work on characterizing the internal functioning of urban wetlands and on using smart technology to improve their treatment efficiency. More short biography here.</p>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-8">
+<h3 id="cyrus-belenky">Cyrus Belenky</h3>
+<p>M.S. student, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here.</p>
+</div>
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/profilepic.jpg"> <br/><br/> <a href='mailto:cnbelenk@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/profilepic.jpg"> <br/><br/> <a href='mailto:qhang@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+<div class="col-md-8">
+<h3 id="qianyu-joey-hang">Qianyu (Joey) Hang</h3>
+<p>Ph.D. student, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here.</p>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+</div>
+<div id="undergraduate-students" class="section level2">
+<h2>Undergraduate Students</h2>
+<p><br/></p>
+<div class="row">
+<div class="col-md-8">
+<h3 id="dani-winter">Dani Winter</h3>
+<p>Undergraduate senior, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here.</p>
+</div>
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/dani_winter.png"> <br/><br/> <a href='mailto:dewinter@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/andrew_yount.jpg"> <br/><br/> <a href='mailto:jayount2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+<div class="col-md-8">
+<h3 id="andrew-yount">Andrew Yount</h3>
+<p>Undergraduate junior, I work on quantifying the water quality benefits of floating wetland islands. More short biography here.</p>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-8">
+<h3 id="maya-hoon">Maya Hoon</h3>
+<p>Undergraduate senior, I work on quantifying the water quality benefits of floating wetland islands. More short biography here.</p>
+</div>
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/maya_hoon.jpg"> <br/><br/> <a href='mailto:mhoon@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+</div>
+<p><br/></p>
+<hr />
+</div>
+</div>
+<div id="previous-personnel" class="section level1">
+<h1>Previous personnel</h1>
+<ul>
+<li>Dr Chiao-Wen Lin – Ph.D. 2017</li>
+<li>Dr Nicole Dobbs – Ph.D. 2016</li>
+<li>Mrs Taylor Carter – M.S. 2016</li>
+<li><a href="https://engineering.unl.edu/bse/faculty/troy-gilmore/">Dr Troy Gilmore</a> – Ph.D. 2015</li>
+<li><a href="http://www.ecu.edu/cs-cet/engineering/James-Etheridge.cfm">Dr Randall Etheridge</a> – Ph.D. 2013</li>
+<li>Ms Erin Bennett – M.S. 2013</li>
+<li>Mr Marc Horstman – M.S. 2011</li>
+<li>Mr James Crouse – M.S. 2011</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

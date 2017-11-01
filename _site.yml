@@ -1,30 +1,63 @@
-name: "François_Birgand"
+name: "Birgand Water Lab"
 output_dir: .
 navbar:
-  title: "François Birgand"
+  title: "Birgand Water Lab"
   left:
     - text: "Research"
       href: research.html
     - text: "Publications"
-      href: publications.html
+      menu:
+      - text: "Publications"
+        href: publications.html
+      - text: "Presentations"
+        href: presentations.html      
+    - text: "Teaching"
+      menu:
+      - text: "Courses"
+        href: courses.html
+      - text: "Tutorials"
+        href: tutorials.html
     - text: "CV"
       href: cv.html
-    - text: "BAE News"
-      href: https://www.bae.ncsu.edu/news/
-    - text: "Presentations"
-      href: presentations.html
-    - text: "Videos"
-      menu:
-        - text: "YouTube"
-          icon: fa-youtube  fa-2x
-          href: https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos
+
   right:
-    - icon: fa-github fa-2x
-      href: https://github.com/francoisbirgand
-#    - icon: fa-twitter fa-2x
-#      href: https://twitter.com/alexsingleton
-    - icon: fa-linkedin fa-2x
-      href: https://uk.linkedin.com/in/francoisbirgand
+    - text: "People"
+      href: people.html
+    - text: "NC State"
+      menu:
+        - text: "NC State"
+          href: https://www.ncsu.edu/
+        - text: "Libraries"
+          href: https://www.lib.ncsu.edu/
+        - text: "Bio&Ag Eng"
+          href: https://www.bae.ncsu.edu/
+    - text: "Connect"
+      icon: fa-link
+      menu:
+        - text: "email"
+          icon: fa fa-envelope-o 
+          href: mailto:francois_birgand@ncsu.edu
+        - text: "Github"
+          icon: fa-github 
+          href: https://github.com/francoisbirgand
+        - text: "Youtube"
+          icon: fa-youtube 
+          href: https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos
+        - text: "Twitter"
+          icon: fa-twitter 
+          href: https://twitter.com/birgandwaterlab
+        - text: "Scholar"
+          icon: fa-google 
+          href: https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en
+        - text: "Linkedin"
+          icon: fa-linkedin 
+          href: https://www.linkedin.com/in/françois-birgand-72836a63/
+        - text: "Research Gate"
+          href: https://www.researchgate.net/profile/Francois_Birgand
+        - text: "158 Weaver"
+          icon: fa-map-marker
+          href: https://maps.ncsu.edu/#/buildings/dsw
+
 output:
   html_document:
     css: style.css

@@ -1,104 +1,359 @@
 ---
-title: "Basic workflow"
+title: "François Birgand"
+params:
+   address: 3110 Faucette Drive, 158 Weaver Labs, Biological & Agricultural Engineering Department, North Carolina State University, Raleigh, NC 27695-7625, USA
+   email: francois_birgand@ncsu.edu
+   telephone: "+1 919 513 2499"
+   website: https://francoisbirgand.github.io/
 ---
 
-Building websites uses the same reproducible workflow you can use for your analyses and collaborations. It is very iterative. You can do it all from RStudio, with a combination of clicking or typing commands as you feel comfortable. 
+<!--html_preserve-->
+<style type="text/css">
+ul.CV {
+list-style-type: none;
+}
+</style>
+<!--/html_preserve-->
 
-1. add content (text, code, images, etc) in an RMarkdown file
-1. knit the RMarkdown file to view
-1. update `_site.yml` (perhaps, if it is a new file)
-1. build the website
-    - Build tab > Build Website or
-    - in the console: `rmarkdown::render_site()`
-1. repeat, repeat, repeat
-1. commit and push your website to github, it's live!
-1. repeat all of the above
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(RefManageR)
+```
 
-Let's see what this looks like. We are not going to have time to learn all of the capabilities of R Markdown today, but the purpose here is to give you familiarlity with the workflow and confidence to explore further on your own.
+<ul class="CV">
+<li><i class="fa fa-home" aria-hidden="true"></i>  `r paste(" ",params$address)`</li>
+<li><i class="fa fa-envelope-o" aria-hidden="true"></i>  `r paste(" ",params$email)`</li>
+<li><i class="fa fa-phone" aria-hidden="true"></i>  `r paste(" ",params$telephone)`</li>
+<li><i class="fa fa-globe" aria-hidden="true"></i>  [`r paste(" ",params$website)`](`r params$website`)</li>
+<li><i class="fa fa-clock-o" aria-hidden="true"></i> Last Updated: `r paste(" ",format(Sys.Date(), "%B %d, %Y"))`</li>
+<li><i class='fa fa-download' aria-hidden='true'></i><a href='cv_Francois_Birgand.pdf'> Download CV (pdf)</a></li>
+</ul>
+<br/>
 
-----
+*************
 
-## RStudio landscape
+# Education
 
-Here is what you'll see when you've opened our `rmarkdown-website-tutorial` project in RStudio.  
-
-The 'Build tab' in the top right corner will show up once RStudio knows you're making a website, don't worry if you don't have it yet.  
-
-If we open `index.Rmd` we will see that it's all text with a bit of formatting. This top part is called the 'front matter'.  
-
-![](https://docs.google.com/drawings/d/1ff_I5VJAtmF0FYZOIFE6ZW_-8sfwfoOij2AR0eyFs00/pub?w=960&h=720)
-
-<br>
- 
-## Markdown Syntax 
- 
-Now let's look explore the first few webpages/R Markdown files to get familiar with Markdown syntax: 
-
-- `index.Rmd`
-- `first_observations.Rmd`
-- `basic_workflow.Rmd`
-
-These first few pages have simple formatting (**bold**, *italics*), headers, bullet points, links, and images. These are the majority of things you'll do in Markdown. See a full list of options at [**RStudio's Markdown basics**](http://rmarkdown.rstudio.com/authoring_basics.html) or go to Help > Markdown Quick Reference. Also, check out their [R Markdown cheatsheet](https://www.rstudio.com/resources/cheatsheets/).  
-
-Notice that you can insert images locally (from the /images folder), or from online e.g. Google Drawings!
- 
-From [rmarkdown.rstudio.com lesson 8](http://rmarkdown.rstudio.com/lesson-8.html): 
-
-![](images/markdown_rmarkdownlesson-8.png)
+* 1995 - 2000
+    + Ph.D., Biological and Agricultural Engineering, North Carolina State University, Raleigh, NC, USA  
+* 1991 - 1994 
+    + Ingénieur Agronome (equivalent of an M.S.), 1995, Ecole Nationale Supérieure Agronomique de Rennes, Rennes, France
 
 
+*************
 
-<br> 
+# Research Interests
 
-## Build your website!
+I am poised to make an impact to improve water quality in streams, rivers and lakes by improving ways we design and manage *treatment systems* in agricultural and urban settings.  *Treatment systems* are systems that intercept ground- and surface waters on their way to receiving water bodies. Until now, my team's study treatment systems have included soils, riparian zones, streams, wetlands, and denitrification beds. Treatment systems are still very much treated as 'blackbox' reactors which hinders our ability to improve their design and maintenance.  
 
-Let's make a few changes to this file and knit it to inspect. Try adding some new Markdown formatted text. 
+I believe that a prerequisite to improve treatment efficiency is to 'look inside the blackbox' and largely enhance our understanding and quantification of the internal functioning of treatment systems. My team's core method is the deployment and adaptation of newly available continuous water quality sensors to obtain concentration data at a high resolution in space *and* in time. 
 
-Also, now is a good time to make sure you have the the Build tab; you may need to install `rmarkdown` if you haven't already (below). 
-
-Click `Build Website` in the Build tab (or type `rmarkdown::render_site()` in the Console) and inspect your Website! Commit and push to see it live online. 
-
-<br>
-
-## Other
-
-### Tips for learning Markdown
-
-**In Markdown, spaces can be tricky**.  
-To start a new line here, I needed 2 spaces after `tricky.  ` above. 
-As you can see, a simple carriage return doesn't cut it. 
-
-To force carriage returns, use the `<br>` html tag...
-
-<br>
-<br>
-
-...like this.  
-
-Also, this bulleted list won't render properly:
-- because there is no carriage return between the line above
-- and where the bullet points start. 
-
-To have the bullet points render nicely: 
-
-- you must have a full blank line 
-- following "To have the bullet points render nicely:"
-
-<br>
-
-### Install the `rmarkdown` package
-
-You can do this by: 
-
-1. paste this code in the Console and hit enter
-
-    ```
-    install.packages('rmarkdown')
-    library(rmarkdown) 
-    ```
-1. from the menu bar select: Tools > Install Packages... "rmarkdown"
-1. from the bottom right pane, click on the Packages tab, click on Install, "rmarkdown"
-
-<!---note that the ``` ``` syntax above renders text as a code-looking block--->
+My team is exploring the possibility to, and the conditions for, use *water quality rating curves* with these sensors, particularly to difficult-to-measure pollutants and nutrients. We are expanding the capababilities to *resolution in space* of these instruments by fitting them with sequential autosamplers, allowing to obtain high resolution data both in space *and* in time. We also use this technology to explore the bioegeochemical functioning at the watershed scale and to calculate uncertainties on nutrient loads.
 
 
+*************
+
+# Awards
+
+* 2017
+    + Benjamin Meaker Visiting Professor, Bristol University, U.K.
+* 2000
+    + Kenneth R. Keller Research Award for graduate excellence
+
+*************
+
+# Academic Roles
+
+*	2014 - 
+    - Associate Professor, NC State University, Bio & Ag Engineering
+*	2008 - 2014
+    - Assistant Professor, NC State University, Bio & Ag Engineering
+*	2004 - 2008
+    - Engineering Researcher, Cemagref Research Institute, Antony, France
+*	2000 - 2004
+    - Engineering Researcher, Cemagref Research Institute, Rennes, France
+
+
+*************
+
+# Research Income and Grants
+
+```{r echo=FALSE}
+grants <- read.csv("Birgand_grants.csv")
+```
+
+This following section provides a summary of research income to date which totals __`r paste0("$",format(sum(grants$Amount), big.mark=","))`__, with **`r paste0("$",format(sum(grants[grants$PI_CO_PI == "Lead PI",]$Amount), big.mark=","))`** as Principal Investigator (PI) and `r paste0("$",format(sum(grants[grants$PI_CO_PI == "co-PI",]$Amount), big.mark=","))` as Co-Investigator (Co-PI).
+
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+
+years <- unique(grants$Year)[order(unique(grants$Year),decreasing = TRUE)] #Get year list
+
+for (year in years){#years
+
+  cat("*",year,"\n")
+  
+  tmp_grant <- grants[grants$Year == year,]
+  
+for (i in 1:nrow(tmp_grant)){#line printing loop
+  cat(paste0("\t"))
+  cat("+ ",paste0("_",tmp_grant[i,]$Funder,"_ --")," ",paste0(tmp_grant[i,]$Title),". ",paste0("(",tmp_grant[i,]$PI_CO_PI,") "),paste0("**$",format(sum(tmp_grant[i,]$Amount), big.mark=",")),"**","\n", sep = "")
+  
+}#line print
+
+}#years
+
+```
+
+
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(RefManageR)
+
+file_journals_EN <- ReadBib("journal_articles_EN.bibtex")
+file_journals_FR <- ReadBib("journal_articles_FR.bibtex")
+art_nb_EN <- length(file_journals_EN)
+art_nb_FR <- length(file_journals_FR)
+
+```
+<br/>
+
+*************
+
+# Teaching and mentoring
+
+*	Courses developed and taught
+    - **BAE 204** – Introduction to Ecological Engineering (2 hrs. Spring), 2015 – present (developer)
+    - **BAE 590-607** – Biogeochemical  Processes for Ecological Engineering (3 hrs. Fall, Face to face + Distance Ed.;  Spring, Distance Ed.), 2009 – present (developer)
+    - **BAE 495** – Applications of Ecological Engineering (2 hrs. Spring), 2010-2011 (co-instructor)
+    - **BAE 474** – Principles and Applications of Ecological Engineering (3 hrs. Spring), 2012 – present (co-instructor)
+
+* Students directed and mentored (complete/current)
+    - Directed: M.S. – 4/1  Ph.D. – 4/3
+    - Mentored: graduate student : 10/4; undergraduates: 10+ 
+
+*************
+
+# Refereed Journal Articles *(`r art_nb_EN`)*
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+file_journals <- file_journals_EN
+dates <- unlist(unique(file_journals$year))[order(unlist(unique(file_journals$year)),decreasing = TRUE)]
+
+# make a list for numbering, but inactive as of October 2017
+inc_nb<-art_nb_EN
+art_list<-list()
+for (date in dates) {
+  i=1
+  yart_nb<-sum(sapply(file_journals_EN[list(year=date)],length))
+  art_list[[date]] <- as.vector((inc_nb):(inc_nb - yart_nb + 1))
+  art_list[[length(art_list) + i-1]] <-art_list[[date]]
+  inc_nb = inc_nb - yart_nb
+}
+
+#Prints references
+for (date in dates) {
+  yart_nb<-sum(sapply(file_journals_EN[list(year=date)],length))
+  cat("\n")   
+  cat(paste0("### ",date)," *(",yart_nb,")*","\n",sep="")
+  print(file_journals[list(year=date)],.opts = list(style="markdown",bib.style ="authoryear" ,max.names =20,dashed=FALSE,no.print.fields = "issn"))
+  cat("\n")
+}
+
+```
+
+*************
+
+# Refereed Articles en Français *(`r art_nb_FR`)*
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+file_journals <- file_journals_FR
+dates <- unlist(unique(file_journals$year))[order(unlist(unique(file_journals$year)),decreasing = TRUE)]
+
+
+#Prints references
+for (date in dates) {
+  yart_nb<-sum(sapply(file_journals_FR[list(year=date)],length))
+  cat("\n") 
+  cat(paste0("### ",date)," *(",yart_nb,")*","\n",sep="")
+  print(file_journals[list(year=date)],.opts = list(style="markdown",bib.style ="authoryear" ,max.names =20,dashed=FALSE,no.print.fields = "issn"))
+  cat("\n")
+}
+
+```
+
+
+```{r echo=FALSE}
+presentations <- read.csv("birgand_presentations.csv", encoding = "UTF-8")
+pres<-presentations[presentations$Prestype == "oral",]
+poster<-presentations[presentations$Prestype == "poster",]
+nbpres<-nrow(pres);nbposter<-nrow(poster)
+```
+
+*************
+
+# Theses and Book Chapters
+
+* 2008
+    - Augeard B., Y. Nédélec, F. Birgand, C. Chaumont, P. Ansart & C. Kao. 2008. Effect of a nonlinear runoff response on flood statistical properties: the case of a tile-drained watershed, IAHS Publ. 321, ISBN 978-1-901502-59-6.
+* 2000
+    - Birgand, F. 2000. Quantification and modeling of in-stream processes in agricultural canals of the lower coastal plain. Ph.D. dissertation. North Carolina State University, Raleigh, NC, USA. 
+    - Birgand, F. 2000. Evaluation of QUAL2E.  Southern Region Experiment Station Bulletin.  Web publication. Available at: http://www3.bae.ncsu.edu/s273/ModelProj/.
+* 1994
+    - Birgand, F. 1994.  Measurements and modeling of nitrogen budget in poorly drained soils.  'Mémoire de fin d'étude de l'Ecole Nationale Supérieure Agronomique de Rennes' (equivalent of a Master of Science dissertation).  Rennes, France. 104 pp
+
+*************
+
+
+
+# Invited Speaker
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+pres<-subset(pres,Speaker!="")
+years <- unique(pres$Year)[order(unique(pres$Year),decreasing = TRUE)] #Get year list
+
+for (year in years){#years
+
+  tmp_pres <- pres[pres$Year == year,]
+  cat("\n")     
+  cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
+
+for (i in 1:nrow(tmp_pres)){#line printing loop
+  if (tmp_pres[i,]$pdf!=""){linkpdf = paste0("([pdf](presentations_pdf/",as.character(tmp_pres$pdf[i]),"))")}else{linkpdf=""}
+  if (tmp_pres[i,]$Speaker!=""){speaker = paste0(" -- ***",as.character(tmp_pres$Speaker[i])," speaker***")}else{speaker = ""}
+  cat(paste0("\t"))
+  cat("+ ",paste0(tmp_pres[i,]$Authors,". \""),paste0(tmp_pres[i,]$Title),"\"  ",paste0("*",tmp_pres[i,]$Venue,".* ",linkpdf,speaker), "\n", sep = "")
+}#line print
+
+  
+}#years
+
+```
+
+
+
+*************
+
+# Oral Presentations *`r paste0("(",nbpres,")")`*
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+pres<-presentations[presentations$Prestype == "oral",]
+years <- unique(pres$Year)[order(unique(pres$Year),decreasing = TRUE)] #Get year list
+
+for (year in years){#years
+
+  tmp_pres <- pres[pres$Year == year,]
+  cat("\n")     
+  cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
+
+for (i in 1:nrow(tmp_pres)){#line printing loop
+  if (tmp_pres[i,]$pdf!=""){linkpdf = paste0("([pdf](presentations_pdf/",as.character(tmp_pres$pdf[i]),"))")}else{linkpdf=""}
+  if (tmp_pres[i,]$Speaker!=""){speaker = paste0(" -- ***",as.character(tmp_pres$Speaker[i])," speaker***")}else{speaker = ""}
+  cat(paste0("\t"))
+  cat("+ ",paste0(tmp_pres[i,]$Authors,". \""),paste0(tmp_pres[i,]$Title),"\"  ",paste0("*",tmp_pres[i,]$Venue,".* ",linkpdf,speaker), "\n", sep = "")
+}#line print
+
+  
+}#years
+
+```
+
+
+*************
+
+# Posters at conferences *`r paste0("(",nbposter,")")`*
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+
+years <- unique(poster$Year)[order(unique(poster$Year),decreasing = TRUE)] #Get year list
+
+for (year in years){#years
+
+  tmp_pres <- poster[poster$Year == year,]
+  cat("\n")  
+  cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
+
+for (i in 1:nrow(tmp_pres)){#line printing loop
+  if (tmp_pres[i,]$pdf!=""){linkpdf = paste0("([pdf](presentations_pdf/",as.character(tmp_pres$pdf[i]),"))")}else{linkpdf=""}
+  if (tmp_pres[i,]$Speaker!=""){speaker = paste0(" -- ***",as.character(tmp_pres$Speaker[i])," speaker***")}else{speaker = ""}
+  cat(paste0("\t"))
+  cat("+ ",paste0(tmp_pres[i,]$Authors,". \""),paste0(tmp_pres[i,]$Title),"\"  ",paste0("*",tmp_pres[i,]$Venue,".* ",linkpdf,speaker), "\n", sep = "")
+}#line print
+
+  
+}#years
+
+```
+
+
+*************
+
+# Media exposure
+
+* 2017
+    - NSF -- *[Researchers to forecast water quality with NSF support](http://augustafreepress.com/researchers-forecast-water-quality-nsf-support/)* -- October 2017
+* 2014
+    - Coastwatch – NCSeagrant.org – *[Sensing the future: a new technique to monitor water quality](presentations_pdf/Coast_Watch_2014.pdf)* -- Summer 2014
+    - Resource – ASABE magazine – *[Technique allows more frequent and detailed water quality monitoring](presentations_pdf/Birgand_Resource_ASABE_May_June_2014.pdf)* -- May/June 2014
+    - Top Story – NSF Science 360 News - *[Technique allows frequent water monitoring for suite of pollutants](https://news.science360.gov/obj/story/f3c9d73b-52cb-4f46-9a44-8e726a6c099d/technique-allows-frequent-water-monitoring-suite-pollutants)* -- March 2014
+    - NCSU News Room – *[New Technique Allows Frequent Water Quality Monitoring for Suite of Pollutants](https://news.ncsu.edu/2014/03/wms-birgand-monitor2014/)* -- March 2014
+    - NC WRRI Newsletter – *Sensing the future: a new technique to monitor water quality* -- March 2014
+* 2011
+    - NCSU News Room – *[Water Flow: A Picture’s Worth More Than A Thousand Words](https://news.ncsu.edu/2011/10/wms-water-level/)* -- October 2011
+    - WUNC radio interview – “NC State Device Monitors Floods, Droughts” -- November 2011
+    
+*************
+
+# Selected Reports
+
+* 2004
+    - Birgand, F., Novince, E. 2004. Factors explaining the presence of undesirable Organic Matter in Brittany surface waters: analyses of existing data. 84 p. (in French)
+    - Gruau, G., Birgand, F., Jardé, E., Novince, E. 2004.  Pollution of Brittany drinking water supply by Organic Matter: synthesis on the possible causes and mitigation. 109 p. (in French)
+    - Laplana, R., Turpin, N., Bärlund, I., Bioteau, T., Birgand , F., Bontems, P., Bordenave, P., Eklo, O.M., Feichtinger, F., Garnier, M., Haverkamp, R., Kaljonen, M., Leone, A., Lescot, J.M., Lo Porto, A., Piet, L., Ripa, M.N., Romstad, E., Rotillon, G., Strauss, P., Tattari, S., Zahm, F. - 2004. Guidelines to compare best management practices at watershed scale: concepts, methods, demonstration, implementation. Report from the AgriBMPWater European Research Project. 35 p.
+    - Baglinière, J.L. , Bardonnet, A. , Berard, A. , Berny, P. , Birgand, F. , Bolliet, V. , Caquet, T. , Druart, J.C. , Dumas, J. , Gascuel-Odoux, C. , Gilliet, C. , Grimaldi, C. , Haury, J. , Laplana, R. , Lazzarotto, J. , Leboulanger, C. , Lecœur, S. , Macary, F. , Montuelle, B. , Nirel, P. , Parade, M. , Quetin, P. , Régeard, A. , Roussel, J.M. , Trevisan, D.  , Dorioz, J. M. , Ombredane, D. 2004. Watersheds and biological quality of streams: effect of watershed management on exportation of suspended solids and on stream biology in cattle rearing areas.. Dorioz, J. M.  (ed.), Ombredane, D. (ed.) 51 p. (in French)
+* 2003
+    - Amatya, D.M., G.M. Chescheir, G.P. Fernandez, R.W. Skaggs, F. Birgand and J.W. Gilliam.  2003. Lumped Parameter Models for Pre¬dicting Nitrogen Loading from Lower Coastal Plan Watersheds. WRRI Report 347.
+* 2001
+    - Turpin, N., Granlund, K., Bioteau, T., Rekolainen, S., Bordenave, P., Birgand, F. - 2001. Testing of harp guidelines. Final report. 53 p. (Report from the µHARP European Project).
+* 1995
+    - Giraud, F. and F. Birgand. 1995.  Measurements and modeling of nitrogen budget in poorly drained soils.  OECD Report. 96 pp.
+
+**************
+
+# Professional Societies
+
+* American Society of Agricultural and Biological Engineers, member
+* American Geophysical Union, member
+
+**************
+
+# Professional services on campus
+
+* College of Engineering Research Committee (2016-present)
+* College of Ag and Life Sciences Research Committee (2016-present)
+* Department Data Analytics Faculty search committee (2017)
+* BAE Department Head Search Committee (2016)
+* Department Recruitment and Placement Committee (2009-Present)
+* Department Research Committee (2009-Present)
+* Department Graduate Studies Committee (2012 - Present)
+* Junior Adviser - Student branch of AWRA (Fall 2011 – Present)
+* 4 Departmental Ad hoc Committees (2008-2010) 
+
+
+**************
+
+
+# Professional services off campus
+
+* 2016: panelist, NSF, Hydrological Sciences Program 
+* 2014: session chair, AGU Hydrology – new water quality sensors
+* 2011 -- present: session organizer Annual international conference ASABE
+* 2011: panelist, NIFA Integrated Water Quality Program
+* 2009-present: Ad hoc reviewer, Transactions of the ASABE
+* 2009-present: Ad hoc reviewer, Journal of Hydrology
+* 2009-present: Ad hoc reviewer, Ecological Engineering
+* 2009-present: Ad hoc reviewer, Journal of the Total Environment
+* 2009-present: Ad hoc reviewer, Water Resources Research
+* 2009-present: Ad hoc reviewer, Environmental Science and Pollution Research
+* 2009-present: Ad hoc reviewer, Geophysical Research Letters
+* 2009-present: Ad hoc reviewer, Agricultural Water Management
+* 2009-present: Ad hoc reviewer, Journal of Hydrological Engineering
+* 2009-present: Ad hoc reviewer, Journal of Environmental Quality

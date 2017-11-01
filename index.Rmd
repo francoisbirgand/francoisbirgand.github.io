@@ -1,30 +1,163 @@
 ---
-title: "Making free websites with RStudio's R Markdown"
-author:  "[Julie Lowndes](https://github.com/jules32) at [NCEAS](https://www.nceas.ucsb.edu/), 12/14/16"
+title: "Biogeochemistry & Ecological Engineering"
+author:  "[François Birgand](https://github.com/francoisbirgand) at [NC State University](https://www.ncsu.edu/)"
 output:
   html_document:
     fig_width: 1
 ---
 
-----
+![](images/CLUP.png)
+<br/><br/><br/>
 
-It's possible to create well-designed websites for free using [RStudio's R Markdown](http://rmarkdown.rstudio.com/) and hosting them on [Github](http://github.com). This is very new and incredibly cool. It is a really powerful way to communicate science using the same reproducible workflow you use for your analyses and collaborations.
+# Overview
+<br/>
 
-***Creating websites with R Markdown can be done without knowing R or HTML, CSS, etc,*** and that's where we'll start. However, R Markdown integrates with these tools so the more you know the more complex and beautiful your website can be. This tutorial borrows heavily from a lot of great tutorials and resources you should check out too -- there are links throughout. 
+Much of hydrology and water quality of natural stream and rivers is like an action movie: it is unpredictable and if we miss part of the movie, we run the risk of misunderstanding the whole story. 
 
-The best way to learn is to follow along with your own laptop, but all are welcome. We'll spend half the time with the tutorial and half the time for you to work on your own website and get help. If you bring your laptop please do this beforehand: 
+Until very recently, to understand the "hydrological action movie" we had around 20-30 still images, i.e., concentration data points, per year...  An entire world is opening before our eyes thanks to new water quality sensors, which for the first time in history, give access to the full water quality story happening in streams, lakes and wetlands, in time and in space.  This is the **_new hydrological revolution_** at play right now!
 
-1. install [RStudio](https://www.rstudio.com/products/rstudio/download/)
-1. create a [GitHub]((http://github.com)) account ([advice](http://happygitwithr.com/github-acct.html))
-1. set up your computer to talk to GitHub
-    - have RStudio linked directly (preferred) ([instructions sections 8-14](http://happygitwithr.com/hello-git.html))
-    - or install the [Desktop App](https://desktop.github.com/)
-    - or be familiar with git commands for the command line ([tutorial](https://try.github.io/levels/1/challenges/1))
+<br/>
 
-----
+We are proponents of this technical revolution and we aim to address :
+
+* Uncertainties on nutrient concentrations and loads from the treatment system to the catchment scale
+* Biogeochemical processes in soil, treatment systems, and at the catchment scale
+* How to improve pollutant removal efficacies in treatment systems
+<br/><br/><br/><br/>
+
+***
+<br/><br/><br/><br/>
+
+<div class = "row">
+<div class = "col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/FrancoisBirgand2016.jpg">
+<br/><br/>
+<a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+<a href='https://github.com/francoisbirgand'><i class="fa fa-github fa-2x"></i></a>&nbsp;&nbsp;
+<a href='https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos'><i class="fa fa-youtube fa-2x"></i></a>&nbsp;&nbsp;
+<a href='https://twitter.com/birgandwaterlab'><i class="fa fa-twitter fa-2x"></i></a>&nbsp;&nbsp;
+<a href='https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en'><i class="fa fa-google fa-2x"></i></a>&nbsp;&nbsp;
+<a href='https://www.linkedin.com/in/françois-birgand-72836a63/'><i class="fa fa-linkedin fa-2x"></i></a>&nbsp;&nbsp;
+<a href='https://maps.ncsu.edu/#/buildings/dsw'><i class="fa fa-map-marker fa-2x"></i></a>
+</center>
+</div>
+
+<div class = "col-md-8">
+# Biography
+
+I am an Associate Professor of Hydrology and Ecological Engineering in the Department of Biological and Agricultural Engineering at North Carolina State University in Raleigh, NC, USA. I direct the Biogeochemistry and Ecological Engineering Water lab where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors.  
+<br/>
+Prior to my tenure at NC State, I worked as an engineering researcher at Cemagref in France (now Irstea) where I played an active role in maintaining longterm environmental observatories. Much of our current research methods are rooted in the metrology of flow and water quality in small catchments (< ~200 km²).
+  
+</div>
+</div>
+
+<br/><br/>
+
+***
+<br/><br/>
+
+<div class = "row">
+<div class = "col-md-8">
+
+# Research
+<br/>
+We are poised to make an impact to improve our understanding of biogeochemical processes in systems such as streams, wetlands, soils or denitrification beds, collectively refered to as "treatment systems", so as to enhance their ability improve water quality.  
+
+Our core method is the deployment of 'continuous' water quality sensors to obtain concentration data at a high resolution in space *and* in time. For this we have shown that we could use *in situ* spectrophotometers and measured absorbance as *index data* to develop what we refer to as *water quality rating curves*. Additionally, we have designed and built sequential autosamplers that add spatial resolution to the high resolution in time brought by the water quality sensors.  These systems offer a true revolution in the way we understand and design treatment systems. 
+
+***[More...](research.html)***
+</div>
+
+<div class = "col-md-4">
+<br/><br/><br/><br/>
+<img style="align: center; width: 100%;" src="images/CLMD_surf.jpg">
+</div>
+</div>
 
 
-**Examples:**
+<br/><br/>
 
-We have been using R Markdown for the Ocean Health Index:  [**ohi-science.org/ohi-global**](http://ohi-science.org/ohi-global).  
-And R Markdown is much more than just websites -- here's a [**one-minute video about R Markdown**](http://rmarkdown.rstudio.com/lesson-1.html) to get you excited. 
+***
+<br/><br/>
+
+# Selected publications
+<br/>
+
+```{r echo=FALSE,warning=FALSE,results="asis",message=FALSE}
+library(RefManageR)
+
+file_journals_EN <- ReadBib("selected_articles_EN.bibtex")
+
+art_nb_EN <- length(file_journals_EN)
+
+
+file_journals <- file_journals_EN
+dates <- unlist(unique(file_journals$year))[order(unlist(unique(file_journals$year)),decreasing = TRUE)]
+
+# make a list for numbering, but inactive as of October 2017
+inc_nb<-art_nb_EN
+
+#Prints references
+for (date in dates) {
+  cat(paste0("* "),"\t")
+  print(file_journals[list(year=date)],.opts = list(style="markdown",bib.style ="authoryear" ,max.names =20,dashed=FALSE,no.print.fields = c("issn","eprint")))
+  cat("\n")
+}
+
+```
+<br/>
+
+***[All publications...](publications.html)***
+
+
+<br/><br/>
+
+***
+<br/><br/>
+
+# Teaching
+<br/><br/>
+
+### Undergraduate level
+
+* **[BAE 204](http://catalog.ncsu.edu/search/?P=bae+204&sa=Search)** – Introduction to Ecological Engineering (2 hrs. Spring -- instructor)
+* **[BAE 474](http://catalog.ncsu.edu/search/?P=bae+474&sa=Search)** – Principles and Applications of Ecological Engineering (3 hrs. Spring -- co-instructor)  
+
+<br/>
+
+### Graduate level
+
+* **BAE 590-607** – Biogeochemical  Processes for Ecological Engineering (3 hrs. Fall even years, Face to face + Distance Ed. -- instructor)
+
+<br/>
+
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+tutblog$date <- as.POSIXlt(as.Date(tutblog$date))
+year<-(tutblog$date)$year + 1900
+tutblog <- cbind(tutblog,year)
+types <- unlist(unique(tutblog$type))[order(unique(tutblog$type),decreasing = TRUE)]
+
+for (type in types){
+  tmp_tutblog <- tutblog[tutblog$type == type,]
+  years <- unlist(unique(tmp_tutblog$year))[order(unlist(unique(tmp_tutblog$year)),decreasing = TRUE)]
+  cat("\n") 
+  cat("###",type,"\n")
+  for (year in years){
+    tmp_tutblog <- tmp_tutblog[order(tmp_tutblog$date, decreasing = TRUE),]
+    cat("*",year,"\n")
+    for (i in 1:nrow(tmp_tutblog)){
+      cat("    + ",paste0("[",tmp_tutblog[i,]$name,"](",tmp_tutblog[i,]$reference,")"),paste0(" -- *updated ",tmp_tutblog[i,]$date,"*"), sep = "")
+      cat("\n")
+    } # end nb of item per year
+    
+  } # end year loop
+
+} # end type loop
+
+```
+
+<br/><br/><br/>

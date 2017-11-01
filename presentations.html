@@ -11,7 +11,7 @@
 
 
 
-<title>Time to get sophisticated</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -271,54 +271,131 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">François Birgand</a>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="research.html">Research</a>
 </li>
-<li>
-  <a href="publications.html">Publications</a>
-</li>
-<li>
-  <a href="cv.html">CV</a>
-</li>
-<li>
-  <a href="https://www.bae.ncsu.edu/news/">BAE News</a>
-</li>
-<li>
-  <a href="presentations.html">Presentations</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Videos
+    Publications
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
-        <span class="fa fa-youtube  fa-2x"></span>
-         
-        YouTube
-      </a>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
     </li>
   </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/francoisbirgand">
-    <span class="fa fa-github fa-2x"></span>
-     
-  </a>
+  <a href="people.html">People</a>
 </li>
-<li>
-  <a href="https://uk.linkedin.com/in/francoisbirgand">
-    <span class="fa fa-linkedin fa-2x"></span>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
      
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fa fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fa fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fa fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fa fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fa fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fa fa-map-marker"></span>
+         
+        158 Weaver
+      </a>
+    </li>
+  </ul>
 </li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -329,179 +406,206 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Time to get sophisticated</h1>
 
 </div>
 
 
-<p>There are a lot of ways to get sophisticated here, and we’re only covering a few possibilites here. See <a href="http://rmarkdown.rstudio.com/lesson-1.html">RStudio’s R Markdown lessons</a> for other R Markdown capabilities. Plus, R Markdown can render styling from Cascading Style Sheets (CSS) and Hyper Text Markup Language (HTML), which is what non-R Markdown websites use.</p>
-<p>So, Googling what you want to do and trying it in your R Markdown files is a good way to learn. Disclaimer: that’s how I’ve learned the following, so there are most definitely better and more elegant ways to do this. But here are some ideas of what you may want to do with your website.</p>
-<hr />
-<div id="r-markdown-options" class="section level2">
-<h2>R Markdown options</h2>
-<p>These are options that you can do from the Front Matter.</p>
-<p><br></p>
-<div id="table-of-contents" class="section level3">
-<h3>Table of Contents</h3>
-<p>Note that on this page:</p>
-<ol style="list-style-type: decimal">
-<li>there is a Table of Contents (TOC) there on the left, and</li>
-<li>it is floating (i.e. it follows you as you scroll down and expands/collapses nicely as you click)</li>
-<li><p>This is all done in the front matter:</p>
-<pre><code>output:  
-  html_document:  
-    toc: true  
-    toc_float: true  </code></pre>
-<!---also note that my numbering in this list renders nicely---></li>
-</ol>
-<p><br></p>
-</div>
-<div id="themes" class="section level3">
-<h3>Themes</h3>
-<p>We can change the website’s theme in <code>_site.yml</code>. Explore options here: <a href="http://rmarkdown.rstudio.com/html_document_format.html#appearance_and_style" class="uri">http://rmarkdown.rstudio.com/html_document_format.html#appearance_and_style</a>:</p>
-<blockquote>
-<p>Valid themes include “default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, “cosmo”, “lumen”, “paper”, “sandstone”, “simplex”, and “yeti”.</p>
-</blockquote>
-<hr />
-</div>
-</div>
-<div id="simple-styling" class="section level2">
-<h2>Simple styling</h2>
-<div id="images" class="section level3">
-<h3>images</h3>
-<p>By default, images are displayed left-aligned.</p>
-<p><strong>Resize</strong> an image using HTML tags (side note: check out <a href="https://www.rstudio.com/resources/cheatsheets/">RStudio’s R Markdown Cheatsheet</a>):</p>
-<p>Here’s a big image:<br />
-<code>&lt;img src=&quot;images/Rmd_cheatsheet.png&quot; width=&quot;350px&quot;&gt;</code><br />
-<img src="images/Rmd_cheatsheet.png" width="350px"></p>
-<p>And a small image:<br />
-<code>&lt;img src=&quot;images/Rmd_cheatsheet.png&quot; width=&quot;150px&quot;&gt;</code><br />
-<img src="images/Rmd_cheatsheet.png" width="150px"></p>
-<p><strong>Align</strong> an image using HTML tags:</p>
-<p>Small image centered:<br />
-<code>&lt;center&gt;&lt;img src=&quot;images/Rmd_cheatsheet.png&quot; width=&quot;150px&quot;&gt;&lt;/center&gt;</code></p>
-<center>
-<img src="images/Rmd_cheatsheet.png" width="150px">
-</center>
-<p>Small image right-aligned:<br />
-<code>&lt;div align=&quot;right&quot;&gt;&lt;img src=&quot;images/Rmd_cheatsheet.png&quot; width=&quot;150px&quot;&gt;&lt;/div&gt;</code></p>
-<div align="right">
-<img src="images/Rmd_cheatsheet.png" width="150px">
-</div>
-<p><br></p>
-</div>
-<div id="columns" class="section level3">
-<h3>columns</h3>
-<!---From http://stackoverflow.com/questions/31753897/2-column-section-in-r-markdown:
-Put in your css file or directly in rmarkdown--->
-<style>
-  .col2 {
-    columns: 2 200px;         /* number of columns and width in pixels*/
-    -webkit-columns: 2 200px; /* chrome, safari */
-    -moz-columns: 2 200px;    /* firefox */
-  }
-</style>
-<div class="col2">
-<p><strong>Column 1</strong></p>
+<p><br/></p>
+<div id="oral-presentations-97" class="section level1">
+<h1>Oral Presentations <em>(97)</em></h1>
 <ul>
-<li>note <code>&lt;div class=&quot;col2&quot;&gt;</code> and <code>&lt;/div&gt;</code></li>
-<li>what beautiful bullet points <br> <br></li>
-</ul>
-<p><strong>Column 2</strong></p>
+<li>2017 <em>(9)</em>
 <ul>
-<li>I have 3 bullet points here</li>
-<li>which means to align with the left column</li>
-<li>I added a <code>&lt;br&gt;</code> there</li>
+<li>Winter, D, Birgand, F, C-W Lin, C Belenky. “Measuring Water Quality Impact of a Coastal Plain Stream Restoration during Construction” <em>17th Annual Meeting of The American Ecological Engineering Society, Athens, GA, May 23-25, 2017.</em></li>
+<li>Winter, D, Birgand, F . “Compaction of Floodplain Soils during Stream Restoration” <em>Soil Science Society of North Carolina Annual Meeting, Raleigh, NC, January 2017.</em></li>
+<li>Winter, D, Birgand, F . “Measuring the Water Quality Impact of a Stream Restoration during Construction” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
+<li>Lin, C -W, Birgand, F . “Characterizing stream solutes dynamics at storm event and seasonal scales in an agricultural coastal plain stream in pre-restoration period” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
+<li>Lin, C -W, Birgand, F . “Uncertainties estimation associated with UV-Visual spectrophotometers in measuring nutrient concentrations and loads in an agricultural watershed” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
+<li>Maxwell, B, Birgand F . “Multi-point Continuous Monitoring and Increasing our Understanding of Black Box Natural Systems” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
+<li>Birgand, F . “Continuous water quality to capture all events: how good are the new sensors?” <em>AGU Chapman Conference, San Jose, PR, January 22-27, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Birgand, F . “Monitoring water quality on a continuous basis: how good are the new sensors?” <em>HydroEco 2017 Ecohydrology on the Edge: ecology-hydrology-human interactions in a changing world 6th International Multidisciplinary Conference on Hydrology and Ecology. Birmingham, U.K., 18-23 June 2017.</em></li>
+<li>Birgand, F . “High Frequency Water Quality Data: Perspective and Challenges” <em>Water seminar, University of Bristol, 10 March, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
+</ul></li>
+<li>2016 <em>(12)</em>
+<ul>
+<li>Maxwell, B, Winter, D, Birgand F . “Quantifying treatment potential of floating treatment wetlands to benefit North Carolina waters using improved methodology and novel technology” <em>North Carolina Water Resources Research Institute Advisory Committee Meeting, Raleigh, NC, October 2016.</em></li>
+<li>Muwamba, A, D M Amatya, E W Tollner, G M Chescheir, T Appelboom, H Ssegane, J E Nettles, M A Youssef, F Birgand, R W Skaggs, and S Tian 2016. “Effect of Fertilizer Application on Nutrients in Pine/Switchgrass Forest Drainage Outflow” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Dobbs, N, F Birgand, B Philips, G M Chescheir, and M A Youssef. “Modeling the effects of pine (Pinus taeda) and switchgrass (Panicum virgatum) intercropping on hydrology in upland forested watersheds of southeastern United States” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Carter, T, N Dobbs, E Allen, E Bennett, F Birgand, G M Chescheir, and T M Appelboom. “Hydrology and Water Quality Impacts of Loblollypine (Pinus taeda) and switchgrass (Panicum virgatum) in Upland Mississippi Forested watershed” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Dobbs, N, F Birgand, G M Chescheir, E Bennett and E Allen 2016 Hydrology and water quality comparisons of the early establishment period of Loblolly pine (Pinus taeda)and switchgrass (Panicum virgatum) in upland forested watersheds of Alabama, USA ASABE Annual International meeting Orlando, FL, July 17-20, 2016 . “” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Allen, E, F Birgand, and G M Chescheir. “Carbon and Nitrogen Stream Dynamics Determined by Optical Continuous Monitoring Methods in an Eastern NC Managed Forest/Switchgrass Intercropping Paired Watershed Study” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Etheridge, J R, F Birgand, and M Burchell. “Uncertainty of Using In Situ Optical Property Measurements as Surrogate Data to Continuously Monitor Nitrogen, Phosphorus and Carbon Concentrations in a Constructed Brackish Tidal Marsh” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Maxwell, B M and F Birgand. “Evaluating in-stream nitrate uptake in an in situ mesocosm experiment” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Lin, C -W, F Birgand, and B M Maxwell. “Innovative technology to characterize the dynamics of nutrient export in an agricultural coastal plain stream” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Maxwell, B M and F Birgand. “Woodchip Bioreactors : Overview, Findings, and Future Wetland Resilience in North Carolina” <em>Duke University, March 4, 2016.</em></li>
+<li>Etheridge, J R F Birgand, M R Burchell II. “In situ absorbance and fluorescence as surrogate data to continuously measure nitrogen, phosphorus, and carbon concentrations in a brackish tidal marsh” <em>Ocean Sciences Meeting. New Orleans, LA. February 21-26, 2016.</em></li>
+<li>Messer, T L, M R Burchell, and F Birgand. “Comparison of Four Nitrogen Removal Kinetic Models in Two Distinct Wetland Ecosystems Receiving Agricultural Drainage Water” <em>59th Annual Meeting of the Soil Science Society of North Carolina. 20 January 2016. Raleigh, NC.</em></li>
+</ul></li>
+<li>2015 <em>(11)</em>
+<ul>
+<li>Maxwell, B, Birgand F, and Aveni-Deforge. “Nitrogen Abatement in Streams - An In-Situ Mesocosm Study Quantifying and Characterizing Nitrogen Removal in a Coastal Stream” * ASABE Annual International meeting. New Orleans, USA. July 26 - 29, 2015.*</li>
+<li>Birgand F, Aveni-Deforge, K A, Etheridge, J R, Fauvet, O, Faucheux, M and Carey, C . “Water Quality Rating Curves: Is this for Real?” * ASABE Annual International meeting. New Orleans, USA. July 26 - 29, 2015.*</li>
+<li>Allen, E, Birgand F, Chescheir, G M, Skaggs, R W, Osburn, C and Etheridge, J R . “Application of a Combination of Optical Water Quality Monitoring Techniques to Evaluate the Effects of Switchgrass Intercropping in a Managed Loblolly Pine Forest in Eastern North Carolina” * ASABE Annual International meeting. New Orleans, USA. July 26 - 29, 2015.*</li>
+<li>Dobbs, N, Birgand F, Chescheir, G M and Allen, E 2015 . “Water quality impacts of intercropping Loblolly pine (Pinus taeda) and switchgrass (Pancium virgatum) in coastal plain watersheds of the southeastern United State” * ASABE Annual International meeting. New Orleans, USA. July 26 - 29, 2015.*</li>
+<li>Messer, T, Burchell, M R, Birgand F . “How to Model Nitrate Reduction in Restored Wetlands? An Evaluation of the Reliability of Four Nitrate Reduction Models” * ASABE Annual International meeting. New Orleans, USA. July 26 - 29, 2015.*</li>
+<li>Lin, C -W, Birgand F, Aveni-Deforge, K, Maxwell, B. “Characterize an agricultural stream before restoration period in Goldsboro, NC” * ASABE Annual International meeting. New Orleans, USA. July 26 - 29, 2015.*</li>
+<li>Maxwell, B, Birgand F, and Aveni-Deforge . “Further down the river: a novel, spectrometric, in-situ technology improving spatial and temporal data resolution to address heterogeneity in aquatic systems” <em>Society for Freshwater Science Annual Meeting. Milwaukee, WI, USA. May 17-21, 2015.</em></li>
+<li>Mansanarez, V, Le Coz, J, Renard, B, Lang, M and Birgand F . “Bayesian analysis of stage-discharge relationships affected by hysteresis and quantification of the associated uncertainties” <em>European Geosciences Union, General Assembly, Vienna Austria, 12-17 April 2015.</em></li>
+<li>Aveni-Deforge, K, Birgand F, Fauvet, O . “Should We Start Making Water Quality Rating Curves at Each Monitoring Station?” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em></li>
+<li>Lin, C -W, Birgand F, Aveni-Deforge, K, Maxwell, B . “Challenges for continuous monitoring of flow and water quality in a coastal plain stream” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em></li>
+<li>Messer, T, Burchell, M R, Birgand F Water Resources Research Institute of The University of North Carolina Annual Conference Raleigh, NC March 18-19, 2015 . “Comparison of Four Nitrogen Removal Kinetic Models in Two Distinct Wetland Ecosystems Receiving Agricultural Drainage Water” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em></li>
+</ul></li>
+<li>2014 <em>(20)</em>
+<ul>
+<li>Birgand F. “High Frequency Water Quality Data: Is this really necessary?” <em>Oklahoma 2014 Governor’s Water Conference and Research Symposium. October 23, 2014.</em> – <strong><em>Keynote speaker</em></strong></li>
+<li>Birgand F . “High Frequency Water Quality Data: perspectives and challenges” <em>Oklahoma State University - Biosystems and Agriculural Engineering Department. October 24, 2014.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Etheridge, J R, M Burchell and F Birgand . “Using Tidal Marsh Creation to Reduce Nitrogen Loads Reaching Estuaries (view presentation)” <em>ASABE Annual International meeting. Montr_al, Canada. July 14 - 16, 2014.</em> (<a href="presentations_pdf/Etheridge_Burchell_ASABE_2014_FB.pdf">pdf</a>)</li>
+<li>Gilmore, T E, D Genereux, K Solomon, J Solder, B Kimbrall, F Birgand, H Mitasova, M Burnette and S Becker . “Using groundwater discharge to assess an agricultural nitrogen legacy: three approaches to sampling in stream channels at different scales” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Skaggs, R W, G M Chescheir, D M Amatya and F Birgand . “Methods for Determining Field Effective Saturated Hydraulic Conductivity of Drained Catchments” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Allen, E A, F Birgand, F M Chescheir, E Bennett, J Nettles and T W Appelboom . “Hydrology and Water Quality Impacts of Site Preparation for Loblolly Pine (Pinus taeda) and Switchgrass (Panicum virgatum) Intercropping in Upland Forested Watersheds in Mississippi” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Allen, E A, F Birgand, F M Chescheir, C L Osburn and J R Etheridge . “Continuous Monitoring of Hydrology and Water Quality to Detect Impacts of Switchgrass Intercropping in Managed Loblolly Pine Plantations in Eastern North Carolina” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Birgand F, K Aveni-Deforge, J R Etheridge, O Fauvet and M Faucheux . “High frequency water quality data: what we get - the challenges” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Messer, T, M R Burchell, and F Birgand . “Determining Ideal Nitrogen Loads for Rerouted Agricultural Drainage Water into Restored Forested Wetlands - An Experimental and Modeling Approach” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Dobbs, N, M Youssef, F Birgand, B D Phillips, G M Chescheir and T W Appelboom . “Modeling the effects of pine (Pinus taeda) and switchgrass (Panicum virgatum) intercropping on hydrology and water quality in southeastern United States forests” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Birgand F . “High Frequency Water Quality Data: The Next Leap in Hydrology?” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em> (<a href="presentations_pdf/%20Birgand_WQ_ASABE_2014.pdf">pdf</a>) – <strong><em>Invited speaker</em></strong></li>
+<li>M R Burchell, Messer, T L, and F Birgand 2014 . “Determining Ideal Nitrogen Loads in Restored Forested Wetlands Slated to Receive Agricultural Drainage” <em>AEES Conference. 10 June, Charleston, SC.</em></li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms” <em>Joint Aquatic Sciences Meeting. Portland, OR. May 18-23, 2014.</em></li>
+<li>Birgand F . “Moving Forward in Nutrient Research and Management: Critical Knowledge Provided by High Time Resolution Water Quality Data (Invited talk See video here )” <em>.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms” <em>University of Florida Water in the Landscape, Distinguished Seminar Series.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms (view presentation)” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/%20Birgand_NR_WRRI_Outwelling_2014.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Using in situ UV_vis spectroscopy to measure N, C, P and suspended solids at a high frequency in a brackish tidal marsh” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/%20Birgand_UV-vis_WQ_WRRI_2014.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Illustrating critical knowledge (gap) provided by high time resolution water quality data (or lack thereof)” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/%20Birgand_WQ_critical_knowledge_WRRI_2014.pdf">pdf</a>)</li>
+<li>Messer, T, M R Burchell, and F Birgand . “Determining ideal nitrogen loads for rerouted agricultural drainage water into restored forested wetlands: An experimental and modeling approach” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em></li>
+</ul></li>
+<li>2013 <em>(10)</em>
+<ul>
+<li>Etheridge, J R, M Burchell and F Birgand . “What water quality benefits does a constructed brackish marsh provide when receiving nutrients from agricultural drainage waters? (viewpresentation)” <em>Southeast Tidal Creek Summit, Wilmington, NC. December 16-17, 2013.</em> (<a href="presentations_pdf/Etheridge_TCS_Wilmington_Dec_17_2013.pdf">pdf</a>)</li>
+<li>Skaggs, R W, S Tian, M A Youssef, D M Amatya, and F Birgand . “Effect of Afforestation on Watershed Outflows: A Simulation Study” <em>Society of American Foresters National Convention, Charleston, SC, Oct. 23-27, 2013.</em></li>
+<li>Moatar, F, M Meybeck, S Raymond and F Birgand . “Estimating riverine fluxes and their uncertainties from discrete surveys” * Joint IAHS, IAPSO, IASPEI. Gothenburg, Sweden. July 22-26, 2013.*</li>
+<li>Messer, T, M Burchell and F Birgand . “Determining ideal nitrogen loads in rerouted drainage water from the Pamlico sound to restored forested welands - an experimental and modeling approach (view presentation)” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Messer_ASABE_KC_13.pdf">pdf</a>)</li>
+<li>Bennett, E, F Birgand, G M Chescheir, E Allen, and T Appelboom . “Hydrology and Water Quality Impacts of Loblolly Pine (Pinus taeda) and Switchgrass (Panicum virgatum) Intercropped Systems in Upland Southeastern Forested Watersheds” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Bennett_Erin_ASABE_KC_07-23-13.pdf">pdf</a>)</li>
+<li>Etheridge,J R, F Birgand, M R Burchell II, R O Evans, S W Broome . “Long-term nutrient and suspended solids mass balance for a restored brackish marsh in eastern North Carolina” <em>13th Annual American Ecological Engineering Society Meeting. East Lansing, MI. June 10 _ 12, 2013.</em></li>
+<li>Etheridge, J R, F Birgand, M R Burchell II, T M Barto . “Nutrient, organic matter, and suspended solids dynamics during and following Hurricane Sandy in a restored North Carolina brackish marsh” <em>13th Annual American Ecological Engineering Society Meeting. East Lansing, MI. June 10 _ 12, 2013.</em></li>
+<li>Burchell, M, R Etheridge, Y Shiau, F Birgand, S Broome, and K Bass . “Salt marsh restoration in eastern NC - A good idea in the face of SLR? A case study at North River Farms” <em>NOAA NC Sentinel Site Cooperative Sea Level Rise Research and Monitoring Coordination Workshop. Beaufort, NC. March 12-13, 2013.</em></li>
+<li>Etheridge, J R, Birgand, F and M R Burchell, II . “Quantifying nitrogen fluxes in a tidal marsh: Insights from capturing the rapid changes of flow and concentrations” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 20 - 21, 2013.</em></li>
+<li>Burchell, M B II, T L Messer, and F Birgand . “Determining Ideal Nitrogen Loads for Two Distinct Restored Wetland Soils _ An Experimental and Modeling Approach” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 20 - 21, 2013.</em></li>
+</ul></li>
+<li>2012 <em>(7)</em>
+<ul>
+<li>Birgand, F and R Muñoz-Carpena . “Quantifying uncertainties in watershed nutrient loads: apportionment of uncertainty sources” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em> (<a href="presentations_pdf/Presentation_Birgand_Munoz_Uncertainties_apportionment_ASABE_Aug_01_2012.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand, and M R Burchell II . “Restored salt marsh: A source or a sink for nitrogen?” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em></li>
+<li>Allen, E L, V Andréassian, G M Chescheir and F Birgand . “Using the GR4J and NC Models to Quantify the Hydrologic Effects of Biomass Production” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em> (<a href="presentations_pdf/ASABEPresentationEAllen.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand, M R Burchell II and B Smith . “Capturing the ever changing world of a tidal marsh” <em>Stewards of the future: Research for Human Health and Global Sustainability, a conference hosted by College of Agriculture and Life Sciencesm NC State University. Raleigh, NC. April 17, 2012..</em></li>
+<li>Birgand, F, T Gilmore, A Brown and K Chapman . “Hydrology for all: measuring water levels using webcams” <em>Stewards of the future: Research for Human Health and Global Sustainability, a conference hosted by College of Agriculture and Life Sciencesm NC State University. Raleigh, NC. April 17, 2012.</em></li>
+<li>Birgand, F, M T Horstman, and B Reich . “Revising the kinetics of nitrate dissipation in wetlands and streams” <em>Annual NC WRRI conference. Raleigh, NC. March 27-29, 2012.</em> (<a href="presentations_pdf/%20Birgand_et_al_WRRI_March27_2012.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M R Burchell II . “Nitrate Mass Balance in a Restored North Carolina Salt Marsh” <em>Annual NC WRRI conference. Raleigh, NC. March 27-29, 2012.</em> (<a href="presentations_pdf/Etheridge_et_al_WRRI_2012.pdf">pdf</a>)</li>
+</ul></li>
+<li>2011 <em>(12)</em>
+<ul>
+<li>Amatya, D, G Chescheir, J Nettles, T Appelboom, W Skaggs, M Youssef, and F Birgand . “Long-term Hydrologic and Water Quality Monitoring in NC” <em>Forestry Research in the South - Forest Water Quality and Yield, Southern Forestry Research Partnership (SFRP), Inc. _ Center of Excellence, Monroe, GA..</em></li>
+<li>Etheridge, J R, F Birgand and M R Burchell . “Benefits and challenges of continuous flow and nitrogen monitoring in a restored salt marsh in North Carolina” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/080811_ASABE_Etheridgeetal.pdf">pdf</a>)</li>
+<li>Horstman, M T, F Birgand and E L Allen . “A Mesocosm Study to Explore the Enhancement of Nitrate Dissipation Capacity in Treatment Wetlands” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/ASABE_Presentation_MHorstman.pdf">pdf</a>)</li>
+<li>Gilmore, T, F Birgand K Chapman and A Brown . “GaugeCam: An Image-Based System to Measure Water Levels in Streams” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/ASABE_2011_final_TEG_30%20slides.pdf">pdf</a>)</li>
+<li>Birgand F . “Evaluation of Uncertainties on Annual Nutrient Load Induced by Time Proportional Composite Sampling Strategies” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/%20Birgand_Time_composite_sampling_strategies.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M R Burchell . “Intensive monitoring to develop a water and nitrogen balance for a constructed tidal stream” <em>11th Annual meeting of the American Ecological Engineering Society. Ashville, NC. May 22-25, 2011.</em> (<a href="presentations_pdf/052511_AEES_Etheridgeetal.pdf">pdf</a>)</li>
+<li>Gardner, A, G Jennings, S McMillan, F Birgand and A Tuttle . “Enhancing nutrient retention/removal in stream restoration projects” <em>11th Annual meeting of the American Ecological Engineering Society. Ashville, NC. May 22-25, 2011.</em> (<a href="presentations_pdf/GardnerAEES2011.pdf">pdf</a>)</li>
+<li>Kao, Y, F Birgand, B Reich and W J Showers . “Addressing the uncertainties on annual nitrate load calculations in the Neuse River, NC” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Yimin_Kao_WRRI%202011.pdf">pdf</a>)</li>
+<li>Chescheir G M, F Birgand, M A Youssef, R W Skaggs and J Nettles . “Hydrology and water quality impacts of biofuel feedstock production on forestry lands” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/George_chescheir_WRRI_2011.pdf">pdf</a>)</li>
+<li>Etheridge, J R, M R Burchell II and F Birgand . “Continuously monitoring flow, carbon, and nitrogen in a restored North Carolina salt marsh” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Randall_Etheridge_WRRI_2011.pdf">pdf</a>)</li>
+<li>Birgand F, G Lellouche and T M Appelboom . “Is measuring flow in streams such an easy thing to do?” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/%20Birgand_WRRI_2011.pdf">pdf</a>)</li>
+<li>Horstman, M, E Allen, F Birgand and P Harris . “The Evaluation of a Combined Multiplexer Pumping System and Water Quality Probe for Use as a Portable Water Quality Lab” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Marc_Horstman_WRRI_2011.pdf">pdf</a>)</li>
+</ul></li>
+<li>2010 <em>(3)</em>
+<ul>
+<li>Etheridge, J R, A Lepistö, K Granlund, K Rankinen, M R Burchell II and F Birgand . “Calibration of the INCA-N Model in the Pyhäjoki and Yläneenjoki Catchments in Finland” <em>ASABE International meeting, Pittsburgh, Pennsylvania, June 20 - June 23, 2010.</em></li>
+<li>Chescheir G M, F Birgand, S Tian and M A Youssef . “The effect of sampling frequency on the accuracy of nitrogen load estimates from a drained loblolly pine plantation in Eastern North Carolina” <em>ASABE’s 9th International Drainage symposium. June 13-17, 2010, Qu_bec city, Canada.</em></li>
+<li>Birgand F, Bennett E, Gruau G . “Deriving Sampling Frequency Charts: example for Dissolved Organic Matter in Brittany, France” <em>NC WRRI Annual Conference, Raleigh, NC, March 31st, 2010.</em> (<a href="presentations_pdf/%20Birgand_Errors%20on%20OM%20fluxes%20in%20Brittany_03_31_10.pdf">pdf</a>)</li>
+</ul></li>
+<li>2009 <em>(3)</em>
+<ul>
+<li>Birgand F, Faucheux C, Moatar F, Meybeck M . “Uncertainties on nitrate water quality indicators associated with infrequent sampling in Brittany, France (view text, presentation)” <em>ASABE Paper No. 096601. St. Joseph, Mich.: ASABE.</em></li>
+<li>Birgand F, Chescheir, G M . “Measuring Nutrient Retention in Streams: Scale Matters (view presentation)” <em>ASABE Paper No. 096523. St. Joseph, Mich.: ASABE..</em></li>
+<li>Birgand F, Faucheux C, Moatar F, Meybeck M . “Quelles erreurs pour quelles stratégies d’échantillonnage de l’eau dans les bassins versants ? (What kind of error for what sampling strategies in watersheds?) Presentation at the international forum on integrated water resource management at the Université de Sherbrooke, Sherbrooke, Québec, June, 1-3, 2009 (view presentation in French)” <em>.</em></li>
+</ul></li>
+<li>2006 &amp; before <em>(10)</em>
+<ul>
+<li>Billy, B, Kao, C, Birgand, F, Tournebize, J and Sebilo, M . “Nitrate dynamics in a sub-surface drained agricultural watershed” <em>Man and Rivers II Symposium, 4-6th December 2006, Paris, France.</em></li>
+<li>Gruau G, Birgand F . “Long-Term Trends in Dissolved Organic Matter in French Rivers : Assessing the relative effects of climate change and human activities using long-term records” <em>Man and Rivers II Symposium, 4-6th December 2006, Paris, France.</em> (<a href="presentations_pdf/Oral_Man_Gruau_Birgand_05_12_06.pdf">pdf</a>)</li>
+<li>Birgand F, Faucheux C . “Evaluation of sampling strategies for estimating annual nutrient loads at the outlets of rural watersheds” <em>Man and Rivers II Symposium, 4-6th December 2006, Paris, France.</em> (<a href="presentations_pdf/Oral_Birgand_and_Faucheux_05_12_06.pdf">pdf</a>)</li>
+<li>Billy, B, Birgand, F, Kao, C, Tournebize, J . “Water and nitrate balance in a poorly drained forested and agricultural watershed” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em></li>
+<li>Birgand F, Appelboom T W, Chescheir G M, Skaggs R W and Gilliam J W . “Time Proportional Sampling Strategies for Estimating Annual Nutrient Fluxes at the Outlets of Coastal Plain Watersheds” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em> (<a href="presentations_pdf/Oral_Birgand_sampling_ASABE_2006.pdf">pdf</a>)</li>
+<li>Birgand F, Bordenave P, Saint-Cast P, Le Saos E and Serrand P . “Evaluation of sampling strategies for estimating nutrient fluxes at the outlets of agricultural watersheds” * International Conference of the EWRA. September 2005, Menton, France.* (<a href="presentations_pdf/Oral_Birgand_EWRA2005.pdf">pdf</a>)</li>
+<li>Lefrançois J, Grimaldi C, Birgand F, Gascuel-Odoux C, Gilliet N . “Origins and dynamics of suspended sediment in two small agricultural catchments, Normandy, France” <em>Fourth Inter-Celtic Colloquium on Hydrology and Management of water resources, Portugal, July 11-13,2005.</em></li>
+<li>Lefrançois J, Grimaldi C, Gascuel-Odoux C, Birgand F, Gilliet N . “Suspended sediment concentration (SS)-discharge relationships : a way to identify the dominant processes implicated in the SS load on a small agricultural catchment” <em>VIIth Scientific Assembly of the International Association of Hydrological Sciences, Foz Do Iguaçu, April 3-9, 2005 .</em></li>
+<li>Laplana, R, Turpin, N, Kaljonen, M, Strauss, P, Bärlund, I, Benigni, G, Bioteau, T, Birgand, F, Bontems, P, Bordenave, P, Eklo, O M, Feichtinger, F, Garnier, M, Haverkamp, R, Leone, A, Tattari, S, Lescot, J M, Lo Porto, A, Piet, L, Ripa, M N, Romstad, E, Rotillon, G, Zahm, F . “How to compare best agricultural management practices at the watershed scale?” <em>EWRA 6th international conference Sharing a common vision of our water resources, Menton, 7-10 september 2005.</em></li>
+<li>Peu, P, Martinez, J, Birgand, F, Hinsinger, P, Benedetti, M F . “Short term evolution of pig slurry macronutrients (N, P, K) accumulated into an over amended lysimeter (SOLEPUR)” <em>11th International conference of the FAO ESCORENA network on the recycling of agricultural, municipal and industrial residues in agriculture, Murcia, ESP, 6-9 October 2004. p. 55 - 58.</em></li>
+</ul></li>
 </ul>
 </div>
-<p><br></p>
-<center>
-<p><code>&lt;center&gt;**Here the text is centered. Here are good resources:**&lt;/center&gt;</code><br />
-<strong>Here the text is centered. Here are good resources:</strong></p>
-• <a href="http://www.w3schools.com/tags/">w3schools.com - HTML references</a> • <a href="http://www.w3schools.com/css/">w3schools.com - CSS tutorial</a> •
-</center>
-<p><br></p>
-</div>
-<div id="colored-text" class="section level3">
-<h3>colored text</h3>
-<p><code>&lt;font size=&quot;3&quot; color=&quot;red&quot;&gt;Text here!&lt;/font&gt;</code></p>
-<p><font size="3" color="red">This is red text size 3!</font><br />
-<font size="2" color="blue">This is blue text size 2!</font><br />
-<font face="verdana" color="green">This is green text in verdana!</font></p>
-<hr />
-</div>
-</div>
-<div id="r-code" class="section level2">
-<h2><code>R</code> code</h2>
-<p>You can execute R code each time you build your website. Even if you don’t yet know R, this is a little taste of the types of things you can do. There are two ways you’ll see R code; in-line and in a code chunk. This is from the <a href="http://r4ds.had.co.nz/r-markdown.html">R Markdown chapter in R for Data Science</a>.</p>
-<div class="figure">
-<img src="images/r4ds_r-markdown.png" />
-
-</div>
-<p><br></p>
-<div id="in-line" class="section level3">
-<h3>in line</h3>
-<p>Here is an example inline. The date when I last built the website is 2017-10-20. My favorite number is 13.1415927. There are 24 files and folders in our repo. This is not just text; his is executable R code that is 100% awesome!</p>
-<p><br></p>
-</div>
-<div id="in-a-code-chunk" class="section level3">
-<h3>in a code chunk</h3>
-<p>And here is an example of a code chunk. Let’s plot the first bit of an <code>iris</code> variable (which is a dataset that comes with base R).</p>
-<pre class="r"><code>x &lt;- iris$Sepal.Length[1:15]
-plot(x)</code></pre>
-<p><img src="presentations_files/figure-html/plot%20iris-1.png" width="672" /></p>
-</div>
-<div id="calling-another-file" class="section level3">
-<h3>calling another file</h3>
-<div id="r-script" class="section level4">
-<h4><code>R</code> script</h4>
-<p>You can source an R script. This is a super powerful way to avoid copy-pasting your analyses. For example:</p>
-<pre class="r"><code>## source an external script 
-source(&quot;advanced/my_script.R&quot;)
-
-## use the calc_gdp() function `my_script.R`
-my_data &lt;- calc_gdp(my_country &lt;- &#39;Slovenia&#39;)
-
-ggplot(data = my_data, aes(x = year, y = pop)) + 
-  geom_point() + 
-  labs(title = my_data$country)</code></pre>
-<p><img src="presentations_files/figure-html/source%20gdp%20script-1.png" width="672" /></p>
-<p><br></p>
-</div>
-<div id="a-specific-r-script-_site.r" class="section level4">
-<h4>A specific R script: <code>_site.R</code></h4>
-<p>This is something that R Markdown websites will look for; when it exists it will give you ‘global variables’ that will be available for all pages across your site.</p>
-<pre class="r"><code>source(&quot;_site.R&quot;)</code></pre>
-<p><br></p>
-</div>
-<div id="r-markdown-file" class="section level4">
-<h4>R Markdown file</h4>
-<p>You can insert separate R Markdown files too; text and code will be incorporated seamlessly into this page. This R Markdown file is considered the ‘parent’ file, and the one that is incorporated is the ‘child’ file. In the code chunk below, we’ll say <code>{r, child='advanced/important_example.Rmd'}</code>.</p>
-<p>This text comes from a separate R Markdown file – how would you ever know that this is a separate file!</p>
-<p>Here is an example of inline R code: if you round 3.1415927 you get 3.</p>
-<p>This is the end of this separate and important R Markdown child file.</p>
-<p><br></p>
-</div>
-</div>
-</div>
-<div id="troubleshooting" class="section level2">
-<h2>Troubleshooting</h2>
-<p>You’ll get errors as you work; this is how you learn. These are a few things you may encounter:</p>
-<ol style="list-style-type: decimal">
-<li><p>If when running <code>rmarkdown::render_site()</code> you get this error:</p>
-<pre><code>Error in object[seq_len(ile)] : 
-object of type &#39;symbol&#39; is not subsettable</code></pre>
-<p>Go to <em>Session &gt; Restart R</em> and try again.</p></li>
-<li><p>When knitting, if you get this error:</p>
-<pre><code>Error in parse_block(g[-1], g[1], params.src) : duplicate label &#39;setup&#39;
-Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt; FUN -&gt; parse_block
-Execution halted</code></pre>
-<p>Here you have 2 <code>R</code> code chunks named the same thing (in this case ‘setup’), you must change one of them because there cannot be two code chunks with the same name.</p></li>
-<li><p>When you get an error message you don’t understand: Copy-paste it into Google.</p></li>
-</ol>
-<center>
-<img src="images/practicalDev_googleErrorMessage.jpg" width="350px">
-</center>
+<div id="posters-29" class="section level1">
+<h1>Posters <em>(29)</em></h1>
+<ul>
+<li>2017 <em>(2)</em>
+<ul>
+<li>Maxwell, B, Winter, D, Birgand F . “Monitoring of a floating treatment wetland retrofit on a stormwater pond using continuous, multipoint_in_situ sampling methods” <em>17th Annual Meeting of The American Ecological Engineering Society, Athens, GA, May 23-25, 2017.</em></li>
+<li>Winter, D, Gardner, T, Birgand, F, Owiti, D, Maxwell, B . “Microbial Community Analysis of a Floating Island System in a Stormwater Wet Detention Basin” <em>Soil Science Society of North Carolina Annual Meeting, Raleigh, NC, January 2017.</em></li>
+</ul></li>
+<li>2016 <em>(3)</em>
+<ul>
+<li>Winter, D, Birgand, F and C-W Lin. “Measuring the Water Quality Impact of a Stream Restoration during Construction” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Winter, D, Gardner, T, Birgand, F, Owiti, D, Maxwell, B . “Microbial Community Analysis of a Floating Island System in a Stormwater Wet Detention Basin” <em>NCSU’s Undergraduate Research Summer Symposium, Raleigh, NC, August 2016.</em></li>
+<li>Maxwell, B M and F Birgand . &quot; Can we rejuventate bioreactors using wetting and drying cycles? &quot; * ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.*</li>
+</ul></li>
+<li>2015 <em>(1)</em>
+<ul>
+<li>Dobbs, N, Allen, E, Carter, T, Birgand, F, and Aveni-Deforge, K . “Challenges of Monitoring Water Quality on a Continuous Basis at the Watershed Scale” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em> (<a href="presentations_pdf/Dobbs_wrri_2015_poster.pdf">pdf</a>)</li>
+</ul></li>
+<li>2014 <em>(3)</em>
+<ul>
+<li>Maxwell, B, F Birgand, K Aveni-Deforge, and B Smith . “Water Quality Data at High Time and Space Resolution in the Field : Expanding Spectrophotometer Capabilities with Arduino Driven Sequential Autosampler” <em>AGU Fall Meeting. San Francisco, CA. December 14 - 19, 2014.</em> (<a href="presentations_pdf/Maxwell_AGU_2014_poster.pdf">pdf</a>)</li>
+<li>Muwamba, A, D M Amatya, H Ssegane, E W, Tollner, J Nettles, G Chescheir, F Birgand, M Youssef, T W Appelboom and R W Skaggs . “Effects of Intercropping Switchgrass on Drainage Water Nutrients and Sediment of a Planted Pine Forest in Coastal North Carolina” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Maxwell, B, F Birgand, K Aveni-Deforge, B Smith and E Allen . “Evaluation of an Automated Micro-Volume in situ Spectrometry-based Lab for High Spatial and Temporal Resolution” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/Maxwell_WRRI_2014_poster.pdf">pdf</a>)</li>
+</ul></li>
+<li>2013 <em>(5)</em>
+<ul>
+<li>Etheridge, J R, F Birgand and M Burchell. “Insights into the Impact of Tropical Systems on Tidal Marshes: Results from High Frequency Monitoring in a Constructed Marsh During Hurricane Sandy” <em>Southeast Tidal Creek Summit, Wilmington, NC. December 16-17, 2013.</em> (<a href="presentations_pdf/Etheridge_TSS_Sandy_2013_poster.pdf">pdf</a>)</li>
+<li>Allen, E, F Birgand, G M Chescheir, C L Osburn, K Aveni-Deforge, R Etheridge and J Nettles. “Continuous Monitoring of Hydrology and Water Quality to Detect Impacts of Biomass Intercropping in Managed Pine Plantations of the Southeastern United States” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Allen_KC_13_continuous_WQ_poster.pdf">pdf</a>)</li>
+<li>Allen, E, F Birgand, G M Chescheir, E Bennett, V Andréassian, C Perrin and T Appelboom. “Hydrology and Water Quality Impacts of Biomass Intercropping in Managed Pine Plantations of the Southeastern United States” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Allen_KC_13_biomass_MS_poster.pdf">pdf</a>)</li>
+<li>Barto, T, F Birgand, R Etheridge, M Polizzotto and M Burchell. “The role of solid phases in nutrient cycling in a restored coastal marsh” <em>Undergraduate Research Symposium, NCSU, Raleigh, NC. April 10, 2013.</em></li>
+<li>Polizzotto, M, F Birgand, E Lineberger, B Badruzzaman, A Ali . “Novel Approaches for Removing Arsenic from Irrigation Water and Protecting Food Security in South Asia” <em>India Reception, NCSU, Raleigh, NC, March 26, 2013.</em></li>
+</ul></li>
+<li>2012 <em>(1)</em>
+<ul>
+<li>Birgand, F, G Lellouche and T M Appelboom 2012 (view poster). “Uncertainties on flow calculated from stage-discharge rating curves in small streams” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em> (<a href="presentations_pdf/%20Birgand_Q_uncertainties_poster_ASABE.pdf">pdf</a>)</li>
+</ul></li>
+<li>2011 <em>(3)</em>
+<ul>
+<li>Etheridge, J R, F Birgand, and M R Burchell. “Quantifying the Water Quality Benefits of a Restored Tidal Stream Using Intensive Nitrate and Flow Monitoring” * Southeast Tidal Creeks Summit, Charleston, SC. December 5-6, 2011.* (<a href="presentations_pdf/Etheridge_et_al_2011_tidal_conf.pdf">pdf</a>)</li>
+<li>Mikan, M, C Osburn and F Birgand. “Chromophoric dissolved and particulate organic matter cycling through a tidally influenced restored marsh ecosystem in Eastern North Carolina” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Mikan_poster_Final_small.pdf">pdf</a>)</li>
+<li>Gardner, A, McMillan, S, Tuttle, A, Birgand F and G Jennings. “Evaluating Nutrient Retention in Restored and Unrestored Urban Streams” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Angela_Gardner_WRRI_Poster2011_small.pdf">pdf</a>)</li>
+</ul></li>
+<li>2010 <em>(6)</em>
+<ul>
+<li>Crouse, J A, Birgand, F Boyette M and Y Nedelec. “New instruments for surveying cross sections in stream restoration projects” <em>ASABE International meeting, Pittsburgh, Pennsylvania, June 20 - June 23, 2010.</em> (<a href="presentations_pdf/Poster_Crouse_et_al_ASABE_2010.pdf">pdf</a>)</li>
+<li>Birgand, F and G M Chescheir. “Evaluation of Uncertainties on Annual Nutrient Load Induced by Time Proportional Composite Sampling Strategies” <em>.</em> (<a href="presentations_pdf/Poster_Birgand_Time_Composite_Sampling_ASABE_2010.pdf">pdf</a>)</li>
+<li>Gardner, A, S McMillan, G Jennings, F Birgand and A Tuttle. “Nutrient Injections: Evaluating differences in nutrient retention in restored and unrestored stream reaches” <em>NC WRRI Annual Conference, Raleigh, NC, March 31st, 2010.</em> (<a href="presentations_pdf/Poster_Gardner_et_al_2010B.pdf">pdf</a>)</li>
+<li>Perkinson, A, Garland, C, Fitzgerald, S Perry, W, F Birgand, Boyette, M and Harris, P. “Multiplexor system to expand continuous water quality monitoring to multiple sources” <em>National Academy of Engineering Grand Challenge Regional Summit, Raleigh, NC March 03-05.</em></li>
+<li>Bennett, E Birgand, F, and Gruau, G. “Deriving sampling frequency guidelines for monitoring dissolved organic matter in Brittany, France” <em>National Academy of Engineering Grand Challenge Regional Summit, Raleigh, NC March 03-05.</em> (<a href="presentations_pdf/Poster_frequency_charts_OM_Brittany_NAE_2010.pdf">pdf</a>)</li>
+<li>Gilmore, T Birgand, F, Chapman, K, and Brown, A. &quot; Providing Real_Time Hydrologic Data Using Webcams&quot; <em>National Academy of Engineering Grand Challenge Regional Summit, Raleigh, NC March 03-05.</em> (<a href="presentations_pdf/GaugeCam_Poster_for_Raleigh_Grand_Challenge_Colors.pdf">pdf</a>)</li>
+</ul></li>
+<li>2009 <em>(1)</em>
+<ul>
+<li>Gilmore, T Birgand, F, Chapman, K. “Internet-Connected Water Level Detection” <em>State of North Carolina Undergraduate Research &amp; Creativity Symposium. University of North Carolina, Wilmington, NC. Nov. 21st, 2009.</em> (<a href="presentations_pdf/GaugeCam_Poster_Fall09.pdf">pdf</a>)</li>
+</ul></li>
+<li>2006 &amp; before <em>(4)</em>
+<ul>
+<li>Birgand, F, Giraud F (deceased), Chescheir G M, Skaggs R W and J W Gilliam. “Measurement and modeling of denitrification in poorly drained soils of the lower coastal plain” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em> (<a href="presentations_pdf/Poster_Birgand_soil_denitrification_ASABE_2006.pdf">pdf</a>)</li>
+<li>Birgand, F, Chescheir G M, Skaggs R W and J W Gilliam. “Quantification and modeling of in-stream processes in forest impacted agricultural canals of the lower coastal plain” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em> (<a href="presentations_pdf/Poster_Birgand_in-stream_ASABE_2006.pdf">pdf</a>)</li>
+<li>Riffard M, Birgand F Loumagne C Andréassian V, Kao, C and Ansart P. “ORACLE: An experimental site since 1962 for the study of hydrological hazards and biogeochemical processes” <em>EGU General Assembly, Vienna, April 2006. Geophysical Research Abstracts, Vol. 8, 02338, 2006.</em></li>
+<li>Gruau, G, Jardé, E, Novince, E, Birgand, F, Panaget, T, Le Roy, S . “Pollution des Eaux Continentales Bretonnes par les Matières Organiques Facteurs de Contrôle, Indicateurs et Evolution dans le Temps” <em>BV Futur : savoirs et savoir-faire sur les bassins versants. Vannes, 20-21 et 22 avril 2004.</em> (<a href="presentations_pdf/Poster_MO_Gruau_et_al_2004.pdf">pdf</a>)</li>
+</ul></li>
+</ul>
 </div>
 
 
