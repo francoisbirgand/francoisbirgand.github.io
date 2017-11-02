@@ -32,7 +32,7 @@ output:
 
 I am an Associate Professor of Hydrology and Ecological Engineering and I direct the Biogeochemistry and Ecological Engineering Water lab since 2008 where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors. There are three main reasons why I am in academia: I have an insatiable need to know more (the scientist in me), I want to provide smart solutions (the *ingénieur* in me), and I love to teach what I have understood (teacher in me).
 <br/>
-On [Howard Garner's theory of multiple intelligences](https://en.wikipedia.org/wiki/Theory_of_multiple_intelligences), I score the highest on the *naturalistic* one. Much of my research approaches are rooted in the unquenchable need to observe and quest to better understand nature. I am not particularly good at conceptualizing, and I tend to believe things for which there is or I can find/provide very strong evidence. Naturally (!), I like birds, botany, classical music, singing, and R! 
+On [Howard Garner's theory of multiple intelligences](https://en.wikipedia.org/wiki/Theory_of_multiple_intelligences), I score the highest on the *naturalistic* one. Much of my research approaches are rooted in the unquenchable need to observe and quest to better understand nature. I am not particularly good at conceptualizing, and I tend to believe things for which there is or I can find/provide very strong evidence. Naturally (!), I like birds, botany, classical music, singing, spirituality, and R! 
   
 </div>
 </div>
@@ -159,9 +159,11 @@ M.S. student, I work on quantifying the water quality benefits of a stream resto
 <div class = "row">
 <div class = "col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/profilepic.jpg">
+<img style="align: center; width: 55%;" src="images/people/qianyu_hang.png">
 <br/><br/>
-<a href='mailto:qhang@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<a href='mailto:qhang@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+<a href='https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en'><i class="fa fa-google fa-2x"></i></a>&nbsp;&nbsp;
+<a href='https://www.researchgate.net/profile/Qianyu_Hang2'>RG</a>&nbsp;&nbsp;
 </center>
 </div>
 
@@ -169,7 +171,8 @@ M.S. student, I work on quantifying the water quality benefits of a stream resto
 
 ### Qianyu (Joey) Hang
 
-Ph.D. student, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here.
+Ph.D. student. I came to NC State after completing my Master's degree in environmental engineering at Chinese Research Academy of Environmental Sciences in China. During my master’s study, I focused on the application of plant carbon source in improving nitrate removal efficiency for treatment of nitrate-rich agricultural runoff by constructed wetlands and bioreactors.  
+At NC State, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. The overarching questions that motivate my research are 1) whether stream restoration does improve water quality? 2) how do we precisely quantify and interpret the real impacts of stream restoration on water quality? 
 </div>
 </div>
 <br/>
@@ -249,7 +252,7 @@ Undergraduate senior, I work on quantifying the water quality benefits of floati
 
 # Previous personnel
 
-* Dr Chiao-Wen Lin -- Ph.D. 2017
+* Dr [Chiao-Wen Lin](https://www.linkedin.com/in/chiao-wen-lin-a21008147/) -- Ph.D. 2017
 * Dr Nicole Dobbs -- Ph.D. 2016
 * Mrs Taylor Carter -- M.S. 2016
 * [Dr Troy Gilmore](https://engineering.unl.edu/bse/faculty/troy-gilmore/) -- Ph.D. 2015
