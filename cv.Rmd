@@ -25,7 +25,7 @@ library(RefManageR)
 <li><i class="fa fa-phone" aria-hidden="true"></i>  `r paste(" ",params$telephone)`</li>
 <li><i class="fa fa-globe" aria-hidden="true"></i>  [`r paste(" ",params$website)`](`r params$website`)</li>
 <li><i class="fa fa-clock-o" aria-hidden="true"></i> Last Updated: `r paste(" ",format(Sys.Date(), "%B %d, %Y"))`</li>
-<li><i class='fa fa-download' aria-hidden='true'></i><a href='cv_Francois_Birgand.pdf'> Download CV (pdf)</a></li>
+<li><i class='fa fa-download' aria-hidden='true'></i><a href='cv_francois_birgand.pdf'> Download CV (pdf)</a></li>
 </ul>
 <br/>
 
