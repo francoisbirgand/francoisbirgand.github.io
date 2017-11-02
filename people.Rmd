@@ -116,9 +116,10 @@ Ph.D. student. I currently work on 'looking inside the blackbox' of woodchip bio
 <div class = "row">
 <div class = "col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/female-sil-gray.png">
+<img style="align: center; width: 55%;" src="images/people/sheida_moin.jpg">
 <br/><br/>
-<a href='mailto:smoin@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<a href='mailto:smoin@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+<a href='https://www.linkedin.com/in/sheida-moin/'><i class="fa fa-linkedin fa-2x"></i></a>
 </center>
 </div>
 
