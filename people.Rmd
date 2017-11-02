@@ -82,7 +82,7 @@ I direct the instrumentation, installation and field maintenance of our equipmen
 <div class = "col-md-8">
 ### Beth Allen
 
-Ph.D. candidate, I am the main developer of the *Water Quality Rating Curve* package to predict concentrations from absorbance data.
+Ph.D. candidate. I am the main developer of the *Water Quality Rating Curve* package to predict concentrations from absorbance data.
 </div>
 </div>
 <br/>
@@ -95,7 +95,7 @@ Ph.D. candidate, I am the main developer of the *Water Quality Rating Curve* pac
 
 ### Bryan Maxwell
 
-Ph.D. student, I currently work on 'looking inside the blackbox' of woodchip bioreactors. 
+Ph.D. student. I currently work on 'looking inside the blackbox' of woodchip bioreactors. 
 
 </div>
 
@@ -125,7 +125,7 @@ Ph.D. student, I currently work on 'looking inside the blackbox' of woodchip bio
 <div class = "col-md-8">
 ### Sheida Moin
 
-Ph.D. student, I work on characterizing the internal functioning of urban wetlands and on using smart technology to improve their treatment efficiency. More short biography here.
+Ph.D. student. I work on characterizing the internal functioning of urban wetlands and on using smart technology to improve their treatment efficiency. More short biography here.
 </div>
 </div>
 <br/>
@@ -138,7 +138,7 @@ Ph.D. student, I work on characterizing the internal functioning of urban wetlan
 
 ### Cyrus Belenky
 
-M.S. student, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here. 
+M.S. student. I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here. 
 
 </div>
 
@@ -189,7 +189,7 @@ At NC State, I work on quantifying the water quality benefits of a stream restor
 
 ### Dani Winter
 
-Undergraduate senior, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here.
+Undergraduate senior. I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here.
 
 </div>
 
@@ -227,6 +227,7 @@ Undergraduate junior, I work on quantifying the water quality benefits of floati
 
 ***
 
+
 <br/>
 
 <div class = "row">
@@ -250,6 +251,28 @@ Undergraduate senior, I work on quantifying the water quality benefits of floati
 
 ***
 
+<br/>
+
+<div class = "row">
+<div class = "col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/caleb_ray.jpg">
+<br/><br/>
+<a href='mailto:jayount2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+
+<div class = "col-md-8">
+
+### Caleb Ray
+
+Undergraduate senior in Electrical and Computer Engineering. I have built a robust version of the multiplexer pumping systems to expand the capabilities of water quality sensors to spatial resolution.  I have work in Birgand Water lab for the last two years and have participated in field campaigns. 
+</div>
+</div>
+<br/>
+
+***
+
 # Previous personnel
 
 * Dr [Chiao-Wen Lin](https://www.linkedin.com/in/chiao-wen-lin-a21008147/) -- Ph.D. 2017
@@ -257,6 +280,7 @@ Undergraduate senior, I work on quantifying the water quality benefits of floati
 * Mrs Taylor Carter -- M.S. 2016
 * [Dr Troy Gilmore](https://engineering.unl.edu/bse/faculty/troy-gilmore/) -- Ph.D. 2015
 * [Dr Randall Etheridge](http://www.ecu.edu/cs-cet/engineering/James-Etheridge.cfm) -- Ph.D. 2013
+* Mr Brad Smith -- B.S. 2013
 * Ms Erin Bennett -- M.S. 2013
 * Mr Marc Horstman -- M.S. 2011
 * Mr James Crouse -- M.S. 2011
