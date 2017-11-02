@@ -48,7 +48,7 @@ On [Howard Garner's theory of multiple intelligences](https://en.wikipedia.org/w
 
 ### Samuel Garvey
 
-I direct the instrumentation, installation and field maintenance of our equipment in the field. etc.
+Research Assistant. I have a hand in everything from logistical, organizational and safety initiatives to installation and maintenance of equipment and field work, but my primary interest is electronics. I'm starting with Caleb Ray's (described below) excellent work on the multiplexer pumping systems and refining them further. I'm implementing features like serial communications and data logging while cutting costs, streamlining manufacture, and maintaining or improving the current standard of robustness. All this is being done with an eye on commercial viability. My other project is a remote monitoring solution for some of our more far flung field sites. If instrumentation can be monitored remotely, problems can be identified more quickly and data loss can be minimized. My goal is to streamline processes any way I can, be it hardware, software, organization or logistics. I aim to sweep away as much of the minutiae that separates the team from their research as I can.
 
 </div>
 
