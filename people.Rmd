@@ -256,9 +256,9 @@ Undergraduate senior, I work on quantifying the water quality benefits of floati
 <div class = "row">
 <div class = "col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/caleb_ray.jpg">
+<img style="align: center; width: 55%;" src="images/people/caleb_ray.png">
 <br/><br/>
-<a href='mailto:jayount2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<a href='mailto:cnray2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
 
