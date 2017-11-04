@@ -1,0 +1,168 @@
+---
+output: html_document
+bibliography: FB-uncertainties.bibtex
+link-citations: true
+csl: nature.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+selection<-tutblog[tutblog$name=="Blog: renaming directories and files",]
+```
+`r paste0("# ",selection$name)`
+`r paste0("### *by ",selection$authors,"*")`
+`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
+
+<br/>
+
+### Keywords
+```{r echo=FALSE, results="asis",comment=FALSE} 
+cat("*",gsub(";","\n * ",selection$keywords))
+```
+
+<br/><br/>
+
+## File database in a directory tree
+
+I keep a database of high frequency flow and concentration data, which my colleagues and I have used to calculate uncertainties on annual nutrient and material loads [@Moatar2013-aa;@Birgand2013-dr;@Birgand2011-cp;@Birgand2011-og;@Birgand2010-qd;@Birgand2009-bw;@Moatar2009-db;@Birgand2004-fm]. Until now, I had found very practical to keep the data in *hydrological years*, which for the Northern hemisphere and in temperate climates starts around the first of september and ends late August the next year. I thus kept in the filenames, e.g., "99-00" to show that the data contained were obtained between Sep 01, 1999 and Aug 31, 2000.  
+
+I have recently worked with daily rainfall data from Oxford, U.K., dating back from 1828. The two digit system has thus become obsolete... So I decided to change everything back to four digits for years. Two problems arose: 
+
+1. I had lots of files to change...
+2. The directory tree also contained years in the same "99-00" format just like below:
+
+<br/>
+
+```
+[51] "/Data/Yar/MO/99-00/Lin_1min_Yar_MO_99-00.txt"                        
+[52] "/Data/Yar/MO/99-00/Lin_2min_Yar_MO_99-00.txt"                        
+[53] "/Data/Yar/MO/99-00/Lin_5min_Yar_MO_99-00.txt" 
+```
+
+<br/>
+
+I decided to use the `file.rename()` function in R to deal with the problem. I found this [very good "Programatically rename files (or do other stuff to them) in R" post](https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/), I tried to follow it but it did not work...  
+
+<br/>
+
+After a bit of frustration, I realized that as I was trying to rename **both the files and the directories at the same time**, and I got the angry `'No such file or directory'`. This is the reason for the post.   
+
+<br/>
+
+> When one needs to change the *same pattern* in the names of both directories and files, things must be done in sequence, directory names first and filenames in second.
+
+<br/>
+
+Now, I stumbled upon lots of mistakes and I certainly spent more time than I would have changing everything by hand... But I would not have learned and shared things.
+<br/>
+
+## Make a list of patterns
+
+I used this code to generate a list of "00-01" and corresponding "2000-2001":
+
+```{r pattern-list, include=TRUE}
+years<-(1979:2017)
+pattern<-matrix(NA,nrow = length(years)-1,2)
+j = 1
+for (i in head(years,-1)){
+  #defining the years to be used
+  pattern[j,1] = paste0(substr(as.character(i),3,4),"-",substr(as.character(i+1),3,4))
+  pattern[j,2] = paste0(i,"-",i+1)
+  j= j+1
+}
+head(pattern)
+```
+<br/>
+
+## Automatically rename directories
+
+For this, I used the code below, which contains interesting tricks
+<br/>
+```{r echo=TRUE, eval= FALSE}
+for (i in 1:nrow(pattern)){
+  is.pattern = grep(pattern[i,1],dirlist)
+  if (identical(is.pattern,integer(0)) == FALSE){
+    sapply(dirlist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,1],replacement = pattern[i,2],eachPath))
+    })
+  }
+}
+```
+
+<br/>
+
+### Listing directory names
+First, the code to make a list of all directories down a directory tree is:
+
+```{r echo=TRUE, eval= FALSE}
+dirlist<-list.dirs(recursive = TRUE)
+```
+<br/>
+This yielded this:
+```
+[1] "."  "./A1"  "./A1/Cl"  "./A1/Cl/98-99"  "./A1/DIC" "./A1/DIC/98-99" "./A1/DOC"      
+[8] "./A1/DOC/98-99" "./A1/NH4" "./A1/NH4/98-99" "./A1/NO3" "./A1/NO3/98-99" "./A1/ON"        
+[15] "./A1/PO4" "./A1/PO4/98-99" "./A1/TN"  "./A1/TN/98-99"  "./A1/TP"  "./A1/TP/98-99" 
+and more
+```
+<br/>
+
+Then I used the `grep()` function, to list the row name of the return `dirlist`. When there was no match, R returned  `integer(0)` which means a vector of length 0. I had to only make changes when there was a match so that was in the case the return from the `grep()` function was not `integer(0)`. I found the `identical()` function that yields a boolean `TRUE` or `FALSE`.
+
+<br/>
+
+### Applying changes through the whole directory tree
+
+The heart of the automatic changes is really with the `sapply()` function here, which I borrowed from the [post](https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/). It is very smart and efficient.
+
+<br/>
+```{r echo=TRUE, eval= FALSE}
+sapply(dirlist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,2],replacement = pattern[i,1],eachPath))
+```
+
+<br/>
+That is pretty much all I thought I could share. The final exact code I used is below:
+<br/>
+
+```{r echo=TRUE, eval= FALSE}
+setwd<-c("/Users/francoisbirgand/Google Drive/Echantillonnage/Methods/Data")
+dirlist<-list.dirs(recursive = TRUE)      # recursive = TRUE means that all dir in the tree will appear
+
+### this makes a list of all the years that need to change
+years<-(1979:2017)
+pattern<-matrix(NA,nrow = length(years)-1,2)
+j = 1
+for (i in head(years,-1)){
+  #defining the years to be used
+  pattern[j,1] = paste0(substr(as.character(i),3,4),"-",substr(as.character(i+1),3,4))
+  pattern[j,2] = paste0(i,"-",i+1)
+  j= j+1
+}
+
+### This changes all the directory names
+for (i in 1:nrow(pattern)){
+  is.pattern = grep(pattern[i,1],dirlist)
+  if (identical(is.pattern,integer(0)) == FALSE){
+    sapply(dirlist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,1],replacement = pattern[i,2],eachPath))
+    })
+  }
+}
+
+filelist<-list.files(recursive = TRUE)    # recursive = TRUE means that all files in the tree will appear
+
+### This changes all the file names
+for (i in 1:nrow(pattern)){
+  is.pattern = grep(pattern[i,1],filelist)
+  if (identical(is.pattern,integer(0)) == FALSE){
+    sapply(filelist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,1],replacement = pattern[i,2],eachPath))
+    })
+  }
+}
+```
+<br/><br/><br/>
+
+# References

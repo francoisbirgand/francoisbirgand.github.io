@@ -7,6 +7,8 @@ output:
 ---
 
 ![](images/CLUP.png)
+<div class = "row">
+<div class = "col-md-9"></div><div class = "col-md-3" align="right">*updated `r paste0(format(Sys.Date(), '%Y-%m-%d'),"*")`</div></div>
 <br/><br/><br/>
 
 # Overview
@@ -142,11 +144,12 @@ tutblog <- cbind(tutblog,year)
 types <- unlist(unique(tutblog$type))[order(unique(tutblog$type),decreasing = TRUE)]
 
 for (type in types){
-  tmp_tutblog <- tutblog[tutblog$type == type,]
-  years <- unlist(unique(tmp_tutblog$year))[order(unlist(unique(tmp_tutblog$year)),decreasing = TRUE)]
+  tutblog_type <- tutblog[tutblog$type == type,]
+  years <- unlist(unique(tutblog_type$year))[order(unlist(unique(tutblog_type$year)),decreasing = TRUE)]
   cat("\n") 
   cat("###",type,"\n")
   for (year in years){
+    tmp_tutblog <- tutblog_type[tutblog_type$year==year,]
     tmp_tutblog <- tmp_tutblog[order(tmp_tutblog$date, decreasing = TRUE),]
     cat("*",year,"\n")
     for (i in 1:nrow(tmp_tutblog)){
@@ -154,7 +157,7 @@ for (type in types){
       cat("\n")
     } # end nb of item per year
     
-  } # end year loop
+  } # end years loop
 
 } # end type loop
 

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publications
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="people.html">People</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fa fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fa fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fa fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fa fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fa fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fa fa-map-marker"></span>
+         
+        148 Weaver
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="blog-renaming-directories-and-files" class="section level1">
+<h1>Blog: renaming directories and files</h1>
+<div id="by-francois-birgand" class="section level3">
+<h3><em>by François Birgand</em></h3>
+<p><em>started 2017-11-03 and updated 2017-11-04</em></p>
+<p><br/></p>
+</div>
+<div id="keywords" class="section level3">
+<h3>Keywords</h3>
+<ul>
+<li>integer(0)</li>
+<li>grep()</li>
+<li>sapply()</li>
+<li>list.dirs()</li>
+<li>list.files()</li>
+<li>file.rename()</li>
+<li>identical()</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="file-database-in-a-directory-tree" class="section level2">
+<h2>File database in a directory tree</h2>
+<p>I keep a database of high frequency flow and concentration data, which my colleagues and I have used to calculate uncertainties on annual nutrient and material loads<span class="citation"><sup><a href="#ref-Moatar2013-aa">1</a>–<a href="#ref-Birgand2004-fm">8</a></sup></span>. Until now, I had found very practical to keep the data in <em>hydrological years</em>, which for the Northern hemisphere and in temperate climates starts around the first of september and ends late August the next year. I thus kept in the filenames, e.g., “99-00” to show that the data contained were obtained between Sep 01, 1999 and Aug 31, 2000.</p>
+<p>I have recently worked with daily rainfall data from Oxford, U.K., dating back from 1828. The two digit system has thus become obsolete… So I decided to change everything back to four digits for years. Two problems arose:</p>
+<ol style="list-style-type: decimal">
+<li>I had lots of files to change…</li>
+<li>The directory tree also contained years in the same “99-00” format just like below:</li>
+</ol>
+<p><br/></p>
+<pre><code>[51] &quot;/Data/Yar/MO/99-00/Lin_1min_Yar_MO_99-00.txt&quot;                        
+[52] &quot;/Data/Yar/MO/99-00/Lin_2min_Yar_MO_99-00.txt&quot;                        
+[53] &quot;/Data/Yar/MO/99-00/Lin_5min_Yar_MO_99-00.txt&quot; </code></pre>
+<p><br/></p>
+<p>I decided to use the <code>file.rename()</code> function in R to deal with the problem. I found this <a href="https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/">very good “Programatically rename files (or do other stuff to them) in R” post</a>, I tried to follow it but it did not work…</p>
+<p><br/></p>
+<p>After a bit of frustration, I realized that as I was trying to rename <strong>both the files and the directories at the same time</strong>, and I got the angry <code>'No such file or directory'</code>. This is the reason for the post.</p>
+<p><br/></p>
+<blockquote>
+<p>When one needs to change the <em>same pattern</em> in the names of both directories and files, things must be done in sequence, directory names first and filenames in second.</p>
+</blockquote>
+<p><br/></p>
+<p>Now, I stumbled upon lots of mistakes and I certainly spent more time than I would have changing everything by hand… But I would not have learned and shared things. <br/></p>
+</div>
+<div id="make-a-list-of-patterns" class="section level2">
+<h2>Make a list of patterns</h2>
+<p>I used this code to generate a list of “00-01” and corresponding “2000-2001”:</p>
+<pre class="r"><code>years&lt;-(1979:2017)
+pattern&lt;-matrix(NA,nrow = length(years)-1,2)
+j = 1
+for (i in head(years,-1)){
+  #defining the years to be used
+  pattern[j,1] = paste0(substr(as.character(i),3,4),&quot;-&quot;,substr(as.character(i+1),3,4))
+  pattern[j,2] = paste0(i,&quot;-&quot;,i+1)
+  j= j+1
+}
+head(pattern)</code></pre>
+<pre><code>##      [,1]    [,2]       
+## [1,] &quot;79-80&quot; &quot;1979-1980&quot;
+## [2,] &quot;80-81&quot; &quot;1980-1981&quot;
+## [3,] &quot;81-82&quot; &quot;1981-1982&quot;
+## [4,] &quot;82-83&quot; &quot;1982-1983&quot;
+## [5,] &quot;83-84&quot; &quot;1983-1984&quot;
+## [6,] &quot;84-85&quot; &quot;1984-1985&quot;</code></pre>
+<p><br/></p>
+</div>
+<div id="automatically-rename-directories" class="section level2">
+<h2>Automatically rename directories</h2>
+<p>For this, I used the code below, which contains interesting tricks <br/></p>
+<pre class="r"><code>for (i in 1:nrow(pattern)){
+  is.pattern = grep(pattern[i,1],dirlist)
+  if (identical(is.pattern,integer(0)) == FALSE){
+    sapply(dirlist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,1],replacement = pattern[i,2],eachPath))
+    })
+  }
+}</code></pre>
+<p><br/></p>
+<div id="listing-directory-names" class="section level3">
+<h3>Listing directory names</h3>
+<p>First, the code to make a list of all directories down a directory tree is:</p>
+<pre class="r"><code>dirlist&lt;-list.dirs(recursive = TRUE)</code></pre>
+<p><br/> This yielded this:</p>
+<pre><code>[1] &quot;.&quot;  &quot;./A1&quot;  &quot;./A1/Cl&quot;  &quot;./A1/Cl/98-99&quot;  &quot;./A1/DIC&quot; &quot;./A1/DIC/98-99&quot; &quot;./A1/DOC&quot;      
+[8] &quot;./A1/DOC/98-99&quot; &quot;./A1/NH4&quot; &quot;./A1/NH4/98-99&quot; &quot;./A1/NO3&quot; &quot;./A1/NO3/98-99&quot; &quot;./A1/ON&quot;        
+[15] &quot;./A1/PO4&quot; &quot;./A1/PO4/98-99&quot; &quot;./A1/TN&quot;  &quot;./A1/TN/98-99&quot;  &quot;./A1/TP&quot;  &quot;./A1/TP/98-99&quot; 
+and more</code></pre>
+<p><br/></p>
+<p>Then I used the <code>grep()</code> function, to list the row name of the return <code>dirlist</code>. When there was no match, R returned <code>integer(0)</code> which means a vector of length 0. I had to only make changes when there was a match so that was in the case the return from the <code>grep()</code> function was not <code>integer(0)</code>. I found the <code>identical()</code> function that yields a boolean <code>TRUE</code> or <code>FALSE</code>.</p>
+<p><br/></p>
+</div>
+<div id="applying-changes-through-the-whole-directory-tree" class="section level3">
+<h3>Applying changes through the whole directory tree</h3>
+<p>The heart of the automatic changes is really with the <code>sapply()</code> function here, which I borrowed from the <a href="https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/">post</a>. It is very smart and efficient.</p>
+<p><br/></p>
+<pre class="r"><code>sapply(dirlist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,2],replacement = pattern[i,1],eachPath))</code></pre>
+<p><br/> That is pretty much all I thought I could share. The final exact code I used is below: <br/></p>
+<pre class="r"><code>setwd&lt;-c(&quot;/Users/francoisbirgand/Google Drive/Echantillonnage/Methods/Data&quot;)
+dirlist&lt;-list.dirs(recursive = TRUE)      # recursive = TRUE means that all dir in the tree will appear
+
+### this makes a list of all the years that need to change
+years&lt;-(1979:2017)
+pattern&lt;-matrix(NA,nrow = length(years)-1,2)
+j = 1
+for (i in head(years,-1)){
+  #defining the years to be used
+  pattern[j,1] = paste0(substr(as.character(i),3,4),&quot;-&quot;,substr(as.character(i+1),3,4))
+  pattern[j,2] = paste0(i,&quot;-&quot;,i+1)
+  j= j+1
+}
+
+### This changes all the directory names
+for (i in 1:nrow(pattern)){
+  is.pattern = grep(pattern[i,1],dirlist)
+  if (identical(is.pattern,integer(0)) == FALSE){
+    sapply(dirlist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,1],replacement = pattern[i,2],eachPath))
+    })
+  }
+}
+
+filelist&lt;-list.files(recursive = TRUE)    # recursive = TRUE means that all files in the tree will appear
+
+### This changes all the file names
+for (i in 1:nrow(pattern)){
+  is.pattern = grep(pattern[i,1],filelist)
+  if (identical(is.pattern,integer(0)) == FALSE){
+    sapply(filelist[is.pattern],FUN=function(eachPath){ 
+      file.rename(from=eachPath,to= sub(pattern= pattern[i,1],replacement = pattern[i,2],eachPath))
+    })
+  }
+}</code></pre>
+<p><br/><br/><br/></p>
+</div>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-Moatar2013-aa">
+<p>1. Moatar, F., Meybeck, M., Raymond, S., Birgand, F. &amp; Curie, F. River flux uncertainties predicted by hydrological variability and riverine material behaviour. <em>Hydrol. Process.</em> <strong>27,</strong> 3535–3546 (2013).</p>
+</div>
+<div id="ref-Birgand2013-dr">
+<p>2. Birgand, F., Lellouche, G. &amp; Appelboom, T. W. Measuring flow in non-ideal conditions for short-term projects: Uncertainties associated with the use of stage-discharge rating curves. <em>J. Hydrol.</em> <strong>503,</strong> 186–195 (2013).</p>
+</div>
+<div id="ref-Birgand2011-cp">
+<p>3. Birgand, F., Appelboom, T. W., Chescheir, G. M. &amp; Skaggs, R. W. Estimating nitrogen, phosphorus, and carbon fluxes in forested and mixed-used watersheds of the lower coastal plain of north carolina: Uncertainties associated with infrequent sampling. <em>Trans. ASABE</em> <strong>54,</strong> 2099–2110 (2011).</p>
+</div>
+<div id="ref-Birgand2011-og">
+<p>4. Birgand, F., Faucheux, C., Gruau, G., Moatar, F. &amp; Meybeck, M. Uncertainties in assessing annual nitrate loads and concentration indicators: Part 2. deriving sampling frequency charts in brittany, france. <em>Trans. ASABE</em> <strong>54,</strong> 93–104 (2011).</p>
+</div>
+<div id="ref-Birgand2010-qd">
+<p>5. Birgand, F. <em>et al.</em> Uncertainties in assessing annual nitrate loads and concentration indicators: Part 1. impact of sampling frequency and load estimation algorithms. <em>Trans. ASABE</em> <strong>53,</strong> 437–446 (2010).</p>
+</div>
+<div id="ref-Birgand2009-bw">
+<p>6. Birgand, F. <em>et al.</em> Une approche quantitative du rôle de la fréquence d’échantillonnage sur les incertitudes associées aux calculs des flux et des concentrations moyennes en nitrate en bretagne. <em>Ingénieries</em> <strong>59-60,</strong> 23–37 (2009).</p>
+</div>
+<div id="ref-Moatar2009-db">
+<p>7. Moatar, F., Birgand, F., Meybeck, M., Faucheux, C. &amp; Raymond, S. Incertitudes sur les métriques de qualité des cours d’eau (médianes et quantiles de concentrations, flux, cas des nutriments) évaluées a partir de suivis discrets. <em>La Houille Blanche</em> 68–76 (2009). doi:<a href="https://doi.org/10.1051/lhb/2009029">10.1051/lhb/2009029</a></p>
+</div>
+<div id="ref-Birgand2004-fm">
+<p>8. Birgand, F. <em>et al.</em> Mesure des flux et échantillonnage des matières en suspension sur de petits cours d’eau. <em>Ingénieries</em> <strong>40,</strong> 21–35 (2004).</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

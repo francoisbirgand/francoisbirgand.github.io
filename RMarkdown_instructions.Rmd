@@ -1,7 +1,6 @@
 ---
 title: "Crash course on R markdown"
 author: "François Birgand"
-date: "updated 2017-10-17"
 output: 
   html_document:
     toc: true
@@ -13,7 +12,10 @@ csl: nature.csl
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+selection<-tutblog[tutblog$name=="Crash course on R markdown",]
 ```
+`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
 
 <br/>
 
@@ -168,7 +170,7 @@ So, in the `.bibtex` file I have, the first article appears as
 }
 ```
 
-The first item after "@ARTICLE{" is the unique identifier for the article. The identifier of this article is `Kuhne2009-tn`. When one wants to cite this article, one will say something like "reproducible research has been suggested to become the norm [@Kuhne2009-tn]". And you would code like 
+The first item after "ARTICLE{" is the unique identifier for the article. The identifier of this article is `Kuhne2009-tn`. When one wants to cite this article, one will say something like "reproducible research has been suggested to become the norm [@Kuhne2009-tn]". And you would code like 
 
 ```
 "reproducible research has been suggested to become the norm [@Kuhne2009-tn]"
@@ -179,8 +181,22 @@ If you want to say that "Kühne et al. [-@Kuhne2009-tn] have shown that etc.", y
 ```
 Kühne et al. [-@Kuhne2009-tn] have shown that etc."
 ```
+If you want to cite several references, you would add a semicolumn between the two such as in:
+
+```
+"reproducible research has been suggested to become the norm [@Kuhne2009-tn; @Buckheit1995-ls]"
+```
 
 Notice that among all the fields from the example above, there are `doi` and `issn`. `doi` stands for "Digital Object Identifier". `issn` stands for International Standard Serial Number (ISSN), which is an eight-digit serial number used to uniquely identify a serial publication. The `doi` value in this example is `10.2481/dsj.8.18`, which is unique in the world.  These `doi` are applied to articles but not only. They are also applied to data. Eventually, all data that will be used in an article will have to have its own `doi` and all the codes that are used to analyze the data will refer to this unique `doi`. This is not quite implemented yet (in 2017), but will likely be by 2022. `doi` or `url` (not added here; stands for Uniform Resource Locator. Quite a mouthful, really, for what it is: a web address) are not necessarily exported from your reference software by default.  Make sure you add this possibility, as `doi` is almost routinely added in the reference list in most journals. 
+
+<br/>
+
+The reference list of the citations will appear right after you place
+
+```
+# References
+```
+at the bottom of your Rmd docucment.  When rendering your document, the list will appear automatically afterwards, and if you have in text notes, these will appear underneath.
 
 <br/>
 

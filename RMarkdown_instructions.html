@@ -409,11 +409,11 @@ div.tocify {
 
 <h1 class="title toc-ignore">Crash course on R markdown</h1>
 <h4 class="author"><em>François Birgand</em></h4>
-<h4 class="date"><em>updated 2017-10-17</em></h4>
 
 </div>
 
 
+<p><em>started 2017-10-17 and updated 2017-11-04</em></p>
 <p><br/></p>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
@@ -537,11 +537,17 @@ csl: journal-of-hydrology.csl
   issn    = &quot;1683-1470, 0308-9541&quot;,
   doi     = &quot;10.2481/dsj.8.18&quot;
 }</code></pre>
-<p>The first item after “<strong>???</strong>{” is the unique identifier for the article. The identifier of this article is <code>Kuhne2009-tn</code>. When one wants to cite this article, one will say something like “reproducible research has been suggested to become the norm<span class="citation"><sup><a href="#ref-Kuhne2009-tn">2</a></sup></span>”. And you would code like</p>
+<p>The first item after “ARTICLE{” is the unique identifier for the article. The identifier of this article is <code>Kuhne2009-tn</code>. When one wants to cite this article, one will say something like “reproducible research has been suggested to become the norm<span class="citation"><sup><a href="#ref-Kuhne2009-tn">2</a></sup></span>”. And you would code like</p>
 <pre><code>&quot;reproducible research has been suggested to become the norm [@Kuhne2009-tn]&quot;</code></pre>
 <p>If you want to say that “Kühne et al.<span class="citation"><sup><a href="#ref-Kuhne2009-tn">2</a></sup></span> have shown that etc.”, you would add a “dash” just before the “@” and code it as such:</p>
 <pre><code>Kühne et al. [-@Kuhne2009-tn] have shown that etc.&quot;</code></pre>
+<p>If you want to cite several references, you would add a semicolumn between the two such as in:</p>
+<pre><code>&quot;reproducible research has been suggested to become the norm [@Kuhne2009-tn; @Buckheit1995-ls]&quot;</code></pre>
 <p>Notice that among all the fields from the example above, there are <code>doi</code> and <code>issn</code>. <code>doi</code> stands for “Digital Object Identifier”. <code>issn</code> stands for International Standard Serial Number (ISSN), which is an eight-digit serial number used to uniquely identify a serial publication. The <code>doi</code> value in this example is <code>10.2481/dsj.8.18</code>, which is unique in the world. These <code>doi</code> are applied to articles but not only. They are also applied to data. Eventually, all data that will be used in an article will have to have its own <code>doi</code> and all the codes that are used to analyze the data will refer to this unique <code>doi</code>. This is not quite implemented yet (in 2017), but will likely be by 2022. <code>doi</code> or <code>url</code> (not added here; stands for Uniform Resource Locator. Quite a mouthful, really, for what it is: a web address) are not necessarily exported from your reference software by default. Make sure you add this possibility, as <code>doi</code> is almost routinely added in the reference list in most journals.</p>
+<p><br/></p>
+<p>The reference list of the citations will appear right after you place</p>
+<pre><code># References</code></pre>
+<p>at the bottom of your Rmd docucment. When rendering your document, the list will appear automatically afterwards, and if you have in text notes, these will appear underneath.</p>
 <p><br/></p>
 </div>
 <div id="link-to-citations" class="section level3">

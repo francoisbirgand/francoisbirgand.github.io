@@ -1,4 +1,5 @@
-type,name,topic,reference,date
-Tutorials,Crash course on R markdown,R markdown,RMarkdown_instructions.html,2017-10-17
-Tutorials,Instructions on how to get started with Github,R markdown,Github_instructions.html,2017-10-05
-Blogs,How to make videos using R,R,videos_with_R.html,2016-05-20
+type,authors,name,topic,reference,date,keywords
+Tutorials,François Birgand,Crash course on R markdown,R markdown,RMarkdown_instructions.html,2017-10-17,
+Tutorials,François Birgand,Instructions on how to get started with Github,R markdown,Github_instructions.html,2017-10-05,
+Blogs,François Birgand,How to make videos using R,R,videos_with_R.html,2016-05-20,
+Blogs,François Birgand,Blog: renaming directories and files,R,blog-renaming-dir-and-files.html,2017-11-03,integer(0);grep();sapply();list.dirs();list.files();file.rename();identical()
