@@ -139,13 +139,13 @@ Ph.D. student. I work on characterizing the internal functioning of urban wetlan
 
 ### Cyrus Belenky
 
-M.S. student. I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here. 
+M.S. Student. Born and raised in the D.C. suburbs, I attended NC State for my undergraduate, graduating with a B.S. in Bio & Ag Engineering and a German Studies Minor. I returned to NC State after some time off to pursue my masters Bio & Ag Engineering, focusing on the effects of stream restoration on water quality.
 
 </div>
 
 <div class = "col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/profilepic.jpg">
+<img style="align: center; width: 55%;" src="images/people/IMG_1749.JPG">
 <br/><br/>
 <a href='mailto:cnbelenk@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
@@ -236,12 +236,17 @@ Undergraduate junior, I work on quantifying the water quality benefits of floati
 
 ### Maya Hoon
 
-Undergraduate senior, I work on quantifying the water quality benefits of floating wetland islands. More short biography here.
+Undergraduate junior in Environmental Sciences. I arrived at NC State initially majoring in International Studies in the Humanities department, however as I took more environmentally-focused courses, I developed a desire to better understand ways to protect the environment and to construct solutions to the problem. In order to satiate this desire for knowledge, I have transitioned into Environmental Sciences, and I am currently working on a team research project to quantify the water quality benefits and effectiveness of Floating Treatment Wetlands. Our main research questions address the following:
+
+1. Do planted mats have higher nitrogen and phosphorous removal potential than unplanted mats?
+2. Does recirculating water improve the rates of removal?
+3. Does microbial biofilm improve removal rates?
 
 </div>
 
 <div class = "col-md-4">
 <center>
+<br/><br/>
 <img style="align: center; width: 55%;" src="images/people/maya_hoon.jpg">
 <br/><br/>
 <a href='mailto:mhoon@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
