@@ -22,7 +22,7 @@ selection<-tutblog[tutblog$name=="Crash course on R markdown",]
 <br/>
 
 # Overview
-The research world (and eventually the teaching world as well) is moving very fast towards requiring *reproducible research* [@Buckheit1995-ls; @Kuhne2009-tn; @The_Yale_Law_School_Roundtable_on_Data_and_Code_Sharing2010-xp; @Wicherts2012-oo; @Pasquier2017-os]. "The ultimate product of academic research is the paper along with the laboratory notebooks and full computational environment used to produce the results in the paper such as the code, data, etc. that can be used to reproduce the results and create new work based on the research"  ([Wikipedia](https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research)).  
+The research world (and eventually the teaching world as well) is moving very fast towards requiring *reproducible research* [@Buckheit1995-ls; @Kuhne2009-tn; @The_Yale_Law_School_Roundtable_on_Data_and_Code_Sharing2010-xp; @Wicherts2012-oo; @Pasquier2017-os; @Peng2011-og]. "The ultimate product of academic research is the paper along with the laboratory notebooks and full computational environment used to produce the results in the paper such as the code, data, etc. that can be used to reproduce the results and create new work based on the research"  ([Wikipedia](https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research)).  
 
 The consequences are that we should change our habits and certainly start preparing all our manuscripts, presentations, homework, etc., in a format that is clean and *reproducible*, i.e., if you give anyone the code, this person can reproduce the document exactly. This document seeks to make this transition somewhat easier using R Markdown.
 
@@ -285,7 +285,7 @@ renders **bold** and __bold__
     + sub-item 1
     + sub-item 2 
 
-In the ordered list, there is a subtlety unrevealed in the Rmardown documentation, which is that the numbering *always* increases, and that *only* the number value of the first item matters. So, one cannot have a list in a decreasing order (which is too bad because when one makes a list of his/her publications, it is nice to have a decreasing order...), and the only number that matters os the first one.  So this code 
+In the ordered list, there is a subtlety unrevealed in the Rmardown documentation, which is that the numbering *always* increases, and that *only* the number value of the first item matters. So, one cannot have a list in a decreasing order (which is too bad because when one makes a list of his/her publications, it is nice to have a decreasing order...), and the only number that matters is the first one.  So this code 
 <br/>
 
 ```
