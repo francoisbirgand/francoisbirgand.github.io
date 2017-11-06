@@ -15,7 +15,9 @@ knitr::opts_chunk$set(echo = FALSE)
 tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
 selection<-tutblog[tutblog$name=="Crash course on R markdown",]
 ```
-`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
+<div class = "row">
+<div class = "col-md-9">`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`</div>
+<div class = "col-md-3" align="right">*[code for this document](https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd)*</div></div>
 
 <br/>
 
@@ -137,6 +139,7 @@ date: "09/10/2017"
 output: 
   html_document:
     toc: true
+    toc_float: true
 bibliography: RMD_course_bibtex.bibtex
 link-citations: true
 csl: journal-of-hydrology.csl
@@ -148,11 +151,11 @@ Notice that the `html_document` has now been put on another line for organizatio
 <br/>
 
 ### Bibliography
-I have created and maintained for over 15 years a database written in Microsoft Access of around 2000 articles, most of them photocopied and typed in the database by hand during and after my Ph.D. (yes, I should have a medal!...) but I have to admit that this system is past its time...  I have now switched to Paperpile.  There are many other referencing software out there now.  The beauty of them is that they will all export in recognized formats and this is what we care about here. So no more copy/paste of references from some pdf.  We are going into *reproducible research*. This means that all the articles you want to work with will be entered in the reference database of your choice. Make sure you start one ASAP!
+I have created and maintained for over 15 years a database written in Microsoft Access of around 2000 articles, most of them photocopied and typed in the database by hand during and after my Ph.D. (yes, I should have a medal!...) but I have to admit that this system is past its time...  I have now switched to Paperpile.  There are many other referencing software out there now  ([a list and comparison can be found here](https://en.wikipedia.org/wiki/Comparison_of_reference_management_software)).  The beauty of them is that they will all export in recognized formats and this is what we care about here. So no more copy/paste of references from some pdf.  We are going into *reproducible research*. This means that all the articles you want to work with will be entered in the reference database of your choice. Make sure you start one ASAP!
 
 In the YAML header, you can now see `bibliography: RMD_course_bibtex.bibtex`. This means that there is a file named `RMD_course_bibtex.bibtex` that is located in the same directory as the .Rmd file, which when we 'knit', [Pandoc](https://pandoc.org/MANUAL.html) will look for. You can access this `.bibtex` file in the GitHub directory. There is actually a possibility to add within the `.Rmd` document itself, the text needed for Pandoc to read the references, but unless you only have very few references, this can become very messy quickly. See the [RStudio Bibliographies documentation](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies) for more details.
 
-In short, in this file, there is a list of articles which information is coded according to the format chosen. By the way, a lot of the details for the bibliography are available on the [RSudio Bibliographies documentation](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies). R Markdown will recognize up to 10 different formats.  The one Paperpile exports is `.bibtex`, so this is the one I have have added in the YAML header. The filename extension will determine the *rendering* process, so make sure you have the right extension as well.
+In short, in this file, there is a list of articles which information is coded according to the format chosen. By the way, a lot of the details for the bibliography are available on the [RStudio Bibliographies documentation](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies). R Markdown will recognize up to 10 different formats.  The one Paperpile exports is `.bibtex`, so this is the one I have have added in the YAML header. The filename extension will determine the *rendering* process, so make sure you have the right extension as well.
 
 So, in the `.bibtex` file I have, the first article appears as
 
@@ -181,7 +184,7 @@ If you want to say that "Kühne et al. [-@Kuhne2009-tn] have shown that etc.", y
 ```
 Kühne et al. [-@Kuhne2009-tn] have shown that etc."
 ```
-If you want to cite several references, you would add a semicolumn between the two such as in:
+If you want to cite several references, you would add a semicolon between the two such as in:
 
 ```
 "reproducible research has been suggested to become the norm [@Kuhne2009-tn; @Buckheit1995-ls]"
@@ -240,7 +243,7 @@ To force a line break, put _two_ blank spaces at the end of a line.
 
 ### Headers
 
-The character `#` at the beginning of a line means that the rest of the line is interpreted as a section header.  The number of `#`s at the beginning of the line indicates the level of the section (1,2,3, etc.).  For instance, `Components of R Markdown` above is preceded by a single `#`, because it is of level 1 but `Headers` at the start of this paragraph is preceded by `###` because it is of level 3.  Up to six levels are understood by Markdown.  Do not interrupt these headers by line-breaks.
+The character `#` at the beginning of a line means that the rest of the line is interpreted as a section header.  The number of `#`s at the beginning of the line indicates the level of the section (1,2,3, etc.).  For instance, `Components of R Markdown` above is preceded by a single `#`, because it is of level 1 but `Headers` at the start of this paragraph is preceded by `###` because it is of level 3.  Up to six levels are understood by Markdown.  Do not interrupt these headers by line-breaks. Make sure that in your .Rmd file, you leave a blank line before a header, otherwise, `pandoc` will not render it as a header.
 
 <br/>
 
@@ -281,7 +284,28 @@ renders **bold** and __bold__
 2. item 2
     + sub-item 1
     + sub-item 2 
-    
+
+In the ordered list, there is a subtlety unrevealed in the Rmardown documentation, which is that the numbering *always* increases, and that *only* the number value of the first item matters. So, one cannot have a list in a decreasing order (which is too bad because when one makes a list of his/her publications, it is nice to have a decreasing order...), and the only number that matters os the first one.  So this code 
+<br/>
+
+```
+5. ordered list
+7. item 2
+2. item 2
+                                # blank line for list to take into effect
+    b. sub-item 1               #4 <spaces> before b
+    a. sub-item 2  
+```
+<br/>
+renders this:
+
+5. ordered list
+7. item 2
+2. item 2
+
+    b. sub-item 1                
+    a. sub-item 2               
+   
 <br/>
 
 ### Quotations
@@ -302,6 +326,7 @@ This is to differentiate regular text from `code text` so that both can be easil
 An entire paragraph of code which is rendered as a "code box" in html (but not in pdf) starts with three "back-ticks", and end the same
 
 <br/>
+<a id="link_ref"></a>
 
 ### Absolute Links 
 ```

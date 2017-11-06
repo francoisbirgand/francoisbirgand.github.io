@@ -413,7 +413,14 @@ div.tocify {
 </div>
 
 
-<p><em>started 2017-10-17 and updated 2017-11-04</em></p>
+<div class="row">
+<div class="col-md-9">
+<em>started 2017-10-17 and updated 2017-11-06</em>
+</div>
+<div class="col-md-3" align="right">
+<em><a href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd">code for this document</a></em>
+</div>
+</div>
 <p><br/></p>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
@@ -513,6 +520,7 @@ date: &quot;09/10/2017&quot;
 output: 
   html_document:
     toc: true
+    toc_float: true
 bibliography: RMD_course_bibtex.bibtex
 link-citations: true
 csl: journal-of-hydrology.csl
@@ -522,9 +530,9 @@ csl: journal-of-hydrology.csl
 </div>
 <div id="bibliography" class="section level3">
 <h3>Bibliography</h3>
-<p>I have created and maintained for over 15 years a database written in Microsoft Access of around 2000 articles, most of them photocopied and typed in the database by hand during and after my Ph.D. (yes, I should have a medal!…) but I have to admit that this system is past its time… I have now switched to Paperpile. There are many other referencing software out there now. The beauty of them is that they will all export in recognized formats and this is what we care about here. So no more copy/paste of references from some pdf. We are going into <em>reproducible research</em>. This means that all the articles you want to work with will be entered in the reference database of your choice. Make sure you start one ASAP!</p>
+<p>I have created and maintained for over 15 years a database written in Microsoft Access of around 2000 articles, most of them photocopied and typed in the database by hand during and after my Ph.D. (yes, I should have a medal!…) but I have to admit that this system is past its time… I have now switched to Paperpile. There are many other referencing software out there now (<a href="https://en.wikipedia.org/wiki/Comparison_of_reference_management_software">a list and comparison can be found here</a>). The beauty of them is that they will all export in recognized formats and this is what we care about here. So no more copy/paste of references from some pdf. We are going into <em>reproducible research</em>. This means that all the articles you want to work with will be entered in the reference database of your choice. Make sure you start one ASAP!</p>
 <p>In the YAML header, you can now see <code>bibliography: RMD_course_bibtex.bibtex</code>. This means that there is a file named <code>RMD_course_bibtex.bibtex</code> that is located in the same directory as the .Rmd file, which when we ‘knit’, <a href="https://pandoc.org/MANUAL.html">Pandoc</a> will look for. You can access this <code>.bibtex</code> file in the GitHub directory. There is actually a possibility to add within the <code>.Rmd</code> document itself, the text needed for Pandoc to read the references, but unless you only have very few references, this can become very messy quickly. See the <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies">RStudio Bibliographies documentation</a> for more details.</p>
-<p>In short, in this file, there is a list of articles which information is coded according to the format chosen. By the way, a lot of the details for the bibliography are available on the <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies">RSudio Bibliographies documentation</a>. R Markdown will recognize up to 10 different formats. The one Paperpile exports is <code>.bibtex</code>, so this is the one I have have added in the YAML header. The filename extension will determine the <em>rendering</em> process, so make sure you have the right extension as well.</p>
+<p>In short, in this file, there is a list of articles which information is coded according to the format chosen. By the way, a lot of the details for the bibliography are available on the <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies">RStudio Bibliographies documentation</a>. R Markdown will recognize up to 10 different formats. The one Paperpile exports is <code>.bibtex</code>, so this is the one I have have added in the YAML header. The filename extension will determine the <em>rendering</em> process, so make sure you have the right extension as well.</p>
 <p>So, in the <code>.bibtex</code> file I have, the first article appears as</p>
 <pre><code>@ARTICLE{Kuhne2009-tn,
   title   = &quot;Improving the Traditional Information Management in Natural
@@ -541,7 +549,7 @@ csl: journal-of-hydrology.csl
 <pre><code>&quot;reproducible research has been suggested to become the norm [@Kuhne2009-tn]&quot;</code></pre>
 <p>If you want to say that “Kühne et al.<span class="citation"><sup><a href="#ref-Kuhne2009-tn">2</a></sup></span> have shown that etc.”, you would add a “dash” just before the “@” and code it as such:</p>
 <pre><code>Kühne et al. [-@Kuhne2009-tn] have shown that etc.&quot;</code></pre>
-<p>If you want to cite several references, you would add a semicolumn between the two such as in:</p>
+<p>If you want to cite several references, you would add a semicolon between the two such as in:</p>
 <pre><code>&quot;reproducible research has been suggested to become the norm [@Kuhne2009-tn; @Buckheit1995-ls]&quot;</code></pre>
 <p>Notice that among all the fields from the example above, there are <code>doi</code> and <code>issn</code>. <code>doi</code> stands for “Digital Object Identifier”. <code>issn</code> stands for International Standard Serial Number (ISSN), which is an eight-digit serial number used to uniquely identify a serial publication. The <code>doi</code> value in this example is <code>10.2481/dsj.8.18</code>, which is unique in the world. These <code>doi</code> are applied to articles but not only. They are also applied to data. Eventually, all data that will be used in an article will have to have its own <code>doi</code> and all the codes that are used to analyze the data will refer to this unique <code>doi</code>. This is not quite implemented yet (in 2017), but will likely be by 2022. <code>doi</code> or <code>url</code> (not added here; stands for Uniform Resource Locator. Quite a mouthful, really, for what it is: a web address) are not necessarily exported from your reference software by default. Make sure you add this possibility, as <code>doi</code> is almost routinely added in the reference list in most journals.</p>
 <p><br/></p>
@@ -580,7 +588,7 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 </div>
 <div id="headers" class="section level3">
 <h3>Headers</h3>
-<p>The character <code>#</code> at the beginning of a line means that the rest of the line is interpreted as a section header. The number of <code>#</code>s at the beginning of the line indicates the level of the section (1,2,3, etc.). For instance, <code>Components of R Markdown</code> above is preceded by a single <code>#</code>, because it is of level 1 but <code>Headers</code> at the start of this paragraph is preceded by <code>###</code> because it is of level 3. Up to six levels are understood by Markdown. Do not interrupt these headers by line-breaks.</p>
+<p>The character <code>#</code> at the beginning of a line means that the rest of the line is interpreted as a section header. The number of <code>#</code>s at the beginning of the line indicates the level of the section (1,2,3, etc.). For instance, <code>Components of R Markdown</code> above is preceded by a single <code>#</code>, because it is of level 1 but <code>Headers</code> at the start of this paragraph is preceded by <code>###</code> because it is of level 3. Up to six levels are understood by Markdown. Do not interrupt these headers by line-breaks. Make sure that in your .Rmd file, you leave a blank line before a header, otherwise, <code>pandoc</code> will not render it as a header.</p>
 <p><br/></p>
 </div>
 <div id="italics-and-bold" class="section level3">
@@ -617,6 +625,24 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 <li>sub-item 2</li>
 </ul></li>
 </ol>
+<p>In the ordered list, there is a subtlety unrevealed in the Rmardown documentation, which is that the numbering <em>always</em> increases, and that <em>only</em> the number value of the first item matters. So, one cannot have a list in a decreasing order (which is too bad because when one makes a list of his/her publications, it is nice to have a decreasing order…), and the only number that matters os the first one. So this code <br/></p>
+<pre><code>5. ordered list
+7. item 2
+2. item 2
+                                # blank line for list to take into effect
+    b. sub-item 1               #4 &lt;spaces&gt; before b
+    a. sub-item 2  </code></pre>
+<p><br/> renders this:</p>
+<ol start="5" style="list-style-type: decimal">
+<li>ordered list</li>
+<li>item 2</li>
+<li><p>item 2</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>sub-item 1<br />
+</li>
+<li>sub-item 2</li>
+</ol></li>
+</ol>
 <p><br/></p>
 </div>
 <div id="quotations" class="section level3">
@@ -633,7 +659,7 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 <p>This is to differentiate regular text from <code>code text</code> so that both can be easily differentiated: <code>R</code> vs R.</p>
 <pre><code>This is to differentiate regular text from `code text` so that both can be easily differentiated: `R` vs R.</code></pre>
 <p>An entire paragraph of code which is rendered as a “code box” in html (but not in pdf) starts with three “back-ticks”, and end the same</p>
-<p><br/></p>
+<p><br/> <a id="link_ref"></a></p>
 </div>
 <div id="absolute-links" class="section level3">
 <h3>Absolute Links</h3>
