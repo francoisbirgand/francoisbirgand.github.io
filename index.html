@@ -315,7 +315,26 @@ $(document).ready(function () {
 </div>
 
 
-<img src="images/CLUP.png" />
+<script type="text/javascript"><!--
+var imlocation = "images/";
+ function ImageArray (n) {
+   this.length = n;
+   for (var i =1; i <= n; i++) {
+     this[i] = ' '
+   }
+ }
+image = new ImageArray(7);
+image[0] = 'plymouthbioreactor.png';
+image[1] = 'CLUP.png';
+image[2] = 'iowabioreactor.png';
+image[3] = 'daniatCLMD.png';
+image[4] = 'lonniepoolwetland.png';
+image[5] = 'CLUP.png';
+image[6] = 'saturday.gif';
+var currentdate = new Date();
+var imagenumber = currentdate.getDay();
+document.write('<img src="' + imlocation + image[imagenumber] + '">');
+//--></script>
 <div class="row">
 <div class="col-md-9">
 
