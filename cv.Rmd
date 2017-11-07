@@ -327,15 +327,22 @@ for (i in 1:nrow(tmp_pres)){#line printing loop
 
 # Professional services on campus
 
-* College of Engineering Research Committee (2016-present)
-* College of Ag and Life Sciences Research Committee (2016-present)
-* Department Data Analytics Faculty search committee (2017)
-* BAE Department Head Search Committee (2016)
-* Department Recruitment and Placement Committee (2009-Present)
-* Department Research Committee (2009-Present)
-* Department Graduate Studies Committee (2012 - Present)
-* Junior Adviser - Student branch of AWRA (Fall 2011 – Present)
-* 4 Departmental Ad hoc Committees (2008-2010) 
+* 2017:
+    + Department Data Analytics Faculty search committee ()
+* 2016-present:
+    + College of Engineering Research Committee 
+    + College of Ag and Life Sciences CRC Committee 
+* 2016:
+    + CALS BAE Department Head Search Committee
+* 2012 - Present:
+    + Department Graduate Studies Committee
+* 2009-Present:
+    + Department Recruitment and Placement Committee
+    + Department Research Committee
+* 2011 – 2013:
+    + Junior Adviser - Student branch of AWRA
+* 2008-2010:
+    + 4 Departmental Ad hoc Committees 
 
 
 **************
@@ -343,17 +350,23 @@ for (i in 1:nrow(tmp_pres)){#line printing loop
 
 # Professional services off campus
 
-* 2016: panelist, NSF, Hydrological Sciences Program 
-* 2014: session chair, AGU Hydrology – new water quality sensors
-* 2011 -- present: session organizer Annual international conference ASABE
-* 2011: panelist, NIFA Integrated Water Quality Program
-* 2009-present: Ad hoc reviewer, Transactions of the ASABE
-* 2009-present: Ad hoc reviewer, Journal of Hydrology
-* 2009-present: Ad hoc reviewer, Ecological Engineering
-* 2009-present: Ad hoc reviewer, Journal of the Total Environment
-* 2009-present: Ad hoc reviewer, Water Resources Research
-* 2009-present: Ad hoc reviewer, Environmental Science and Pollution Research
-* 2009-present: Ad hoc reviewer, Geophysical Research Letters
-* 2009-present: Ad hoc reviewer, Agricultural Water Management
-* 2009-present: Ad hoc reviewer, Journal of Hydrological Engineering
-* 2009-present: Ad hoc reviewer, Journal of Environmental Quality
+* 2016: 
+    + Advisory Board member for the NSF EPSCoR NEWRnet program
+    + panelist, NSF, Hydrological Sciences Program 
+* 2014: 
+    + session chair, AGU Hydrology – new water quality sensors
+* 2011 -- present: 
+    + session organizer Annual international conference ASABE
+* 2011: 
+    + panelist, NIFA Integrated Water Quality Program
+* 2009-present: 
+    + Ad hoc reviewer, Transactions of the ASABE
+    + Ad hoc reviewer, Journal of Hydrology
+    + Ad hoc reviewer, Ecological Engineering
+    + Ad hoc reviewer, Journal of the Total Environment
+    + Ad hoc reviewer, Water Resources Research
+    + Ad hoc reviewer, Environmental Science and Pollution Research
+    + Ad hoc reviewer, Geophysical Research Letters
+    + Ad hoc reviewer, Agricultural Water Management
+    + Ad hoc reviewer, Journal of Hydrological Engineering
+    + Ad hoc reviewer, Journal of Environmental Quality
