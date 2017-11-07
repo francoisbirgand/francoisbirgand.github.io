@@ -578,7 +578,9 @@ plot(pressure)
 
 #### Markdown tables and the "kable" function
 
-#### Seen But Not Heard
+coming soon...
+
+#### Chunk results options
 
 Code chunks (but not inline code) can take a lot of **options** which modify
 how they are run, and how they appear in the document.  These options go after
@@ -586,16 +588,30 @@ the initial `r` and before the closing `}` that announces the start of a code
 chunk.  One of the most common options turns off printing out the code,
 but leaves the results alone:
  ` ```{r, echo=FALSE} `
-
+<br/>
 Another runs the code, but includes neither the text of the code nor its output.
  ` ```{r, include=FALSE} `
 This might seem pointless, but it can be useful for code chunks which do set-up
 like loading data files, or initial model estimates, etc.
 
-
+<br/>
 Another option prints the code in the document, but does not run it:
  ` ```{r, eval=FALSE} `
 This is useful if you want to talk about the (nicely formatted) code.
+<br/>
+Another option on the results of the code is that it generate all results "as-is", which is very nice when your code generates mark-up text to be rendered by `Pandoc`. 
+
+ ` ```{r, results="asis"} `
+<br/>
+By default, the results of a chunk with have `##` as a prefix. You can remove this by putting 
+
+ ` ```{r, comment=FALSE} `
+
+<br/>
+Sometimes, running of the code will generate warnings and messages.  These can be turned off in the output by using
+
+ ` ```{r, warning=FALSE, message = FALSE} `
+ 
 
 #### Naming Chunks
 
