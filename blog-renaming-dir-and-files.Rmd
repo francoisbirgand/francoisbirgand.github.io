@@ -93,7 +93,7 @@ for (i in 1:nrow(pattern)){
 <br/>
 
 ### Listing directory names
-First, the code to make a list of all directories down a directory tree is:
+First, the code to make a list of all directories down a directory tree is, as long as the file for the code is physically located in a directory downstream of which one wants all the recursive directories. I go into more details ablout this further down.
 
 ```{r echo=TRUE, eval= FALSE}
 dirlist<-list.dirs(recursive = TRUE)
@@ -123,12 +123,12 @@ sapply(dirlist[is.pattern],FUN=function(eachPath){
 ```
 
 <br/>
-That is pretty much all I thought I could share. The final exact code I used is below:
+The last important thing I want to share is that to have the code work for any directory on your computer, it is better to provide absolute file names.  For this, I have chosen to add a path to files and make directory and file lists from it.  Now, there is a subtlety: Notice in the code below that I purposely did not add a `/` at the end of the path name. This is because the function `list.dirs()` automatically adds one, but not the function `list.files()`...! So to get the full file name, I just added a `/` in the code so that the file list be correct.  
 <br/>
 
 ```{r echo=TRUE, eval= FALSE}
-setwd<-c("/Users/francoisbirgand/Google Drive/Echantillonnage/Methods/Data")
-dirlist<-list.dirs(recursive = TRUE)      # recursive = TRUE means that all dir in the tree will appear
+path<-"/Users/francoisbirgand/Google Drive/Echantillonnage/Methods/Data"
+dirlist<-paste0(path,list.dirs(path,recursive = TRUE))      # recursive = TRUE means that all dir in the tree will appear
 
 ### this makes a list of all the years that need to change
 years<-(1979:2017)
@@ -151,7 +151,7 @@ for (i in 1:nrow(pattern)){
   }
 }
 
-filelist<-list.files(recursive = TRUE)    # recursive = TRUE means that all files in the tree will appear
+filelist<-paste0(path,"/",list.files(path,recursive = TRUE))    # recursive = TRUE means that all files in the tree will appear
 
 ### This changes all the file names
 for (i in 1:nrow(pattern)){
