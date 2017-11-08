@@ -73,7 +73,7 @@ Research Assistant. I have a hand in everything from logistical, organizational 
 <div class = "row">
 <div class = "col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/female-sil-gray.png">
+<img style="align: center; width: 55%;" src="images/people/beth_allen.png">
 <br/><br/>
 <a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
@@ -101,7 +101,7 @@ Ph.D. student. I grew up in Charlotte, North Carolina and came to NC State for m
 
 <div class = "col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/profilepic.jpg">
+<img style="align: center; width: 55%;" src="images/people/bryan_maxwell.png">
 <br/><br/>
 <a href='mailto:bmmaxwel@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
