@@ -11,7 +11,7 @@
 
 
 
-<title>Tutorials and blog posts</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
@@ -164,101 +161,6 @@ $(document).ready(function () {
 <!-- code folding -->
 
 
-
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -406,43 +308,75 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Tutorials and blog posts</h1>
 
 </div>
 
 
-<div id="tutorials" class="section level3">
-<h3>Tutorials</h3>
+<div id="blog-adding-an-image-in-an-r-graph" class="section level1">
+<h1>Blog: Adding an image in an R graph</h1>
+<div id="by-francois-birgand" class="section level3">
+<h3><em>by François Birgand</em></h3>
+<p><em>started 2015-10-18 and updated 2017-11-11</em></p>
+<p><br/></p>
+</div>
+<div id="keywords" class="section level3">
+<h3>Keywords</h3>
 <ul>
-<li>2017
-<ul>
-<li><a href="RMarkdown_instructions.html">Crash course on R markdown</a> – <em>updated 2017-10-17</em></li>
-<li><a href="Github_instructions.html">Instructions on how to get started with Github</a> – <em>updated 2017-10-05</em></li>
-</ul></li>
+<li>pixmax package</li>
+<li>PNM format</li>
+<li>imager package</li>
+<li>load.image() <br/><br/></li>
 </ul>
 </div>
-<div id="blogs" class="section level3">
-<h3>Blogs</h3>
-<ul>
-<li>2017
-<ul>
-<li><a href="blog-renaming-dir-and-files.html">Blog: renaming directories and files</a> – <em>updated 2017-11-03</em></li>
-</ul></li>
-<li>2016
-<ul>
-<li><a href="videos_with_R.html">How to make videos using R</a> – <em>updated 2016-05-20</em></li>
-</ul></li>
-<li>2015
-<ul>
-<li><a href="blog-adding-an-image-in-an-r-graph.html">Blog: Adding an image in an R graph</a> – <em>updated 2015-10-18</em> <br></li>
-</ul></li>
-</ul>
+<div id="maps-and-schemes-in-graphs" class="section level2">
+<h2>Maps and schemes in graphs</h2>
+<p>In hydrology, we tend to use maps quite a bit or cross-sections of the landscapes, or other images. Keeping these visual references and adding numbers, histograms, time series, etc. can be a very effective way to keep an audience engaged.</p>
+<p>In addition, since it is not extremely common just yet, it makes a big impresson on the audience and you are almost guaranteed to have questions on how you did this <br/><br/></p>
+</div>
+<div id="in-2015-one-could-use-the-pixmap-package" class="section level2">
+<h2>In 2015, one could use the pixmap package</h2>
+<p>The original post written in October 2015, the <code>pixmap</code> package worked. In late 2017, this package is deprecated… So the code below does not work anymore as of late 2017…</p>
+<pre><code>library (pixmap)
+x &lt;- read.pnm(system.file(&quot;pictures/logo.ppm&quot;, package=&quot;pixmap&quot;)[1])
+plot(x)
+for (i in 1:7){
+  addlogo(x, px=c(0, (101/77)*11), py=c((i-1)*11, i*11), asp=1)
+}</code></pre>
+<p>It actually was not that good because in 2015 I wrote:</p>
+<blockquote>
+<p>The only troubling thing is that the file format (PNM) of the picture loaded is somewhat obscur… PNM is a family of formats supporting portable bitmaps (PBM) , graymaps (PGM), and pixmaps (PPM). There is no file format associated with pnm itself. Rare are the software which will allow to save a picture into a PNM format, which is thus very unfortunate…</p>
+</blockquote>
+<blockquote>
+<p>If you need to convert only one image to add to your graph, it is then relatively easy. You could use this free online image converter very efficiently.</p>
+</blockquote>
+<p><br/><br/></p>
+</div>
+<div id="package-imager-works-in-2017" class="section level2">
+<h2>Package <code>imager</code> works in 2017</h2>
+<p><br/></p>
+<pre class="r"><code>library(imager)
+logo&lt;-load.image(&quot;https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png&quot;)
+plot(logo)</code></pre>
+<p><img src="blog-adding-an-image-to-an-r-graph_files/figure-html/unnamed-chunk-2-1.png" width="672" /> <br/><br/></p>
+</div>
+<div id="making-videos-with-graphs-and-images-written-in-2015" class="section level2">
+<h2>Making videos with graphs and images <em>(written in 2015)</em></h2>
+<p>In the Making videos in R page, there is information on how to animate still images into videos If in each of the graph images that you produce in R, you upload the same pnm file, then things are easy because you do need to convert one image into pnm, just once, possibly using the free tool linked above Now, if for each graph image you produce, the actual images loaded on the graphs need to change, this implies that you might have a lot of images to convert and this can be a very time consuming process if done manually…</p>
+<p>There are commercial products that do that but there also is a free tool which is described on this Converting images using imagemagik page, which will do batch conversion for you &lt;<br/><br/></p>
+</div>
+<div id="an-example-of-changing-graphs-and-images-in-a-video" class="section level2">
+<h2>An example of changing graphs and images in a video</h2>
+<p>In the following video, borrowed from from <a href="presentations_pdf/Birgand_WQ_ASABE_2014.pdf">this invited talk</a>, the idea was to show that a hydrograph really represents the story or the movie of what happened through time. It is very effective to show that high flow periods are very short. The continuous hydrograph line, of which the brain subconsciously cumulates the length, may sometimes make us forget this.</p>
+<p>The images were taken by the GaugeCam system which my team and the GaugeCam company started. The system uses images taken, in this case every 15 mins, and automatically reads the stage on the flat whitish background using the software GaugeCam llc. has developed. Flow rates were calculated from these stages measurements <br/><br/></p>
+<center>
+<iframe width="500" height="305" src="https://www.youtube.com/embed/uUG_QScHFwQ" frameborder="0" allowfullscreen>
+</iframe>
+</center>
+</div>
 </div>
 
 
 
-</div>
-</div>
 
 </div>
 

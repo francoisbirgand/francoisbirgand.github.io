@@ -1,0 +1,81 @@
+---
+output: html_document
+bibliography: FB-uncertainties.bibtex
+link-citations: true
+csl: nature.csl
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+selection<-tutblog[tutblog$name=="Blog: Adding an image in an R graph",]
+```
+`r paste0("# ",selection$name)`
+`r paste0("### *by ",selection$authors,"*")`
+`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
+
+<br/>
+
+### Keywords
+```{r echo=FALSE, results="asis",comment=FALSE} 
+cat("*",gsub(";","\n * ",selection$keywords))
+```
+<br/><br/>
+
+## Maps and schemes in graphs
+
+In hydrology, we tend to use maps quite a bit or cross-sections of the landscapes, or other images. Keeping these visual references and adding numbers, histograms, time series, etc. can be a very effective way to keep an audience engaged.
+
+In addition, since it is not extremely common just yet, it makes a big impresson on the audience and you are almost guaranteed to have questions on how you did this
+<br/><br/>
+
+## In 2015, one could use the pixmap package
+
+The original post written in October 2015, the `pixmap` package worked.  In late 2017, this package is deprecated... So the code below does not work anymore as of late 2017...
+
+```
+library (pixmap)
+x <- read.pnm(system.file("pictures/logo.ppm", package="pixmap")[1])
+plot(x)
+for (i in 1:7){
+  addlogo(x, px=c(0, (101/77)*11), py=c((i-1)*11, i*11), asp=1)
+}
+```
+
+It actually was not that good because in 2015 I wrote:
+
+>The only troubling thing is that the file format (PNM) of the picture loaded is somewhat obscur...
+PNM is a family of formats supporting portable bitmaps (PBM) , graymaps (PGM), and pixmaps (PPM). There is no file format associated with pnm itself. Rare are the software which will allow to save a picture into a PNM format, which is thus very unfortunate...
+
+>If you need to convert only one image to add to your graph, it is then relatively easy. You could use this free online image converter very efficiently.
+
+<br/><br/>
+
+## Package `imager` works in 2017
+<br/>
+
+```{r echo = TRUE,eval=TRUE,message=FALSE,warning=FALSE}
+library(imager)
+logo<-load.image("https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png")
+plot(logo)
+```
+<br/><br/>
+
+## Making videos with graphs and images *(written in 2015)*
+
+In the Making videos in R page, there is information on how to animate still images into videos
+If in each of the graph images that you produce in R, you upload the same pnm file, then things are easy because you do need to convert one image into pnm, just once, possibly using the free tool linked above
+Now, if for each graph image you produce, the actual images loaded on the graphs need to change, this implies that you might have a lot of images to convert and this can be a very time consuming process if done manually...
+
+There are commercial products that do that but there also is a free tool which is described on this Converting images using imagemagik page, which will do batch conversion for you
+<<br/><br/>
+
+## An example of changing graphs and images in a video
+
+In the following video, borrowed from from [this invited talk](presentations_pdf/Birgand_WQ_ASABE_2014.pdf), the idea was to show that a hydrograph really represents the story or the movie of what happened through time. It is very effective to show that high flow periods are very short. The continuous hydrograph line, of which the brain subconsciously cumulates the length, may sometimes make us forget this.
+
+The images were taken by the GaugeCam system which my team and the GaugeCam company started. The system uses images taken, in this case every 15 mins, and automatically reads the stage on the flat whitish background using the software GaugeCam llc. has developed. Flow rates were calculated from these stages measurements
+<br/><br/>
+
+<center><iframe width="500" height="305" src="https://www.youtube.com/embed/uUG_QScHFwQ" frameborder="0" allowfullscreen></iframe></center>
