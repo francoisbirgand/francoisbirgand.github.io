@@ -173,7 +173,7 @@ for (type in types){
     tmp_tutblog <- tmp_tutblog[order(tmp_tutblog$date, decreasing = TRUE),]
     cat("*",year,"\n")
     for (i in 1:nrow(tmp_tutblog)){
-      cat("    + ",paste0("[",tmp_tutblog[i,]$name,"](",tmp_tutblog[i,]$reference,")"),paste0(" -- *updated ",tmp_tutblog[i,]$date,"*"), sep = "")
+      cat("    + ",paste0("[",tmp_tutblog[i,]$name,"](",tmp_tutblog[i,]$reference,")"),paste0(" -- *started ",tmp_tutblog[i,]$date,"*"), sep = "")
       cat("\n")
     } # end nb of item per year
     
