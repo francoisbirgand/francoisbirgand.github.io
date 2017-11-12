@@ -312,64 +312,68 @@ $(document).ready(function () {
 </div>
 
 
-<div id="blog-adding-an-image-in-an-r-graph" class="section level1">
-<h1>Blog: Adding an image in an R graph</h1>
+<div id="blog-making-videos-in-r---the-old-fashion-way" class="section level1">
+<h1>Blog: making videos in R - the old fashion way</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2015-10-18 and updated 2017-11-12</em></p>
+<p><em>started 2015-10-15 and updated 2017-11-12</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
 <h3>Keywords</h3>
 <ul>
-<li>pixmax package</li>
-<li>PNM format</li>
-<li>imager package</li>
-<li>load.image() <br/><br/></li>
+<li>ffmpeg</li>
+<li>hydrological time series <br/><br/></li>
 </ul>
 </div>
-<div id="maps-and-schemes-in-graphs" class="section level2">
-<h2>Maps and schemes in graphs</h2>
-<p>In hydrology, we tend to use maps quite a bit or cross-sections of the landscapes, or other images. Keeping these visual references and adding numbers, histograms, time series, etc. can be a very effective way to keep an audience engaged.</p>
-<p>In addition, since it is not extremely common just yet, it makes a big impresson on the audience and you are almost guaranteed to have questions on how you did this <br/><br/></p>
+<div id="time-series-graphs" class="section level2">
+<h2>Time series graphs</h2>
+<p>The core of our data in hydrology and water quality are time series of flow and concentrations that tell the story of what happened through time. I have always felt frustrated not to be able to view this type of data as movies, in addition to the still images of hydro- and chemographs <br/><br/></p>
+<div id="jpgvideo-to-ffmpeg" class="section level3">
+<h3>jpgvideo to ffmpeg</h3>
+<p>Our research team has been using R to create images of graphs and after using jpgvideo for a long time to animate these graphs, we have now switched to ffmpeg (could not make jpgvideo to work on our computers anymore…) <br/></p>
 </div>
-<div id="in-2015-one-could-use-the-pixmap-package" class="section level2">
-<h2>In 2015, one could use the pixmap package</h2>
-<p>The original post written in October 2015, the <code>pixmap</code> package worked. In late 2017, this package is deprecated… So the code below does not work anymore as of late 2017…</p>
-<pre><code>library (pixmap)
-x &lt;- read.pnm(system.file(&quot;pictures/logo.ppm&quot;, package=&quot;pixmap&quot;)[1])
-plot(x)
-for (i in 1:7){
-  addlogo(x, px=c(0, (101/77)*11), py=c((i-1)*11, i*11), asp=1)
-}</code></pre>
-<p>It actually was not that good because in 2015 I wrote:</p>
-<blockquote>
-<p>The only troubling thing is that the file format (PNM) of the picture loaded is somewhat obscur… PNM is a family of formats supporting portable bitmaps (PBM) , graymaps (PGM), and pixmaps (PPM). There is no file format associated with pnm itself. Rare are the software which will allow to save a picture into a PNM format, which is thus very unfortunate…</p>
-</blockquote>
-<blockquote>
-<p>If you need to convert only one image to add to your graph, it is then relatively easy. You could use this free online image converter very efficiently.</p>
-</blockquote>
+<div id="what-is-ffmpeg" class="section level3">
+<h3>What is ffmpeg?</h3>
+<p>ffmpeg seems to be the standard that true multimedia handlers use. It is a very powerful platform that will do almost anything with videos, one of which being to create videos from a series of images The program works on linux (sign that it is for real!), OS and windows.</p>
+<p>One can find all information to download and install and everything on the official site ffmpeg.org Lots of Youtube videos can be found on how to use it, etc. One that I liked was what to do to install it nicely on my PC or mac. <br/><br/></p>
+</div>
+<div id="the-code-that-works-for-me" class="section level3">
+<h3>The code that works for me</h3>
+<p>I created a lot of .jpg images in R for which I switched the xlim or range of the dates every 15 min. I put all the images in the same directory with the names image_0001.jpg, image_0002.jpg, …, and so on until as many images as one wants.</p>
+<p>I then used the following code: <br/></p>
+<pre><code>ffmpeg -r 25 -t 10 -f image2 -start_number 51 -i image_%04d.jpg -qscale:v 1 output.avi
+
+  -r 25
+  -r followed by a number tells the rate of frames per second, in the example 25
+
+  -t 10
+  -t followed by a number is facultative and tells the length of the video is seconds, in the example, ffmpeg stops making the video after it is 10 sec long. It is a nice option to use to see if your code is working without having to wait to process the hundreds of perhaps thousands of images
+
+  -f image2
+  -f image2 tells ffmpeg to select a group of images
+
+-start_number 51
+    indicates the initial image number, in this case the first image taken would have been image_0051.jpg. This option is not necessary as ffmpeg will normally automatically start with the lowest &#39;value&#39; in alphabetical order. But sometimes you do want to keep all your images but would rather have your video start at a known one
+
+  -i image_%04d.jpg
+  -i indicates the input files and %04d indicates in the input file name the variable part of the name in that case a 4 digit number, the fixed part being &#39;image_&#39; and &#39;.jpg&#39;
+  
+  -qscale:v 1
+      indicates the quality of the final video and 1 indicates highest quality and 31 the poorest quality. This option has to be placed after the file names
+
+  output.avi
+    tells ffmpeg to save the outpout file in a AVI file called output.avi</code></pre>
 <p><br/><br/></p>
+<p>There are many other options available using ffmpeg but these are the basic ones that are enough to make decent videos. <br/><br/></p>
 </div>
-<div id="package-imager-works-in-2017" class="section level2">
-<h2>Package <code>imager</code> works in 2017</h2>
-<p><br/></p>
-<pre class="r"><code>library(imager)
-logo&lt;-load.image(&quot;https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png&quot;)
-plot(logo)</code></pre>
-<p><img src="blog-adding-an-image-to-an-r-graph_files/figure-html/unnamed-chunk-2-1.png" width="672" /> <br/><br/></p>
 </div>
-<div id="making-videos-with-graphs-and-images-written-in-2015" class="section level2">
-<h2>Making videos with graphs and images <em>(written in 2015)</em></h2>
-<p>In the Making videos in R page, there is information on how to animate still images into videos If in each of the graph images that you produce in R, you upload the same pnm file, then things are easy because you do need to convert one image into pnm, just once, possibly using the free tool linked above Now, if for each graph image you produce, the actual images loaded on the graphs need to change, this implies that you might have a lot of images to convert and this can be a very time consuming process if done manually…</p>
-<p>There are commercial products that do that but there also is a free tool which is described on this Converting images using imagemagik page, which will do batch conversion for you &lt;<br/><br/></p>
-</div>
-<div id="an-example-of-changing-graphs-and-images-in-a-video" class="section level2">
-<h2>An example of changing graphs and images in a video</h2>
-<p>In the following video, borrowed from from <a href="presentations_pdf/Birgand_WQ_ASABE_2014.pdf">this invited talk</a>, the idea was to show that a hydrograph really represents the story or the movie of what happened through time. It is very effective to show that high flow periods are very short. The continuous hydrograph line, of which the brain subconsciously cumulates the length, may sometimes make us forget this.</p>
-<p>The images were taken by the GaugeCam system which my team and the GaugeCam company started. The system uses images taken, in this case every 15 mins, and automatically reads the stage on the flat whitish background using the software GaugeCam llc. has developed. Flow rates were calculated from these stages measurements <br/><br/></p>
+<div id="an-example-of-the-results" class="section level2">
+<h2>An example of the results</h2>
+<p>I have found that publishing videos on Youtube is an efficient way to give access to them on a wide basis Now, embedded youtube videos during presentation can be a tricky business and it is sometimes preferable and safer to have a .avi or .wmv version at hand! But on a web page such as this one, online videos do the job very well!</p>
+<p>The video presents the flow and Total Suspended Sediment dynamics in a restored brackish marsh near Beaufort in NC during hurricane Sandy in 2012. All the details of the marsh and the research study can be found here</p>
 <center>
-<iframe width="500" height="305" src="https://www.youtube.com/embed/uUG_QScHFwQ" frameborder="0" allowfullscreen>
+<iframe width="500" height="305" src="https://www.youtube.com/embed/lsWHdz6mF3A" frameborder="0" allowfullscreen>
 </iframe>
 </center>
 </div>

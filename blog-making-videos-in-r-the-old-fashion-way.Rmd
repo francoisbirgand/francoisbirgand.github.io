@@ -1,0 +1,88 @@
+---
+output: html_document
+bibliography: FB-uncertainties.bibtex
+link-citations: true
+csl: nature.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+selection<-tutblog[tutblog$name=="Blog: making videos in R - the old fashion way",]
+```
+`r paste0("# ",selection$name)`
+`r paste0("### *by ",selection$authors,"*")`
+`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
+
+<br/>
+
+### Keywords
+```{r echo=FALSE, results="asis",comment=FALSE} 
+cat("*",gsub(";","\n * ",selection$keywords))
+```
+<br/><br/>
+
+## Time series graphs
+
+The core of our data in hydrology and water quality are time series of flow and concentrations that tell the story of what happened through time. I have always felt frustrated not to be able to view this type of data as movies, in addition to the still images of hydro- and chemographs
+<br/><br/>
+
+### jpgvideo to ffmpeg
+
+Our research team has been using R to create images of graphs and after using jpgvideo for a long time to animate these graphs, we have now switched to ffmpeg (could not make jpgvideo to work on our computers anymore...)
+<br/>
+
+### What is ffmpeg?
+
+ffmpeg seems to be the standard that true multimedia handlers use. It is a very powerful platform that will do almost anything with videos, one of which being to create videos from a series of images
+The program works on linux (sign that it is for real!), OS and windows.
+
+One can find all information to download and install and everything on the official site ffmpeg.org
+Lots of Youtube videos can be found on how to use it, etc. One that I liked was what to do to install it nicely on my PC or mac.
+<br/><br/>
+
+###The code that works for me
+
+I created a lot of .jpg images in R for which I switched the xlim or range of the dates every 15 min.
+I put all the images in the same directory with the names image_0001.jpg, image_0002.jpg, ..., and so on until as many images as one wants.
+
+I then used the following code:
+<br/>
+
+```
+ffmpeg -r 25 -t 10 -f image2 -start_number 51 -i image_%04d.jpg -qscale:v 1 output.avi
+
+  -r 25
+  -r followed by a number tells the rate of frames per second, in the example 25
+
+  -t 10
+  -t followed by a number is facultative and tells the length of the video is seconds, in the example, ffmpeg stops making the video after it is 10 sec long. It is a nice option to use to see if your code is working without having to wait to process the hundreds of perhaps thousands of images
+
+  -f image2
+  -f image2 tells ffmpeg to select a group of images
+
+-start_number 51
+    indicates the initial image number, in this case the first image taken would have been image_0051.jpg. This option is not necessary as ffmpeg will normally automatically start with the lowest 'value' in alphabetical order. But sometimes you do want to keep all your images but would rather have your video start at a known one
+
+  -i image_%04d.jpg
+  -i indicates the input files and %04d indicates in the input file name the variable part of the name in that case a 4 digit number, the fixed part being 'image_' and '.jpg'
+  
+  -qscale:v 1
+      indicates the quality of the final video and 1 indicates highest quality and 31 the poorest quality. This option has to be placed after the file names
+
+  output.avi
+    tells ffmpeg to save the outpout file in a AVI file called output.avi
+```
+<br/><br/>
+
+There are many other options available using ffmpeg but these are the basic ones that are enough to make decent videos.
+<br/><br/>
+
+## An example of the results
+
+I have found that publishing videos on Youtube is an efficient way to give access to them on a wide basis
+Now, embedded youtube videos during presentation can be a tricky business and it is sometimes preferable and safer to have a .avi or .wmv version at hand! But on a web page such as this one, online videos do the job very well!
+
+The video presents the flow and Total Suspended Sediment dynamics in a restored brackish marsh near Beaufort in NC during hurricane Sandy in 2012. All the details of the marsh and the research study can be found here
+
+<center><iframe width="500" height="305" src="https://www.youtube.com/embed/lsWHdz6mF3A" frameborder="0" allowfullscreen></iframe></center>

@@ -312,66 +312,60 @@ $(document).ready(function () {
 </div>
 
 
-<div id="blog-adding-an-image-in-an-r-graph" class="section level1">
-<h1>Blog: Adding an image in an R graph</h1>
+<div id="blog-indices-and-exponents-in-r-graphs" class="section level1">
+<h1>Blog: Indices and exponents in R graphs</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2015-10-18 and updated 2017-11-12</em></p>
+<p><em>started 2015-11-05 and updated 2017-11-12</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
 <h3>Keywords</h3>
 <ul>
-<li>pixmax package</li>
-<li>PNM format</li>
-<li>imager package</li>
-<li>load.image() <br/><br/></li>
+<li>substitute()</li>
+<li>expression() <br/><br/></li>
 </ul>
 </div>
-<div id="maps-and-schemes-in-graphs" class="section level2">
-<h2>Maps and schemes in graphs</h2>
-<p>In hydrology, we tend to use maps quite a bit or cross-sections of the landscapes, or other images. Keeping these visual references and adding numbers, histograms, time series, etc. can be a very effective way to keep an audience engaged.</p>
-<p>In addition, since it is not extremely common just yet, it makes a big impresson on the audience and you are almost guaranteed to have questions on how you did this <br/><br/></p>
+<div id="indices-and-exponents" class="section level2">
+<h2>Indices and exponents</h2>
+<p>In water quality, many of the nutrients are referred to as their ionic forms. Displaying ionic formulae can be tricky in R. On can spend a lot of time and still frustrated after many hours spent on Google… We have been there and are providing here some code that works. <br/><br/><br/></p>
+<div id="using-expression" class="section level3">
+<h3>Using <code>expression()</code></h3>
+<p>For ions such as nitrate and ammonium, one can use expression to create the combination of indices and exponents. If you run the code below, you will see that you can display the exponent ion charge and the indices atom numbers correctly <br/><br/></p>
+<pre class="r"><code>    nitrate=expression(NO[3]^{&quot;-&quot;})
+    ammonium=expression(NH[4]^{&quot;+&quot;})
+    
+    plot(0,0,col=&quot;white&quot;,xlim=c(-2,2),ylim=c(-2,2),ann=FALSE,axes=FALSE)
+    box(col=&quot;grey&quot;)
+    text(-1,1,nitrate,cex=2)
+    text(-1,0,ammonium,cex=2)
+    text(-1,2,&quot;expression&quot;,font=3)</code></pre>
+<p><img src="blog-indices-and-exponents-in-r-graphs_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre><code>[x]: indicates that x should displayed as an index
+
+^{y}: indicates that y should be displayed as an exponent</code></pre>
+<p><br/><br/><br/></p>
 </div>
-<div id="in-2015-one-could-use-the-pixmap-package" class="section level2">
-<h2>In 2015, one could use the pixmap package</h2>
-<p>The original post written in October 2015, the <code>pixmap</code> package worked. In late 2017, this package is deprecated… So the code below does not work anymore as of late 2017…</p>
-<pre><code>library (pixmap)
-x &lt;- read.pnm(system.file(&quot;pictures/logo.ppm&quot;, package=&quot;pixmap&quot;)[1])
-plot(x)
-for (i in 1:7){
-  addlogo(x, px=c(0, (101/77)*11), py=c((i-1)*11, i*11), asp=1)
-}</code></pre>
-<p>It actually was not that good because in 2015 I wrote:</p>
-<blockquote>
-<p>The only troubling thing is that the file format (PNM) of the picture loaded is somewhat obscur… PNM is a family of formats supporting portable bitmaps (PBM) , graymaps (PGM), and pixmaps (PPM). There is no file format associated with pnm itself. Rare are the software which will allow to save a picture into a PNM format, which is thus very unfortunate…</p>
-</blockquote>
-<blockquote>
-<p>If you need to convert only one image to add to your graph, it is then relatively easy. You could use this free online image converter very efficiently.</p>
-</blockquote>
-<p><br/><br/></p>
+<div id="using-substitute" class="section level3">
+<h3>Using <code>substitute()</code></h3>
+<p>Now, there are instances when nutrient concentrations are referred to as their main atom, such as in the expression ‘nitrate as nitrogen’ or ‘phosphate as phosphorus’ where in the typography itself, one adds ‘-N’ or ‘-P’ at the end of the ionic formulae.</p>
+<p>In these cases, expression does not work any longer… The solution is to use substitute The synthax is not as straight forward but the one below will work <br/><br/></p>
+<pre class="r"><code>nitrateasN=substitute(paste(NO[x]^{y},&quot;-N&quot;,sep=&quot;&quot;),list(x=3,y=&quot;-&quot;))
+ammoniumasN=substitute(paste(NH[x]^{y},&quot;-N&quot;,sep=&quot;&quot;),list(x=4,y=&quot;+&quot;))
+phosphateasP=substitute(paste(PO[x]^{y},&quot;-P&quot;,sep=&quot;&quot;),list(x=4,y=&quot;3-&quot;))
+    
+
+    plot(0,0,col=&quot;white&quot;,xlim=c(-2,2),ylim=c(-2,2),ann=FALSE,axes=FALSE)
+    box(col=&quot;grey&quot;)
+    text(-1,1,nitrate,cex=2)
+    text(-1,0,ammonium,cex=2)
+    text(-1,2,&quot;expression&quot;,font=3)
+    text(1,1,nitrateasN,cex=2)
+    text(1,0,ammoniumasN,cex=2)
+    text(1,-1,phosphateasP,cex=2)
+    text(1,2,&quot;substitute&quot;,font=3)    </code></pre>
+<p><img src="blog-indices-and-exponents-in-r-graphs_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="package-imager-works-in-2017" class="section level2">
-<h2>Package <code>imager</code> works in 2017</h2>
-<p><br/></p>
-<pre class="r"><code>library(imager)
-logo&lt;-load.image(&quot;https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png&quot;)
-plot(logo)</code></pre>
-<p><img src="blog-adding-an-image-to-an-r-graph_files/figure-html/unnamed-chunk-2-1.png" width="672" /> <br/><br/></p>
-</div>
-<div id="making-videos-with-graphs-and-images-written-in-2015" class="section level2">
-<h2>Making videos with graphs and images <em>(written in 2015)</em></h2>
-<p>In the Making videos in R page, there is information on how to animate still images into videos If in each of the graph images that you produce in R, you upload the same pnm file, then things are easy because you do need to convert one image into pnm, just once, possibly using the free tool linked above Now, if for each graph image you produce, the actual images loaded on the graphs need to change, this implies that you might have a lot of images to convert and this can be a very time consuming process if done manually…</p>
-<p>There are commercial products that do that but there also is a free tool which is described on this Converting images using imagemagik page, which will do batch conversion for you &lt;<br/><br/></p>
-</div>
-<div id="an-example-of-changing-graphs-and-images-in-a-video" class="section level2">
-<h2>An example of changing graphs and images in a video</h2>
-<p>In the following video, borrowed from from <a href="presentations_pdf/Birgand_WQ_ASABE_2014.pdf">this invited talk</a>, the idea was to show that a hydrograph really represents the story or the movie of what happened through time. It is very effective to show that high flow periods are very short. The continuous hydrograph line, of which the brain subconsciously cumulates the length, may sometimes make us forget this.</p>
-<p>The images were taken by the GaugeCam system which my team and the GaugeCam company started. The system uses images taken, in this case every 15 mins, and automatically reads the stage on the flat whitish background using the software GaugeCam llc. has developed. Flow rates were calculated from these stages measurements <br/><br/></p>
-<center>
-<iframe width="500" height="305" src="https://www.youtube.com/embed/uUG_QScHFwQ" frameborder="0" allowfullscreen>
-</iframe>
-</center>
 </div>
 </div>
 

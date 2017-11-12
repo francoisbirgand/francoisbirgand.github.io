@@ -1,0 +1,76 @@
+---
+output: html_document
+bibliography: FB-uncertainties.bibtex
+link-citations: true
+csl: nature.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+selection<-tutblog[tutblog$name=="Blog: Indices and exponents in R graphs",]
+```
+`r paste0("# ",selection$name)`
+`r paste0("### *by ",selection$authors,"*")`
+`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
+
+<br/>
+
+### Keywords
+```{r echo=FALSE, results="asis",comment=FALSE} 
+cat("*",gsub(";","\n * ",selection$keywords))
+```
+<br/><br/>
+
+##Indices and exponents
+
+In water quality, many of the nutrients are referred to as their ionic forms. Displaying ionic formulae can be tricky in R. On can spend a lot of time and still frustrated after many hours spent on Google...
+We have been there and are providing here some code that works.
+<br/><br/><br/>
+
+### Using `expression()`
+
+For ions such as nitrate and ammonium, one can use expression to create the combination of indices and exponents. If you run the code below, you will see that you can display the exponent ion charge and the indices atom numbers correctly
+<br/><br/>
+```{r echo=TRUE,eval=TRUE}
+    nitrate=expression(NO[3]^{"-"})
+    ammonium=expression(NH[4]^{"+"})
+    
+    plot(0,0,col="white",xlim=c(-2,2),ylim=c(-2,2),ann=FALSE,axes=FALSE)
+    box(col="grey")
+    text(-1,1,nitrate,cex=2)
+    text(-1,0,ammonium,cex=2)
+    text(-1,2,"expression",font=3)
+```        
+
+```
+[x]: indicates that x should displayed as an index
+
+^{y}: indicates that y should be displayed as an exponent
+```
+<br/><br/><br/>
+
+###Using `substitute()`
+
+Now, there are instances when nutrient concentrations are referred to as their main atom, such as in the expression 'nitrate as nitrogen' or 'phosphate as phosphorus' where in the typography itself, one adds '-N' or '-P' at the end of the ionic formulae.
+
+In these cases, expression does not work any longer... The solution is to use substitute
+The synthax is not as straight forward but the one below will work
+<br/><br/>
+
+```{r echo=TRUE,eval=TRUE}
+nitrateasN=substitute(paste(NO[x]^{y},"-N",sep=""),list(x=3,y="-"))
+ammoniumasN=substitute(paste(NH[x]^{y},"-N",sep=""),list(x=4,y="+"))
+phosphateasP=substitute(paste(PO[x]^{y},"-P",sep=""),list(x=4,y="3-"))
+    
+
+    plot(0,0,col="white",xlim=c(-2,2),ylim=c(-2,2),ann=FALSE,axes=FALSE)
+    box(col="grey")
+    text(-1,1,nitrate,cex=2)
+    text(-1,0,ammonium,cex=2)
+    text(-1,2,"expression",font=3)
+    text(1,1,nitrateasN,cex=2)
+    text(1,0,ammoniumasN,cex=2)
+    text(1,-1,phosphateasP,cex=2)
+    text(1,2,"substitute",font=3)    
+```        
