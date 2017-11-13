@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publications
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="people.html">People</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fa fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fa fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fa fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fa fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fa fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fa fa-map-marker"></span>
+         
+        148 Weaver
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="blog-retrieving-dates-in-r-using-strsplit" class="section level1">
+<h1>Blog: retrieving dates in R using strsplit</h1>
+<div id="by-francois-birgand" class="section level3">
+<h3><em>by François Birgand</em></h3>
+<p><em>started 2017-11-13 and updated 2017-11-13</em></p>
+<p><br/></p>
+</div>
+<div id="keywords" class="section level3">
+<h3>Keywords</h3>
+<ul>
+<li>strsplit()</li>
+<li>do.call()</li>
+<li>formatC()</li>
+<li>grep()</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="retrieving-dates-manually-from-many-different-formats" class="section level3">
+<h3>Retrieving dates manually from many different formats</h3>
+<p>The reason for this blog is because I spent, as usual, a lot of time trying to do something very simple and I want to make sure I and others can find how I did this. The beginning is simple, I want to harmonize all my flow and water quality time series database in SI units, such that all flow rates would be in <span class="math inline">\(m^3/s\)</span> and that all concentrations would be in <span class="math inline">\(mg_{elemental-unit}/L\)</span>. I have acquired all these data from our own experiments, but also from agencies and other sources. It turns out that the date formats are a total mess, and until now I corrected the format on a case by case basis, but I have had enough, it is time to have a robust format.</p>
+<p><br/> R does have functions that can read dates in, e.g. <code>as.Date(), strptime()</code>, provided that the writing format is provided and consistent. This is exactly what I do not have in my database… And I am trying to find a more universal way to read all these dates in. Below are some examples of the date format that I have had to deal with: <br/></p>
+<pre><code>d/m/yy h:mm
+dd/mm/yy hh:mm
+m/d/yyyy hh:mm:ss
+etc.</code></pre>
+<p>My goal was to transform all dates into <code>yyyy-mm-dd hh:mm:ss</code>, which is the only robust format I could find. <br/><br/></p>
+</div>
+<div id="applying-strsplit-onto-a-vector-to-extract-dates-and-times" class="section level3">
+<h3>Applying <em><code>strsplit()</code></em> onto a vector to extract dates and times</h3>
+<p><code>strsplit()</code> stands for “string split” and this function will split at a given pattern, e.g., spaces, “:”, “/”, etc. In the exammple below, the result of the function is a list: <br/></p>
+<pre class="r"><code>dates&lt;-c(&quot;8/1/91&quot;,&quot;9/1/91 1:00&quot;,&quot;10/1/91 2:30&quot;,&quot;11/1/91 4:00&quot;,&quot;12/1/91 5:30&quot;,&quot;13/1/91 7:00&quot;)
+inidates=dates
+datime&lt;-strsplit(dates,&quot; &quot;)
+datime</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;8/1/91&quot;
+## 
+## [[2]]
+## [1] &quot;9/1/91&quot; &quot;1:00&quot;  
+## 
+## [[3]]
+## [1] &quot;10/1/91&quot; &quot;2:30&quot;   
+## 
+## [[4]]
+## [1] &quot;11/1/91&quot; &quot;4:00&quot;   
+## 
+## [[5]]
+## [1] &quot;12/1/91&quot; &quot;5:30&quot;   
+## 
+## [[6]]
+## [1] &quot;13/1/91&quot; &quot;7:00&quot;</code></pre>
+<p><br/></p>
+<p>Now, I am really looking for a vector with the date and a vector with the time, and playing with lists is not that easy. The way to do this is to use the <code>do.call()</code> function just like this: <br/><br/></p>
+<pre class="r"><code>datime&lt;-do.call(rbind,strsplit(dates,&quot; &quot;))
+datime</code></pre>
+<pre><code>##      [,1]      [,2]    
+## [1,] &quot;8/1/91&quot;  &quot;8/1/91&quot;
+## [2,] &quot;9/1/91&quot;  &quot;1:00&quot;  
+## [3,] &quot;10/1/91&quot; &quot;2:30&quot;  
+## [4,] &quot;11/1/91&quot; &quot;4:00&quot;  
+## [5,] &quot;12/1/91&quot; &quot;5:30&quot;  
+## [6,] &quot;13/1/91&quot; &quot;7:00&quot;</code></pre>
+<pre class="r"><code>tempdates=datime[,1]
+temptime=datime[,2]
+temptime</code></pre>
+<pre><code>## [1] &quot;8/1/91&quot; &quot;1:00&quot;   &quot;2:30&quot;   &quot;4:00&quot;   &quot;5:30&quot;   &quot;7:00&quot;</code></pre>
+<p><br/><br/></p>
+<p>Notice that in the variable <code>temptime</code>, the first value is not a time variable. This is because in the original data, which was probably from Excel, the time values at midnight, which should be “0:00” are omitted. This must be taken care of later.</p>
+<p>The next step consists in repeating the previous one with the “date column” and the “time column”, once two possibilities for a general date format are provided: either “d/m/y” or “m/d/y”, regardless of the nubmer of digits for each of the day, month and year.<br />
+<br/><br/></p>
+</div>
+<div id="using-formatc-for-harmonizing-all-final-formats" class="section level3">
+<h3>Using <em><code>formatC()</code></em> for harmonizing all final formats</h3>
+<p>The next trick is to transform all years into “yyyy”“, months into”mm“, days in”dd“, hours into”hh“, minutes into”mm“, and seconds into”ss“. For this I have used the function <code>formatC()</code>. This is typically the function that one can spend a <em>lot</em> of time looking for it… Once found, it is pretty simple. For example to transform numbers from 1 to 10 into 0001, 0002, …., 0010, one can use this code: <br/></p>
+<pre class="r"><code>x=1:10
+formatC(x,digits = 0,width = 4,format = &quot;f&quot;,flag = &quot;0&quot;)</code></pre>
+<pre><code>##  [1] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; &quot;0007&quot; &quot;0008&quot; &quot;0009&quot; &quot;0010&quot;</code></pre>
+<p><br/><br/><br/></p>
+</div>
+<div id="final-code-to-blindly-transform-dates-of-all-formats" class="section level3">
+<h3>Final code to blindly transform dates of all formats</h3>
+<p>The only additional trick here is the automatic check that there is a “time” component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into “yyyy”. <br/><br/></p>
+<pre class="r"><code>formatdat = &quot;d/m/y&quot;
+datime&lt;-do.call( rbind , strsplit( as.character(dates) , &quot; &quot; ) )
+
+      if (dim(datime)[2]==2){
+        tempdate&lt;-datime[,1]
+        temptime&lt;-datime[,2]
+        temptime[grep(&quot;/&quot;,temptime)]=&quot;0:0&quot;     # used to flag the times replaced by a &quot;d/m/y&quot; date
+        tempdate&lt;-do.call( rbind , strsplit( as.character(tempdate) , &quot;/&quot; ) )
+        yr=tempdate[,3]
+          if (formatdat == &quot;d/m/y&quot;){
+            day=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+            mon=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+          }
+          if (formatdat == &quot;m/d/y&quot;){
+            day=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+            mon=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+          }
+
+        yy=as.numeric(yr)
+        yr[round(as.numeric(yr)/100)==1]=1900+yy[round(as.numeric(yr)/100)==1]
+        yr[round(as.numeric(yr)/100)==0]=2000+yy[round(as.numeric(yr)/100)==0]
+      
+        temptime&lt;-do.call( rbind , strsplit( as.character(temptime) , &quot;:&quot; ) )
+        hr = formatC(as.numeric(temptime[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+        min = formatC(as.numeric(temptime[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+        if (dim(temptime)[2]==3){sec = temptime[,3]}else{sec=&quot;00&quot;}
+        T= paste0(hr,&quot;:&quot;,min,&quot;:&quot;,sec)
+      }else{T=rep(&quot;00:00:00&quot;,dim(datime)[1])}
+      
+      dates&lt;-paste0(yr,&quot;-&quot;,mon,&quot;-&quot;,day,&quot; &quot;,T)
+      dates&lt;-as.data.frame(dates)
+      cbind(inidates,dates)</code></pre>
+<pre><code>##       inidates               dates
+## 1       8/1/91 1991-01-08 00:00:00
+## 2  9/1/91 1:00 1991-01-09 01:00:00
+## 3 10/1/91 2:30 1991-01-10 02:30:00
+## 4 11/1/91 4:00 1991-01-11 04:00:00
+## 5 12/1/91 5:30 1991-01-12 05:30:00
+## 6 13/1/91 7:00 1991-01-13 07:00:00</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

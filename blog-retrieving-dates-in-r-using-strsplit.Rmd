@@ -1,0 +1,124 @@
+---
+output: html_document
+bibliography: FB-uncertainties.bibtex
+link-citations: true
+csl: nature.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+selection<-tutblog[tutblog$name=="Blog: retrieving dates in R using strsplit",]
+```
+`r paste0("# ",selection$name)`
+`r paste0("### *by ",selection$authors,"*")`
+`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
+
+<br/>
+
+### Keywords
+```{r echo=FALSE, results="asis",comment=FALSE} 
+cat("*",gsub(";","\n * ",selection$keywords))
+```
+
+<br/><br/>
+
+### Retrieving dates manually from many different formats
+
+The reason for this blog is because I spent, as usual, a lot of time trying to do something very simple and I want to make sure I and others can find how I did this. The beginning is simple, I want to harmonize all my flow and water quality time series database in SI units, such that all flow rates would be in $m^3/s$ and that all concentrations would be in $mg_{elemental-unit}/L$. I have acquired all these data from our own experiments, but also from agencies and other sources. It turns out that the date formats are a total mess, and until now I corrected the format on a case by case basis, but I have had enough, it is time to have a robust format.  
+
+<br/>
+R does have functions that can read dates in, e.g. `as.Date(), strptime()`, provided that the writing format is provided and consistent. This is exactly what I do not have in my database... And I am trying to find a more universal way to read all these dates in. Below are some examples of the date format that I have had to deal with:
+<br/>
+
+```
+d/m/yy h:mm
+dd/mm/yy hh:mm
+m/d/yyyy hh:mm:ss
+etc.
+```
+
+My goal was to transform all dates into `yyyy-mm-dd hh:mm:ss`, which is the only robust format I could find.
+<br/><br/>
+
+### Applying *`strsplit()`* onto a vector to extract dates and times
+
+`strsplit()` stands for "string split" and this function will split at a given pattern, e.g., spaces, ":", "/", etc. In the exammple below, the result of the function is a list:
+<br/>
+
+```{r eval=TRUE,echo=TRUE}
+dates<-c("8/1/91","9/1/91 1:00","10/1/91 2:30","11/1/91 4:00","12/1/91 5:30","13/1/91 7:00")
+inidates=dates
+datime<-strsplit(dates," ")
+datime
+```
+
+<br/>
+
+Now, I am really looking for a vector with the date and a vector with the time, and playing with lists is not that easy.  The way to do this is to use the `do.call()` function just like this:
+<br/><br/>
+
+```{r eval=TRUE,echo=TRUE}
+datime<-do.call(rbind,strsplit(dates," "))
+datime
+tempdates=datime[,1]
+temptime=datime[,2]
+temptime
+```
+<br/><br/>
+
+Notice that in the variable `temptime`, the first value is not a time variable.  This is because in the original data, which was probably from Excel, the time values at midnight, which should be "0:00" are omitted. This must be taken care of later.
+
+The next step consists in repeating the previous one with the "date column" and the "time column", once two possibilities for a general date format are provided: either "d/m/y" or "m/d/y", regardless of the nubmer of digits for each of the day, month and year.  
+<br/><br/>
+
+### Using *`formatC()`* for harmonizing all final formats
+
+The next trick is to transform all years into "yyyy"", months into "mm", days in "dd", hours into "hh", minutes into "mm", and seconds into "ss". For this I have used the function `formatC()`.  This is typically the function that one can spend a *lot* of time looking for it... Once found, it is pretty simple. For example to transform numbers from 1 to 10 into 0001, 0002, ...., 0010, one can use this code:
+<br/>
+
+```{r echo=TRUE, eval=TRUE}
+x=1:10
+formatC(x,digits = 0,width = 4,format = "f",flag = "0")
+```
+<br/><br/><br/>
+
+### Final code to blindly transform dates of all formats 
+
+The only additional trick here is the automatic check that there is a "time" component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into "yyyy".
+<br/><br/>
+
+```{r echo=TRUE,eval=TRUE, warning=FALSE}
+formatdat = "d/m/y"
+datime<-do.call( rbind , strsplit( as.character(dates) , " " ) )
+
+      if (dim(datime)[2]==2){
+        tempdate<-datime[,1]
+        temptime<-datime[,2]
+        temptime[grep("/",temptime)]="0:0"     # used to flag the times replaced by a "d/m/y" date
+        tempdate<-do.call( rbind , strsplit( as.character(tempdate) , "/" ) )
+        yr=tempdate[,3]
+          if (formatdat == "d/m/y"){
+            day=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = "f",flag = "0")
+            mon=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = "f",flag = "0")
+          }
+          if (formatdat == "m/d/y"){
+            day=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = "f",flag = "0")
+            mon=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = "f",flag = "0")
+          }
+
+        yy=as.numeric(yr)
+        yr[round(as.numeric(yr)/100)==1]=1900+yy[round(as.numeric(yr)/100)==1]
+        yr[round(as.numeric(yr)/100)==0]=2000+yy[round(as.numeric(yr)/100)==0]
+      
+        temptime<-do.call( rbind , strsplit( as.character(temptime) , ":" ) )
+        hr = formatC(as.numeric(temptime[,1]),digits = 0,width = 2,format = "f",flag = "0")
+        min = formatC(as.numeric(temptime[,2]),digits = 0,width = 2,format = "f",flag = "0")
+        if (dim(temptime)[2]==3){sec = temptime[,3]}else{sec="00"}
+        T= paste0(hr,":",min,":",sec)
+      }else{T=rep("00:00:00",dim(datime)[1])}
+      
+      dates<-paste0(yr,"-",mon,"-",day," ",T)
+      dates<-as.data.frame(dates)
+      cbind(inidates,dates)
+```

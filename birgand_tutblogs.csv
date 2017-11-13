@@ -5,3 +5,4 @@ Blogs,François Birgand,Blog: making videos in R - the old fashion way,R,Blog-ma
 Blogs,François Birgand,Blog: renaming directories and files,R,blog-renaming-dir-and-files.html,2017-11-03,integer(0);grep();sapply();list.dirs();list.files();file.rename();identical(),
 Blogs,François Birgand,Blog: Adding an image in an R graph,R,blog-adding-an-image-in-an-r-graph.html,2015-10-18,pixmax package;PNM format;imager package;load.image(),
 Blogs,François Birgand,Blog: Indices and exponents in R graphs,R,blog-indices-and-exponents-in-r-graphs.html,2015-11-05,substitute();expression(),
+Blogs,François Birgand,Blog: retrieving dates in R using strsplit,R,blog-retrieving-dates-in-r-using-strsplit.html,2017-11-13,strsplit();do.call();formatC();grep(),
