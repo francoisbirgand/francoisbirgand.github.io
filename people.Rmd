@@ -54,7 +54,7 @@ Research Assistant. I have a hand in everything from logistical, organizational 
 
 <div class = "col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/profilepic.jpg">
+<img style="align: center; width: 55%;" src="images/people/sam_garvey.png">
 <br/><br/>
 <a href='mailto:sjgarvey@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
@@ -221,7 +221,7 @@ Undergraduate senior. I work on quantifying the water quality benefits of a stre
 
 ### Andrew Yount
 
-Undergraduate junior, I work on quantifying the water quality benefits of floating wetland islands. More short biography here.
+Undergraduate junior at NC State University, working toward a B.S. in Biological Engineering, with a concentration on ecological engineering. I came to the university unsure of what I wanted to study, but stumbled upon the Bio & Ag Engineering department and found myself to be quite at home here. I have a strong desire to develop and apply innovative solutions to addressing concerns regarding water and soil resources. This past summer, in 2017, I acted as an undergraduate research assistant in Dr. Birgand’s laboratory, helping out in various ways. This academic year, from Fall 2017 through Spring 2018, I am participating in a team research project investigating the effectiveness of employing Floating Treatment Wetlands to improve water quality by removing excess nutrients.
 </div>
 </div>
 <br/>
