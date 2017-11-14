@@ -316,7 +316,7 @@ $(document).ready(function () {
 <h1>Blog: retrieving dates in R using strsplit</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-13 and updated 2017-11-13</em></p>
+<p><em>started 2017-11-13 and updated 2017-11-14</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -395,31 +395,37 @@ formatC(x,digits = 0,width = 4,format = &quot;f&quot;,flag = &quot;0&quot;)</cod
 <h3>Final code to blindly transform dates of all formats</h3>
 <p>The only additional trick here is the automatic check that there is a “time” component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into “yyyy”. <br/><br/></p>
 <pre class="r"><code>formatdat = &quot;d/m/y&quot;
-datime&lt;-do.call( rbind , strsplit( as.character(dates) , &quot; &quot; ) )
-
-      if (dim(datime)[2]==2){
-        tempdate&lt;-datime[,1]
-        temptime&lt;-datime[,2]
-        temptime[grep(&quot;/&quot;,temptime)]=&quot;0:0&quot;     # used to flag the times replaced by a &quot;d/m/y&quot; date
-        tempdate&lt;-do.call( rbind , strsplit( as.character(tempdate) , &quot;/&quot; ) )
-        yr=tempdate[,3]
-          if (formatdat == &quot;d/m/y&quot;){
-            day=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
-            mon=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
-          }
-          if (formatdat == &quot;m/d/y&quot;){
-            day=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
-            mon=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
-          }
-
-        yy=as.numeric(yr)
-        yr[round(as.numeric(yr)/100)==1]=1900+yy[round(as.numeric(yr)/100)==1]
-        yr[round(as.numeric(yr)/100)==0]=2000+yy[round(as.numeric(yr)/100)==0]
+      datime&lt;-do.call( rbind , strsplit( as.character(dates) , &quot; &quot; ) )
       
+      tempdate&lt;-datime[,1]
+      tempdate&lt;-do.call( rbind , strsplit( as.character(tempdate) , &quot;/&quot; ) )
+
+      ### Formatting years
+      yr=tempdate[,3]
+      yy=as.numeric(yr)
+      yr[round(as.numeric(yr)/100)==1]=1900+yy[round(as.numeric(yr)/100)==1]
+      yr[round(as.numeric(yr)/100)==0]=2000+yy[round(as.numeric(yr)/100)==0]
+
+      ### Formatting days and months
+      if (formatdat == &quot;d/m/y&quot;){
+        day=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+        mon=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+      }
+      if (formatdat == &quot;m/d/y&quot;){
+        day=formatC(as.numeric(tempdate[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+        mon=formatC(as.numeric(tempdate[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
+      }
+      
+      ### Formatting hours, min and sec, if they exist
+      if (dim(datime)[2]==2){
+
+        temptime&lt;-datime[,2]
+        temptime[grep(&quot;/&quot;,temptime)]=&quot;0:0&quot;   # Replaces faulty date replacements and replaces with times
         temptime&lt;-do.call( rbind , strsplit( as.character(temptime) , &quot;:&quot; ) )
         hr = formatC(as.numeric(temptime[,1]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
         min = formatC(as.numeric(temptime[,2]),digits = 0,width = 2,format = &quot;f&quot;,flag = &quot;0&quot;)
-        if (dim(temptime)[2]==3){sec = temptime[,3]}else{sec=&quot;00&quot;}
+        if (dim(temptime)[2]==3){sec = formatC(as.numeric(temptime[,3]),digits = 0,width = 2,
+                                               format = &quot;f&quot;,flag = &quot;0&quot;)}else{sec=&quot;00&quot;}
         T= paste0(hr,&quot;:&quot;,min,&quot;:&quot;,sec)
       }else{T=rep(&quot;00:00:00&quot;,dim(datime)[1])}
       
