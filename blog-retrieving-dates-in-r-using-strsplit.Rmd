@@ -38,12 +38,12 @@ m/d/yyyy hh:mm:ss
 etc.
 ```
 
-My goal was to transform all dates into `yyyy-mm-dd hh:mm:ss`, which is the only robust format I could find.
+My goal was to transform all dates into `yyyy-mm-dd hh:mm:ss`, which is a robust format that R, Excel and other programs readily understand. 
 <br/><br/>
 
 ### Applying *`strsplit()`* onto a vector to extract dates and times
 
-`strsplit()` stands for "string split" and this function will split at a given pattern, e.g., spaces, ":", "/", etc. In the exammple below, the result of the function is a list:
+`strsplit()` stands for "string split" and this function will split at a given pattern, e.g., spaces, ":", "/", etc. In the example below, the result of the function is a list:
 <br/>
 
 ```{r eval=TRUE,echo=TRUE}
@@ -55,7 +55,7 @@ datime
 
 <br/>
 
-Now, I am really looking for a vector with the date and a vector with the time, and playing with lists is not that easy.  The way to do this is to use the `do.call()` function just like this:
+Now, I am really looking for a vector with the date and a vector with the time, and playing with lists is not that easy.  The way to do this is to use the `do.call()` function, where the list rows are bound together using `rbind()` ("row bind") just like this:
 <br/><br/>
 
 ```{r eval=TRUE,echo=TRUE}
@@ -67,7 +67,7 @@ temptime
 ```
 <br/><br/>
 
-Notice that in the variable `temptime`, the first value is not a time variable.  This is because in the original data, which was probably from Excel, the time values at midnight, which should be "0:00" are omitted. This must be taken care of later.
+Notice that in the variable `temptime`, the first value is not a time variable.  This is because in the original data, which was probably from Excel, the time values at midnight, which should be "0:00" are omitted. So the rbind function, uses what it can find to fill in a value for time when there is none. It finds a value in the first column and uses this to fill in a value in column 2. This must be taken care of later.
 
 The next step consists in repeating the previous one with the "date column" and the "time column", once two possibilities for a general date format are provided: either "d/m/y" or "m/d/y", regardless of the nubmer of digits for each of the day, month and year.  
 <br/><br/>
@@ -81,11 +81,11 @@ The next trick is to transform all years into "yyyy"", months into "mm", days in
 x=1:10
 formatC(x,digits = 0,width = 4,format = "f",flag = "0")
 ```
-<br/><br/><br/>
+<br/><br/>
 
 ### Final code to blindly transform dates of all formats 
 
-The only additional trick here is the automatic check that there is a "time" component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into "yyyy".
+The only additional tricks here is the automatic check that there is a "time" component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into "yyyy".
 <br/><br/>
 
 ```{r echo=TRUE,eval=TRUE, warning=FALSE}

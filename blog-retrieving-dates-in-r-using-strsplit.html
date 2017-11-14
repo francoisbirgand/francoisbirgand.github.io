@@ -337,11 +337,11 @@ $(document).ready(function () {
 dd/mm/yy hh:mm
 m/d/yyyy hh:mm:ss
 etc.</code></pre>
-<p>My goal was to transform all dates into <code>yyyy-mm-dd hh:mm:ss</code>, which is the only robust format I could find. <br/><br/></p>
+<p>My goal was to transform all dates into <code>yyyy-mm-dd hh:mm:ss</code>, which is a robust format that R, Excel and other programs readily understand. <br/><br/></p>
 </div>
 <div id="applying-strsplit-onto-a-vector-to-extract-dates-and-times" class="section level3">
 <h3>Applying <em><code>strsplit()</code></em> onto a vector to extract dates and times</h3>
-<p><code>strsplit()</code> stands for “string split” and this function will split at a given pattern, e.g., spaces, “:”, “/”, etc. In the exammple below, the result of the function is a list: <br/></p>
+<p><code>strsplit()</code> stands for “string split” and this function will split at a given pattern, e.g., spaces, “:”, “/”, etc. In the example below, the result of the function is a list: <br/></p>
 <pre class="r"><code>dates&lt;-c(&quot;8/1/91&quot;,&quot;9/1/91 1:00&quot;,&quot;10/1/91 2:30&quot;,&quot;11/1/91 4:00&quot;,&quot;12/1/91 5:30&quot;,&quot;13/1/91 7:00&quot;)
 inidates=dates
 datime&lt;-strsplit(dates,&quot; &quot;)
@@ -364,7 +364,7 @@ datime</code></pre>
 ## [[6]]
 ## [1] &quot;13/1/91&quot; &quot;7:00&quot;</code></pre>
 <p><br/></p>
-<p>Now, I am really looking for a vector with the date and a vector with the time, and playing with lists is not that easy. The way to do this is to use the <code>do.call()</code> function just like this: <br/><br/></p>
+<p>Now, I am really looking for a vector with the date and a vector with the time, and playing with lists is not that easy. The way to do this is to use the <code>do.call()</code> function, where the list rows are bound together using <code>rbind()</code> (“row bind”) just like this: <br/><br/></p>
 <pre class="r"><code>datime&lt;-do.call(rbind,strsplit(dates,&quot; &quot;))
 datime</code></pre>
 <pre><code>##      [,1]      [,2]    
@@ -379,7 +379,7 @@ temptime=datime[,2]
 temptime</code></pre>
 <pre><code>## [1] &quot;8/1/91&quot; &quot;1:00&quot;   &quot;2:30&quot;   &quot;4:00&quot;   &quot;5:30&quot;   &quot;7:00&quot;</code></pre>
 <p><br/><br/></p>
-<p>Notice that in the variable <code>temptime</code>, the first value is not a time variable. This is because in the original data, which was probably from Excel, the time values at midnight, which should be “0:00” are omitted. This must be taken care of later.</p>
+<p>Notice that in the variable <code>temptime</code>, the first value is not a time variable. This is because in the original data, which was probably from Excel, the time values at midnight, which should be “0:00” are omitted. So the rbind function, uses what it can find to fill in a value for time when there is none. It finds a value in the first column and uses this to fill in a value in column 2. This must be taken care of later.</p>
 <p>The next step consists in repeating the previous one with the “date column” and the “time column”, once two possibilities for a general date format are provided: either “d/m/y” or “m/d/y”, regardless of the nubmer of digits for each of the day, month and year.<br />
 <br/><br/></p>
 </div>
@@ -389,11 +389,11 @@ temptime</code></pre>
 <pre class="r"><code>x=1:10
 formatC(x,digits = 0,width = 4,format = &quot;f&quot;,flag = &quot;0&quot;)</code></pre>
 <pre><code>##  [1] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; &quot;0007&quot; &quot;0008&quot; &quot;0009&quot; &quot;0010&quot;</code></pre>
-<p><br/><br/><br/></p>
+<p><br/><br/></p>
 </div>
 <div id="final-code-to-blindly-transform-dates-of-all-formats" class="section level3">
 <h3>Final code to blindly transform dates of all formats</h3>
-<p>The only additional trick here is the automatic check that there is a “time” component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into “yyyy”. <br/><br/></p>
+<p>The only additional tricks here is the automatic check that there is a “time” component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into “yyyy”. <br/><br/></p>
 <pre class="r"><code>formatdat = &quot;d/m/y&quot;
       datime&lt;-do.call( rbind , strsplit( as.character(dates) , &quot; &quot; ) )
       
