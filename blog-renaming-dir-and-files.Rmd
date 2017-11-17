@@ -128,7 +128,7 @@ The last important thing I want to share is that to have the code work for any d
 
 ```{r echo=TRUE, eval= FALSE}
 path<-"/Users/francoisbirgand/Google Drive/Echantillonnage/Methods/Data"
-dirlist<-paste0(path,list.dirs(path,recursive = TRUE))      # recursive = TRUE means that all dir in the tree will appear
+dirlist<-list.dirs(path,recursive = TRUE)      # recursive = TRUE means that all dir in the tree will appear
 
 ### this makes a list of all the years that need to change
 years<-(1979:2017)
