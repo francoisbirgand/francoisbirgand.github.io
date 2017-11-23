@@ -6,9 +6,11 @@ csl: nature.csl
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,eval=TRUE,fig.height=5, fig.width=9, fig.align="center")
 tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
 selection<-tutblog[tutblog$name=="Blog: Elementary tidyr and ggplot",]
+library(tidyr)
+library(ggplot2)
 ```
 `r paste0("# ",selection$name)`
 `r paste0("### *by ",selection$authors,"*")`
@@ -23,22 +25,108 @@ cat("*",gsub(";","\n * ",selection$keywords))
 <br/><br/><br/>
 
 ## Going with the changes
-I must say that I have only recently started working with tools such as `tidyr` or `tidyverse`, which are really making a revolution in the way one uses `R` to analyze data. Like all my students until now, I have learnt, and I am still learning, `R` almost all by myself, with no formal training. The good news is that students in our department are about to have this oppotunity thanks to [Dr Natalie Nelson](https://www.bae.ncsu.edu/people/nnelson4/) who just joined us.
+I must say that I have only recently started working with tools such as `tidyr` or `tidyverse`, which are really making a revolution in the way one uses `R` to analyze data. Like all my students until now, I have learned, and I am still learning, `R` almost all by myself, with no formal training. The good news is that students in our department are about to have this oppotunity thanks to [Dr Natalie Nelson](https://www.bae.ncsu.edu/people/nnelson4/) who just joined us.
 
-The reason for this post is that I have been trying to switch from the old graphics packages to `ggplot`. But to get there, it is very important to prepare data in proper format. The current `R` jargon for this is to make the data `tidy`. So I bought the book "R for data science" and I thought this was going to vastly help me. I do not know whether it is the kindle version that I have, but I have not found it easy to work with it and to learn a lot from it... 
+The reason for this post is that I have been trying to switch from the old graphics packages to `ggplot`. But to get there, it is very important to prepare data in proper format. The current `R` jargon for this is to make the data `tidy`. So I bought the book "R for data science" and I thought this was going to vastly help me. I do not know whether it is the kindle version that I have, but I have not found it easy to work with and I am not sure I have learned a lot from it... 
 
 In particular, I wanted to make my data tidy so that I could start using `ggplot` for some of my analyses. I could tell that much of the trick was in the ability to use the `gather()` and the `spread()` features of the `tidyr` package. I have spent countless hours trying to decipher and reproduce the examples in the book, or on tutorials on the web, but I just could find things that would work for me.
 
-I slowly realized that all the examples given always use either `gather` or `spread`, but using *both* together is not something well reported, or at least I missed that. I will thus report how I managed to solve my problem.
+I slowly realized that all the examples given always use either `gather` or `spread`, but using *both* together is not something well reported, or at least I missed that. I will thus report how I managed to solve my problems here.
 <br/><br/><br/>
 
 ## Minimum water quality improvement required to be detected
-I have worked for quite a few years on calculating uncertainties on nutrient loads at the catchment scale [@Moatar2013-aa;@Birgand2013-dr;@Birgand2011-cp;@Birgand2011-og;@Birgand2010-qd;@Birgand2009-bw;@Moatar2009-db;@Birgand2004-fm], but there are many angles one can approach this problem. Recently, I have decided to illustrate what water quality improvement would be needed to be confident that they are real, as a function of the sampling frequency. 
+I have worked for quite a few years on calculating uncertainties on nutrient loads at the catchment scale [@Moatar2013-aa;@Birgand2013-dr;@Birgand2011-cp;@Birgand2011-og;@Birgand2010-qd;@Birgand2009-bw;@Moatar2009-db;@Birgand2004-fm], but there are many angles one can approach this problem. Recently, I have decided to illustrate minimum water quality improvement reauired for us to be confident that they are real, and that as a function of the sampling frequency. 
 
-For that, I have written routines that take reference flow and concentration data collected hourly.  To simulate water quality (WQ) improvements, I multiply concentrations by 0.99, for a 1% WQ improvement, 0.98 for a 2% WQ improvement, etc. I then degrade the original and the *WQ--improved* data to simulate common sampling frequency, such as monthly sampling, and compare whether the concentrations from the original and the *WQ--improved* data are significantly different. I do that for water quality improvements from 1 to 60%, and I look, for, e.g., monthly sampling, the level of quality improvement required for which I can confidently say (at least 95% of the time) that there the original and *WQ--improved* data are different.
+For that, I have written routines that take reference flow and concentration data collected hourly.  To simulate water quality (WQ) improvements, I multiply concentrations by 0.99, for a 1% WQ improvement, 0.98 for a 2% WQ improvement, etc. I then degrade the original and the *WQ--improved* data to simulate common sampling frequency, such as monthly sampling, and compare whether the concentrations from the original and the *WQ--improved* data are significantly different. I do that for water quality improvements from 1 to 60%, and I look for, for example monthly sampling, the minimum level of WQ improvement required for which I can confidently say (95% confident) that the original and the *WQ--improved* data are different.
+
+<br/><br/><br/>
+
+### The original dataset
+
+The way I have stored the simulations include:
+
+- Wshd: the name of the watershed (here the watershed of the [Maudouve river at Saint-Donan](https://fr.wikipedia.org/wiki/Saint-Donan) in Brittany, France),
+- elmt: the name of the element for the analysis, here nitrate, 
+- type: the type of data represented in **rows**:
+    + samp_interval: the values of the sampling intervals chosen in days
+    + probaC: the percentage of needed concentration improvement to be detected corresponding to each sampling interval
+    + probaL: the percentage of needed load improvement to be detected corresponding to each sampling interval
+- Year: the hydrological year from which the analyses were done
+- X02d to X60d: the sampling intervals from 2 to 60 days
+<br/><br/><br/>
+
+```{r present-the-data}
+detect<-read.csv("https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/probadetectblog.csv", header = TRUE)
+
+detect_df<-as.data.frame(detect)
+head(detect_df)
+
+```
+<br/><br/><br/>
+
+### *Tidying* the data for use with `ggplot`
+
+#### Using *`gather()`*
+
+My goal is to be able to plot the minimum WQ improvement required as a function of sampling intervals for all the years available, and see the type of relationship that may exist between the two. In the version of the `detect` dataframe, the data are in rows, but for `ggplot`, I need to put them into columns. The first step is to use the `gather` function. The part that was extremely unclear to me was the syntax for the gather function. In particular, I could not find that one might want to ***create new variable names***. 
+
+I want to put all the columns X02d to X60d as variables, so they need to be in lines now. First, I need to create a new variable or column, in which all the sampling interval names X02d to X60d will be stored. I have called it "Interval". Second, I need to store all the values corresponding to all sampling intervals into another variable or column, and I need to provide a name for it. I have chosen "value".
 
 
+```{r use-gather}
 
+detect_df<-as.data.frame(detect)
+detect_df<- detect_df %>%
+  gather(Interval,value,5:63)
+head(detect_df)
+```
+<br/><br/><br/>
+
+
+This is where most posts stop when I "googled" *`gather()`* and `tidyr`, but clearly the data is just not in a usable form, yet. The good news is that the 59 columns are now spread into rows, but I still cannot plot probaC as a function of samp_interval. This is where It finally dawned on me that I could *spread* the data stored in rows in the column *type*, and make them become columns. This is where the `spread()` functions comes in.
+
+In that function, you define which column you want to spread into several columns, which names will become the unique values. In my case here, I want the three unique values in *type* to become columns, and I want that the correponding values (stored into the column *value*, I know it is not the best name), be assigned to these new columns. The code to do this is below.
+<br/><br/><br/>
+
+```{r use-spread}
+tidy_df<-detect_df %>%
+  spread(type,value)
+head(tidy_df)
+
+```
+<br/><br/><br/>
+
+So now, I have columns for the sampling intervals (samp_interval) and the simulated values stored in probaC and probaL. The power of `ggplot` can now be used to plot the relationship between the minimum concentration difference required to be detected, per year.
+
+<br/><br/><br/>
+
+### Plotting for a particular year
+
+```{r use-ggplot1}
+
+p <- ggplot(tidy_df) +
+  aes(x=samp_interval,y=probaC,color=factor(Year)) +
+  geom_point(data = tidy_df[tidy_df$Year == "1999-2000",]) +
+  geom_smooth(data = tidy_df[tidy_df$Year == "1999-2000",],method = "lm", se = FALSE)
+print(p)
+```
+<br/><br/><br/>
+
+### Plotting for all years, facetted
+```{r use-ggplot2}
+  p <- ggplot(tidy_df) +
+  aes(x=samp_interval,y=probaC,color=factor(Year)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_grid(~Year)
+print(p)
+```
+<br/><br/><br/>
+
+### Comments on the WQ results
+The purpose of this blog post is to display the use of `R` code and tricks that I find important to share, but I have to admit that it would be a bit frustrating not to comment the results a bit. I have asked `ggplot` to fit the data with a linear model, and I must say that it is probably not the very best model, as clearly the model would tend to overestimate the minimum WQ improvements required for them to be detected, for weekly or better sampling frequency. But otherwise, the linear model is probably a pretty good first approach.
+
+Depending on the years, the results suggest that for a monthly sampling scheme to confidently detect a WQ improvement, improvement would have to be at least around 20%. In other words, the concentrations would have to be 20% lower! So for this watershed, and for nitrate, the results show that if water quality would improve by only 10% (which is not insignificant), monthly sampling would not be able to confidently detect it...! That is one of the reasons why our team has invested in sensors!
 <br/><br/><br/>
 
 ## References
