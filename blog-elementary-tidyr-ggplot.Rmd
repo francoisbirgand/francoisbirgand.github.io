@@ -1,0 +1,44 @@
+---
+output: html_document
+bibliography: FB-uncertainties.bibtex
+link-citations: true
+csl: nature.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
+selection<-tutblog[tutblog$name=="Blog: Elementary tidyr and ggplot",]
+```
+`r paste0("# ",selection$name)`
+`r paste0("### *by ",selection$authors,"*")`
+`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`
+
+<br/><br/>
+
+### Keywords
+```{r echo=FALSE, results="asis",comment=FALSE} 
+cat("*",gsub(";","\n * ",selection$keywords))
+```
+<br/><br/><br/>
+
+## Going with the changes
+I must say that I have only recently started working with tools such as `tidyr` or `tidyverse`, which are really making a revolution in the way one uses `R` to analyze data. Like all my students until now, I have learnt, and I am still learning, `R` almost all by myself, with no formal training. The good news is that students in our department are about to have this oppotunity thanks to [Dr Natalie Nelson](https://www.bae.ncsu.edu/people/nnelson4/) who just joined us.
+
+The reason for this post is that I have been trying to switch from the old graphics packages to `ggplot`. But to get there, it is very important to prepare data in proper format. The current `R` jargon for this is to make the data `tidy`. So I bought the book "R for data science" and I thought this was going to vastly help me. I do not know whether it is the kindle version that I have, but I have not found it easy to work with it and to learn a lot from it... 
+
+In particular, I wanted to make my data tidy so that I could start using `ggplot` for some of my analyses. I could tell that much of the trick was in the ability to use the `gather()` and the `spread()` features of the `tidyr` package. I have spent countless hours trying to decipher and reproduce the examples in the book, or on tutorials on the web, but I just could find things that would work for me.
+
+I slowly realized that all the examples given always use either `gather` or `spread`, but using *both* together is not something well reported, or at least I missed that. I will thus report how I managed to solve my problem.
+<br/><br/><br/>
+
+## Minimum water quality improvement required to be detected
+I have worked for quite a few years on calculating uncertainties on nutrient loads at the catchment scale [@Moatar2013-aa;@Birgand2013-dr;@Birgand2011-cp;@Birgand2011-og;@Birgand2010-qd;@Birgand2009-bw;@Moatar2009-db;@Birgand2004-fm], but there are many angles one can approach this problem. Recently, I have decided to illustrate what water quality improvement would be needed to be confident that they are real, as a function of the sampling frequency. 
+
+For that, I have written routines that take reference flow and concentration data collected hourly.  To simulate water quality (WQ) improvements, I multiply concentrations by 0.99, for a 1% WQ improvement, 0.98 for a 2% WQ improvement, etc. I then degrade the original and the *WQ--improved* data to simulate common sampling frequency, such as monthly sampling, and compare whether the concentrations from the original and the *WQ--improved* data are significantly different. I do that for water quality improvements from 1 to 60%, and I look, for, e.g., monthly sampling, the level of quality improvement required for which I can confidently say (at least 95% of the time) that there the original and *WQ--improved* data are different.
+
+
+
+<br/><br/><br/>
+
+## References

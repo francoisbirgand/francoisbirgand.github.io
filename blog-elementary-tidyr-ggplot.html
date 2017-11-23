@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publications
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="people.html">People</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fa fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fa fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fa fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fa fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fa fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fa fa-map-marker"></span>
+         
+        148 Weaver
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="blog-elementary-tidyr-and-ggplot" class="section level1">
+<h1>Blog: Elementary tidyr and ggplot</h1>
+<div id="by-francois-birgand" class="section level3">
+<h3><em>by François Birgand</em></h3>
+<p><em>started 2017-11-23 and updated 2017-11-23</em></p>
+<p><br/></p>
+</div>
+<div id="keywords" class="section level3">
+<h3>Keywords</h3>
+<ul>
+<li>gather()</li>
+<li>spread()</li>
+<li>ggplot() <br/><br/></li>
+</ul>
+</div>
+<div id="going-with-the-changes" class="section level2">
+<h2>Going with the changes</h2>
+<p>I must say that I have only recently started working with tools such as <code>tidyr</code> or <code>tidyverse</code>, which are really making a revolution in the way one uses <code>R</code> to analyze data. Like all my students until now, I have learnt, and I am still learning, <code>R</code> almost all by myself, with no formal training. The good news is that students in our department are about to have this oppotunity thanks to <a href="https://www.bae.ncsu.edu/people/nnelson4/">Dr Natalie Nelson</a> who just joined us.</p>
+<p>The reason for this post is that I have been trying to switch from the old graphics packages to <code>ggplot</code>. But to get there, it is very important to prepare data in proper format. The current <code>R</code> jargon for this is to make the data <code>tidy</code>. So I bought the book “R for data science” and I thought this was going to vastly help me. I do not know whether it is the kindle version that I have, but I have not found it easy to work with it and to learn a lot from it…</p>
+<p>In particular, I wanted to make my data tidy so that I could start using <code>ggplot</code> for some of my analyses. I could tell that much of the trick was in the ability to use the <code>gather()</code> and the <code>spread()</code> features of the <code>tidyr</code> package. I have spent countless hours trying to decipher and reproduce the examples in the book, or on tutorials on the web, but I just could find things that would work for me.</p>
+<p>I slowly realized that all the examples given always use either <code>gather</code> or <code>spread</code>, but using <em>both</em> together is not something well reported, or at least I missed that. I will thus report how I managed to solve my problem. <br/><br/></p>
+</div>
+<div id="minimum-water-quality-improvement-required-to-be-detected" class="section level2">
+<h2>Minimum water quality improvement required to be detected</h2>
+<p>I have worked for quite a few years on calculating uncertainties on nutrient loads at the catchment scale<span class="citation"><sup><a href="#ref-Moatar2013-aa">1</a>–<a href="#ref-Birgand2004-fm">8</a></sup></span>, but there are many angles one can approach this problem. Recently, I have decided to illustrate what water quality improvement would be needed to be confident that they are real, as a function of the sampling frequency.</p>
+<p>For that, I have written routines that take reference flow and concentration data collected hourly. To simulate water quality (WQ) improvements, I multiply concentrations by 0.99, for a 1% WQ improvement, 0.98 for a 2% WQ improvement, etc. I then degrade the original and the <em>WQ–improved</em> data to simulate common sampling frequency, such as monthly sampling, and compare whether the concentrations from the original and the <em>WQ–improved</em> data are significantly different. I do that for water quality improvements from 1 to 60%, and I look, for, e.g., monthly sampling, the level of quality improvement required for which I can confidently say (at least 95% of the time) that there the original and <em>WQ–improved</em> data are different.</p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-Moatar2013-aa">
+<p>1. Moatar, F., Meybeck, M., Raymond, S., Birgand, F. &amp; Curie, F. River flux uncertainties predicted by hydrological variability and riverine material behaviour. <em>Hydrol. Process.</em> <strong>27,</strong> 3535–3546 (2013).</p>
+</div>
+<div id="ref-Birgand2013-dr">
+<p>2. Birgand, F., Lellouche, G. &amp; Appelboom, T. W. Measuring flow in non-ideal conditions for short-term projects: Uncertainties associated with the use of stage-discharge rating curves. <em>J. Hydrol.</em> <strong>503,</strong> 186–195 (2013).</p>
+</div>
+<div id="ref-Birgand2011-cp">
+<p>3. Birgand, F., Appelboom, T. W., Chescheir, G. M. &amp; Skaggs, R. W. Estimating nitrogen, phosphorus, and carbon fluxes in forested and mixed-used watersheds of the lower coastal plain of north carolina: Uncertainties associated with infrequent sampling. <em>Trans. ASABE</em> <strong>54,</strong> 2099–2110 (2011).</p>
+</div>
+<div id="ref-Birgand2011-og">
+<p>4. Birgand, F., Faucheux, C., Gruau, G., Moatar, F. &amp; Meybeck, M. Uncertainties in assessing annual nitrate loads and concentration indicators: Part 2. deriving sampling frequency charts in brittany, france. <em>Trans. ASABE</em> <strong>54,</strong> 93–104 (2011).</p>
+</div>
+<div id="ref-Birgand2010-qd">
+<p>5. Birgand, F. <em>et al.</em> Uncertainties in assessing annual nitrate loads and concentration indicators: Part 1. impact of sampling frequency and load estimation algorithms. <em>Trans. ASABE</em> <strong>53,</strong> 437–446 (2010).</p>
+</div>
+<div id="ref-Birgand2009-bw">
+<p>6. Birgand, F. <em>et al.</em> Une approche quantitative du rôle de la fréquence d’échantillonnage sur les incertitudes associées aux calculs des flux et des concentrations moyennes en nitrate en bretagne. <em>Ingénieries</em> <strong>59-60,</strong> 23–37 (2009).</p>
+</div>
+<div id="ref-Moatar2009-db">
+<p>7. Moatar, F., Birgand, F., Meybeck, M., Faucheux, C. &amp; Raymond, S. Incertitudes sur les métriques de qualité des cours d’eau (médianes et quantiles de concentrations, flux, cas des nutriments) évaluées a partir de suivis discrets. <em>La Houille Blanche</em> 68–76 (2009). doi:<a href="https://doi.org/10.1051/lhb/2009029">10.1051/lhb/2009029</a></p>
+</div>
+<div id="ref-Birgand2004-fm">
+<p>8. Birgand, F. <em>et al.</em> Mesure des flux et échantillonnage des matières en suspension sur de petits cours d’eau. <em>Ingénieries</em> <strong>40,</strong> 21–35 (2004).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -6,3 +6,4 @@ Blogs,François Birgand,Blog: renaming directories and files,R,blog-renaming-dir
 Blogs,François Birgand,Blog: Adding an image in an R graph,R,blog-adding-an-image-to-an-r-graph.html,2015-10-18,pixmax package;PNM format;imager package;load.image(),
 Blogs,François Birgand,Blog: Indices and exponents in R graphs,R,blog-indices-and-exponents-in-r-graphs.html,2015-11-05,substitute();expression(),
 Blogs,François Birgand,Blog: retrieving dates in R using strsplit,R,blog-retrieving-dates-in-r-using-strsplit.html,2017-11-13,strsplit();do.call();formatC();grep(),
+Blogs,François Birgand,Blog: Elementary tidyr and ggplot,R,blog-elementary-tidyr-ggplot.html,2017-11-23,gather();spread();ggplot(),
