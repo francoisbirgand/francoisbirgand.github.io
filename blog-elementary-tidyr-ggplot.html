@@ -316,7 +316,7 @@ $(document).ready(function () {
 <h1>Blog: Elementary tidyr and ggplot</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-23 and updated 2017-11-23</em></p>
+<p><em>started 2017-11-23 and updated 2017-11-24</em></p>
 <p><br/><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -334,25 +334,25 @@ $(document).ready(function () {
 <p>In particular, I wanted to make my data tidy so that I could start using <code>ggplot</code> for some of my analyses. I could tell that much of the trick was in the ability to use the <code>gather()</code> and the <code>spread()</code> features of the <code>tidyr</code> package. I have spent countless hours trying to decipher and reproduce the examples in the book, or on tutorials on the web, but I just could find things that would work for me.</p>
 <p>I slowly realized that all the examples given always use either <code>gather</code> or <code>spread</code>, but using <em>both</em> together is not something well reported, or at least I missed that. I will thus report how I managed to solve my problems here. <br/><br/><br/></p>
 </div>
-<div id="minimum-water-quality-improvement-required-to-be-detected" class="section level2">
-<h2>Minimum water quality improvement required to be detected</h2>
+<div id="minimum-water-quality-improvement-needed-to-be-detectable" class="section level2">
+<h2>Minimum water quality improvement needed to be detectable</h2>
 <p>I have worked for quite a few years on calculating uncertainties on nutrient loads at the catchment scale<span class="citation"><sup><a href="#ref-Moatar2013-aa">1</a>–<a href="#ref-Birgand2004-fm">8</a></sup></span>, but there are many angles one can approach this problem. Recently, I have decided to illustrate minimum water quality improvement reauired for us to be confident that they are real, and that as a function of the sampling frequency.</p>
 <p>For that, I have written routines that take reference flow and concentration data collected hourly. To simulate water quality (WQ) improvements, I multiply concentrations by 0.99, for a 1% WQ improvement, 0.98 for a 2% WQ improvement, etc. I then degrade the original and the <em>WQ–improved</em> data to simulate common sampling frequency, such as monthly sampling, and compare whether the concentrations from the original and the <em>WQ–improved</em> data are significantly different. I do that for water quality improvements from 1 to 60%, and I look for, for example monthly sampling, the minimum level of WQ improvement required for which I can confidently say (95% confident) that the original and the <em>WQ–improved</em> data are different.</p>
 <p><br/><br/><br/></p>
 <div id="the-original-dataset" class="section level3">
 <h3>The original dataset</h3>
-<p>The way I have stored the simulations include:</p>
+<p>The dataset is available <a href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/probadetectblog.csv">here</a>. The way I have stored the simulations include:</p>
 <ul>
-<li>Wshd: the name of the watershed (here the watershed of the <a href="https://fr.wikipedia.org/wiki/Saint-Donan">Maudouve river at Saint-Donan</a> in Brittany, France),</li>
-<li>elmt: the name of the element for the analysis, here nitrate,</li>
-<li>type: the type of data represented in <strong>rows</strong>:
+<li><code>Wshd</code>: the name of the watershed (here the watershed of the <a href="https://fr.wikipedia.org/wiki/Saint-Donan">Maudouve river at Saint-Donan</a> in Brittany, France),</li>
+<li><code>elmt</code>: the name of the element for the analysis, here nitrate,</li>
+<li><code>type</code>: the type of data represented in <strong>rows</strong>:
 <ul>
-<li>samp_interval: the values of the sampling intervals chosen in days</li>
-<li>probaC: the percentage of needed concentration improvement to be detected corresponding to each sampling interval</li>
-<li>probaL: the percentage of needed load improvement to be detected corresponding to each sampling interval</li>
+<li><code>samp_interval</code>: the values of the sampling intervals chosen in days</li>
+<li><code>probaC</code>: the percentage of needed concentration improvement to be detected corresponding to each sampling interval</li>
+<li><code>probaL</code>: the percentage of needed load improvement to be detected corresponding to each sampling interval</li>
 </ul></li>
-<li>Year: the hydrological year from which the analyses were done</li>
-<li>X02d to X60d: the sampling intervals from 2 to 60 days <br/><br/><br/></li>
+<li><code>Year</code>: the hydrological year from which the analyses were done</li>
+<li><code>X02d</code> to <code>X60d</code>: the sampling intervals from 2 to 60 days <br/><br/><br/></li>
 </ul>
 <pre class="r"><code>detect&lt;-read.csv(&quot;https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/probadetectblog.csv&quot;, header = TRUE)
 
@@ -400,7 +400,7 @@ head(detect_df)</code></pre>
 <div id="using-gather" class="section level4">
 <h4>Using <em><code>gather()</code></em></h4>
 <p>My goal is to be able to plot the minimum WQ improvement required as a function of sampling intervals for all the years available, and see the type of relationship that may exist between the two. In the version of the <code>detect</code> dataframe, the data are in rows, but for <code>ggplot</code>, I need to put them into columns. The first step is to use the <code>gather</code> function. The part that was extremely unclear to me was the syntax for the gather function. In particular, I could not find that one might want to <strong><em>create new variable names</em></strong>.</p>
-<p>I want to put all the columns X02d to X60d as variables, so they need to be in lines now. First, I need to create a new variable or column, in which all the sampling interval names X02d to X60d will be stored. I have called it “Interval”. Second, I need to store all the values corresponding to all sampling intervals into another variable or column, and I need to provide a name for it. I have chosen “value”.</p>
+<p>I want to put all the columns <code>X02d</code> to <code>X60d</code> as row-variables, so they need to be in lines now. First, I need to create a new column-variable, in which all the sampling interval names <code>X02d</code> to <code>X60d</code> will be stored. I have called it <code>Interval</code>. Second, I need to store all the values corresponding to all sampling intervals into another column-variable, and I need to provide a name for it. I have chosen <code>value</code>.</p>
 <pre class="r"><code>detect_df&lt;-as.data.frame(detect)
 detect_df&lt;- detect_df %&gt;%
   gather(Interval,value,5:63)
@@ -413,8 +413,8 @@ head(detect_df)</code></pre>
 ## 5 Maudouve  NO3        probaC 1998-1999     X02d     2
 ## 6 Maudouve  NO3        probaL 1998-1999     X02d     1</code></pre>
 <p><br/><br/><br/></p>
-<p>This is where most posts stop when I “googled” <em><code>gather()</code></em> and <code>tidyr</code>, but clearly the data is just not in a usable form, yet. The good news is that the 59 columns are now spread into rows, but I still cannot plot probaC as a function of samp_interval. This is where It finally dawned on me that I could <em>spread</em> the data stored in rows in the column <em>type</em>, and make them become columns. This is where the <code>spread()</code> functions comes in.</p>
-<p>In that function, you define which column you want to spread into several columns, which names will become the unique values. In my case here, I want the three unique values in <em>type</em> to become columns, and I want that the correponding values (stored into the column <em>value</em>, I know it is not the best name), be assigned to these new columns. The code to do this is below. <br/><br/><br/></p>
+<p>This is where most posts stop when I “googled” <em><code>gather()</code></em> and <code>tidyr</code>, but clearly the data is just not in a usable form, yet. The good news is that the 59 columns are now spread into rows, but I still cannot plot <code>probaC</code> as a function of <code>samp_interval</code>. This is where It finally dawned on me that I could <em>spread</em> the data stored in rows in the column <em>type</em>, and make them become columns. This is where the <code>spread()</code> functions comes in.</p>
+<p>In that function, you define origin column you want to spread into several column-variables, which names will become the unique items from the origin column. In my case here, I want the three unique values in <code>type</code> to become columns, and I want that the correponding values (stored into the column <code>value</code>, I know it is not the best name), be assigned to these new columns. The code to do this is below. <br/><br/><br/></p>
 <pre class="r"><code>tidy_df&lt;-detect_df %&gt;%
   spread(type,value)
 head(tidy_df)</code></pre>
@@ -426,7 +426,7 @@ head(tidy_df)</code></pre>
 ## 5 Maudouve  NO3 1997-1998     X06d      5      5             6
 ## 6 Maudouve  NO3 1997-1998     X07d      7     10             7</code></pre>
 <p><br/><br/><br/></p>
-<p>So now, I have columns for the sampling intervals (samp_interval) and the simulated values stored in probaC and probaL. The power of <code>ggplot</code> can now be used to plot the relationship between the minimum concentration difference required to be detected, per year.</p>
+<p>So now, I have columns for the sampling intervals (<code>samp_interval</code>) and the simulated values stored in <code>probaC</code> and <code>probaL</code>. The power of <code>ggplot</code> can now be used to plot the relationship between the minimum concentration difference required to be detected, per year.</p>
 <p><br/><br/><br/></p>
 </div>
 </div>
@@ -451,8 +451,8 @@ print(p)</code></pre>
 </div>
 <div id="comments-on-the-wq-results" class="section level3">
 <h3>Comments on the WQ results</h3>
-<p>The purpose of this blog post is to display the use of <code>R</code> code and tricks that I find important to share, but I have to admit that it would be a bit frustrating not to comment the results a bit. I have asked <code>ggplot</code> to fit the data with a linear model, and I must say that it is probably not the very best model, as clearly the model would tend to overestimate the minimum WQ improvements required for them to be detected, for weekly or better sampling frequency. But otherwise, the linear model is probably a pretty good first approach.</p>
-<p>Depending on the years, the results suggest that for a monthly sampling scheme to confidently detect a WQ improvement, improvement would have to be at least around 20%. In other words, the concentrations would have to be 20% lower! So for this watershed, and for nitrate, the results show that if water quality would improve by only 10% (which is not insignificant), monthly sampling would not be able to confidently detect it…! That is one of the reasons why our team has invested in sensors! <br/><br/><br/></p>
+<p>The purpose of this blog post is to display the use of an <code>R</code> code and tricks that I find important to share, but I have to admit that it would be a bit frustrating not to comment the results at all. I have asked <code>ggplot</code> to fit the data with a linear model, and I must say that it is probably not the very best model, as clearly the model would tend to overestimate the minimum WQ improvements required for them to be detected, for weekly or better sampling frequencies. But otherwise, the linear model is probably a pretty good first approach.</p>
+<p>Depending on the years, the results suggest that for a monthly sampling scheme to confidently detect a WQ improvement, improvement would have to be at least around 20%. In other words, for this watershed, and for nitrate, the results show that if water quality would improve by 10% (which is not insignificant), monthly sampling would not be able to confidently detect it…! Think about all false negative that have been reported…! This is one of the reasons why our team has invested in sensors! <br/><br/><br/></p>
 </div>
 </div>
 <div id="references" class="section level2 unnumbered">
