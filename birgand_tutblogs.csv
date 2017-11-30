@@ -7,3 +7,4 @@ Blogs,François Birgand,Blog: Adding an image in an R graph,R,blog-adding-an-ima
 Blogs,François Birgand,Blog: Indices and exponents in R graphs,R,blog-indices-and-exponents-in-r-graphs.html,2015-11-05,substitute();expression(),
 Blogs,François Birgand,Blog: retrieving dates in R using strsplit,R,blog-retrieving-dates-in-r-using-strsplit.html,2017-11-13,strsplit();do.call();formatC();grep(),
 Blogs,François Birgand,Blog: Elementary tidyr and ggplot,R,blog-elementary-tidyr-ggplot.html,2017-11-23,gather();spread();ggplot(),
+Blogs,Beth Allen and François Birgand,Blog: flow and load duration curves,R,blog-flow-and-load-duration-curves.html,2011-09-11,hydrograph;chemograph;duration curves,

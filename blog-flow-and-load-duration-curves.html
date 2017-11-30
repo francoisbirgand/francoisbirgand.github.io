@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publications
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="people.html">People</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fa fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fa fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fa fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fa fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fa fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fa fa-map-marker"></span>
+         
+        148 Weaver
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="blog-flow-and-load-duration-curves" class="section level1">
+<h1>Blog: flow and load duration curves</h1>
+<div id="by-beth-allen-and-francois-birgand" class="section level3">
+<h3><em>by Beth Allen and François Birgand</em></h3>
+<p><em>started 2011-09-11 and updated 2017-11-30</em></p>
+<p><br/></p>
+</div>
+<div id="keywords" class="section level3">
+<h3>Keywords</h3>
+<ul>
+<li>hydrograph</li>
+<li>chemograph</li>
+<li>duration curves <br/><br/></li>
+</ul>
+</div>
+<div id="in-search-of-additional-water-quality-indicators" class="section level2">
+<h2>In search of additional water quality indicators</h2>
+<p>Lately, we have been researching and developing techniques of analyzing continuous water quality and hydrology data in order to explain hydrological and biogeochemical processes controlling stream chemistry in watersheds. One of the techniques in which we have applied to an entire year of water quality and hydrology data is a method that assesses how relatively reactive nutrient/sediment loading is to flow and the relative flashiness of a watershed. This method, referred to as load and flow duration curves, determines the percentages of the total load or Mass (Mk%) and volume of Water (Wk%) that occur in a percentage of the total sampling time, termed probability of occurrence.</p>
+<p>Mk% and Wk% duration curves can be plotted as a function of the probability of occurrence, which provides an interesting way of demonstrating how loading relates to flow and varies among water quality constituents. This method can also be applied to individual storm events to assess if there is a first flush response.<br />
+<br/><br/><br/></p>
+</div>
+<div id="plotting-hydrographs-and-chemographs-in-r" class="section level2">
+<h2>Plotting hydrographs and chemographs in R</h2>
+<p>There are lots of great new (in 2017) plotting tools in R, such as <code>ggplot</code>, <code>qqplot</code>, or <code>plotly</code>. These tools have developped to manipulate data as function of factors, parameter, etc. But as far as we can tell, they are not well designed for handling time series of different units. This is too bad because they are otherwise rather attractive. As a result, for continuous flow and concentration data, we are still forced to use the more basic <code>R graphics</code>. But maybe me are missing something. In the meantime, it is important to be able to have some basic knowledge on how to plot continuous hydrographs and chemographs.</p>
+<p>In the code below, we have added quite a bit of comments to explain what code line does what. <br/><br/><br/></p>
+<pre class="r"><code>data&lt;-read.csv(file=&quot;https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/data/sample_1hr_QC_data.csv&quot;,header = TRUE) #Reads file into table format
+
+WSarea&lt;-24.2 #Area of watershed in km2
+WS&lt;-&quot;Maudouve at Saint-Donan, France&quot;
+names(data)=c(&quot;datetime&quot;,&quot;Q&quot;,&quot;C&quot;)   # renames the columns in simpler names
+data&lt;-as.data.frame(data)
+data$datetime&lt;-as.POSIXct(strptime(data$datetime, &quot;%Y-%m-%d %H:%M:%S&quot;)) # transforms characters into date values understood by R
+D&lt;-data$datetime
+Q&lt;-data$Q   #Defines Q as the flow value (m3/s)
+C&lt;-data$C   #Defines C as the Concentration value (mg NO3-N/L)
+L&lt;-Q*C
+N=nrow(data)   #Sets N to the value equal to the number of total rows in the table
+
+# definition of the x and y axes limits
+xlim = as.POSIXct(c(D[1],D[N]))  # this renders the first and last date understandable for plotting purposes
+ylimQ = c(0,max(Q))           # ylim for flow
+ylimC = c(0,max(C))           # ylim for concentrations
+    
+ScaleF = 1.2                  # scaling factor for size of fonts and other things
+    
+y1lab&lt;-expression(&quot;Flow rate (&quot; * m^3 * &quot;/s)&quot;)  # defines the label for flow
+y2lab&lt;-substitute(paste(&quot;Nitrate concentration (mg &quot;,NO[x]^{y},&quot;-N)&quot;,sep=&quot;&quot;),list(x=3,y=&quot;-&quot;)) # defines the label for concentrations
+
+par(mar=c(4.5,4.5,4,4.5))     # defines the sizes, in number of lines, for the margins (bottom, left, top, right)
+
+    ltyp=c(1,2)
+    
+    plot(D,Q,col=&quot;blue&quot;,type=&quot;l&quot;,cex=0.1,yaxt=&quot;n&quot;,     
+         lty=ltyp[1],xaxt=&quot;n&quot;,xlab=&quot;&quot;,ylab=&quot;&quot;,xlim=xlim,ylim=ylimQ)
+    # we are taking all the default addition of axis tick marks and numbers out by using xaxt and yaxt = &quot;n&quot;
+    # and setting the axis labels at nothing using xlab = &quot;&quot; and ylab = &quot;&quot;
+    abline(h=0)
+    axis.POSIXct(1, at=seq(D[1], D[N], by=&quot;month&quot;), format=&quot;%m/%d&quot;,cex.axis=ScaleF)
+    # this tells R that we want the X axis ticks and values to be displayed as dates, be added on a monthly basis,
+    # using the month/day format
+    axis(2,cex.axis=ScaleF)
+    # this tells R that the first Y axis ticks can be displayed  (that function was repressed earlier by &#39;yaxt=&quot;n&quot; &#39;)
+    par(new=TRUE)
+    # this tells R that a new plot has already been opened, in other words you are telling R to keep adding things
+    # on the existing plot
+    
+    ColElmt=&quot;deeppink1&quot;
+    plot(D,C,col=ColElmt,type=&quot;l&quot;,cex=0.1,yaxt=&quot;n&quot;,
+         lty=ltyp[1],xaxt=&quot;n&quot;,xlab=&quot;&quot;,ylab=&quot;&quot;,xlim=xlim,ylim=ylimC)
+    # plots the concentration data
+    axis(4,cex.axis=ScaleF)
+    # this tells R that the second Y axis ticks can be displayed (that function was repressed earlier by &#39;yaxt=&quot;n&quot; &#39;)
+    par(new=TRUE)
+    
+    mtext(&quot;Dates in 1997-1998&quot;,side=1,line=3,cex=ScaleF) # add in the margin the defined labels and title
+    mtext(y1lab,side=2,line=3,cex=ScaleF)
+    mtext(y2lab,side=4,line=3,cex=ScaleF)
+    mtext(WS,side=3,line=1.5,cex=ScaleF)
+    
+    legend(&quot;topleft&quot;,c(&quot;Flow&quot;,&quot;Conc&quot;),lty = c(1,1), col = c(&quot;blue&quot;,ColElmt))</code></pre>
+<p><img src="blog-flow-and-load-duration-curves_files/figure-html/QC-plot-1.png" width="864" /> <br/><br/><br/></p>
+</div>
+<div id="sorting-flow-and-load-values" class="section level2">
+<h2>Sorting flow and load values</h2>
+<p>Flow duration curves represent the percentage of the total flow that occurred in x% of the time corresponding to the highest flows. The same applies for loads. This might sound a bit merky, but hopefully it will not with the further explanations below. To get there, one first needs to order flow and loads in descending order. <br/><br/></p>
+<pre class="r"><code>QSort=sort(Q,decreasing = TRUE)   #Sorts instantaneous flow rates in descending order
+LSort=sort(L,decreasing = TRUE)   #Sorts instantaneous flux values in descending order</code></pre>
+<p><br/><br/></p>
+<p>The blue hydrograph from above now becomes: <br/><br/></p>
+<pre class="r"><code>par(mar=c(4.5,4.5,1,1)) 
+plot(QSort,col=&quot;blue&quot;,type=&quot;l&quot;,cex=0.1,yaxt=&quot;n&quot;,     
+         lty=ltyp[1],xaxt=&quot;n&quot;,xlab=&quot;&quot;,ylab=&quot;&quot;,ylim=ylimQ)
+abline(h=0)    
+axis(2,cex.axis=ScaleF)   
+mtext(y1lab,side=2,line=3,cex=ScaleF)
+mtext(&quot;Cumulative number of flow values&quot;,side=1,line=3,cex=ScaleF)
+legend(&quot;topright&quot;,c(&quot;Sorted Flow&quot;),lty = c(1), col = c(&quot;blue&quot;))</code></pre>
+<p><img src="blog-flow-and-load-duration-curves_files/figure-html/unnamed-chunk-3-1.png" width="864" /> <br/><br/><br/></p>
+<p>The next thing to do is to integrate under the sorted curves to obtain the cumulative flow as a function for each represented flow value. To do this, there is a really nice way to calculate this using the <code>cumcum()</code> function as below. All values are put in percentage values <br/><br/></p>
+<pre class="r"><code>cumQSort&lt;-c(0,(cumsum(QSort[-1])+cumsum(head(QSort,-1)))/2)
+cumQSort&lt;-cumQSort/tail(cumQSort,1)*100
+cumLSort&lt;-c(0,(cumsum(LSort[-1])+cumsum(head(LSort,-1)))/2)
+cumLSort&lt;-cumLSort/tail(cumLSort,1)*100</code></pre>
+<p><br/><br/><br/></p>
+<p>So now the cumulative flow volume curve corresponding to the highest flow rates as a function of the cumulative number of flow values looks like this:</p>
+<pre class="r"><code>par(mar=c(4.5,5.5,1,1)) 
+plot(cumQSort,col=&quot;blue&quot;,type=&quot;l&quot;,cex=0.1,yaxt=&quot;n&quot;,     
+         lty=ltyp[1],xaxt=&quot;n&quot;,xlab=&quot;&quot;,ylab=&quot;&quot;, ylim=c(0,100))
+abline(h=0)    
+axis(2,cex.axis=ScaleF)
+mtext(&quot;Cumulative number of flow values&quot;,side=1,line=1,cex=ScaleF)
+mtext(&quot;%age of cumulative flow corresponding to\n the highest sorted flow rates &quot;,side=2,line=3,cex=ScaleF)</code></pre>
+<p><img src="blog-flow-and-load-duration-curves_files/figure-html/unnamed-chunk-5-1.png" width="864" /></p>
+<pre class="r"><code> # the \n in the text allows for line break in the title</code></pre>
+<p><br/><br/><br/></p>
+<p>Notice that there is still no unit added for x axis because I decided that the cumulative number of flow value does not really add a lot to the analysis. However, it becomes very interesting to transform these values in probability of occurence. Each value has 1/N the probability to occur. We can also calculate the cumulative probability of occurence of flow values. Flow and load duration curves are thus derived this way.</p>
+<p>In more details, the cumulative discharge calculated at each instantaneous flow rate can be calculated as a percentage of the total discharge yielding Wk% values corresponding to the kth cumulative probability and the time elapsed at each point can be calculated as a percentage of the total time. This works because even though flow rates are rearranged, the same amount of data points exist within the dataset with the same time increment occurring between each value. Wk% values can then be plotted as a function of the percentage of the total time. This is what is referred to as Flow Duration Curves. This provides a way of demonstrating of how relatively flashy the watershed may be, either relatively to other watersheds or to previous years.<br />
+<br/><br/></p>
+<p>The flashiness of a watershed refers to how rapidly flow is altered as a result of storm events/varying conditions. More frequent spikes in flow in response to precipitation events, in which flow increases and decreases more greatly and rapidly, are typically indicative of watersheds with predominant portions of streamflow being influenced by surface runoff, a quicker responding contributor of water to streamflow.<br />
+<br/><br/><br/></p>
+<pre class="r"><code>Wk=quantile(cumQSort,probs=seq(0.01,1,0.01))/tail(cumQSort,1) #Calculates and assigns Wk% values to a probability occurring in 1-100% of the total time
+Mk=quantile(cumLSort,probs=seq(0.01,1,0.01))/tail(cumLSort,1)</code></pre>
+<p><br/><br/><br/></p>
+</div>
+<div id="flow-and-load-duration-curves" class="section level2">
+<h2>Flow and Load duration curves</h2>
+<p>This method allows us to see the percentage of the total discharge that occurs in a fraction of the total time with the lowest probabilities of occurrence corresponding with the highest flow rates associated with event flow. Therefore, if one watershed produces a majority of the total discharge in 50% of the time versus a watershed that produces a majority of the total discharge in 80% of the time, that watershed may be considered relatively flashier because a greater portion of the total discharge occurs in association with higher flow rates. In other words, streamflow would be considered more reactive to event water because the event hydrograph rises and recedes more quickly than the other watershed. This quick rise and recession allows for most flow to occur in a smaller percentage of the time versus the watershed that has a much wider event hydrograph spanning across a greater range of instantaneous flow values over a greater period of time. Visually, this method can provide a relative comparison of the flashiness of multiple watersheds. In the example above, the shape of the curve in the first watershed would have a greater slope towards the lower percentages/probabilities of occurrence and the curve for the second watershed would be somewhat flatter. <br/><br/><br/></p>
+<pre class="r"><code>    xlim=c(0,100);ylim=c(0,100);
+    plot(1:100,Wk*100,xlab=&quot;Prob of Occurrence %&quot;,ylab=&quot;Mk% &amp; Wk%&quot;,xlim=xlim,ylim=ylim,pch=21,col=&quot;black&quot;,bg=&quot;blue&quot;)
+    par(new=TRUE)
+    plot(1:100,Mk*100,xlab=&quot;Prob of Occurrence %&quot;,ylab=&quot;Mk% &amp; Wk%&quot;,xlim=xlim,ylim=ylim,pch=22,col=&quot;black&quot;,bg=ColElmt)
+    par(new=TRUE)
+    abline(1,1,xlab=&quot;Prob of Occurrence %&quot;,ylab=&quot;Mk% &amp; Wk&quot;,col=&quot;black&quot;,lty=&quot;dashed&quot;,xlim=xlim,ylim=ylim)
+    par(new=TRUE)
+    legend(&quot;bottomright&quot;,c(&quot;Cumul Q&quot;,&quot;Cumul NO3 load&quot;),
+          pch=c(19,19),
+          col=c(&quot;blue&quot;,ColElmt),
+          bg=&quot;white&quot;)
+    title(main=&quot;Nitrate Load and flow duration curves&quot;) # the \n in the text allows for line break in the title</code></pre>
+<p><img src="blog-flow-and-load-duration-curves_files/figure-html/unnamed-chunk-7-1.png" width="864" /></p>
+<pre class="r"><code>    #Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails
+    v&lt;-c(1,2,3,5,10,25,50,75,90,95,97,98,99,100) #v is a set of user defined values of percentages of the total time to be used for calculating and plotting specific corresponding Wk% and Mk% values
+    x&lt;-v/100  #Sets x as values of v in percentages
+        y&lt;-Mk[v]  #Sets y as the set of Mk% values corresponding with percentages of the total time defined by values in x
+    xx&lt;-qnorm(x) #qnorm takes a given probability (x values in this case) and returns the corresponding cumulative distribution value (Z-score) based on a normal distribution curve   
+    yy&lt;-qnorm(y) #Here, qnorm is taking the percentages of the load that occur associated with percentages of the total time defined by values in x and calculating associated Z-scores according to a normal distribution curve
+    yV&lt;-Wk[v] #Sets yV as the set of Wk% values corresponding with percentages of the total time defined by values in x
+    yyV&lt;-qnorm(yV) #qnorm takes percentages of the flow occurring associated with percentages of the total time defined by x values and assigns Z-score values to each probability based on the normal distribution curve 
+    yy&lt;-cbind(yy,yyV) #Binds both sets of Z-score values corresponding with Mk% (yy) and Wk% (yV)
+    xx&lt;-cbind(xx,xx) #Binds both sets of Z-scores correspdonding with defined percentages of the total time (They are the same, this is for plotting purposes)
+    color&lt;-c(ColElmt,&quot;blue&quot;) #Defines the plot colors for yy and yV
+    
+    for (i in 1:2){
+    plot(xx[,i],yy[,i],xlab=&quot;Probability of Occurrence (%)&quot;,ylab=&quot;Mk% &amp; Wk%&quot;,type=&quot;o&quot;,xaxt=&quot;n&quot;,yaxt=&quot;n&quot;,xlim=c(-2.5,2.5),ylim=c(-2.5,2.5),pch=i,col=color[i])#Plots yy and yV values as a function of xx values
+    par(new=TRUE)
+    } 
+    
+    axis(1,at=xx[,1],labels=x*100)
+    axis(2,at=xx[,1],labels=x*100)
+    title(main=&quot;Double cumulative probability plot for nitrate load \nand for flow volume&quot;) # the \n in the text allows for line break in the title
+    abline(h=xx,lty=3,col=&quot;grey&quot;) #Plots gridlines
+    abline(v=xx,lty=3,col=&quot;grey&quot;)
+    legend(&quot;bottomright&quot;,c(&quot;Cumul NO3 load&quot;,&quot;Cumul Q&quot;),
+          pch=1:2,
+          col=color,
+          bg=&quot;white&quot;)</code></pre>
+<p><img src="blog-flow-and-load-duration-curves_files/figure-html/unnamed-chunk-7-2.png" width="864" /> <br/><br/><br/></p>
+<p>Once again, the cumulative load calculated at each instantaneous flux value can be calculated as a percentage of the total load yielding Mk% values and the time elapsed at each point can be calculated as a percentage of the total time. Mk% and Wk% values can be plotted as functions of the probability of occurrence and multiple Mk% curves for various water quality components can be plotted simultaneously for comparison of loading as a function of probability of occurrence. For example, 50% of the nitrate load may be exported in 25% of the time whereas 50% of the ammonium load may be exported in only 5% of the time. The interaction of flow and concentrations could be examined further to explain differences among loading and flashiness of concentrations with event flow.</p>
+<p>With the above plot, we see that the Maudouve River at Saint-Donan in 1997-1998 is not very flashy as only 10% of the flow occurs in 2% of the time. Some watersheds are a lot flashier and can export more than 25% of the flow volume in 2% of the time. We can also see that there is a very slight difference between the flow and the load duration curves, with the load duration tending to be a bit lower. This is due to the “dilution” effect of nitrate concentrations during flow events: nitrate concentrations exhibit troughs during flow peaks.</p>
+<p>It is helpful to use the <code>qnorm</code> function in R to zoom in on the very low and high probabilities of occurrence, or on the tails of the normal distribution curve.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
