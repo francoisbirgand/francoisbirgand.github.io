@@ -1,5 +1,5 @@
 name: "Birgand Water Lab"
-output_dir: .
+output_dir: "."
 navbar:
   title: "Birgand Water Lab"
   left:
