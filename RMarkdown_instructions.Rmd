@@ -1,6 +1,4 @@
 ---
-title: "Crash course on R markdown"
-author: "François Birgand"
 output: 
   html_document:
     toc: true
@@ -15,6 +13,9 @@ knitr::opts_chunk$set(echo = FALSE)
 tutblog <- read.csv("birgand_tutblogs.csv", encoding = "UTF-8")
 selection<-tutblog[tutblog$name=="Crash course on R markdown",]
 ```
+`r paste0("# ",selection$name)`
+`r paste0("### *by ",selection$authors,"*")`
+
 <div class = "row">
 <div class = "col-md-9">`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`</div>
 <div class = "col-md-3" align="right">*[code for this document](https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd)*</div></div>
@@ -327,6 +328,27 @@ An entire paragraph of code which is rendered as a "code box" in html (but not i
 
 <br/>
 <a id="link_ref"></a>
+
+### Symbols and Special characters
+The principal keys, like the alphabet, are understood univocally across platforms such as Windows, Mac OS, or Linux. However, there are special characters such &deg;, &sup2; or &micro; that have different embedded codes across the different platforms. For example, if you and your co-worker work on the same document and one works using Windows and the other uses Mac, the actual symbol in the code text may not show the same one from one to the other plateform. 
+
+For example, if I write in an R markdown document "10 m&sup2;" and I have added the &sup2; symbol by typing on a PC "Alt+0178", as this corresponds to the ascii code for &sup2; in Windows, the same document open on a Mac will render "10 m?", because it cannot interpret the embedded code for &sup2;...
+
+Several consequences: 
+
+1. **NEVER** use special characters in variable names in an `R` code, 
+2. in an R markdown document, use the HTML Number or HTML name in the text
+
+[HTML Number and Names](https://www.ascii.cl/htmlcodes.htm) can be found on this [ascii page](https://www.ascii.cl/htmlcodes.htm)
+
+So to type T&deg;C, m&sup2; or &micro;m you type like this
+
+```
+So to type T&deg;C, m&sup2; or &micro;m you type like this
+```
+
+Do not forget to add the ";" !!!
+<br/><br/><br/>
 
 ### Absolute Links 
 ```
@@ -691,6 +713,7 @@ You can over-ride these defaults by setting options for individual chunks.
 
 See [http://yihui.name/knitr/options/] for a complete listing of possible chunk options.
 
+<br/><br/><br/>
 
 # Additional Subtleties
 ## Creating anchors and links within a page

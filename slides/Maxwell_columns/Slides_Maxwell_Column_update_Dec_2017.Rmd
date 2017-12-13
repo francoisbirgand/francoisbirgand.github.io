@@ -222,7 +222,7 @@ $$P_{DOC} =  \frac{([DOC]_{out}-[DCO]_{in})*Q}{V}$$
 ## Overall Concentration plot
 
 .center[
-```{r,echo=FALSE,warning=FALSE}
+```{r,echo=FALSE,warning=FALSE,cache=TRUE}
 drains=seq(21.583,180,7)
 plotmargin=c(.1,.05,.1,0.05)
 axis.title=12
@@ -290,7 +290,7 @@ ggplot(major,aes(x=Day,y=NO3calib,color=Treatment))+
 ## Nitrate removal rates
 
 .center[
-```{r,echo=FALSE,warning=FALSE}
+```{r,echo=FALSE,warning=FALSE,cache=TRUE}
 sack=subset(major,major$Day>1.2)
 a1=ggplot(sack,aes(x=Day,y=VolumetricRate,colour=Treatment))+
   geom_vline(xintercept=drains,linetype="solid",color="grey40",size=2,alpha=0.3)+
@@ -380,7 +380,7 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 
 --
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache=TRUE}
 dry=subset(major,Treatment==1)
 wet=subset(major,Treatment==0)
 ttest=function(i){
@@ -435,19 +435,19 @@ DT::datatable(
 
 --
 
-- % difference between SAT and DRW grew over time. 
+- % difference between SAT and DRW grew over time
 
 --
 
-    - In Periods 2-4, mean removal rates were 6-24% higher in DRW columns, relative to SAT
+- In Periods 2-4, mean removal rates were 6-24% higher in DRW columns, relative to SAT
 
 --
 
-    - In Periods 19-21, DRW removal rates were greater by 42-43%. 
+- In Periods 19-21, DRW removal rates were greater by 42-43%
 
 --
 
-    - In Period 22 DRW removal rates were higher by 73-83% (however data was only collected during the first 3 days of Period 22 due to instrument error)
+- In Period 22 DRW removal rates were higher by 73-83% (however data was only collected during the first 3 days of Period 22 due to instrument error)
 
 ---
 
@@ -457,7 +457,7 @@ DT::datatable(
 - Overall average rates values boosted by high rates just after rewetting
 
 .center[
-```{r,echo=FALSE,warning=FALSE,fig.cap="Comparison between SAT and DRW volumetric removal rates, according to the number of days since the previous drain/rewetting event. Differences between groups decreased over time. *** indicate significant differences in group means."}
+```{r,echo=FALSE,warning=FALSE,cache=TRUE,fig.cap="Comparison between SAT and DRW volumetric removal rates, according to the number of days since the previous drain/rewetting event. Differences between groups decreased over time. *** indicate significant differences in group means."}
 case=subset(major,Period>18)
 case$PeriodDay=as.factor(case$PeriodDay)
 label=c('0'="1 day",'1'="2 days",'2'="3 days",'3'="4 days",'4'="5 days",'5'="6 days",'6'="7 days")
@@ -503,11 +503,80 @@ ggplot(case,aes(x=Treatment,y=VolumetricRate,group=Treatment))+
 
 ---
 
+## Management considerations
+
+--
+
+- Do DRW benefits overweigh the intermittent lack of removal?
+
+--
+
+- Taking into account the intermittent no removal periods in the overall bioreactor removal capacity, it is possible to calculate the overall removal enhancement as a function of DRW frequency
+
+--
+
+.center[
+```{r,message=FALSE,echo=FALSE,warning=FALSE,cache=TRUE,fig.cap="Increases in total $NO_{3}$ removed in DRW columns based on differences in daily means (red) and cumulative increased treatment (black) when considering untreated bypass while DRW columns were drained. The results indicate that increasing the DRW frequency to one drain every 2-3 days would provide the greatest overall improvement (~47%) in total nitrate removal.", fig.height=2.8}
+wild=subset(major,Period>18 & Period<23)
+dry=subset(wild,Treatment==1)
+wet=subset(wild,Treatment==0)
+wetmean=mean(wet$VolumetricRate,na.rm=TRUE)
+y=matrix(NA,7,5)
+x=matrix(NA,7,5)
+for(i in c(1:7)){
+  #i=2
+  d=i-1
+  dryd=subset(dry,PeriodDay==d)
+  wetd=subset(wet,PeriodDay==d)
+  #wmean=mean(wetd$VolumetricRate,na.rm=TRUE)
+  if(i==1){
+    dmean=mean(dryd$VolumetricRate,na.rm=TRUE)
+    wmean=mean(wetd$VolumetricRate,na.rm=TRUE)+wetmean*0.33333
+  } else {
+    dmean=mean(dryd$VolumetricRate,na.rm=TRUE)+as.numeric(y[i-1,1])
+    wmean=mean(wetd$VolumetricRate,na.rm=TRUE)+as.numeric(y[i-1,2])
+  }
+  y[i,1]=dmean
+  y[i,2]=wmean
+  y[i,3]=(dmean-wmean)/(wmean)*100
+  #y[i,4]=(mean(dryd$VolumetricRate,na.rm=TRUE)-mean(wetd$VolumetricRate,na.rm=TRUE))/mean(wetd$VolumetricRate,na.rm=TRUE)*100
+  y[i,4]="Total"
+  y[i,5]=i
+  x[i,1]=dmean
+  x[i,2]=wmean
+  x[i,3]=(mean(dryd$VolumetricRate,na.rm=TRUE)-mean(wetd$VolumetricRate,na.rm=TRUE))/mean(wetd$VolumetricRate,na.rm=TRUE)*100
+  x[i,4]="Daily"
+  x[i,5]=i
+}
+y=as.data.frame(y)
+x=as.data.frame(x)
+c=rbind(y,x)
+colnames(c)=c("DRW.mean","SAT.mean","Percdiff","Type","Day")
+c$Percdiff=as.numeric(as.character(c$Percdiff))
+ggplot(c,aes(x=Day,y=Percdiff,colour=Type))+
+  geom_point(size=4,show.legend=TRUE)+
+  geom_smooth(aes(group=Type),span=.7)+
+  scale_y_continuous(limits=c(0,100),breaks=seq(0,100,10))+
+  scale_x_discrete(breaks=seq(1,7,1))+
+  scale_colour_manual(values=c("black","red"),name="N Removal\nIncrease")+
+  theme_bw()+
+  theme(plot.margin=unit(plotmargin,"cm"))+
+  theme(axis.title=element_text(size=axis.title),axis.text=element_text(size=axis.text))+
+  theme(legend.text=element_text(size=legend.text),legend.title=element_text(size=legend.text))+
+  labs(y=expression("Increase in " * NO[3] * "-N Removal (%)"),x="Days since rewetting or interval between drying events")
+  
+  #geom_point(data=y,aes(shape=NA,size="Total Eff."),size=4,colour="black")+
+   #guides(color=guide_legend("tat",override.aes=list(shape=16,size=2)))
+
+```
+]
+---
+
 ## Spectrophotometer probe calibration
 
 
 
-```{r,warning=FALSE,echo=FALSE,eval = TRUE, fig.height=height,fig.width=width,fig.cap="Predicted vs. lab DOC "}
+```{r,warning=FALSE,echo=FALSE,eval = TRUE,cache=TRUE, fig.height=height,fig.width=width,fig.cap="Predicted vs. lab DOC "}
 #values based on separate PLSR calibrations from manual samples collected on Days 14 and 29 (solid red points, Model 1) and Days 29, 40, and 45 (hollow black circles, Model 2). Black and red solid lines indicate linear regressions when predicting DOC conc. based on fingerprints taken on the same lab samples with which the model was built (i.e. using Model 1 to make prections from Day 14 & 29 fingerprints). Dashed lines indicate linear regression when predictions were made based on fingerprints taken during the alternate Model period (i.e. using Model 2 to make predictions from Day 14 and 29 fingerprints).
 
 filename1<-"DOCcalib_prelim.csv"  #Specify file where flow data is located
@@ -553,7 +622,7 @@ abline(DOCreg4,col="black",lwd=2,lty=5)
 
 ---
 
-```{r,eval=TRUE,warning=FALSE,fig.height=height,fig.width=width,echo=FALSE,fig.cap="Predicted vs. lab DOC values based on separate PLSR calibrations from manual samples collected on Days 14 and 29 (solid red points, Model 3, outliers removed) and Days 29, 40, and 45 (hollow black circles, Model 4, outliers removed). Solid lines indicate linear regressions when predicting DOC conc. based on fingerprints taken on the same lab samples with which the model was built; dashed lines indicate linear regression when predictions were made based on fingerprints taken during the alternate Model period."}
+```{r,eval=TRUE,warning=FALSE,fig.height=height,fig.width=width,echo=FALSE,fig.cap="Predicted vs. lab DOC values based on separate PLSR calibrations from manual samples collected on Days 14 and 29 (solid red points, Model 3, outliers removed) and Days 29, 40, and 45 (hollow black circles, Model 4, outliers removed). Solid lines indicate linear regressions when predicting DOC conc. based on fingerprints taken on the same lab samples with which the model was built; dashed lines indicate linear regression when predictions were made based on fingerprints taken during the alternate Model period.",cache=TRUE}
 
 labDOC3=labDOC[c(2:15)]
 strike3=strike[c(2:15),]
@@ -582,7 +651,7 @@ abline(DOCreg8,col="black",lwd=2,lty=5)
 ---
 ## PLSR technique: DOC predicted from deep UV 
 
-```{r,echo=FALSE,eval=TRUE,fig.height=height,fig.width=width,fig.cap="Loadings plotted for Models 3 (red) & 4 (black). Y-axis values correspond to weighted loadings at each absorbance value. Dashed and solid lines indicate Components 1 & 2 of the model, respectively."}
+```{r,echo=FALSE,eval=TRUE,cache=TRUE,fig.height=height,fig.width=width,fig.cap="Loadings plotted for Models 3 (red) & 4 (black). Y-axis values correspond to weighted loadings at each absorbance value. Dashed and solid lines indicate Components 1 & 2 of the model, respectively."}
 plot(DOCfit3,plottype="loadings",col=c("red"),lwd=2,ylim=c(-.5,.5),xlab="Wavelength (nm)")
 par(new=TRUE)
 plot(DOCfit4,plottype="loadings",col=c("black"),lwd=2,ylim=c(-.5,.5),xlab="")
@@ -600,7 +669,7 @@ plot(DOCfit4,plottype="loadings",col=c("black"),lwd=2,ylim=c(-.5,.5),xlab="")
 --
 
 .center[
-```{r,echo=FALSE,warning=FALSE,fig.cap="NO3 removal rates plotted against DOC leaching rates for Days 2-11 (A), Days 20-50 (B), Days 50-100 (C), and Days 147-172 (D). Color denotes treatment group (SAT or DRW) and separate trend lines are included for each group."}
+```{r,echo=FALSE,warning=FALSE,cache=TRUE,fig.cap="NO3 removal rates plotted against DOC leaching rates for Days 2-11 (A), Days 20-50 (B), Days 50-100 (C), and Days 147-172 (D). Color denotes treatment group (SAT or DRW) and separate trend lines are included for each group."}
 p1=subset(major,Day>2 & Day<11)
 p2=subset(major,Day>20 & Day<50)
 p3=subset(major,Day>50 & Day<100)
@@ -727,7 +796,7 @@ $$DOC_{eff} = \frac{R_{NO_{3}}}{P_{DOC}}$$
 
 ## $DOC_{eff}$ as a function of time
 
-```{r,echo=FALSE,warning=FALSE,fig.cap="DOC use efficiency at each Period #. Period 0 was not included due to high values (>1000)."}
+```{r,echo=FALSE,warning=FALSE,cache=TRUE,fig.cap="DOC use efficiency at each Period #. Period 0 was not included due to high values (>1000)."}
 z1=rollapplyr(major$VolumetricRate,width=8,FUN=function(x) mean(x, na.rm=TRUE),     ##Create column for 8 hr averaged tank conc.
                              by=1, by.column=TRUE, partial=TRUE)
 z2=rollapplyr(major$VolumetricRateDOC,width=8,FUN=function(x) mean(x, na.rm=TRUE),     ##Create column for 8 hr averaged tank conc.
@@ -752,7 +821,7 @@ p2=subset(foul,Day>147 & Day<172 & Treatment==0)
 
 ## $R_{NO_{3}}$ and $P_{DOC}$ as a function of time
 
-```{r,echo=FALSE,warning=FALSE,fig.cap="DOC leaching and NO3 removal rates plotted against days since rewetting. In both cases rates decreased quickly within several days of rewetting."}
+```{r,echo=FALSE,warning=FALSE,cache=TRUE,fig.cap="DOC leaching and NO3 removal rates plotted against days since rewetting. In both cases rates decreased quickly within several days of rewetting."}
 ask=subset(major,Day>147 & Day<172 & PeriodDay<7)
 j1=ggplot(ask,aes(x=PeriodTime,y=VolumetricRate,colour=Treatment))+
   geom_point(shape=16)+
@@ -828,7 +897,7 @@ j1=ggplot(ask,aes(x=PeriodTime,y=VolumetricRate,colour=Treatment))+
 ---
 
 .center[
-```{r,echo=FALSE,warning=FALSE}
+```{r,echo=FALSE,warning=FALSE,cache=TRUE}
 cow=subset(major,Treatment==1 | Treatment==0)
 cow1=ggplot(cow,aes(x=Day,y=Sr,colour=Treatment))+
 #  geom_rect(xmin=0,xmax=11,ymin=-25,ymax=25,fill="grey80",alpha=0.8,color="black",lwd=.5)+

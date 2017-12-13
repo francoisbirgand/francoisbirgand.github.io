@@ -9,10 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="François Birgand" />
 
 
-<title>Crash course on R markdown</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -409,21 +408,25 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Crash course on R markdown</h1>
-<h4 class="author"><em>François Birgand</em></h4>
 
 </div>
 
 
+<div id="crash-course-on-r-markdown" class="section level1">
+<h1>Crash course on R markdown</h1>
+<div id="by-francois-birgand" class="section level3">
+<h3><em>by François Birgand</em></h3>
 <div class="row">
 <div class="col-md-9">
-<em>started 2017-10-17 and updated 2017-12-11</em>
+<em>started 2017-10-17 and updated 2017-12-13</em>
 </div>
 <div class="col-md-3" align="right">
 <em><a href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd">code for this document</a></em>
 </div>
 </div>
 <p><br/></p>
+</div>
+</div>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
 <p>The research world (and eventually the teaching world as well) is moving very fast towards requiring <em>reproducible research</em><span class="citation"><sup><a href="#ref-Buckheit1995-ls">1</a>–<a href="#ref-Peng2011-og">6</a></sup></span>. “The ultimate product of academic research is the paper along with the laboratory notebooks and full computational environment used to produce the results in the paper such as the code, data, etc. that can be used to reproduce the results and create new work based on the research” (<a href="https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research">Wikipedia</a>).</p>
@@ -662,6 +665,20 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 <pre><code>This is to differentiate regular text from `code text` so that both can be easily differentiated: `R` vs R.</code></pre>
 <p>An entire paragraph of code which is rendered as a “code box” in html (but not in pdf) starts with three “back-ticks”, and end the same</p>
 <p><br/> <a id="link_ref"></a></p>
+</div>
+<div id="symbols-and-special-characters" class="section level3">
+<h3>Symbols and Special characters</h3>
+<p>The principal keys, like the alphabet, are understood univocally across platforms such as Windows, Mac OS, or Linux. However, there are special characters such °, ² or µ that have different embedded codes across the different platforms. For example, if you and your co-worker work on the same document and one works using Windows and the other uses Mac, the actual symbol in the code text may not show the same one from one to the other plateform.</p>
+<p>For example, if I write in an R markdown document “10 m²” and I have added the ² symbol by typing on a PC “Alt+0178”, as this corresponds to the ascii code for ² in Windows, the same document open on a Mac will render “10 m?”, because it cannot interpret the embedded code for ²…</p>
+<p>Several consequences:</p>
+<ol style="list-style-type: decimal">
+<li><strong>NEVER</strong> use special characters in variable names in an <code>R</code> code,</li>
+<li>in an R markdown document, use the HTML Number or HTML name in the text</li>
+</ol>
+<p><a href="https://www.ascii.cl/htmlcodes.htm">HTML Number and Names</a> can be found on this <a href="https://www.ascii.cl/htmlcodes.htm">ascii page</a></p>
+<p>So to type T°C, m² or µm you type like this</p>
+<pre><code>So to type T&amp;deg;C, m&amp;sup2; or &amp;micro;m you type like this</code></pre>
+<p>Do not forget to add the “;” !!! <br/><br/><br/></p>
 </div>
 <div id="absolute-links" class="section level3">
 <h3>Absolute Links</h3>
@@ -905,6 +922,7 @@ opts_chunk$set(echo=FALSE,
 <div id="more-chunk-options" class="section level4">
 <h4>More Chunk options</h4>
 <p>See [<a href="http://yihui.name/knitr/options/" class="uri">http://yihui.name/knitr/options/</a>] for a complete listing of possible chunk options.</p>
+<p><br/><br/><br/></p>
 </div>
 </div>
 </div>

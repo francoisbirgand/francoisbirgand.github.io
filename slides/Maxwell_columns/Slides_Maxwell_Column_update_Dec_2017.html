@@ -309,8 +309,8 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 
 --
 
-<div id="htmlwidget-8aca3a3345a6e9058421" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8aca3a3345a6e9058421">{"x":{"filter":"none","fillContainer":false,"data":[["Period 0","Period 1","Period 2","Period 3","Period 4","Period 5","Period 6","Period 7","Period 8","Period 9","Period 10","Period 11","Period 19","Period 20","Period 21","Period 22"],["8.670","20.815","25.644","25.135","24.019","17.252","15.541","17.004","22.409","17.402","13.390","18.484","12.273","12.354","11.230","14.550"],["8.940","21.053","24.045","21.708","19.020","14.441","13.287","13.565","16.468","12.943","9.967","13.709","8.624","8.676","7.887","8.138"],["-0.813 , 0.273","-0.909 , 0.433","0.865 , 2.332","2.940 , 3.914","4.213 , 5.785","2.374 , 3.247","1.882 , 2.626","2.922 , 3.957","5.052 , 6.830","3.726 , 5.193","2.699 , 4.147","4.068 , 5.482","3.441 , 3.859","3.464 , 3.892","3.123 , 3.562","6.012 , 6.813"],["0.330","0.487","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>DRW\nVol Rate\n(g N/m2/d)<\/th>\n      <th>SAT\nVol Rate\n(g N/m2/d)<\/th>\n      <th>Diff in Means\n(g N/m2/d)<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":3,"fontSize":"50%","order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[3,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3d1922aeab234eed7b3c" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3d1922aeab234eed7b3c">{"x":{"filter":"none","fillContainer":false,"data":[["Period 0","Period 1","Period 2","Period 3","Period 4","Period 5","Period 6","Period 7","Period 8","Period 9","Period 10","Period 11","Period 19","Period 20","Period 21","Period 22"],["8.670","20.815","25.644","25.135","24.019","17.252","15.541","17.004","22.409","17.402","13.390","18.484","12.273","12.354","11.230","14.550"],["8.940","21.053","24.045","21.708","19.020","14.441","13.287","13.565","16.468","12.943","9.967","13.709","8.624","8.676","7.887","8.138"],["-0.813 , 0.273","-0.909 , 0.433","0.865 , 2.332","2.940 , 3.914","4.213 , 5.785","2.374 , 3.247","1.882 , 2.626","2.922 , 3.957","5.052 , 6.830","3.726 , 5.193","2.699 , 4.147","4.068 , 5.482","3.441 , 3.859","3.464 , 3.892","3.123 , 3.562","6.012 , 6.813"],["0.330","0.487","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000","0.000"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>DRW\nVol Rate\n(g N/m2/d)<\/th>\n      <th>SAT\nVol Rate\n(g N/m2/d)<\/th>\n      <th>Diff in Means\n(g N/m2/d)<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":3,"fontSize":"50%","order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[3,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -322,19 +322,19 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 
 --
 
-- % difference between SAT and DRW grew over time. 
+- % difference between SAT and DRW grew over time
 
 --
 
-    - In Periods 2-4, mean removal rates were 6-24% higher in DRW columns, relative to SAT
+- In Periods 2-4, mean removal rates were 6-24% higher in DRW columns, relative to SAT
 
 --
 
-    - In Periods 19-21, DRW removal rates were greater by 42-43%. 
+- In Periods 19-21, DRW removal rates were greater by 42-43%
 
 --
 
-    - In Period 22 DRW removal rates were higher by 73-83% (however data was only collected during the first 3 days of Period 22 due to instrument error)
+- In Period 22 DRW removal rates were higher by 73-83% (however data was only collected during the first 3 days of Period 22 due to instrument error)
 
 ---
 
@@ -377,12 +377,32 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 
 ---
 
+## Management considerations
+
+--
+
+- Do DRW benefits overweigh the intermittent lack of removal?
+
+--
+
+- Taking into account the intermittent no removal periods in the overall bioreactor removal capacity, it is possible to calculate the overall removal enhancement as a function of DRW frequency
+
+--
+
+.center[
+&lt;div class="figure"&gt;
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-5-1.png" alt="Increases in total `\(NO_{3}\)` removed in DRW columns based on differences in daily means (red) and cumulative increased treatment (black) when considering untreated bypass while DRW columns were drained. The results indicate that increasing the DRW frequency to one drain every 2-3 days would provide the greatest overall improvement (~47%) in total nitrate removal." width="672" /&gt;
+&lt;p class="caption"&gt;Increases in total `\(NO_{3}\)` removed in DRW columns based on differences in daily means (red) and cumulative increased treatment (black) when considering untreated bypass while DRW columns were drained. The results indicate that increasing the DRW frequency to one drain every 2-3 days would provide the greatest overall improvement (~47%) in total nitrate removal.&lt;/p&gt;
+&lt;/div&gt;
+]
+---
+
 ## Spectrophotometer probe calibration
 
 
 
 &lt;div class="figure"&gt;
-&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-5-1.png" alt="Predicted vs. lab DOC " width="576" /&gt;
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-6-1.png" alt="Predicted vs. lab DOC " width="576" /&gt;
 &lt;p class="caption"&gt;Predicted vs. lab DOC &lt;/p&gt;
 &lt;/div&gt;
 
@@ -390,7 +410,7 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 ---
 
 &lt;div class="figure"&gt;
-&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-6-1.png" alt="Predicted vs. lab DOC values based on separate PLSR calibrations from manual samples collected on Days 14 and 29 (solid red points, Model 3, outliers removed) and Days 29, 40, and 45 (hollow black circles, Model 4, outliers removed). Solid lines indicate linear regressions when predicting DOC conc. based on fingerprints taken on the same lab samples with which the model was built; dashed lines indicate linear regression when predictions were made based on fingerprints taken during the alternate Model period." width="576" /&gt;
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-7-1.png" alt="Predicted vs. lab DOC values based on separate PLSR calibrations from manual samples collected on Days 14 and 29 (solid red points, Model 3, outliers removed) and Days 29, 40, and 45 (hollow black circles, Model 4, outliers removed). Solid lines indicate linear regressions when predicting DOC conc. based on fingerprints taken on the same lab samples with which the model was built; dashed lines indicate linear regression when predictions were made based on fingerprints taken during the alternate Model period." width="576" /&gt;
 &lt;p class="caption"&gt;Predicted vs. lab DOC values based on separate PLSR calibrations from manual samples collected on Days 14 and 29 (solid red points, Model 3, outliers removed) and Days 29, 40, and 45 (hollow black circles, Model 4, outliers removed). Solid lines indicate linear regressions when predicting DOC conc. based on fingerprints taken on the same lab samples with which the model was built; dashed lines indicate linear regression when predictions were made based on fingerprints taken during the alternate Model period.&lt;/p&gt;
 &lt;/div&gt;
 
@@ -398,7 +418,7 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 ## PLSR technique: DOC predicted from deep UV 
 
 &lt;div class="figure"&gt;
-&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-7-1.png" alt="Loadings plotted for Models 3 (red) &amp;amp; 4 (black). Y-axis values correspond to weighted loadings at each absorbance value. Dashed and solid lines indicate Components 1 &amp;amp; 2 of the model, respectively." width="576" /&gt;
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-8-1.png" alt="Loadings plotted for Models 3 (red) &amp;amp; 4 (black). Y-axis values correspond to weighted loadings at each absorbance value. Dashed and solid lines indicate Components 1 &amp;amp; 2 of the model, respectively." width="576" /&gt;
 &lt;p class="caption"&gt;Loadings plotted for Models 3 (red) &amp; 4 (black). Y-axis values correspond to weighted loadings at each absorbance value. Dashed and solid lines indicate Components 1 &amp; 2 of the model, respectively.&lt;/p&gt;
 &lt;/div&gt;
 
@@ -415,7 +435,7 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 
 .center[
 &lt;div class="figure"&gt;
-&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-8-1.png" alt="NO3 removal rates plotted against DOC leaching rates for Days 2-11 (A), Days 20-50 (B), Days 50-100 (C), and Days 147-172 (D). Color denotes treatment group (SAT or DRW) and separate trend lines are included for each group." width="672" /&gt;
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-9-1.png" alt="NO3 removal rates plotted against DOC leaching rates for Days 2-11 (A), Days 20-50 (B), Days 50-100 (C), and Days 147-172 (D). Color denotes treatment group (SAT or DRW) and separate trend lines are included for each group." width="672" /&gt;
 &lt;p class="caption"&gt;NO3 removal rates plotted against DOC leaching rates for Days 2-11 (A), Days 20-50 (B), Days 50-100 (C), and Days 147-172 (D). Color denotes treatment group (SAT or DRW) and separate trend lines are included for each group.&lt;/p&gt;
 &lt;/div&gt;
 ]
@@ -495,7 +515,7 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 ## `\(DOC_{eff}\)` as a function of time
 
 &lt;div class="figure"&gt;
-&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-9-1.png" alt="DOC use efficiency at each Period #. Period 0 was not included due to high values (&amp;gt;1000)." width="672" /&gt;
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-10-1.png" alt="DOC use efficiency at each Period #. Period 0 was not included due to high values (&amp;gt;1000)." width="672" /&gt;
 &lt;p class="caption"&gt;DOC use efficiency at each Period #. Period 0 was not included due to high values (&gt;1000).&lt;/p&gt;
 &lt;/div&gt;
 
@@ -504,7 +524,7 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 ## `\(R_{NO_{3}}\)` and `\(P_{DOC}\)` as a function of time
 
 &lt;div class="figure"&gt;
-&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-10-1.png" alt="DOC leaching and NO3 removal rates plotted against days since rewetting. In both cases rates decreased quickly within several days of rewetting." width="672" /&gt;
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-11-1.png" alt="DOC leaching and NO3 removal rates plotted against days since rewetting. In both cases rates decreased quickly within several days of rewetting." width="672" /&gt;
 &lt;p class="caption"&gt;DOC leaching and NO3 removal rates plotted against days since rewetting. In both cases rates decreased quickly within several days of rewetting.&lt;/p&gt;
 &lt;/div&gt;
 
@@ -569,7 +589,9 @@ While the woodchips were obtained from a field bioreactor, the water chemistry f
 
 ---
 
-&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-11-1.png" width="672" /&gt;
+.center[
+&lt;img src="Slides_Maxwell_Column_update_Dec_2017_files/figure-html/unnamed-chunk-12-1.png" width="672" /&gt;
+]
 
 `\(S_{r}\)` values and `\(S_{275-295}\)` for each treatment group over the experiment. Slope ratios appeared to exhibit distinct behavior during each period discussed previously, and `\(S_{275-295}\)` increased (or became less negative in slope) over the experiment. It is unclear whether or not negative `\(S_{r}\)` or positive `\(S_{275-295}\)` values have a practical meaning.
     </textarea>
