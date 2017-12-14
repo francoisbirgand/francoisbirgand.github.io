@@ -24,6 +24,7 @@ years <- unique(pres$Year)[order(unique(pres$Year),decreasing = TRUE)] #Get year
 for (year in years){#years
 
   tmp_pres <- pres[pres$Year == year,]
+  tmp_pres <- tmp_pres[order(tmp_pres$Date,decreasing = TRUE),]
     
   cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
 
@@ -48,7 +49,8 @@ years <- unique(poster$Year)[order(unique(poster$Year),decreasing = TRUE)] #Get 
 for (year in years){#years
 
   tmp_pres <- poster[poster$Year == year,]
-    
+  tmp_pres <- tmp_pres[order(tmp_pres$Date,decreasing = TRUE),]
+  
   cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
 
 for (i in 1:nrow(tmp_pres)){#line printing loop
