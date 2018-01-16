@@ -472,7 +472,7 @@ the last is in math mode, i.e., `$a$`).  The spacing between letters also follow
     + `\cdot` for $\cdot$
     + `\leq` and `\geq` for $\leq$ and $\geq$
     + `\subset` and `\subseteq` for $\subset$ and $\subseteq$
-    + `\leftarrow`, `\rightarrow`, `\Leftarrow`, `\Rightarrow` for $\leftarrow$, $\rightarrow$, $\Leftarrow$, $\Rightarrow$
+    + `\leftarrow`, `\rightarrow`, `\Leftarrow`, `\Rightarrow`, `\rightleftharpoons` for $\leftarrow$, $\rightarrow$, $\Leftarrow$, $\Rightarrow$, $\rightleftharpoons$
     + `\approx`, `\sim`, `\equiv` for $\approx$, $\sim$, $\equiv$
     + See, e.g., http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html for a fuller
 listing of available symbols.  (http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf lists _all_ symbols available in `LaTeX`, including many non-mathematical special chracters)

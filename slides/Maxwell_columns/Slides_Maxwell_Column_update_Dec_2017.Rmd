@@ -126,6 +126,14 @@ lay_out = function(...) {
 
 ---
 
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/TVlixMnTDhw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+---
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/vuD1cFtiSOI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+---
+
 ## Column setup
 
 .center[
@@ -148,6 +156,12 @@ lay_out = function(...) {
 .center[
 ![](Peristaltic_pump.png)
 ]
+
+---
+
+## Video of sensors used
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/3KBR_5Qb-RU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ---
 
@@ -191,6 +205,16 @@ lay_out = function(...) {
 
 ---
 
+## Videos of water sensing system
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/J_1XrY7EAgs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+---
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/J8yYHDz9Xzg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+---
+
 ## Gas measurements system
 
 .center[
@@ -206,6 +230,20 @@ lay_out = function(...) {
 ]
 
 ---
+
+## Videos of the gas measurement system
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/tOhs-3CloRo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+---
+
+## Videos of some of the CO2 measurements
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/-UJXoMwqPyA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+---
+
 ## Nitrate removal rates
 
 - Nitrate removal rates calculated as:
