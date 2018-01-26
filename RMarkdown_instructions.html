@@ -767,6 +767,23 @@ The caption will appear.</code></pre>
 
 &lt;/center&gt;</code></pre>
 <p>And you can see that adding <code>*__ __*</code> aound the caption text put the caption in bold and italic as well.</p>
+<p>To have an image linked to a particular website, you can use this code:</p>
+<pre><code>[![caption](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)</code></pre>
+<p><br/></p>
+<p>If you do that, however, the caption will not show any more, even though you have the proper number of lines before and after. If you want a caption below with a link, you will have to add this underneath. So if you want both the image and the caption to have clickable links, and centered like this</p>
+<center>
+<p><a href="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png"><img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" style="width:33.0%" /></a></p>
+<p><a href="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png">This is the corresponding clickable caption I want</a></p>
+</center>
+<p><br/></p>
+<p>you would write:</p>
+<pre><code>&lt;center&gt;
+
+[![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+[This is the corresponding clickable caption I want](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+&lt;/center&gt;</code></pre>
 <p><br/></p>
 </div>
 </div>

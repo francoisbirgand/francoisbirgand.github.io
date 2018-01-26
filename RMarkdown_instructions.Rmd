@@ -469,6 +469,38 @@ Now if you want to center **both figure and caption**, you need to add `<center>
 
 And you can see that adding `*__ __*` aound the caption text put the caption in bold and italic as well.
 
+To have an image linked to a particular website, you can use this code:
+
+```
+[![caption](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+```
+
+<br/>
+
+If you do that, however, the caption will not show any more, even though you have the proper number of lines before and after. If you want a caption below with a link, you will have to add this underneath. So if you want both the image and the caption to have clickable links, and centered like this
+
+<center>
+
+[![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+[This is the corresponding clickable caption I want](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+</center>
+
+<br/>
+
+you would write:
+
+```
+<center>
+
+[![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+[This is the corresponding clickable caption I want](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+</center>
+```
+
 
 <br/>
 
