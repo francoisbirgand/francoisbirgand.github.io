@@ -394,7 +394,7 @@ to render:
 
 ![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
 
-You can modify the width of the image by adding e.g., `{width = 50%} to have the image take 50% of the width of the page 
+You can modify the width of the image by adding e.g., `{width = 50%}` to have the image take 50% of the width of the page 
 
 ```
 ![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=50%}
@@ -416,9 +416,58 @@ to render:
 You can add a caption by just adding the "Using a caption this time" in the brackets.
 
 ![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
 ```
 ![Using a caption this time ](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
 ```
+
+Now, you can add an image in the text like this ![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%} and it will work just fine. 
+
+```
+Now, you can add an image in the text like this ![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%} and it will work just fine. 
+```
+
+However, you can see that the caption was not added. So for the caption to be added, there needs to be a return before and after the image code. If you include the image like this  
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}  
+The caption does not appear.
+
+```
+However, you can see that the caption was not added. So for the caption to be added, there needs to be a return before and after the image code. If you include the image like this
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}  
+The caption does not appear.
+```
+
+But if you leave a blank line before and after like this 
+
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+The caption will appear.
+
+```
+But if you leave a blank line before and after like this 
+
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+The caption will appear.
+```
+
+Now if you want to center **both figure and caption**, you need to add `<center>` a blank line, the image code, a blank line, then `</center>`, and it will appear like this:
+
+<center>
+
+![*__Using a caption this time__*](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+</center>
+
+```
+<center>
+
+![*__Using a caption this time__*](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+</center>
+```
+
+And you can see that adding `*__ __*` aound the caption text put the caption in bold and italic as well.
 
 
 <br/>

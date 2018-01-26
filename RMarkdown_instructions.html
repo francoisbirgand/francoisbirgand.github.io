@@ -718,7 +718,7 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 <img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" />
 
 </div>
-<p>You can modify the width of the image by adding e.g., `{width = 50%} to have the image take 50% of the width of the page</p>
+<p>You can modify the width of the image by adding e.g., <code>{width = 50%}</code> to have the image take 50% of the width of the page</p>
 <pre><code>![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=50%}</code></pre>
 <p>to render:</p>
 <p><img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" style="width:50.0%" /> <br/></p>
@@ -735,6 +735,38 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 <p class="caption">Using a caption this time</p>
 </div>
 <pre><code>![Using a caption this time ](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}</code></pre>
+<p>Now, you can add an image in the text like this <img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" /> and it will work just fine.</p>
+<pre><code>Now, you can add an image in the text like this ![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%} and it will work just fine. </code></pre>
+<p>However, you can see that the caption was not added. So for the caption to be added, there needs to be a return before and after the image code. If you include the image like this<br />
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" /><br />
+The caption does not appear.</p>
+<pre><code>However, you can see that the caption was not added. So for the caption to be added, there needs to be a return before and after the image code. If you include the image like this
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}  
+The caption does not appear.</code></pre>
+<p>But if you leave a blank line before and after like this</p>
+<div class="figure">
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" />
+<p class="caption">Using a caption this time</p>
+</div>
+<p>The caption will appear.</p>
+<pre><code>But if you leave a blank line before and after like this 
+
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+The caption will appear.</code></pre>
+<p>Now if you want to center <strong>both figure and caption</strong>, you need to add <code>&lt;center&gt;</code> a blank line, the image code, a blank line, then <code>&lt;/center&gt;</code>, and it will appear like this:</p>
+<center>
+<div class="figure">
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" />
+<p class="caption"><em><strong>Using a caption this time</strong></em></p>
+</div>
+</center>
+<pre><code>&lt;center&gt;
+
+![*__Using a caption this time__*](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+&lt;/center&gt;</code></pre>
+<p>And you can see that adding <code>*__ __*</code> aound the caption text put the caption in bold and italic as well.</p>
 <p><br/></p>
 </div>
 </div>
