@@ -354,7 +354,7 @@ Do not forget to add the ";" !!!
 ```
 a link within the text as a [link](www.rstudio.com)
 ```
-a link within the text as a [link](www.rstudio.com).
+a link within the text as a [link](www.rstudio.com). Absolute links to images, see [Images](#images) below.
 
 <br/>
 
