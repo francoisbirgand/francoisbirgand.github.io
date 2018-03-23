@@ -68,7 +68,7 @@ We are proponents of this technical revolution and we aim to address :
 <div class = "col-md-8">
 # Biography
 
-I am an Associate Professor of Hydrology and Ecological Engineering in the Department of Biological and Agricultural Engineering at North Carolina State University in Raleigh, NC, USA. I direct the Biogeochemistry and Ecological Engineering Water lab where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors.  
+I am an Associate Professor and University Faculty Scholar of Hydrology and Ecological Engineering in the Department of Biological and Agricultural Engineering at North Carolina State University in Raleigh, NC, USA. I direct the Biogeochemistry and Ecological Engineering Water lab where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors.  
 <br/>
 Prior to my tenure at NC State, I worked as an engineering researcher at Cemagref in France (now Irstea) where I played an active role in maintaining longterm environmental observatories. Much of our current research methods are rooted in the metrology of flow and water quality in small catchments (< ~200 km²).
   
