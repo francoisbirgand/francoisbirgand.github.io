@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publications
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="people.html">People</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fa fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fa fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fa fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fa fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fa fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fa fa-map-marker"></span>
+         
+        148 Weaver
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="crash-course-on-r-markdown" class="section level1">
+<h1>Crash course on R markdown</h1>
+<div id="by-francois-birgand" class="section level3">
+<h3><em>by François Birgand</em></h3>
+<div class="row">
+<div class="col-md-9">
+<em>started 2017-10-17 and updated 2018-06-26</em>
+</div>
+<div class="col-md-3" align="right">
+<em><a href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd">code for this document</a></em>
+</div>
+</div>
+<p><br/></p>
+</div>
+</div>
+<div id="overview" class="section level1">
+<h1>Overview</h1>
+<p>The research world (and eventually the teaching world as well) is moving very fast towards requiring <em>reproducible research</em><span class="citation"><sup><a href="#ref-Buckheit1995-ls">1</a>–<a href="#ref-Peng2011-og">6</a></sup></span>. “The ultimate product of academic research is the paper along with the laboratory notebooks and full computational environment used to produce the results in the paper such as the code, data, etc. that can be used to reproduce the results and create new work based on the research” (<a href="https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research">Wikipedia</a>).</p>
+<p>The consequences are that we should change our habits and certainly start preparing all our manuscripts, presentations, homework, etc., in a format that is clean and <em>reproducible</em>, i.e., if you give anyone the code, this person can reproduce the document exactly. This document seeks to make this transition somewhat easier using R Markdown.</p>
+<p><br/></p>
+</div>
+<div id="what-is-the-markdown-language" class="section level1">
+<h1>What is the Markdown language?</h1>
+<p>I borrow much of the very good text from <a href="http://www.stat.cmu.edu/~cshalizi/rmarkdown/">Dr Shalizi</a> from Carnegie Mellon University about Mark-up and Markdown.</p>
+<p>Many word processing programs, like Microsoft Word, employ the “what you see is what you get” (WYSIWYG) principle: you want some words to be printed in italics? You select/highlight the words or phrase, do ctrl-I or click Italic, and they’re in italics right there on the screen. You want some words to be in a bigger, different font, so you just select the font, and so on. This works well enough for the vast majority of things that are still currently done but is not a reproducible basis for a system of text formatting, because it depends on a particular program (a) knowing what you mean and (b) implementing it well.</p>
+<blockquote>
+<p>For several decades, really serious systems for writing have been based on a very different principle, that of <em>marking up</em> text. The essential idea in a <strong>mark-up language</strong> is that it consists of ordinary text, <em>plus</em> signs which indicate how to change the formatting or meaning of the text. Some mark-up languages, like HTML (Hyper-Text Markup Language) use very obtrusive markup; others, like the language called <strong>Markdown</strong>, are more subtle.</p>
+</blockquote>
+<p>Obviously, there has been a play-on-word between Mark-up and Markdown…!</p>
+<p>Much of the content of the paragraphs above looks like this in HTML:</p>
+<pre><code>&lt;div id=&quot;what-is-the-markdown-language&quot; class=&quot;section level2&quot;&gt;
+&lt;h2&gt;What is the Markdown language?&lt;/h2&gt;
+&lt;p&gt;I borrow ... from &lt;a href=&quot;http://www.stat.cmu.edu/~cshalizi/rmarkdown/&quot;&gt;Dr Shalizi&lt;/a&gt; from ...&lt;/p&gt;
+&lt;p&gt;Many ...that of &lt;em&gt;marking up&lt;/em&gt; text. The essential idea in a &lt;strong&gt;mark-up language&lt;/strong&gt; is that it consists of ordinary text, &lt;em&gt;plus&lt;/em&gt; signs which indicate how to change the formatting or meaning of the text. Some mark-up languages, like HTML (Hyper-Text Markup Language) use very obtrusive markup; others, like the language called &lt;strong&gt;Markdown&lt;/strong&gt;, are more subtle.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p>and like this in Markdown:</p>
+<pre><code>## What is the Markdown language?
+I borrow ... from [Dr Shalizi](http://www.stat.cmu.edu/~cshalizi/rmarkdown/) from ...
+Many ... that of _marking up_ text.  The essential idea in a **mark-up language** is that it consists of ordinary text, _plus_ signs which indicate how to change the formatting or meaning of the text.  Some mark-up languages, like HTML (Hyper-Text Markup Language) use very obtrusive markup; others, like the language called **Markdown**, are more subtle.</code></pre>
+<blockquote>
+<p>Every mark-up language needs to be <strong>rendered</strong> somehow into a format which actually includes the fancy formatting, images, mathematics, computer code, etc., etc., specified by the mark-up. For HTML, the rendering program is called a “web browser”. Most computers which know how to work with Markdown at all know how to render it as HTML (which you can then view in a browser), PDF (which you can then view in Acrobat or the like), or Word (which you can then view in Microsoft Word).</p>
+</blockquote>
+<blockquote>
+<p>The advantages of mark-up languages are many: they tend to be more portable across machines, less beholden to particular software companies, and more stable over time than WYSIWYG word processing programs. R Markdown is, in particular, both “free as in beer” (you will never pay a dollar for software to use it) and “free as in speech” (the specification is completely open to all to inspect). The sheer stability of mark-up languages makes them superior for scientific documents.</p>
+</blockquote>
+<p><a href="http://daringfireball.net/projects/markdown/basics"><strong>Markdown</strong></a> is thus a simple <em>mark-up language</em> with the goal of enabling people “to write using an easy-to-read, easy-to-write plain text format, and optionally convert it to structurally valid XHTML (or HTML)” <a href="https://en.wikipedia.org/wiki/Markdown">(wikipedia)</a>. OK, so imagine that this is a writing language that is very close to plain text, where the most useful alteration of text or <em>mark-up</em> (headings, bold, italic, web references, etc.) are simpler than the html codes. I encourage you to read the <a href="https://en.wikipedia.org/wiki/Markdown">wikipedia definition</a> of Markdown to have more details of why and how it came about.</p>
+<p><br/></p>
+</div>
+<div id="the-r-twist-of-markdown-r-markdown" class="section level1">
+<h1>The ‘R twist’ of Markdown: R Markdown</h1>
+<p>Now the beauty of Markdown is that some very smart people have thought that one could in fact embed R codes, within the text, such that in the end, a document could contain all the text and code to create figures and tables. Other, just as smart people, have thought that one could use all the beauty of the <a href="https://en.wikipedia.org/wiki/LaTeX">LaTeX</a>, particularly for editing equations. They have also added the possibility to add citations, bibliography. All this to say that they have added all the features that students/researchers need and have dreamt about for a while!</p>
+<p>So the ‘R twist’ to Markdown is called ‘R Markdown’. One of the hidden beauties is that R Mardown uses <a href="https://pandoc.org/MANUAL.html">Pandoc</a>, which is a universal document converter, to <em>render</em> the text. The result is that you and I will now write in R Markdown and will have the possibility of publishing what we have written in many output formats, which include among many others HTML, pdf, and Word. This is one of the major advantages compared to LaTeX, which can only produce pdf documents.</p>
+<p><br/></p>
+</div>
+<div id="r-markdown-in-r-studio" class="section level1">
+<h1>R Markdown in R Studio</h1>
+<p>I have had a very low opinion of <a href="https://www.rstudio.com/">R studio</a> until very recently because I never liked the text editor, I always thought (still do in fact…!) that on a normal screen, things were just too cramped. <em>But</em>, I must say that I have come to change my mind, principally thanks to the possibilities that R Markdown offers, and because R Mardown is hosted in <a href="https://en.wikipedia.org/wiki/RStudio">R studio</a>.</p>
+<p>The goal of this document is thus to introduce you to R Markdown and the things you need to get to know quickly for authoring HTML, PDF, MS Word documents, but also many other interesting outputs. All the details on using R Markdown can be found at <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>. I encourage you to browse the <a href="http://rmarkdown.rstudio.com/gallery.html">gallery</a> and then spend time to get familiarized on what can be done with it on the <a href="http://rmarkdown.rstudio.com/lesson-1.html">step by step tutorial</a>.</p>
+<p>I still think that there is nothing like playing with examples to make sense of things. I assume that you have now browsed through the guide reference and you have installed the <code>rmarkdown and knitr</code> packages in RStudio. If not, in the console, type <code>install.packages(&quot;rmarkdown&quot;,&quot;knitr&quot;)</code>. First, you want to open a <code>Rmd</code> document. Go to <code>File -&gt; New File -&gt; R Markdown...</code> and click OK with the default variables. Click the <code>Knit</code> button just above the window where the document just appeared. Another ‘Choose Encoding’ pop-up window will appear, click OK with the default values. The system will ask you where you want to save this document and under what name. Then, an html preview pop-up window should appear where there is headings, text, hyperlinks, results from some <code>R commands</code> and a simple plot. OK, time to look at the <code>.Rmd</code> file content.</p>
+<p><br/></p>
+</div>
+<div id="components-of-r-markdown" class="section level1">
+<h1>Components of R Markdown</h1>
+<p>There are three components to an R Mardown document (.Rmd):</p>
+<ol style="list-style-type: decimal">
+<li><strong>YAML header</strong></li>
+<li><strong>Text</strong></li>
+<li><strong>Code chunks</strong></li>
+</ol>
+<p>After you are done reading this document, you will want to be able to find a <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">reference summary of R markdown here</a>.</p>
+<ul>
+<li>YAML header: The header of the document starts with a <a href="https://en.wikipedia.org/wiki/YAML">YAML</a> which acronym started as “Yet Another Markup Language” and now apparently stands for “YAML Ain’t Markup Language”… The YAML Header specifies how the document will be formatted.</li>
+<li>Text: most of your writing will be done using plain text, very much like you have been doing with Word, with mark-up alterations. Many details on mark-up are in the <a href="#text">section devoted to text below</a>. Spell check can be done using
+<ul>
+<li>A spell check button to the right of the save button (with “ABC” and a check mark).</li>
+<li>Edit &gt; Check Spelling…</li>
+<li>The F7 key</li>
+</ul></li>
+<li>Code Chunks: This is where you will add the actual <code>R</code> code that will create tables and figures. The details are in the <a href="#code-chunks">section devoted to Code Chunks below</a></li>
+</ul>
+<hr />
+<p><br/></p>
+<div id="yaml-header" class="section level2">
+<h2>YAML header</h2>
+<p>The header of the document starts with a <a href="https://en.wikipedia.org/wiki/YAML">YAML</a> which acronym started as “Yet Another Markup Language” and now apparently stands for “YAML Ain’t Markup Language”… The YAML Header specifies how the document will be formatted. For example, in this case, we have specified that the output will be an HTML document. Yours should look very close to something like this:</p>
+<pre><code>---
+title: &quot;Untitled&quot;
+author: &quot;François Birgand&quot;
+date: &quot;12/10/2017&quot;
+output: html_document
+---</code></pre>
+<p>The <code>title</code> will appear as your title document. It is unrelated to the name of your file. If you are writing a paper, this will be the title of your paper.</p>
+<p>The <code>author</code> will appear when you render or ‘knit’ your document under the title and introduced by a “by”… The <code>date</code> corresponds to the initial date of creation. If you want to use the date at the time you <code>knit</code> the document, you may consider putting an inline code (<a href="#code-chunks">details below</a>) such as <code>`r format(Sys.Date() `%d %B %Y`)`</code>. <br/></p>
+<div id="output-document-in-yaml" class="section level3">
+<h3>Output document in YAML</h3>
+<p>You can change the <code>output: html_document</code>, to <code>output: github_document</code>, to <code>output: word_document</code>, to <code>output: pdf_document</code>. If you are having trouble with the <code>pdf_document</code> output, this means that the LaTeX<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> engine is not installed on your computer. For this I am borrowing instructions from <a href="https://rpubs.com/rcourse998/module6-rmarkdown">here</a> where they suggest these links:</p>
+<ul>
+<li>For Windows: Go to <a href="https://miktex.org/howto/install-miktex" class="uri">https://miktex.org/howto/install-miktex</a> and follow directions to install MikTex.</li>
+<li>For Mac: Go to <a href="https://tug.org/mactex/mactex-download.html" class="uri">https://tug.org/mactex/mactex-download.html</a> and follow directions to install MacTex.</li>
+</ul>
+<p>In the YAML, one puts some broad instructions on how <a href="https://pandoc.org/MANUAL.html">Pandoc</a> needs to interpret the document, one big information being the <code>output</code>. You can see right away that with just one document, you can create at least 4 different documents. when you typed <code>output: github_document</code>, there was an html preview that popped-up, but in the background, a <code>*.md</code> file was created. This <code>*.md*</code> file is interpreted by GitHub to render the document within the GitHub environment. If you try to click on a <code>*.html</code> file that is hosted on GitHub, only code will appear, and not the rendered html document.</p>
+<p><br/></p>
+</div>
+<div id="table-of-content" class="section level3">
+<h3>Table Of Content</h3>
+<p>R markdown provides the possibility of Table Of Content or <code>toc</code> that you put as a variable in the <code>YAML</code> part of the R Markdown. The <code>toc</code> will appear at the head of the document and will give you links to all the heading levels you have created. This is very useful to quickly give you an outline of your document and allows you to get directly to the section of your choice. The YAML of this document is</p>
+<pre><code>---
+title: &quot;Crash course on R Markdown&quot;
+author: &quot;François Birgand&quot;
+date: &quot;09/10/2017&quot;
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+bibliography: RMD_course_bibtex.bibtex
+link-citations: true
+csl: journal-of-hydrology.csl
+---</code></pre>
+<p>Notice that the <code>html_document</code> has now been put on another line for organization purposes, but also note that a <code>:</code> has been added at the end of <code>html_document:</code>. This tells <a href="https://pandoc.org/MANUAL.html">Pandoc</a> that among the <code>html_document</code>, a <code>toc</code> should be added.</p>
+<p><br/></p>
+</div>
+<div id="bibliography" class="section level3">
+<h3>Bibliography</h3>
+<p>I have created and maintained for over 15 years a database written in Microsoft Access of around 2000 articles, most of them photocopied and typed in the database by hand during and after my Ph.D. (yes, I should have a medal!…) but I have to admit that this system is past its time… I have now switched to Paperpile. There are many other referencing software out there now (<a href="https://en.wikipedia.org/wiki/Comparison_of_reference_management_software">a list and comparison can be found here</a>). The beauty of them is that they will all export in recognized formats and this is what we care about here. So no more copy/paste of references from some pdf. We are going into <em>reproducible research</em>. This means that all the articles you want to work with will be entered in the reference database of your choice. Make sure you start one ASAP!</p>
+<p>In the YAML header, you can now see <code>bibliography: RMD_course_bibtex.bibtex</code>. This means that there is a file named <code>RMD_course_bibtex.bibtex</code> that is located in the same directory as the .Rmd file, which when we ‘knit’, <a href="https://pandoc.org/MANUAL.html">Pandoc</a> will look for. You can access this <code>.bibtex</code> file in the GitHub directory. There is actually a possibility to add within the <code>.Rmd</code> document itself, the text needed for Pandoc to read the references, but unless you only have very few references, this can become very messy quickly. See the <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies">RStudio Bibliographies documentation</a> for more details.</p>
+<p>In short, in this file, there is a list of articles which information is coded according to the format chosen. By the way, a lot of the details for the bibliography are available on the <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies">RStudio Bibliographies documentation</a>. R Markdown will recognize up to 10 different formats. The one Paperpile exports is <code>.bibtex</code>, so this is the one I have have added in the YAML header. The filename extension will determine the <em>rendering</em> process, so make sure you have the right extension as well.</p>
+<p>So, in the <code>.bibtex</code> file I have, the first article appears as</p>
+<pre><code>@ARTICLE{Kuhne2009-tn,
+  title   = &quot;Improving the Traditional Information Management in Natural
+  Sciences&quot;,
+  author  = &quot;K{\&quot;u}hne, Martin and Liehr, Andreas W&quot;,
+  journal = &quot;Data Sci. J.&quot;,
+  volume  =  8,
+  pages   = &quot;18--26&quot;,
+  year    =  2009,
+  issn    = &quot;1683-1470, 0308-9541&quot;,
+  doi     = &quot;10.2481/dsj.8.18&quot;
+}</code></pre>
+<p>The first item after “ARTICLE{” is the unique identifier for the article. The identifier of this article is <code>Kuhne2009-tn</code>. When one wants to cite this article, one will say something like “reproducible research has been suggested to become the norm<span class="citation"><sup><a href="#ref-Kuhne2009-tn">2</a></sup></span>”. And you would code like</p>
+<pre><code>&quot;reproducible research has been suggested to become the norm [@Kuhne2009-tn]&quot;</code></pre>
+<p>If you want to say that “Kühne et al.<span class="citation"><sup><a href="#ref-Kuhne2009-tn">2</a></sup></span> have shown that etc.”, you would add a “dash” just before the “@” and code it as such:</p>
+<pre><code>Kühne et al. [-@Kuhne2009-tn] have shown that etc.&quot;</code></pre>
+<p>If you want to cite several references, you would add a semicolon between the two such as in:</p>
+<pre><code>&quot;reproducible research has been suggested to become the norm [@Kuhne2009-tn; @Buckheit1995-ls]&quot;</code></pre>
+<p>Notice that among all the fields from the example above, there are <code>doi</code> and <code>issn</code>. <code>doi</code> stands for “Digital Object Identifier”. <code>issn</code> stands for International Standard Serial Number (ISSN), which is an eight-digit serial number used to uniquely identify a serial publication. The <code>doi</code> value in this example is <code>10.2481/dsj.8.18</code>, which is unique in the world. These <code>doi</code> are applied to articles but not only. They are also applied to data. Eventually, all data that will be used in an article will have to have its own <code>doi</code> and all the codes that are used to analyze the data will refer to this unique <code>doi</code>. This is not quite implemented yet (in 2017), but will likely be by 2022. <code>doi</code> or <code>url</code> (not added here; stands for Uniform Resource Locator. Quite a mouthful, really, for what it is: a web address) are not necessarily exported from your reference software by default. Make sure you add this possibility, as <code>doi</code> is almost routinely added in the reference list in most journals.</p>
+<p><br/></p>
+<p>The reference list of the citations will appear right after you place</p>
+<pre><code># References</code></pre>
+<p>at the bottom of your Rmd docucment. When rendering your document, the list will appear automatically afterwards, and if you have in text notes, these will appear underneath.</p>
+<p><br/></p>
+</div>
+<div id="link-to-citations" class="section level3">
+<h3>Link to citations</h3>
+<p>One very nice feature is to create hyperlinks from the in-text citations to the citations in the reference section. For this, just add <code>link-citations: true</code> in the YAML header.</p>
+<p><br/></p>
+</div>
+<div id="csl-and-styling-of-citations" class="section level3">
+<h3>CSL and styling of citations</h3>
+<p>CSL stands for Citation Style Language. The CSL line command is an option for the citation styles to be used in your document. You can comment it out by adding a “#” in front of it and the default .CSL file will apply without you noticing it. Each journal has its own way of handling how an article/reference should be cited in the text, and in the reference section, and there are hundreds of different styles out there… You can read lots of details on this <a href="http://docs.citationstyles.org/en/stable/primer.html">CSL primer</a> about how all this works.</p>
+<p>While I was writing this tutorial, I did not specify at first the citation style. And I kept getting, using the same example as before, “(Kühne and Liehr 2009)”, although I wanted “(Kühne and Liehr, 2009)”, i.e., with a comma between the authors and the date, because this is the way I always did it and I think it is a lot better this way. Then I started thinking about the journals for which the inline citations are numbers, sometimes in brackets, sometimes without brackets… what a nightmare…! Actually it is extremely simple: all this is done automatically when you specify the CSL corresponding to the journal style following which you wish to write.</p>
+<p>For this, you can pick at <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a> the *.CSL file you are looking for (actually there are too many of them and they are not all displayed). The fastest way is to Google “<journal name> CSL”, and you will land on the CSL file you are looking for. I recommend that you click on the <code>raw</code> icon on GitHub, and copy all the file in a text editor. Warning! You need to make sure that your text editor does not add any weird formatting or add an extension at the end of the file. I had that problem and I could not see the extension on my computer, although I had the option to display so. Save the file in the same directory as your .Rmd.</p>
+<p>So, to go back with my struggling to style the inline citation and the “missing comma”, it turns out that the default CSL file uses a “<a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles">Chicago author-date format</a>” (I am not sure what this means exactly), which in text styling is “(author date)”, without the comma…! If you use “journal-of-hydrology.CSL”, you will see that all of a sudden after you <code>knit</code>, the commas just appeared…! Eureka! If you use “nature.CSL” (because we all want to be ready when we publish in Nature!), you will see that there are no more in-line citations, just numbers in superscript, hyphenated when needed, and the references are all in order, with the journal names in italics, the journal volume in bold, the year in parenthesis at the end, etc.! Is not that wonderful? Without your doing anything, other than adding the citation properly in the text following the guidelines above.</p>
+<p>You can, if you want and have a lot of time to waste, take existing CSL files and modify them to have your own custom citation style. Make sure you take an “independent” CSL file and modify it. Most of them are dependent upon a “source” or independent one, and the code in the CSL file is just saying how the dependent file should slightly alter the independent one. Good instructions on how to do this can be found on the excellent <a href="http://docs.citationstyles.org/en/stable/primer.html">CSL primer</a>.</p>
+<p><br/></p>
+</div>
+</div>
+<div id="text" class="section level2">
+<h2>Text</h2>
+<p>The markdown syntax is very simple and this is one of the reasons why it is so attractive. You can find all the syntax with <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">this R Markdown reference document</a>, but I thought I would go through them as I have learned several tricks I could not easily find in the document.</p>
+<p><br/></p>
+<div id="paragraph-breaks-and-forced-line-breaks" class="section level3">
+<h3>Paragraph Breaks and Forced Line Breaks</h3>
+<p>To insert a break between paragraphs, include a single completely blank line.</p>
+<p>To force a line break, put <em>two</em> blank spaces at the end of a line.</p>
+<pre><code>To insert a break between paragraphs, include a single completely blank line.
+
+To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
+<p><br/></p>
+</div>
+<div id="headers" class="section level3">
+<h3>Headers</h3>
+<p>The character <code>#</code> at the beginning of a line means that the rest of the line is interpreted as a section header. The number of <code>#</code>s at the beginning of the line indicates the level of the section (1,2,3, etc.). For instance, <code>Components of R Markdown</code> above is preceded by a single <code>#</code>, because it is of level 1 but <code>Headers</code> at the start of this paragraph is preceded by <code>###</code> because it is of level 3. Up to six levels are understood by Markdown. Do not interrupt these headers by line-breaks. Make sure that in your .Rmd file, you leave a blank line before a header, otherwise, <code>pandoc</code> will not render it as a header.</p>
+<p><br/></p>
+</div>
+<div id="italics-and-bold" class="section level3">
+<h3>Italics and bold</h3>
+<pre><code>*italics* and _italics_</code></pre>
+<p>renders <em>italics</em> and <em>italics</em></p>
+<pre><code>**bold** and __bold__</code></pre>
+<p>renders <strong>bold</strong> and <strong>bold</strong></p>
+<p><br/></p>
+</div>
+<div id="supbscripts-and-superscripts" class="section level3">
+<h3>Supbscripts and superscripts</h3>
+<p>To write sub- and superscripts, like in NO<sub>3</sub><sup>-</sup> or PO<sub>4</sub><sup>3-</sup> write as</p>
+<pre><code>NO~3~^-^ or PO~4~^3-^</code></pre>
+<p>PO<sub>4</sub><sup>3-</sup> does not look as neat as <span class="math inline">\(PO_4^{3-}\)</span></p>
+<pre><code>PO~4~^3-^ does not look as neat as $PO_4^{3-}$</code></pre>
+<p>but looks more seamless in a normal text because the former does not appear as an <a href="#inline-equations">equation</a> while the other does.</p>
+<p><br/></p>
+</div>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
+<pre><code>* unordered list
+* item 2
+    + sub-item 1                #4 &lt;spaces&gt; before +
+    + sub-item 2                #4 &lt;spaces&gt; before +</code></pre>
+<ul>
+<li>unordered list</li>
+<li>item 2
+<ul>
+<li>sub-item 1</li>
+<li>sub-item 2</li>
+</ul></li>
+</ul>
+<pre><code>1. ordered list
+2. item 2
+    + sub-item 1                #4 &lt;spaces&gt; before +
+    + sub-item 2                #4 &lt;spaces&gt; before +</code></pre>
+<ol style="list-style-type: decimal">
+<li>ordered list</li>
+<li>item 2
+<ul>
+<li>sub-item 1</li>
+<li>sub-item 2</li>
+</ul></li>
+</ol>
+<p>In the ordered list, there is a subtlety unrevealed in the Rmardown documentation, which is that the numbering <em>always</em> increases, and that <em>only</em> the number value of the first item matters. So, one cannot have a list in a decreasing order (which is too bad because when one makes a list of his/her publications, it is nice to have a decreasing order…), and the only number that matters is the first one. So this code <br/></p>
+<pre><code>5. ordered list
+7. item 2
+2. item 2
+                                # blank line for list to take into effect
+    b. sub-item 1               #4 &lt;spaces&gt; before b
+    a. sub-item 2  </code></pre>
+<p><br/> renders this:</p>
+<ol start="5" style="list-style-type: decimal">
+<li>ordered list</li>
+<li>item 2</li>
+<li><p>item 2</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>sub-item 1<br />
+</li>
+<li>sub-item 2</li>
+</ol></li>
+</ol>
+<p><br/></p>
+</div>
+<div id="quotations" class="section level3">
+<h3>Quotations</h3>
+<blockquote>
+<p>R Markdown is, in particular, both “free as in beer” (you will never pay a dollar for software to use it) and “free as in speech” (the specification is completely open to all to inspect).</p>
+</blockquote>
+<p>Is a quotation from <a href="http://www.stat.cmu.edu/~cshalizi/rmarkdown/">Dr Shalizi</a> which code starts with a <code>&gt;</code></p>
+<pre><code>&gt; R Markdown is, in particular, both &quot;free as in beer&quot; etc.</code></pre>
+<p><br/></p>
+</div>
+<div id="computer-type" class="section level3">
+<h3>Computer type</h3>
+<p>This is to differentiate regular text from <code>code text</code> so that both can be easily differentiated: <code>R</code> vs R.</p>
+<pre><code>This is to differentiate regular text from `code text` so that both can be easily differentiated: `R` vs R.</code></pre>
+<p>An entire paragraph of code which is rendered as a “code box” in html (but not in pdf) starts with three “back-ticks”, and end the same</p>
+<p><br/> <a id="link_ref"></a></p>
+</div>
+<div id="symbols-and-special-characters" class="section level3">
+<h3>Symbols and Special characters</h3>
+<p>The principal keys, like the alphabet, are understood univocally across platforms such as Windows, Mac OS, or Linux. However, there are special characters such °, ² or µ that have different embedded codes across the different platforms. For example, if you and your co-worker work on the same document and one works using Windows and the other uses Mac, the actual symbol in the code text may not show the same one from one to the other plateform.</p>
+<p>For example, if I write in an R markdown document “10 m²” and I have added the ² symbol by typing on a PC “Alt+0178”, as this corresponds to the ascii code for ² in Windows, the same document open on a Mac will render “10 m?”, because it cannot interpret the embedded code for ²…</p>
+<p>Several consequences:</p>
+<ol style="list-style-type: decimal">
+<li><strong>NEVER</strong> use special characters in variable names in an <code>R</code> code,</li>
+<li>in an R markdown document, use the HTML Number or HTML name in the text</li>
+</ol>
+<p><a href="https://www.ascii.cl/htmlcodes.htm">HTML Number and Names</a> can be found on this <a href="https://www.ascii.cl/htmlcodes.htm">ascii page</a></p>
+<p>So to type T°C, m² or µm you type like this</p>
+<pre><code>So to type T&amp;deg;C, m&amp;sup2; or &amp;micro;m you type like this</code></pre>
+<p>Do not forget to add the “;” !!! <br/><br/><br/></p>
+</div>
+<div id="absolute-links" class="section level3">
+<h3>Absolute Links</h3>
+<pre><code>a link within the text as a [link](www.rstudio.com)</code></pre>
+<p>a link within the text as a <a href="www.rstudio.com">link</a>. Absolute links to images, see <a href="#images">Images</a> below.</p>
+<p><br/></p>
+</div>
+<div id="links-within-the-document" class="section level3">
+<h3>Links within the document</h3>
+<div id="linking-to-a-heading" class="section level4">
+<h4>Linking to a heading</h4>
+<p>If you want to provide a link (other than the Table Of Content at the beginning of the document) to an existing heading like <a href="#the-r-twist-of-markdown-r-markdown">The ‘R twist’ of Markdown: R Markdown</a>, you type it as below</p>
+<pre><code>If you want to provide a link back to an existing heading like [The &#39;R twist&#39; of Mardown: R Markdown](#the-r-twist-of-markdown-r-markdown), you type it as below</code></pre>
+<p>It provides a link using the regular <code>[text](*address of text*)</code> syntax for a link. Now, this time the <code>*address of text*</code> is not an absolute address as shown in the <a href="#link_ref">link example</a>, but rather a relative one which has a format like <code>(#...)</code>. Mardown took the name of the heading <code>The 'R twist' of Markdown: R Markdown</code> and created for each heading what it referred to as a <code>&lt;div&gt;</code> in HTML and it gave it an identity or <code>id</code>, and for this example here, it gave in HTML code <code>&lt;div id=&quot;the-r-twist-of-markdown-r-markdown&quot; class=&quot;section level1&quot;&gt;</code>. It is important to notice that the original text of the heading <code>&quot;The 'R twist' of Markdown: R Markdown&quot;</code> is transformed into <code>&quot;the-r-twist-of-markdown-r-markdown&quot;</code> where all signs have been removed, spaces replaced by a <code>&quot;-&quot;</code>, and all characters are in lower case.</p>
+<p><br/></p>
+</div>
+<div id="linking-to-anywhere-in-the-document" class="section level4">
+<h4>Linking to anywhere in the document</h4>
+<p>There is, to my knowledge, no native way of doing this in Markdown. One must borrow some HTML code and it is very simple. You must add an <code>anchor</code> link in your document. where you want the page to line up. So in the <a href="#link_ref">link example</a> example above point to the absolute link example, the code is like that.</p>
+<pre><code>So in the [link example](#link_ref) example above point to the absolute link example, the code is like that.</code></pre>
+<p>I thus added in the line just above where I want the link this HTML code where <code>&lt;a&gt;</code> stands for <code>anchor</code>.</p>
+<pre><code>&lt;a id=&quot;link_ref&quot;&gt;&lt;/a&gt;</code></pre>
+<p><br/></p>
+</div>
+</div>
+<div id="footnotes" class="section level3">
+<h3>Footnotes</h3>
+<p>You can add footnotes in the text by adding <code>[^footnote]</code> right next to the word concerned and add the <code>[^footnote]:</code> with the text next to it JUST BEFORE the <code># References</code> section.</p>
+<p><br/></p>
+</div>
+<div id="images" class="section level3">
+<h3>Images</h3>
+<p>To add images in a document, add a <code>!</code> in front of the same syntax as for links such as:</p>
+<pre><code>![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)</code></pre>
+<p>to render:</p>
+<div class="figure">
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" />
+
+</div>
+<p>You can modify the width of the image by adding e.g., <code>{width = 50%}</code> to have the image take 50% of the width of the page</p>
+<pre><code>![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=50%}</code></pre>
+<p>to render:</p>
+<p><img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" style="width:50.0%" /> <br/></p>
+<p>To align the image, there is no native way of doing it in Markdown, so you can use a little bit of HTML code like <code>&lt;center&gt; ... &lt;/center&gt;</code> such as below. Apparently, it might not work that great in html5 though…</p>
+<pre><code>&lt;center&gt;![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=25%}&lt;/center&gt;</code></pre>
+<p>to render:</p>
+<center>
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" style="width:33.0%" />
+</center>
+<p><br/></p>
+<p>You can add a caption by just adding the “Using a caption this time” in the brackets.</p>
+<div class="figure">
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" />
+<p class="caption">Using a caption this time</p>
+</div>
+<pre><code>![Using a caption this time ](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}</code></pre>
+<p>Now, you can add an image in the text like this <img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" /> and it will work just fine.</p>
+<pre><code>Now, you can add an image in the text like this ![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%} and it will work just fine. </code></pre>
+<p>However, you can see that the caption was not added. So for the caption to be added, there needs to be a return before and after the image code. If you include the image like this<br />
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" /><br />
+The caption does not appear.</p>
+<pre><code>However, you can see that the caption was not added. So for the caption to be added, there needs to be a return before and after the image code. If you include the image like this
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}  
+The caption does not appear.</code></pre>
+<p>But if you leave a blank line before and after like this</p>
+<div class="figure">
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" />
+<p class="caption">Using a caption this time</p>
+</div>
+<p>The caption will appear.</p>
+<pre><code>But if you leave a blank line before and after like this 
+
+![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+The caption will appear.</code></pre>
+<p>Now if you want to center <strong>both figure and caption</strong>, you need to add <code>&lt;center&gt;</code> a blank line, the image code, a blank line, then <code>&lt;/center&gt;</code>, and it will appear like this:</p>
+<center>
+<div class="figure">
+<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" alt="Using a caption this time" style="width:33.0%" />
+<p class="caption"><em><strong>Using a caption this time</strong></em></p>
+</div>
+</center>
+<pre><code>&lt;center&gt;
+
+![*__Using a caption this time__*](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}
+
+&lt;/center&gt;</code></pre>
+<p>And you can see that adding <code>*__ __*</code> aound the caption text put the caption in bold and italic as well.</p>
+<p>To have an image linked to a particular website, you can use this code:</p>
+<pre><code>[![caption](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)</code></pre>
+<p><br/></p>
+<p>If you do that, however, the caption will not show any more, even though you have the proper number of lines before and after. If you want a caption below with a link, you will have to add this underneath. So if you want both the image and the caption to have clickable links, and centered like this</p>
+<center>
+<p><a href="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png"><img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" style="width:33.0%" /></a></p>
+<p><a href="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png">This is the corresponding clickable caption I want</a></p>
+</center>
+<p><br/></p>
+<p>you would write:</p>
+<pre><code>&lt;center&gt;
+
+[![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+[This is the corresponding clickable caption I want](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)
+
+&lt;/center&gt;</code></pre>
+<p><br/></p>
+</div>
+</div>
+<div id="editing-equations-in-r-markdown" class="section level2">
+<h2>Editing equations in R Markdown</h2>
+<p>We do not write nearly as much math in our field than our colleagues in statistics or math. But we do enough to have a bit of a tutorial. I have borrowed this entire section from the <a href="http://www.stat.cmu.edu/~cshalizi/rmarkdown/#math-in-r-markdown">excellent tutorial from Dr Shalizi</a> again. R Markdown gives you the syntax to render complex mathematical formulas and derivations, and have them displayed very nicely. Like code, the math can either be inline or set off (displays).</p>
+<p><br/></p>
+<div id="inline-equations" class="section level3">
+<h3>Inline equations</h3>
+<p>Inline math is marked off witha pair of dollar signs (<code>$</code>), as <span class="math inline">\(\pi r^2\)</span> or <span class="math inline">\(e^{i\pi}\)</span>.</p>
+<pre><code>Inline math is marked off witha pair of dollar
+signs (`$`), as $\pi r^2$ or $e^{i\pi}$.</code></pre>
+<p><br/></p>
+</div>
+<div id="set-off-equations" class="section level3">
+<h3>Set off equations</h3>
+<p>Mathematical displays are marked off with <code>\[</code> and <code>\]</code>, as in <span class="math display">\[
+e^{i \pi} = -1
+\]</span></p>
+<pre><code>Mathematical displays are marked off with `\[` and `\]`, as in
+\[
+e^{i \pi} = -1
+\]</code></pre>
+<p>Once your text has entered math mode, R Markdown turns over the job of converting your text into math to a different program, called LaTeX. This is the most common system for typesetting mathematical documents throughout the sciences, and has been for decades. It is extremely powerful, stable, available on basically every computer, and completely free. It is also, in its full power, pretty complicated. Fortunately, the most useful bits, for our purposes, are actually rather straightforward.</p>
+<p><br/></p>
+</div>
+<div id="elements-of-math-mode" class="section level3">
+<h3>Elements of Math Mode</h3>
+<ul>
+<li>Most letters will be rendered in italics (compare: a vs. <code>a</code> vs. <span class="math inline">\(a\)</span>; only the last is in math mode, i.e., <code>$a$</code>). The spacing between letters also follows the conventions for math, so don’t treat it as just another way of getting italics. (Compare <em>speed</em>, in simple italics, with <span class="math inline">\(speed\)</span>, in math mode, i.e., <code>$speed$</code>)</li>
+<li>Greek letters can be accessed with the slash in front of their names, as <code>\alpha</code> for <span class="math inline">\(\alpha\)</span>. Making the first letter upper case gives the upper-case letter, as in <code>\Gamma</code> for <span class="math inline">\(\Gamma\)</span> vs. <code>\gamma</code> for <span class="math inline">\(\gamma\)</span>. (Upper-case alpha and beta are the same as Roman A and B, so no special commands for them.)</li>
+<li>There are other “slashed” (or “escaped”) commands for other mathematical symbols:
+<ul>
+<li><code>\times</code> for <span class="math inline">\(\times\)</span></li>
+<li><code>\cdot</code> for <span class="math inline">\(\cdot\)</span></li>
+<li><code>\leq</code> and <code>\geq</code> for <span class="math inline">\(\leq\)</span> and <span class="math inline">\(\geq\)</span></li>
+<li><code>\subset</code> and <code>\subseteq</code> for <span class="math inline">\(\subset\)</span> and <span class="math inline">\(\subseteq\)</span></li>
+<li><code>\leftarrow</code>, <code>\rightarrow</code>, <code>\Leftarrow</code>, <code>\Rightarrow</code>, <code>\rightleftharpoons</code> for <span class="math inline">\(\leftarrow\)</span>, <span class="math inline">\(\rightarrow\)</span>, <span class="math inline">\(\Leftarrow\)</span>, <span class="math inline">\(\Rightarrow\)</span>, <span class="math inline">\(\rightleftharpoons\)</span></li>
+<li><code>\approx</code>, <code>\sim</code>, <code>\equiv</code> for <span class="math inline">\(\approx\)</span>, <span class="math inline">\(\sim\)</span>, <span class="math inline">\(\equiv\)</span></li>
+<li>See, e.g., <a href="http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html" class="uri">http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html</a> for a fuller listing of available symbols. (<a href="http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf" class="uri">http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf</a> lists <em>all</em> symbols available in <code>LaTeX</code>, including many non-mathematical special chracters)</li>
+</ul></li>
+<li>Subscripts go after an underscore character, <code>_</code>, and superscripts go after a caret, <code>^</code>, as <code>\beta_1</code> for <span class="math inline">\(\beta_1\)</span> or <code>a^2</code> for <span class="math inline">\(a^2\)</span>.</li>
+<li>Curly braces are used to create groupings that should be kept together, e.g., <code>a_{ij}</code> for <span class="math inline">\(a_{ij}\)</span> (vs. <code>a_ij</code> for <span class="math inline">\(a_ij\)</span>).</li>
+<li>If you need something set in ordinary (Roman) type within math mode, use <code>\mathrm</code>, as <code>t_{\mathrm{in}}^2</code> for <span class="math inline">\(t_{\mathrm{in}}^2\)</span>.</li>
+<li>If you’d like something set in an outline font (“blackboard bold”), use <code>\mathbb</code>, as <code>\mathbb{R}</code> for <span class="math inline">\(\mathbb{R}\)</span>.</li>
+<li><p>For bold face, use <code>\mathbf</code>, as</p>
+<pre><code>(\mathbf{x}^T\mathbf{x})^{-1}\mathbf{x}^T\mathbf{y}</code></pre>
+<p>for <span class="math display">\[
+(\mathbf{x}^T\mathbf{x})^{-1}\mathbf{x}^T\mathbf{y}
+\]</span></p></li>
+<li>Accents on characters work rather like changes of font: <code>\vec{a}</code> produces <span class="math inline">\(\vec{a}\)</span>, <code>\hat{a}</code> produces <span class="math inline">\(\hat{a}\)</span>. Some accents, particularly hats, work better if they space out, as with <code>\widehat{\mathrm{Var}}</code> producing <span class="math inline">\(\widehat{\mathrm{Var}}\)</span>.</li>
+<li>Function names are typically written in romans, and spaced differently: thus <span class="math inline">\(\log{x}\)</span>, not <span class="math inline">\(log x\)</span>. <code>LaTeX</code>, and therefore <code>R Markdown</code>, knows about a lot of such functions, and their names all begin with <code>\</code>. For instance: <code>\log</code>, <code>\sin</code>, <code>\cos</code>, <code>\exp</code>, <code>\min</code>, etc. Follow these function names with the argument in curly braces; this helps <code>LaTeX</code> figure out what exactly the argument is, and keep it grouped together with the function name when it’s laying out the text. Thus <code>\log{(x+1)}</code> is better than <code>\log (x+1)</code>.</li>
+<li><p>Fractions can be created with <code>\frac</code>, like so:</p>
+<pre><code>\frac{a+b}{b} = 1 + \frac{a}{b}</code></pre>
+produces <span class="math display">\[
+\frac{a+b}{b} = 1 + \frac{a}{b}
+\]</span></li>
+<li><p>Sums can be written like so:</p>
+<pre><code>\sum_{i=1}^{n}{x_i^2}</code></pre>
+will produce <span class="math display">\[
+\sum_{i=1}^{n}{x_i^2}
+\]</span> The lower and upper limits of summation after the <code>\sum</code> are both optional. Products and integrals work similarly, only with <code>\prod</code> and <code>\int</code>: <span class="math display">\[
+n! = \prod_{i=1}^{n}{i}
+\]</span> <span class="math display">\[
+\log{b} - \log{a} = \int_{x=a}^{x=b}{\frac{1}{x} dx}
+\]</span> <code>\sum</code>, <code>\prod</code> and <code>\int</code> all automatically adjust to the size of the expression being summed, producted or integrated.</li>
+<li><p>“Delimiters”, like parentheses or braces, can automatically re-size to match what they’re surrounding. To do this, you need to use <code>\left</code> and <code>\right</code>, as</p>
+<pre><code>\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}</code></pre>
+renders as <span class="math display">\[
+\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}
+\]</span></li>
+<li>To use curly braces as delimiters, precede them with slashes, as <code>\{</code> and <code>\}</code> for <span class="math inline">\(\{\)</span> and <span class="math inline">\(\}\)</span>.</li>
+<li><p>Multiple equations, with their equals signs lined up, can be created using <code>eqnarray</code>, as follows.</p>
+<pre><code>\[
+\begin{eqnarray}
+X &amp; \sim &amp; \mathrm{N}(0,1)\\
+Y &amp; \sim &amp; \chi^2_{n-p}\\
+R &amp; \equiv &amp; X/Y \sim t_{n-p}
+\end{eqnarray}
+\]</code></pre></li>
+</ul>
+<p><span class="math display">\[
+\begin{eqnarray}
+X &amp; \sim &amp; \mathrm{N}(0,1)\\
+Y &amp; \sim &amp; \chi^2_{n-p}\\
+R &amp; \equiv &amp; X/Y \sim t_{n-p}
+\end{eqnarray}
+\]</span></p>
+<p>Notice that <code>&amp;</code> surrounds what goes in the middle on each line, and each line (except the last) is terminated with <code>\\</code>.</p>
+<p><br/></p>
+</div>
+</div>
+<div id="code-in-chunks-and-within-the-text" class="section level2">
+<h2>Code in “Chunks” and within the text</h2>
+<p>The real beauty of R Markdown is the ability of adding R codes that can be rendered or interpreted along with the mark-up text. R code can be inserted as “chunks” and “in-line”. <br/></p>
+<div id="inline-code" class="section level3">
+<h3>Inline code</h3>
+<pre><code>You can embed some r code within the text by using `r signif(pi,5)` to give 5 significant digits to the number $\pi$ </code></pre>
+<p>You can embed some r code within the text by using 3.1416 to give 5 significant digits to the number <span class="math inline">\(\pi\)</span>.</p>
+<p><br/></p>
+</div>
+<div id="code-chunks" class="section level3">
+<h3>Code chunks</h3>
+<p>A code <strong>chunk</strong> is simply an off-set piece of code by itself. It is preceded by <code>```{r}</code> on a line by itself, and ended by a line which just says <code>```</code>. The code itself goes in between.</p>
+The code
+<pre><code>```{r cars}
+summary(cars)
+```</code></pre>
+<p>generates these results:</p>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<p>First, in the syntax, the word “cars” after the “{r” is the name of the chunk (see below). To let the renderer program know that this is now a <code>R</code> code, the letter “r” needs to follow the “{”.</p>
+<p>You can also embed plots, for example:</p>
+<p><img src="tutorial-RMarkdown_instructions_files/figure-html/pressure-1.png" width="672" /></p>
+<p><br/></p>
+<div id="markdown-tables-and-the-kable-function" class="section level4">
+<h4>Markdown tables and the “kable” function</h4>
+<p>coming soon…</p>
+</div>
+<div id="chunk-results-options" class="section level4">
+<h4>Chunk results options</h4>
+<p>Code chunks (but not inline code) can take a lot of <strong>options</strong> which modify how they are run, and how they appear in the document. These options go after the initial <code>r</code> and before the closing <code>}</code> that announces the start of a code chunk. One of the most common options turns off printing out the code, but leaves the results alone: <code>```{r, echo=FALSE}</code> <br/> Another runs the code, but includes neither the text of the code nor its output. <code>```{r, include=FALSE}</code> This might seem pointless, but it can be useful for code chunks which do set-up like loading data files, or initial model estimates, etc.</p>
+<p><br/> Another option prints the code in the document, but does not run it: <code>```{r, eval=FALSE}</code> This is useful if you want to talk about the (nicely formatted) code. <br/> Another option on the results of the code is that it generate all results “as-is”, which is very nice when your code generates mark-up text to be rendered by <code>Pandoc</code>.</p>
+<p><code>```{r, results=&quot;asis&quot;}</code> <br/> By default, the results of a chunk with have <code>##</code> as a prefix. You can remove this by putting</p>
+<p><code>```{r, comment=FALSE}</code></p>
+<p><br/> Sometimes, running of the code will generate warnings and messages. These can be turned off in the output by using</p>
+<p><code>```{r, warning=FALSE, message = FALSE}</code></p>
+</div>
+<div id="naming-chunks" class="section level4">
+<h4>Naming Chunks</h4>
+<p>You can give chunks names immediately after their opening, like <code>```{r, clevername}</code>. This name is then used for the images (or other files) that are generated when the document is rendered.</p>
+</div>
+<div id="adjusting-figure-sizes-and-alignments" class="section level4">
+<h4>Adjusting figure sizes and alignments</h4>
+<p>These details are discussed in the accompanying written article on instantaneous vs. interval-average flow data.</p>
+</div>
+<div id="caching-code-chunks-re-running-only-when-changed" class="section level4">
+<h4>“Caching” Code Chunks (Re-Running Only When Changed)</h4>
+<p>By default, R Markdown will re-run all of your code every time you render your document. If some of your code is slow, this can add up to a lot of time. You can, however, ask R Markdown to keep track of whether a chunk of code has changed, and only re-run it if it has. This is called <strong>caching</strong> the chunk.</p>
+<pre><code>```{r, cache=TRUE}
+summary(cars)
+```</code></pre>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<p>One issue is that a chunk of code which hasn’t changed itself might call on results of earlier, modified chunks, and then we <em>would</em> want to re-run the downstream chunks. There are options for manually telling R Markdown “this chunk depends on this earlier chunk”, but it’s generally easier to let it take care of that, by setting the <code>autodep=TRUE</code> option.</p>
+<ol style="list-style-type: decimal">
+<li>If you load a package with the <code>library()</code> command, R Markdown isn’t smart enough to check whether the package has changed (or indeed been installed, if you were missing it). So that won’t trigger an automatic re-running of a cached code chunk.</li>
+<li>To manually force re-running all code chunks, the easiest thing to do is to delete the directory R Markdown will create (named something like <em>filename</em><code>_cache</code>) which it uses to store the state of all code chunks.</li>
+</ol>
+<p><br/></p>
+</div>
+<div id="setting-defaults-for-all-chunks" class="section level4">
+<h4>Setting Defaults for All Chunks</h4>
+<p>You can tell R to set some defaults to apply to all chunks where you don’t specifically over-ride them. Here are the ones I generally use:</p>
+<pre><code>```{r, eval=FALSE}
+# Need the knitr package to set chunk options
+library(knitr)
+
+# Set knitr options for knitting code into the report:
+# - Don't print out code (echo)
+# - Save results so that code blocks aren't re-run unless code changes (cache),
+# _or_ a relevant earlier code block changed (autodep), but don't re-run if the
+# only thing that changed was the comments (cache.comments)
+# - show the error messages (message)
+# - Don't clutter R output with warnings (warning)
+# This _will_ leave error messages showing up in the knitted report
+opts_chunk$set(echo=FALSE,
+               cache=TRUE, autodep=TRUE, cache.comments=FALSE,
+               message=TRUE, warning=FALSE)
+```</code></pre>
+<p>This sets some additional options beyond the ones I’ve discussed, like not re-running a chunk if only the comments have changed (<code>cache.comments = FALSE</code>), and leaving out messages and warnings. (I’d only recommend suppressing warnings once you’re sure your code is in good shape.) I would typically give this set-up chunk itself the option <code>include=FALSE</code>.</p>
+<p>You can over-ride these defaults by setting options for individual chunks.</p>
+<p><br/></p>
+</div>
+<div id="more-chunk-options" class="section level4">
+<h4>More Chunk options</h4>
+<p>See [<a href="http://yihui.name/knitr/options/" class="uri">http://yihui.name/knitr/options/</a>] for a complete listing of possible chunk options.</p>
+<p><br/><br/><br/></p>
+</div>
+</div>
+</div>
+</div>
+<div id="additional-subtleties" class="section level1">
+<h1>Additional Subtleties</h1>
+<div id="creating-anchors-and-links-within-a-page" class="section level2">
+<h2>Creating anchors and links within a page</h2>
+<p>Now, further down in the document, you might be interested in linking back up if you want to make a link to a particular heading or a particular place in the document that is not a heading.</p>
+<p><br/></p>
+</div>
+<div id="challenges-with-the-back-ticks" class="section level2">
+<h2>Challenges with the “back-ticks”</h2>
+<p>As I was writing this document, I wanted some of the code to appear as I wrote it, in the “code frames”. It turns out that to illustrate that to run a code in line the text, one needs to use <code>`r signif(pi,5)`</code> , well it is not simple because the <code>`</code> is interpreted as containing some code! Therefore, it is not interpreted as text not intended to be rendered…!! So it is a bit of a tour de force to make it appear and being uninterpreted. It turns that in R, if you type</p>
+<pre><code>&#39;\x60&#39;</code></pre>
+<p>it will return the “back-tick” symbol <code>`</code>. But to display it I have to type in the text</p>
+<pre><code>== =r &#39;\x60&#39;= ==</code></pre>
+<p>where for illustration purposes, I have replaced the “back-ticks”, by the “=” signs. For another example to display <code>`r signif(pi,5)`</code> in the text, I actually coded</p>
+<pre><code>== =r &#39;\x60r signif(pi,5)\x60&#39;= ==</code></pre>
+<p>where again I have replaced the “back-ticks” with “=” signs.</p>
+<p><br/></p>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-Buckheit1995-ls">
+<p>1. Buckheit, J. B. &amp; Donoho, D. L. <em>Wavelab and reproducible research</em>. (Stanford University, Standford CA 94305, USA, 1995).</p>
+</div>
+<div id="ref-Kuhne2009-tn">
+<p>2. Kühne, M. &amp; Liehr, A. W. Improving the traditional information management in natural sciences. <em>Data Sci. J.</em> <strong>8,</strong> 18–26 (2009).</p>
+</div>
+<div id="ref-The_Yale_Law_School_Roundtable_on_Data_and_Code_Sharing2010-xp">
+<p>3. the Yale Law School Roundtable on Data and Code Sharing. Reproducible research. <em>Computing in Science Engineering</em> <strong>12,</strong> 8–13 (2010).</p>
+</div>
+<div id="ref-Wicherts2012-oo">
+<p>4. Wicherts, J. M. &amp; Bakker, M. Publish (your data) or (let the data) perish! Why not publish your data too? <em>Intelligence</em> <strong>40,</strong> 73–76 (2012).</p>
+</div>
+<div id="ref-Pasquier2017-os">
+<p>5. Pasquier, T. <em>et al.</em> If these data could talk. <em>Sci Data</em> <strong>4,</strong> 170114 (2017).</p>
+</div>
+<div id="ref-Peng2011-og">
+<p>6. Peng, R. D. Reproducible research in computational science. <em>Science</em> <strong>334,</strong> 1226–1227 (2011).</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>In the 1970s, the great computer scientist Donald Knuth wrote a mark-up language, and a rendering program for that language, called <code>TeX</code> (pronounced “tech”), for writing complex mathematical documents. In the 1980s, the computer scientist Leslie Lamport extended <code>TeX</code> in ways that made it rather more user-friendly, and called the result <code>LaTeX</code> (pronounced “la-tech”)<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
