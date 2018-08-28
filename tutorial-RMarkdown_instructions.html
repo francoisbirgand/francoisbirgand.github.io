@@ -418,7 +418,7 @@ div.tocify {
 <h3><em>by François Birgand</em></h3>
 <div class="row">
 <div class="col-md-9">
-<em>started 2017-10-17 and updated 2018-08-27</em>
+<em>started 2017-10-17 and updated 2018-08-28</em>
 </div>
 <div class="col-md-3" align="right">
 <em><a href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd">code for this document</a></em>
@@ -464,11 +464,12 @@ Many ... that of _marking up_ text.  The essential idea in a **mark-up language*
 <h1>The ‘R twist’ of Markdown: R Markdown</h1>
 <p>Now the beauty of Markdown is that some very smart people have thought that one could in fact embed R codes, within the text, such that in the end, a document could contain all the text and code to create figures and tables. Other, just as smart people, have thought that one could use all the beauty of the <a href="https://en.wikipedia.org/wiki/LaTeX">LaTeX</a>, particularly for editing equations. They have also added the possibility to add citations, bibliography. All this to say that they have added all the features that students/researchers need and have dreamt about for a while!</p>
 <p>So the ‘R twist’ to Markdown is called ‘R Markdown’. One of the hidden beauties is that R Mardown uses <a href="https://pandoc.org/MANUAL.html">Pandoc</a>, which is a universal document converter, to <em>render</em> the text. The result is that you and I will now write in R Markdown and will have the possibility of publishing what we have written in many output formats, which include among many others HTML, pdf, and Word. This is one of the major advantages compared to LaTeX, which can only produce pdf documents.</p>
+<p>Now, this is really a crash course on R Markdown for the applications I have found most useful until now. But since I started writing this tutorial, the people who have come up with all this fantastic concept have written and released the <a href="https://bookdown.org/yihui/rmarkdown/">Definitivie guide to R Markdown</a>. I cannot recommend enough to go in there to get all important details certainly missing in this tutorial. After browsing through the definitive guide, I find that there is still room for a ‘crash course’, and I will keep maintaining this tutorial.</p>
 <p><br/></p>
 </div>
 <div id="r-markdown-in-r-studio" class="section level1">
 <h1>R Markdown in R Studio</h1>
-<p>I have had a very low opinion of <a href="https://www.rstudio.com/">R studio</a> until very recently because I never liked the text editor, I always thought (still do in fact…!) that on a normal screen, things were just too cramped. <em>But</em>, I must say that I have come to change my mind, principally thanks to the possibilities that R Markdown offers, and because R Mardown is hosted in <a href="https://en.wikipedia.org/wiki/RStudio">R studio</a>.</p>
+<p>I have had a very low opinion of <a href="https://www.rstudio.com/">R studio</a> until 2017 because I never liked the text editor, I always thought (still do in fact…!) that on a normal screen, things were just too cramped. <em>But</em>, I must say that I have come to change my mind, principally thanks to the possibilities that R Markdown offers, and because R Mardown is hosted in <a href="https://en.wikipedia.org/wiki/RStudio">R studio</a>.</p>
 <p>The goal of this document is thus to introduce you to R Markdown and the things you need to get to know quickly for authoring HTML, PDF, MS Word documents, but also many other interesting outputs. All the details on using R Markdown can be found at <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>. I encourage you to browse the <a href="http://rmarkdown.rstudio.com/gallery.html">gallery</a> and then spend time to get familiarized on what can be done with it on the <a href="http://rmarkdown.rstudio.com/lesson-1.html">step by step tutorial</a>.</p>
 <p>I still think that there is nothing like playing with examples to make sense of things. I assume that you have now browsed through the guide reference and you have installed the <code>rmarkdown and knitr</code> packages in RStudio. If not, in the console, type <code>install.packages(&quot;rmarkdown&quot;,&quot;knitr&quot;)</code>. First, you want to open a <code>Rmd</code> document. Go to <code>File -&gt; New File -&gt; R Markdown...</code> and click OK with the default variables. Click the <code>Knit</code> button just above the window where the document just appeared. Another ‘Choose Encoding’ pop-up window will appear, click OK with the default values. The system will ask you where you want to save this document and under what name. Then, an html preview pop-up window should appear where there is headings, text, hyperlinks, results from some <code>R commands</code> and a simple plot. OK, time to look at the <code>.Rmd</code> file content.</p>
 <p><br/></p>
@@ -684,9 +685,9 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 <li><strong>NEVER</strong> use special characters in variable names in an <code>R</code> code,</li>
 <li>in an R markdown document, use the HTML Number or HTML name in the text</li>
 </ol>
-<p><a href="https://www.ascii.cl/htmlcodes.htm">HTML Number and Names</a> can be found on this <a href="https://www.ascii.cl/htmlcodes.htm">ascii page</a></p>
-<p>So to type T°C, m² or µm you type like this</p>
-<pre><code>So to type T&amp;deg;C, m&amp;sup2; or &amp;micro;m you type like this</code></pre>
+<p><a href="https://www.ascii.cl/htmlcodes.htm">HTML Number and Names</a> can be found on this <a href="https://www.ascii.cl/htmlcodes.htm">ascii page</a> or on this page for <a href="http://www.dionysia.org/html/entities/symbols.html">greek letter codes and some other symbols</a></p>
+<p>So to type T°C, m², µm, or pε you type like this</p>
+<pre><code>So to type T&amp;deg;C, m&amp;sup2;, &amp;micro;m, or p&amp;epsilon; you type like this</code></pre>
 <p>Do not forget to add the “;” !!! <br/><br/><br/></p>
 </div>
 <div id="absolute-links" class="section level3">

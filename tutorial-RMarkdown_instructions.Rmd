@@ -68,11 +68,13 @@ Now the beauty of Markdown is that some very smart people have thought that one 
 
 So the 'R twist' to Markdown is called 'R Markdown'. One of the hidden beauties is that R Mardown uses [Pandoc](https://pandoc.org/MANUAL.html), which is a universal document converter, to *render* the text. The result is that you and I will now write in R Markdown and will have the possibility of publishing what we have written in many output formats, which include among many others HTML, pdf, and Word. This is one of the major advantages compared to LaTeX, which can only produce pdf documents.
 
+Now, this is really a crash course on R Markdown for the applications I have found most useful until now. But since I started writing this tutorial, the people who have come up with all this fantastic concept have written and released the [Definitivie guide to R Markdown](https://bookdown.org/yihui/rmarkdown/). I cannot recommend enough to go in there to get all important details certainly missing in this tutorial. After browsing through the definitive guide, I find that there is still room for a 'crash course', and I will keep maintaining this tutorial. 
+
 <br/>
 
 # R Markdown in R Studio
 
-I have had a very low opinion of [R studio](https://www.rstudio.com/) until very recently because I never liked the text editor, I always thought (still do in fact...!) that on a normal screen, things were just too cramped. *But*, I must say that I have come to change my mind, principally thanks to the possibilities that R Markdown offers, and because R Mardown is hosted in [R studio](https://en.wikipedia.org/wiki/RStudio).  
+I have had a very low opinion of [R studio](https://www.rstudio.com/) until 2017 because I never liked the text editor, I always thought (still do in fact...!) that on a normal screen, things were just too cramped. *But*, I must say that I have come to change my mind, principally thanks to the possibilities that R Markdown offers, and because R Mardown is hosted in [R studio](https://en.wikipedia.org/wiki/RStudio).  
 
 The goal of this document is thus to introduce you to R Markdown and the things you need to get to know quickly
 for authoring HTML, PDF, MS Word documents, but also many other interesting outputs. All the details on using R Markdown can be found at <http://rmarkdown.rstudio.com>.  I encourage you to browse the [gallery](http://rmarkdown.rstudio.com/gallery.html) and then spend time to get familiarized on what can be done with it on the [step by step tutorial](http://rmarkdown.rstudio.com/lesson-1.html).
@@ -357,12 +359,12 @@ Several consequences:
 1. **NEVER** use special characters in variable names in an `R` code, 
 2. in an R markdown document, use the HTML Number or HTML name in the text
 
-[HTML Number and Names](https://www.ascii.cl/htmlcodes.htm) can be found on this [ascii page](https://www.ascii.cl/htmlcodes.htm)
+[HTML Number and Names](https://www.ascii.cl/htmlcodes.htm) can be found on this [ascii page](https://www.ascii.cl/htmlcodes.htm) or on this page for [greek letter codes and some other symbols](http://www.dionysia.org/html/entities/symbols.html)
 
-So to type T&deg;C, m&sup2; or &micro;m you type like this
+So to type T&deg;C, m&sup2;, &micro;m, or p&epsilon; you type like this
 
 ```
-So to type T&deg;C, m&sup2; or &micro;m you type like this
+So to type T&deg;C, m&sup2;, &micro;m, or p&epsilon; you type like this
 ```
 
 Do not forget to add the ";" !!!
