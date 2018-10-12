@@ -1,6 +1,7 @@
 type,authors,name,topic,reference,date,keywords,update
 Tutorials,François Birgand,Crash course on R markdown,R markdown,tutorial-RMarkdown_instructions.html,2017-10-17,,
 Tutorials,François Birgand,Instructions on how to get started with Github,R markdown,Github_instructions.html,2017-10-05,,
+Tutorials,François Birgand,A template to write scientific articles using R bookdown,R markdown,template-bookdown-article.html,2018-10-11,,
 Blogs,François Birgand,Blog: making videos in R - the old fashion way,R,blog-making-videos-in-r-the-old-fashion-way.html,2015-10-15,ffmpeg;hydrological time series,
 Blogs,François Birgand,Blog: renaming directories and files,R,blog-renaming-dir-and-files.html,2017-11-03,integer(0);grep();sapply();list.dirs();list.files();file.rename();identical(),
 Blogs,François Birgand,Blog: Adding an image in an R graph,R,blog-adding-an-image-to-an-r-graph.html,2015-10-18,pixmax package;PNM format;imager package;load.image(),
