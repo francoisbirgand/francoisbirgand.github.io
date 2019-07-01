@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>blog-retrieving-dates-in-r-using-strsplit.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +72,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -193,8 +191,6 @@ $(document).ready(function () {
 });
 </script>
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
 
 <style type="text/css">
@@ -265,6 +261,15 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -420,7 +425,7 @@ $(document).ready(function () {
 <h1>Blog: retrieving dates in R using strsplit</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-13 and updated 2019-05-02</em></p>
+<p><em>started 2017-11-13 and updated 2019-07-01</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -489,7 +494,7 @@ temptime</code></pre>
 </div>
 <div id="using-formatc-for-harmonizing-all-final-formats" class="section level3">
 <h3>Using <em><code>formatC()</code></em> for harmonizing all final formats</h3>
-<p>The next trick is to transform all years into “yyyy”“, months into”mm“, days in”dd“, hours into”hh“, minutes into”mm“, and seconds into”ss“. For this I have used the function <code>formatC()</code>. This is typically the function that one can spend a <em>lot</em> of time looking for it… Once found, it is pretty simple. For example to transform numbers from 1 to 10 into 0001, 0002, …., 0010, one can use this code: <br/></p>
+<p>The next trick is to transform all years into “yyyy”“, months into”mm“, days in”dd“, hours into”hh“, minutes into”mm“, and seconds into”ss&quot;. For this I have used the function <code>formatC()</code>. This is typically the function that one can spend a <em>lot</em> of time looking for it… Once found, it is pretty simple. For example to transform numbers from 1 to 10 into 0001, 0002, …., 0010, one can use this code: <br/></p>
 <pre class="r"><code>x=1:10
 formatC(x,digits = 0,width = 4,format = &quot;f&quot;,flag = &quot;0&quot;)</code></pre>
 <pre><code>##  [1] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; &quot;0007&quot; &quot;0008&quot; &quot;0009&quot; &quot;0010&quot;</code></pre>

@@ -57,8 +57,8 @@ PNM is a family of formats supporting portable bitmaps (PBM) , graymaps (PGM), a
 
 ```{r echo = TRUE,eval=TRUE,message=FALSE,warning=FALSE}
 library(imager)
-logo<-load.image("https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png")
-plot(logo)
+#logo<-load.image("https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png")
+#plot(logo)
 ```
 <br/><br/>
 

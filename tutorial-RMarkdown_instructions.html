@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>tutorial-RMarkdown_instructions.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -75,9 +75,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -195,8 +193,6 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -344,8 +340,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -354,6 +348,16 @@ div.tocify {
 
 
 </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
@@ -520,7 +524,7 @@ div.tocify {
 <h3><em>by François Birgand</em></h3>
 <div class="row">
 <div class="col-md-9">
-<em>started 2017-10-17 and updated 2019-05-02</em>
+<em>started 2017-10-17 and updated 2019-07-01</em>
 </div>
 <div class="col-md-3" align="right">
 <em><a href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd">code for this document</a></em>
@@ -610,10 +614,10 @@ output: html_document
 <p>The <code>author</code> will appear when you render or ‘knit’ your document under the title and introduced by a “by”… The <code>date</code> corresponds to the initial date of creation. If you want to use the date at the time you <code>knit</code> the document, you may consider putting an inline code (<a href="#code-chunks">details below</a>) such as <code>`r format(Sys.Date() `%d %B %Y`)`</code>. <br/></p>
 <div id="output-document-in-yaml" class="section level3">
 <h3>Output document in YAML</h3>
-<p>You can change the <code>output: html_document</code>, to <code>output: github_document</code>, to <code>output: word_document</code>, to <code>output: pdf_document</code>. If you are having trouble with the <code>pdf_document</code> output, this means that the LaTeX<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> engine is not installed on your computer. For this I am borrowing instructions from <a href="https://rpubs.com/rcourse998/module6-rmarkdown">here</a> where they suggest these links:</p>
+<p>You can change the <code>output: html_document</code>, to <code>output: github_document</code>, to <code>output: word_document</code>, to <code>output: pdf_document</code>. If you are having trouble with the <code>pdf_document</code> output, this means that the LaTeX<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> engine is not installed on your computer. For this I am borrowing instructions from <a href="https://rpubs.com/rcourse998/module6-rmarkdown">here</a> where they suggest these links:</p>
 <ul>
-<li>For Windows: Go to <a href="https://miktex.org/howto/install-miktex" class="uri">https://miktex.org/howto/install-miktex</a> and follow directions to install MikTex.</li>
-<li>For Mac: Go to <a href="https://tug.org/mactex/mactex-download.html" class="uri">https://tug.org/mactex/mactex-download.html</a> and follow directions to install MacTex.</li>
+<li>For Windows: Go to <a href="https://miktex.org/howto/install-miktex">https://miktex.org/howto/install-miktex</a> and follow directions to install MikTex.</li>
+<li>For Mac: Go to <a href="https://tug.org/mactex/mactex-download.html">https://tug.org/mactex/mactex-download.html</a> and follow directions to install MacTex.</li>
 </ul>
 <p>In the YAML, one puts some broad instructions on how <a href="https://pandoc.org/MANUAL.html">Pandoc</a> needs to interpret the document, one big information being the <code>output</code>. You can see right away that with just one document, you can create at least 4 different documents. when you typed <code>output: github_document</code>, there was an html preview that popped-up, but in the background, a <code>*.md</code> file was created. This <code>*.md*</code> file is interpreted by GitHub to render the document within the GitHub environment. If you try to click on a <code>*.html</code> file that is hosted on GitHub, only code will appear, and not the rendered html document.</p>
 <p><br/></p>
@@ -675,7 +679,7 @@ csl: journal-of-hydrology.csl
 <h3>CSL and styling of citations</h3>
 <p>CSL stands for Citation Style Language. The CSL line command is an option for the citation styles to be used in your document. You can comment it out by adding a “#” in front of it and the default .CSL file will apply without you noticing it. Each journal has its own way of handling how an article/reference should be cited in the text, and in the reference section, and there are hundreds of different styles out there… You can read lots of details on this <a href="http://docs.citationstyles.org/en/stable/primer.html">CSL primer</a> about how all this works.</p>
 <p>While I was writing this tutorial, I did not specify at first the citation style. And I kept getting, using the same example as before, “(Kühne and Liehr 2009)”, although I wanted “(Kühne and Liehr, 2009)”, i.e., with a comma between the authors and the date, because this is the way I always did it and I think it is a lot better this way. Then I started thinking about the journals for which the inline citations are numbers, sometimes in brackets, sometimes without brackets… what a nightmare…! Actually it is extremely simple: all this is done automatically when you specify the CSL corresponding to the journal style following which you wish to write.</p>
-<p>For this, you can pick at <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a> the *.CSL file you are looking for (actually there are too many of them and they are not all displayed). The fastest way is to Google “<journal name> CSL”, and you will land on the CSL file you are looking for. I recommend that you click on the <code>raw</code> icon on GitHub, and copy all the file in a text editor. Warning! You need to make sure that your text editor does not add any weird formatting or add an extension at the end of the file. I had that problem and I could not see the extension on my computer, although I had the option to display so. Save the file in the same directory as your .Rmd.</p>
+<p>For this, you can pick at <a href="https://github.com/citation-style-language/styles">https://github.com/citation-style-language/styles</a> the *.CSL file you are looking for (actually there are too many of them and they are not all displayed). The fastest way is to Google “<journal name> CSL”, and you will land on the CSL file you are looking for. I recommend that you click on the <code>raw</code> icon on GitHub, and copy all the file in a text editor. Warning! You need to make sure that your text editor does not add any weird formatting or add an extension at the end of the file. I had that problem and I could not see the extension on my computer, although I had the option to display so. Save the file in the same directory as your .Rmd.</p>
 <p>So, to go back with my struggling to style the inline citation and the “missing comma”, it turns out that the default CSL file uses a “<a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles">Chicago author-date format</a>” (I am not sure what this means exactly), which in text styling is “(author date)”, without the comma…! If you use “journal-of-hydrology.CSL”, you will see that all of a sudden after you <code>knit</code>, the commas just appeared…! Eureka! If you use “nature.CSL” (because we all want to be ready when we publish in Nature!), you will see that there are no more in-line citations, just numbers in superscript, hyphenated when needed, and the references are all in order, with the journal names in italics, the journal volume in bold, the year in parenthesis at the end, etc.! Is not that wonderful? Without your doing anything, other than adding the citation properly in the text following the guidelines above.</p>
 <p>You can, if you want and have a lot of time to waste, take existing CSL files and modify them to have your own custom citation style. Make sure you take an “independent” CSL file and modify it. Most of them are dependent upon a “source” or independent one, and the code in the CSL file is just saying how the dependent file should slightly alter the independent one. Good instructions on how to do this can be found on the excellent <a href="http://docs.citationstyles.org/en/stable/primer.html">CSL primer</a>.</p>
 <p><br/></p>
@@ -826,10 +830,7 @@ To force a line break, put _two_ blank spaces at the end of a line.</code></pre>
 <p>To add images in a document, add a <code>!</code> in front of the same syntax as for links such as:</p>
 <pre><code>![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png)</code></pre>
 <p>to render:</p>
-<div class="figure">
-<img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" />
-
-</div>
+<p><img src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png" /></p>
 <p>You can modify the width of the image by adding e.g., <code>{width = 50%}</code> to have the image take 50% of the width of the page</p>
 <pre><code>![](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=50%}</code></pre>
 <p>to render:</p>
@@ -941,42 +942,40 @@ e^{i \pi} = -1
 <li>Curly braces are used to create groupings that should be kept together, e.g., <code>a_{ij}</code> for <span class="math inline">\(a_{ij}\)</span> (vs. <code>a_ij</code> for <span class="math inline">\(a_ij\)</span>).</li>
 <li>If you need something set in ordinary (Roman) type within math mode, use <code>\mathrm</code>, as <code>t_{\mathrm{in}}^2</code> for <span class="math inline">\(t_{\mathrm{in}}^2\)</span>.</li>
 <li>If you’d like something set in an outline font (“blackboard bold”), use <code>\mathbb</code>, as <code>\mathbb{R}</code> for <span class="math inline">\(\mathbb{R}\)</span>.</li>
-<li><p>For bold face, use <code>\mathbf</code>, as</p>
+<li>For bold face, use <code>\mathbf</code>, as</li>
+</ul>
 <pre><code>(\mathbf{x}^T\mathbf{x})^{-1}\mathbf{x}^T\mathbf{y}</code></pre>
 <p>for <span class="math display">\[
 (\mathbf{x}^T\mathbf{x})^{-1}\mathbf{x}^T\mathbf{y}
-\]</span></p></li>
+\]</span></p>
+<ul>
 <li>Accents on characters work rather like changes of font: <code>\vec{a}</code> produces <span class="math inline">\(\vec{a}\)</span>, <code>\hat{a}</code> produces <span class="math inline">\(\hat{a}\)</span>. Some accents, particularly hats, work better if they space out, as with <code>\widehat{\mathrm{Var}}</code> producing <span class="math inline">\(\widehat{\mathrm{Var}}\)</span>.</li>
 <li>Function names are typically written in romans, and spaced differently: thus <span class="math inline">\(\log{x}\)</span>, not <span class="math inline">\(log x\)</span>. <code>LaTeX</code>, and therefore <code>R Markdown</code>, knows about a lot of such functions, and their names all begin with <code>\</code>. For instance: <code>\log</code>, <code>\sin</code>, <code>\cos</code>, <code>\exp</code>, <code>\min</code>, etc. Follow these function names with the argument in curly braces; this helps <code>LaTeX</code> figure out what exactly the argument is, and keep it grouped together with the function name when it’s laying out the text. Thus <code>\log{(x+1)}</code> is better than <code>\log (x+1)</code>.</li>
-<li><p>Fractions can be created with <code>\frac</code>, like so:</p>
+<li>Fractions can be created with <code>\frac</code>, like so:</li>
+</ul>
 <pre><code>\frac{a+b}{b} = 1 + \frac{a}{b}</code></pre>
-produces <span class="math display">\[
+<p>produces <span class="math display">\[
 \frac{a+b}{b} = 1 + \frac{a}{b}
-\]</span></li>
-<li><p>Sums can be written like so:</p>
+\]</span> * Sums can be written like so:</p>
 <pre><code>\sum_{i=1}^{n}{x_i^2}</code></pre>
-will produce <span class="math display">\[
+<p>will produce <span class="math display">\[
 \sum_{i=1}^{n}{x_i^2}
 \]</span> The lower and upper limits of summation after the <code>\sum</code> are both optional. Products and integrals work similarly, only with <code>\prod</code> and <code>\int</code>: <span class="math display">\[
 n! = \prod_{i=1}^{n}{i}
 \]</span> <span class="math display">\[
 \log{b} - \log{a} = \int_{x=a}^{x=b}{\frac{1}{x} dx}
-\]</span> <code>\sum</code>, <code>\prod</code> and <code>\int</code> all automatically adjust to the size of the expression being summed, producted or integrated.</li>
-<li><p>“Delimiters”, like parentheses or braces, can automatically re-size to match what they’re surrounding. To do this, you need to use <code>\left</code> and <code>\right</code>, as</p>
+\]</span> <code>\sum</code>, <code>\prod</code> and <code>\int</code> all automatically adjust to the size of the expression being summed, producted or integrated. * “Delimiters”, like parentheses or braces, can automatically re-size to match what they’re surrounding. To do this, you need to use <code>\left</code> and <code>\right</code>, as</p>
 <pre><code>\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}</code></pre>
-renders as <span class="math display">\[
+<p>renders as <span class="math display">\[
 \left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}
-\]</span></li>
-<li>To use curly braces as delimiters, precede them with slashes, as <code>\{</code> and <code>\}</code> for <span class="math inline">\(\{\)</span> and <span class="math inline">\(\}\)</span>.</li>
-<li><p>Multiple equations, with their equals signs lined up, can be created using <code>eqnarray</code>, as follows.</p>
+\]</span> + To use curly braces as delimiters, precede them with slashes, as <code>\{</code> and <code>\}</code> for <span class="math inline">\(\{\)</span> and <span class="math inline">\(\}\)</span>. * Multiple equations, with their equals signs lined up, can be created using <code>eqnarray</code>, as follows.</p>
 <pre><code>\[
 \begin{eqnarray}
 X &amp; \sim &amp; \mathrm{N}(0,1)\\
 Y &amp; \sim &amp; \chi^2_{n-p}\\
 R &amp; \equiv &amp; X/Y \sim t_{n-p}
 \end{eqnarray}
-\]</code></pre></li>
-</ul>
+\]</code></pre>
 <p><span class="math display">\[
 \begin{eqnarray}
 X &amp; \sim &amp; \mathrm{N}(0,1)\\
@@ -1133,7 +1132,7 @@ opts_chunk$set(echo=FALSE,
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>In the 1970s, the great computer scientist Donald Knuth wrote a mark-up language, and a rendering program for that language, called <code>TeX</code> (pronounced “tech”), for writing complex mathematical documents. In the 1980s, the computer scientist Leslie Lamport extended <code>TeX</code> in ways that made it rather more user-friendly, and called the result <code>LaTeX</code> (pronounced “la-tech”)<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>In the 1970s, the great computer scientist Donald Knuth wrote a mark-up language, and a rendering program for that language, called <code>TeX</code> (pronounced “tech”), for writing complex mathematical documents. In the 1980s, the computer scientist Leslie Lamport extended <code>TeX</code> in ways that made it rather more user-friendly, and called the result <code>LaTeX</code> (pronounced “la-tech”)<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 

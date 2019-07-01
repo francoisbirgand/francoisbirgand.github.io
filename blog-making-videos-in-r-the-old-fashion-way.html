@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>blog-making-videos-in-r-the-old-fashion-way.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +72,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -193,8 +191,6 @@ $(document).ready(function () {
 });
 </script>
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
 
 <style type="text/css">
@@ -265,6 +261,15 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -420,7 +425,7 @@ $(document).ready(function () {
 <h1>Blog: making videos in R - the old fashion way</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2015-10-15 and updated 2019-05-02</em></p>
+<p><em>started 2015-10-15 and updated 2019-07-01</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -441,9 +446,7 @@ $(document).ready(function () {
 <h3>What is ffmpeg?</h3>
 <p>ffmpeg seems to be the standard that true multimedia handlers use. It is a very powerful platform that will do almost anything with videos, one of which being to create videos from a series of images The program works on linux (sign that it is for real!), OS and windows.</p>
 <p>One can find all information to download and install and everything on the official site ffmpeg.org Lots of Youtube videos can be found on how to use it, etc. One that I liked was what to do to install it nicely on my PC or mac. <br/><br/></p>
-</div>
-<div id="the-code-that-works-for-me" class="section level3">
-<h3>The code that works for me</h3>
+<p>###The code that works for me</p>
 <p>I created a lot of .jpg images in R for which I switched the xlim or range of the dates every 15 min. I put all the images in the same directory with the names image_0001.jpg, image_0002.jpg, …, and so on until as many images as one wants.</p>
 <p>I then used the following code: <br/></p>
 <pre><code>ffmpeg -r 25 -t 10 -f image2 -start_number 51 -i image_%04d.jpg -qscale:v 1 output.avi

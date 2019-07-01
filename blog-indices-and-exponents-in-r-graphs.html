@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>blog-indices-and-exponents-in-r-graphs.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +72,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -193,8 +191,6 @@ $(document).ready(function () {
 });
 </script>
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
 
 <style type="text/css">
@@ -265,6 +261,15 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -420,7 +425,7 @@ $(document).ready(function () {
 <h1>Blog: Indices and exponents in R graphs</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2015-11-05 and updated 2019-05-02</em></p>
+<p><em>started 2015-11-05 and updated 2019-07-01</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -429,10 +434,9 @@ $(document).ready(function () {
 <li>substitute()</li>
 <li>expression() <br/><br/></li>
 </ul>
-</div>
-<div id="indices-and-exponents" class="section level2">
-<h2>Indices and exponents</h2>
+<p>##Indices and exponents</p>
 <p>In water quality, many of the nutrients are referred to as their ionic forms. Displaying ionic formulae can be tricky in R. On can spend a lot of time and still frustrated after many hours spent on Google… We have been there and are providing here some code that works. <br/><br/><br/></p>
+</div>
 <div id="using-expression" class="section level3">
 <h3>Using <code>expression()</code></h3>
 <p>For ions such as nitrate and ammonium, one can use expression to create the combination of indices and exponents. If you run the code below, you will see that you can display the exponent ion charge and the indices atom numbers correctly <br/><br/></p>
@@ -449,9 +453,7 @@ $(document).ready(function () {
 
 ^{y}: indicates that y should be displayed as an exponent</code></pre>
 <p><br/><br/><br/></p>
-</div>
-<div id="using-substitute" class="section level3">
-<h3>Using <code>substitute()</code></h3>
+<p>###Using <code>substitute()</code></p>
 <p>Now, there are instances when nutrient concentrations are referred to as their main atom, such as in the expression ‘nitrate as nitrogen’ or ‘phosphate as phosphorus’ where in the typography itself, one adds ‘-N’ or ‘-P’ at the end of the ionic formulae.</p>
 <p>In these cases, expression does not work any longer… The solution is to use substitute The synthax is not as straight forward but the one below will work <br/><br/></p>
 <pre class="r"><code>nitrateasN=substitute(paste(NO[x]^{y},&quot;-N&quot;,sep=&quot;&quot;),list(x=3,y=&quot;-&quot;))
@@ -469,7 +471,6 @@ phosphateasP=substitute(paste(PO[x]^{y},&quot;-P&quot;,sep=&quot;&quot;),list(x=
     text(1,-1,phosphateasP,cex=2)
     text(1,2,&quot;substitute&quot;,font=3)    </code></pre>
 <p><img src="blog-indices-and-exponents-in-r-graphs_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-</div>
 </div>
 </div>
 
