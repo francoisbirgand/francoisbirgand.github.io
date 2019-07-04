@@ -36,7 +36,7 @@ for (date in dates) {
 
 #Prints references
 for (date in dates) {
-  cat(paste0("##",date),"\n")
+  cat(paste0("## ",date),"\n")
   print(file_journals[list(year=date)],.opts = list(style="markdown",bib.style ="authoryear" ,max.names =20,dashed=FALSE,no.print.fields = "issn"))
   cat("\n")
 }
@@ -53,7 +53,7 @@ dates <- unlist(unique(file_journals$year))[order(unlist(unique(file_journals$ye
 
 #Prints references
 for (date in dates) {
-  cat(paste0("##",date),"\n")
+  cat(paste0("## ",date),"\n")
   print(file_journals[list(year=date)],.opts = list(style="markdown",bib.style ="authoryear" ,max.names =20,dashed=FALSE,no.print.fields = "issn"))
   cat("\n")
 }
