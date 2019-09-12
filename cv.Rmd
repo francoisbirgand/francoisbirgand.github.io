@@ -297,6 +297,8 @@ for (i in 1:nrow(tmp_grant)){#line printing loop
 
 # Media exposure
 
+* 2019
+    - Coastwatch Currents – *[Wetland Chemical Composition Changes Hourly](https://ncseagrant.ncsu.edu/currents/2019/09/wetland-chemical-composition-changes-hourly/)* -- September 2019
 * 2017
     - NSF -- *[Researchers to forecast water quality with NSF support](http://augustafreepress.com/researchers-forecast-water-quality-nsf-support/)* -- October 2017
 * 2014
