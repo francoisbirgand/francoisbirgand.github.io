@@ -669,9 +669,10 @@ The real beauty of R Markdown is the ability of adding R codes that can be rende
 ### Inline code
 
 ```
-You can embed some r code within the text by using `r '\x60r signif(pi,5)\x60'` to give 5 significant digits to the number $\pi$ 
+You can embed some r code within the text by using `r '\x60r signif(max(Q),3)\x60'` to give 5 significant digits to the number $\pi$ 
 ```
-You can embed some r code within the text by using `r signif(pi,5)` to give 5 significant digits to the number $\pi$.
+
+You can embed some r code within the text by using Maximum flow = `r signif(max(Q),3)` m&sup3; to give 5 significant digits to the number $\pi$.
 
 <br/>
 
