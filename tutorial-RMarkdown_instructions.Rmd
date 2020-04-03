@@ -18,7 +18,7 @@ selection<-tutblog[tutblog$name=="Crash course on R markdown",]
 
 <div class = "row">
 <div class = "col-md-9">`r paste0("*started ",selection$date," and updated ",format(Sys.Date(), '%Y-%m-%d'),"*")`</div>
-<div class = "col-md-3" align="right">*[code for this document](https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/RMarkdown_instructions.Rmd)*</div></div>
+<div class = "col-md-3" align="right">*[code for this document](https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/tutorial-RMarkdown_instructions.Rmd)*</div></div>
 
 <br/>
 
