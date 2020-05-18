@@ -425,7 +425,7 @@ $(document).ready(function () {
 <h1>Blog: Elementary tidyr and ggplot</h1>
 <div id="by-francois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-23 and updated 2020-04-22</em></p>
+<p><em>started 2017-11-23 and updated 2020-05-18</em></p>
 <p><br/><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -546,6 +546,7 @@ head(tidy_df)</code></pre>
   geom_point(data = tidy_df[tidy_df$Year == &quot;1999-2000&quot;,]) +
   geom_smooth(data = tidy_df[tidy_df$Year == &quot;1999-2000&quot;,],method = &quot;lm&quot;, se = FALSE)
 print(p)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot1-1.png" width="864" style="display: block; margin: auto;" /> <br/><br/><br/></p>
 </div>
 <div id="plotting-for-all-years-facetted" class="section level3">
@@ -556,6 +557,7 @@ print(p)</code></pre>
   geom_smooth(method = &quot;lm&quot;, se = FALSE) +
   facet_grid(~Year)
 print(p)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot2-1.png" width="864" style="display: block; margin: auto;" /> <br/><br/><br/></p>
 </div>
 <div id="comments-on-the-wq-results" class="section level3">
