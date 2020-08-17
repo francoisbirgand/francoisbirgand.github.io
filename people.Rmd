@@ -30,7 +30,7 @@ output:
 <div class = "col-md-8">
 ### François Birgand
 
-I am an Associate Professor of Hydrology and Ecological Engineering and I direct the Biogeochemistry and Ecological Engineering Water lab since 2008 where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors. There are three main reasons why I am in academia: I have an insatiable need to know more (the scientist in me), I want to provide smart solutions (the *ingénieur* in me), and I love to teach what I have understood (teacher in me).
+I am a Professor of Hydrology and Ecological Engineering and I direct the Biogeochemistry and Ecological Engineering Water lab since 2008 where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors. There are three main reasons why I am in academia: I have an insatiable need to know more (the scientist in me), I want to provide smart solutions (the *ingénieur* in me), and I love to teach what I have understood (teacher in me).
 <br/>
 On [Howard Garner's theory of multiple intelligences](https://en.wikipedia.org/wiki/Theory_of_multiple_intelligences), I score the highest on the *naturalistic* one. Much of my research approaches are rooted in the unquenchable need to observe and quest to better understand nature. I am not particularly good at conceptualizing, and I tend to believe things for which there is or I can find/provide very strong evidence. Naturally (!), I like birds, botany, classical music, singing, spirituality, and R! 
   
