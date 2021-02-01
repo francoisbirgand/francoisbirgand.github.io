@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-<title>people.utf8.md</title>
+<title>people.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +24,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -70,6 +79,7 @@ h6 {
 }
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -86,7 +96,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -235,6 +244,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -246,18 +256,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -347,7 +345,7 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-link"></span>
+    <span class="fas fa-link"></span>
      
     Connect
      
@@ -363,35 +361,35 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="https://github.com/francoisbirgand">
-        <span class="fa fa-github"></span>
+        <span class="fas fa-github"></span>
          
         Github
       </a>
     </li>
     <li>
       <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
-        <span class="fa fa-youtube"></span>
+        <span class="fas fa-youtube"></span>
          
         Youtube
       </a>
     </li>
     <li>
       <a href="https://twitter.com/birgandwaterlab">
-        <span class="fa fa-twitter"></span>
+        <span class="fas fa-twitter"></span>
          
         Twitter
       </a>
     </li>
     <li>
       <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
-        <span class="fa fa-google"></span>
+        <span class="fas fa-google"></span>
          
         Scholar
       </a>
     </li>
     <li>
       <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
-        <span class="fa fa-linkedin"></span>
+        <span class="fas fa-linkedin"></span>
          
         Linkedin
       </a>
@@ -401,7 +399,7 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="https://maps.ncsu.edu/#/buildings/dsw">
-        <span class="fa fa-map-marker"></span>
+        <span class="fas fa-map-marker"></span>
          
         148 Weaver
       </a>
@@ -434,7 +432,7 @@ $(document).ready(function () {
 </center>
 </div>
 <div class="col-md-8">
-<h3 id="francois-birgand">François Birgand</h3>
+<h3 id="françois-birgand">François Birgand</h3>
 <p>I am a Professor of Hydrology and Ecological Engineering and I direct the Biogeochemistry and Ecological Engineering Water lab since 2008 where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors. There are three main reasons why I am in academia: I have an insatiable need to know more (the scientist in me), I want to provide smart solutions (the <em>ingénieur</em> in me), and I love to teach what I have understood (teacher in me). <br/> On <a href="https://en.wikipedia.org/wiki/Theory_of_multiple_intelligences">Howard Garner’s theory of multiple intelligences</a>, I score the highest on the <em>naturalistic</em> one. Much of my research approaches are rooted in the unquenchable need to observe and quest to better understand nature. I am not particularly good at conceptualizing, and I tend to believe things for which there is or I can find/provide very strong evidence. Naturally (!), I like birds, botany, classical music, singing, spirituality, and R!</p>
 </div>
 </div>
@@ -620,7 +618,7 @@ At NC State, I work on quantifying the water quality benefits of a stream restor
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -628,6 +626,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
