@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Water quality benefits of a constructed tidal marsh</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Birgand Water Lab</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publications
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="publications.html">Publications</a>
+    </li>
+    <li>
+      <a href="presentations.html">Presentations</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="courses.html">Courses</a>
+    </li>
+    <li>
+      <a href="tutorials.html">Tutorials</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="cv.html">CV</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="people.html">People</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NC State
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.ncsu.edu/">NC State</a>
+    </li>
+    <li>
+      <a href="https://www.lib.ncsu.edu/">Libraries</a>
+    </li>
+    <li>
+      <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Eng</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-link"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:francois_birgand@ncsu.edu">
+        <span class="fa fa fa fa-envelope-o"></span>
+         
+        email
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/francoisbirgand">
+        <span class="fas fa-github"></span>
+         
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
+        <span class="fas fa-youtube"></span>
+         
+        Youtube
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/birgandwaterlab">
+        <span class="fas fa-twitter"></span>
+         
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
+        <span class="fas fa-google"></span>
+         
+        Scholar
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
+        <span class="fas fa-linkedin"></span>
+         
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://www.researchgate.net/profile/Francois_Birgand">Research Gate</a>
+    </li>
+    <li>
+      <a href="https://maps.ncsu.edu/#/buildings/dsw">
+        <span class="fas fa-map-marker"></span>
+         
+        148 Weaver
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Water quality benefits of a constructed tidal marsh</h1>
+
+</div>
+
+
+<p><br/><br/></p>
+<ul>
+<li>Participants:
+<ul>
+<li><a href="https://cet.ecu.edu/engineering/faculty-and-staff/randall-etheridge/">Randall Etheridge</a> (PhD Student then)</li>
+<li>Molly Mikan (MS Student then)</li>
+<li><a href="https://sites.google.com/view/yojinshiau/english?authuser=0">Yo-Jin Shiau</a> (PhD Student then)</li>
+<li><a href="index.html">François Birgand</a> (NCSU)</li>
+<li><a href="https://www.bae.ncsu.edu/people/mrburche/">Michael Burchell</a> (NCSU)</li>
+<li><a href="https://www.usgs.gov/staff-profiles/ken-krauss?qt-staff_profile_science_products=0#qt-staff_profile_science_products">Ken Krauss</a> (USGS)</li>
+<li><a href="https://meas.sciences.ncsu.edu/people/closburn/">Chris Osburn</a> (NCSU)</li>
+</ul></li>
+<li>Timeline:
+<ul>
+<li>April 2010 - December 2014</li>
+</ul></li>
+<li>Funding Agencies:
+<ul>
+<li>the Environmental Protection Agency under Grant Nr EPA 2871 through NC Dept. of Environment and Natural Resources</li>
+<li>National Science Foundation under Grant Nr DGE-0750733</li>
+<li>NC Sea Grant under grant 2011-R/MG-1108;</li>
+</ul></li>
+</ul>
+<p><br/><br/></p>
+<div id="project-overview" class="section level2">
+<h2>Project Overview</h2>
+<p><br/></p>
+<p>Because of their potential to remove nutrients from drainage, salt marsh restorations have been ongoing in North Carolina and other coastal states. How much these restorations improve water quality is still unknown. Assessing the water quality benefits is difficult in salt marshes due to the complicated patterns of flow and incoming nutrient concentrations. Ebb and flow induce wide concentration and flow variations, and it is usually very difficult to close a water balance.</p>
+<p><br/></p>
+<center>
+<img style="align: center; width: 90%;" src="images/NRaerialview.png"> <br/> Aerial view of the constructed marsh at the interface between Agricultural land and the North River estuary, NC, USA
+</center>
+<p><br/></p>
+<p>A salt marsh restoration was strategically implemented between drained row-crop agriculture and a nearby estuary near Beaufort in Eastern North Carolina. Construction of this salt marsh was overseen by members of the <a href="https://www.bae.ncsu.edu/">Bio&amp;Ag Department</a> and was completed in 2007. This project provided a great opportunity to provide answers to the question of by how much do salt marsh restorations improve water quality.</p>
+<p><br/><br/></p>
+<div id="project-goals" class="section level4">
+<h4>Project goals</h4>
+<ul>
+<li>Demonstrate non-traditional design techniques for restoring wetlands to an agricultural landscape</li>
+<li>Create a stable tidal creek and marsh ecosystem that integrated into surrounding marsh</li>
+<li>Reduce exports of agricultural pollutants to the North River estuary</li>
+<li>Evaluate ecosystem services provided by the constructed marsh, <strong>specifically quantify NO3-N retention in the marsh</strong></li>
+</ul>
+<p><br/></p>
+</div>
+<div id="objectives-and-deliverables" class="section level4">
+<h4>Objectives and deliverables</h4>
+<ul>
+<li>Assessment of the performance of the field Spectrophotometer instruments to measure local concentrations <em>in situ</em></li>
+<li>Assess whether fluorescence data from the CDOM sensor can be used to predict DON concentrations</li>
+<li>Description of the tidal and seasonal dynamics of nutrients and OM in a restored tidal marsh</li>
+<li>Quantification of the fate and sources of OM in a tidal marsh over long periods of time</li>
+<li>Quantification of the ability of a restored tidal marsh to retain excess runoff nitrogen and phosphorus</li>
+<li>Provide design guidance for future coastal marsh restoration projects</li>
+</ul>
+<p><br/><br/></p>
+</div>
+</div>
+<div id="mass-balance-and-high-frequency-sensors" class="section level2">
+<h2>Mass balance and high-frequency sensors</h2>
+<p><br/></p>
+<p>Tidal marshes are by definition almost always open systems where flow and ebb might not use the same entrance and exit. This renders closing a mass balance an almost impossible task. The marsh was constructed slightly inland where an active area, inlet, and outlet could be defined, opening the possibility of closing a water and nutrient balance.</p>
+<ul>
+<li>In- and outlet flow:
+<ul>
+<li>Doppler velocity meters were installed in the tidal creek within trapezoidal flumes</li>
+<li><strong>Accurate bi-directional velocity</strong> and water level measurements</li>
+</ul></li>
+</ul>
+<p><br/><br/></p>
+<center>
+<img style="align: center; width: 90%;" src="images/marsh-layout-flumes.png"> <br/><br/> Map of the monitoring layout with inlet (top) and outlet (bottom) flumes
+</center>
+<p><br/><br/></p>
+<ul>
+<li>High frequency Water quality:
+<ul>
+<li><em>in situ</em> UV-visual spectrophotometers (<a href="https://www.s-can.at/products/spectrometer-probes">Spectro::lyser</a> from S::CAN); Had to solve fouling issues by pumping water to sensor</li>
+<li>Multiparameter probes to measure Chromophoric Dissolved Organic Matter(CDOM), Dissolved Oxygen (DO), pH, conductivity and temperature</li>
+<li>We hypothesized that we could correlate absorbance to our parameters of interest using PLSR (Partial Least Square Regression)</li>
+</ul></li>
+</ul>
+<p><br/><br/></p>
+<center>
+<img style="align: center; width: 90%;" src="images/NRDNmonitoring.png"> <br/><br/> Equipment setup at the outlet station with Spectro::lyser installed above water
+</center>
+<p><br/><br/></p>
+</div>
+<div id="results-highlights-in-pictures" class="section level2">
+<h2>Results highlights in pictures</h2>
+<div id="flow-patterns-in-the-marsh" class="section level3">
+<h3>Flow patterns in the marsh</h3>
+<p><br/></p>
+<p>The monitoring system was able to capture the very complex flow patterns at the inlet and outlets as illustrated in the video below.</p>
+<p><br/><br/><br/></p>
+<center>
+<iframe width="800" height="444" src="https://www.youtube.com/embed/sZEoah_aG6Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<br/><br/> Bidirectional flow patterns in April 2011. Inlet (top arrow and hydrograph) and outlet (bottom arrow and hydrograph)
+</center>
+<p><br/><br/><br/></p>
+<p>Another fascinating way to represent flow in tidal marshes is the ‘tidal harmonics’ as illustrated in the video below.</p>
+<p><br/><br/><br/></p>
+<center>
+<iframe width="800" height="334" src="https://www.youtube.com/embed/s-SDJFAk4RA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<br/><br/> Bidirectional flow at the inlet stage as a function of rising and falling tides illustrating tidal harmonics
+</center>
+<p><br/><br/><br/><br/></p>
+</div>
+<div id="water-quality-highlights" class="section level3">
+<h3>Water Quality highlights</h3>
+<ul>
+<li>We used <strong>PLSR</strong> (Partial Least Square Regression) chemometrics to establish local calibrations between absorbance + fluorescence and concentrations</li>
+<li>We were the first ones to report <strong>Water Quality Rating Curves</strong> (WQRC) between absorbance and nitrate, total Kjeldahl nitrogen, DOC, phosphate, total phosphorus, total suspended solids, particulate organic matter and salinity, in <strong>a tidal marsh setting</strong>.</li>
+</ul>
+<p><br/><br/><br/></p>
+<center>
+<img style="align: center; width: 80%;" src="images/NRConcCalib.png"> <br/><br/> Calibration obtained using PLSR to correlate absorbance + fluorescence to concentrations (in mg/L). Plots obtained using Fiteval<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+</center>
+<p><br/><br/><br/><br/></p>
+<p>Using the WQRC, we were able to obtain 15 min concentration chemographs over a period of about 13 months (with some holes) at both stations, along with 15 min bidirectional flow. Below are some examples of the reactivity of flow and concentrations for nitrate and for TSS during hurricane Sandy.</p>
+<p><br/><br/><br/></p>
+<center>
+<iframe width="800" height="444" src="https://www.youtube.com/embed/_MLtx8XJnwU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<br/><br/> Flow and nitrate dynamics at the outlet station in April 2012
+</center>
+<p><br/><br/><br/><br/></p>
+<center>
+<iframe width="800" height="444" src="https://www.youtube.com/embed/lsWHdz6mF3A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<br/><br/> Flow and TSS dynamics at the outlet station before and during <strong>hurricane Sandy (28-29 October 2012)</strong>
+</center>
+<p><br/><br/><br/><br/></p>
+</div>
+<div id="mass-balance-highlights" class="section level3">
+<h3>Mass balance highlights</h3>
+<p><br/><br/></p>
+<p>From the high frequency flow and concentration data, we were able to calculate nutrient and material fluxes at both stations and compute a mass balance over time</p>
+<p><br/><br/></p>
+<center>
+<img style="align: center; width: 80%;" src="images/NRNitrateBalanceApril2012.png"> <br/><br/> Example of the computed mass balance for nitrate in April 2012 for the constructed marsh showing nitrate from the Agricultural land was retained within the marsh. <strong>Positive values</strong> correspond to <strong>nitrate mass entering</strong> the marsh; <strong>negative values</strong> correspond to <strong>nitrate mass leaving</strong> the marsh
+</center>
+<p><br/><br/><br/><br/></p>
+<center>
+<img style="align: center; width: 70%;" src="images/NRTSSBalanceSandy.png"> <br/><br/> Example of the computed mass balance for TSS in October 2012 for the constructed marsh <strong>before, during, after hurricane Sandy</strong>. The balance shows a positive retentin of TSS, most of which coming from the estuary into the marsh. <strong>Positive values</strong> correspond to <strong>TSS mass entering</strong> the marsh; <strong>negative values</strong> correspond to <strong>TSS mass leaving</strong> the marsh
+</center>
+<p><br/><br/><br/><br/></p>
+</div>
+<div id="water-balance-intrigue" class="section level3">
+<h3>Water balance intrigue</h3>
+<p><br/></p>
+<p>One of the most puzzling results has been the water balance. We expected that because of the balance between rainfall and precipitation, during winter, the excess rainfall would lead to a net apparent “export” of water from the marsh out, and reversely, during summer, the excess evapotranspiration would lead to a net replenishment of water into the marsh from tidal waters (red curve in figure below).</p>
+<p>We observed almost the opposite or a mirror image (blue curve in figure below)… In other words during excess rainfall, the marsh acted as a sink for water, and during summer, the marsh was a source of water…?! To this day, we do not have any obvious explanation. We have obviously verified all the sources of error but we were not able to find significant ones that could explain the observed phenomenon of a <strong><em>two-way water pump</em></strong>.</p>
+<p><br/><br/></p>
+<center>
+<img style="align: center; width: 80%;" src="images/NRWaterBalance.png"> <br/><br/> The very intriguing water balance in the marsh that acted as a <strong><em>two-way water pump</em></strong> over the 20-month monitoring period. <strong>Positive values</strong> correspond to <strong>water volume entering</strong> the marsh; <strong>negative values</strong> correspond to <strong>water volume leaving</strong> the marsh
+</center>
+<p><br/><br/><br/><br/></p>
+</div>
+<div id="nitrate-retention-in-the-marsh" class="section level3">
+<h3>Nitrate retention in the marsh</h3>
+<p>The skewed water balance did not have significant effects on the computed nitrate balance as nitrate fluxes occurred as short-lived pulsed from the upstream agricultural land. Overall, the marsh <strong>retained about 10% of the nitrate fluxes</strong> that entered it over the 20-month period. However, there were holes in the water quality data, as we solved fouling problems and were still learning how to use these sensors, limiting the robustness of the final value of the balance.</p>
+<p><br/><br/></p>
+<center>
+<img style="align: center; width: 60%;" src="images/NRNitrateBalance.png"> <br/><br/> Overall nitrate mass balance showing a <strong>net retention of nitrate</strong> over the 20-month monitoring period, although holes in the concentration data lowers the certainty on the overall retention. <strong>Positive values</strong> correspond to <strong>nitrate mass entering</strong> the marsh; <strong>negative values</strong> correspond to <strong>nitrate mass leaving</strong> the marsh
+</center>
+<p><br/><br/><br/><br/></p>
+</div>
+<div id="the-marsh-behaved-as-an-outwelling-one-way-nutrient-pump" class="section level3">
+<h3>The marsh behaved as an outwelling one-way nutrient pump</h3>
+<p>The water balance did have an impact on other nutrients such as dissolved organic carbon (DOC) and ammonium + organic nitrogen (TKN). The reversal of the water blance was not accompanied by a reversal of the direction of the fluxes. Rather, there was an apparent net export of DOC and TKN from the marsh out to the estuary, illustrating the fact that the constructed marsh acted as an outwelling one-way nutrient pump, despite the two-way water pump. These resuls are illustrated in the figures below.</p>
+<p><br/><br/></p>
+<center>
+<img style="align: center; width: 60%;" src="images/NRTKNBalance.png"> <br/><br/> Overall TKN mass balance showing a <strong>net export of ammonium + organic nitrogen</strong> over the 20-month monitoring period. <strong>Positive values</strong> correspond to <strong>mass entering</strong> the marsh; <strong>negative values</strong> correspond to <strong>mass leaving</strong> the marsh
+</center>
+<p><br/><br/><br/><br/></p>
+<p><br/><br/></p>
+<center>
+<img style="align: center; width: 60%;" src="images/NRDOCBalance.png"> <br/><br/> Overall DOC mass balance showing a <strong>net export of organic carbon</strong> over the 20-month monitoring period. <strong>Positive values</strong> correspond to <strong>mass entering</strong> the marsh; <strong>negative values</strong> correspond to <strong>mass leaving</strong> the marsh
+</center>
+<p><br/><br/><br/><br/></p>
+</div>
+</div>
+<div id="finding-highlights" class="section level2">
+<h2>Finding highlights</h2>
+<p><br/></p>
+<ul>
+<li>Found solutions to minimize fouling of the instruments</li>
+<li>PLSR to calibrate spectrophotometer to measure nitrate, total Kjeldahl nitrogen, DOC, phosphate, total phosphorus, total suspended solids, particulate organic matter and salinity</li>
+<li>Long-term 15-min data: essential to make meaningful conclusions</li>
+<li>Nitrate retention values mid-way between stream and non-tidal wetlands</li>
+<li>Marsh: 2-way water pump, 1-way nutrient pump</li>
+<li>Nutrient outwelling confirmed?</li>
+</ul>
+<p><br/><br/><br/><br/></p>
+</div>
+<div id="publications-associated-with-this-project" class="section level2">
+<h2>Publications associated with this project</h2>
+<p><br/></p>
+<p>Shiau, Y, M. R. Burchell, K. W. Krauss, S. W. Broome, and F. Birgand (2019). “Carbon storage potential in a recently created brackish marsh in eastern North Carolina, USA”. In: <em>Ecol. Eng.</em> 127, pp. 579-588. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2018.09.007">10.1016/j.ecoleng.2018.09.007</a>. URL: <a href="http://www.sciencedirect.com/science/article/pii/S0925857418303446">http://www.sciencedirect.com/science/article/pii/S0925857418303446</a>.</p>
+<p>Etheridge, J. R, M. R. Burchell II, and F. Birgand (2017). “Can created tidal marshes reduce nitrate export to downstream estuaries?” In: <em>Ecol. Eng.</em> 105, pp. 314-324. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2017.05.009">10.1016/j.ecoleng.2017.05.009</a>.</p>
+<p>Shiau, Y, M. R. Burchell, K. W. Krauss, F. Birgand, and S. W. Broome (2016). “Greenhouse Gas Emissions from a Created Brackish Marsh in Eastern North Carolina”. En. In: <em>Wetlands</em> 36.6, pp. 1009-1024. DOI: <a href="https://doi.org/10.1007%2Fs13157-016-0815-y">10.1007/s13157-016-0815-y</a>.</p>
+<p>Etheridge, J. R, F. Birgand, and M. R. Burchell II (2015). “Quantifying nutrient and suspended solids fluxes in a constructed tidal marsh following rainfall: The value of capturing the rapid changes in flow and concentrations”. In: <em>Ecol. Eng.</em> 78, pp. 41-52. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2014.05.021">10.1016/j.ecoleng.2014.05.021</a>.</p>
+<p>Osburn, C. L, M. P. Mikan, J. R. Etheridge, M. R. Burchell, and F. Birgand (2015). “Seasonal variation in the quality of dissolved and particulate organic matter exchanged between a salt marsh and its adjacent estuary”. In: <em>J. Geophys. Res. Biogeosci.</em> 120.7, p. 2014JG002897. DOI: <a href="https://doi.org/10.1002%2F2014JG002897">10.1002/2014JG002897</a>.</p>
+<p>Etheridge, J. R, F. Birgand, M. R. Burchell II, A. Lepistö, K. Rankinen, and K. Granlund (2014). “Technical Note: Alternative in-stream denitrification equation for the INCA-N model”. En. In: <em>Hydrol. Earth Syst. Sci.</em> 18.4, pp. 1467-1473. DOI: <a href="https://doi.org/10.5194%2Fhess-18-1467-2014">10.5194/hess-18-1467-2014</a>.</p>
+<p>Etheridge, J. R, F. Birgand, J. A. Osborne, C. L. Osburn, M. R. Burchell, and J. Irving (2014). “Using in situ ultraviolet-visual spectroscopy to measure nitrogen, carbon, phosphorus, and suspended solids concentrations at a high frequency in a brackish tidal marsh”. In: <em>Limnol. Oceanogr. Methods</em> 12.1, pp. 10-22. DOI: <a href="https://doi.org/10.4319%2Flom.2014.12.10">10.4319/lom.2014.12.10</a>.</p>
+<p>Etheridge, J. R, A. Lepistö, K. Granlund, K. Rankinen, F. Birgand, and M. R. Burchell (2014). “Reducing uncertainty in the calibration and validation of the INCA-N model by using soft data”. En. In: <em>Hydrol. Res.</em> 45.1, pp. 73-88. DOI: <a href="https://doi.org/10.2166%2Fnh.2013.039">10.2166/nh.2013.039</a>.</p>
+<p>Etheridge, J. R, F. Birgand, M. R. Burchell, and B. T. Smith (2013). “Addressing the fouling of in situ ultraviolet-visual spectrometers used to continuously monitor water quality in brackish tidal marsh waters”. En. In: <em>J. Environ. Qual.</em> 42.6, pp. 1896-1901. DOI: <a href="https://doi.org/10.2134%2Fjeq2013.02.0049">10.2134/jeq2013.02.0049</a>.</p>
+<p><br/><br/><br/><br/></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Ritter, A., Muñoz-Carpena, R., 2013. Performance evaluation of hydrological models: Statistical significance for reducing subjectivity in goodness-of-fit assessments. J. Hydrol. 480, 33–45. <a href="https://doi.org/10.1016/j.jhydrol.2012.12.004" class="uri">https://doi.org/10.1016/j.jhydrol.2012.12.004</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

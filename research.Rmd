@@ -1,20 +1,81 @@
 ---
 title: "Research Projects"
 ---
-
-## Current projects
 <br/><br/>
 
-```{r echo=FALSE, results="asis",comment=FALSE}
+## Research highlights
+
+<br/><br/>
+
+### Biogeochemistry & Ecological Engineering
+
+- [Water quality benefits of and the nutrient and organic matter dynamics in a constructed coastal marsh](researchNR.html) 
+
+- Water quality benefits of a stream restoration
+
+- Transforming Denitrifying Bioreactor Research and Applications: Unveiling the Inside of the Blackbox
+
+<br/><br/>
+
+### Innovations in Hydrology and Water Quality Monitoring
+
+- High frequency water quality monitoring
+
+- Expanding high frequency water quality to high spatial resolution
+
+- Image-based water level monitoring: the GaugeCam project
+
+- Image-based raingauge
+
+<br/><br/>
+
+### Metrology of Sampling Strategies in Watersheds
+
+- Deriving sampling frequency charts in Brittany, France
+
+- Deriving sampling frequency charts in North Carolina
+
+- Evaluation of time proportional sampling for the evaluation of annual nutrient fluxes at the watershed scale
+
+<br/><br/><br/><br/>
+
+## Recent and current grants
+
+<br/>
+
+```{r echo=FALSE, results="asis",comment=FALSE, warning=FALSE, comment= FALSE, message=FALSE}
+library(tidyverse)
+
+library(lubridate)
+
+
 grants <- read.csv("Birgand_grants.csv")
 grants$end_date<-as.Date(grants$end_date)
-grants<-subset(grants, (grants$end_date-Sys.Date())>=0)
+recentgrants<-subset(grants, (grants$end_date-Sys.Date())>=-1000)
 
-for (i in 1:nrow(grants)){#line printing loop
-  cat("* ",paste0(grants[i,]$Title),". ",paste0("_",grants[i,]$Funder,"_ --")," ",paste0("**$",format(sum(grants[i,]$Amount), big.mark=",")),"**","\n", sep = "")
+for (i in 1:nrow(recentgrants)){#line printing loop
+  cat("* ",paste0(recentgrants[i,]$Title),". ",paste0("_",recentgrants[i,]$Funder,"_ --")," ",paste0("**$",format(sum(recentgrants[i,]$Amount), big.mark=",")),"**",paste0(" &nbsp; &nbsp; &nbsp;",month(recentgrants[i,]$start_date, label = TRUE)," ",year(recentgrants[i,]$start_date)," to ",month(recentgrants[i,]$end_date, label = TRUE)," ",year(recentgrants[i,]$end_date)),"\n", sep = "")
   cat("\n")
   
 }#line print
+
+
+```
+<br/><br/><br/><br/>
+
+## Past projects
+<br/>
+
+```{r echo=FALSE, results="asis",comment=FALSE, warning=FALSE, comment= FALSE, message=FALSE}
+
+oldergrants<-subset(grants, (grants$end_date-Sys.Date())<=-1000)
+
+for (i in 1:nrow(oldergrants)){#line printing loop
+  cat("* ",paste0(oldergrants[i,]$Title),". ",paste0("_",oldergrants[i,]$Funder,"_ --")," ",paste0("**$",format(sum(oldergrants[i,]$Amount), big.mark=",")),"**",paste0(" &nbsp; &nbsp; &nbsp;",month(oldergrants[i,]$start_date, label = TRUE)," ",year(oldergrants[i,]$start_date)," to ",month(oldergrants[i,]$end_date, label = TRUE)," ",year(oldergrants[i,]$end_date)),"\n", sep = "")
+  cat("\n")
+  
+}#line print
+
 
 
 ```
