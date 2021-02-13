@@ -4,22 +4,38 @@ title: "Water quality benefits of a constructed tidal marsh"
 
 <br/><br/>
 
-- Participants: 
-    - [Randall Etheridge](https://cet.ecu.edu/engineering/faculty-and-staff/randall-etheridge/) (PhD Student then)
-    - Molly Mikan (MS Student then)
-    - [Yo-Jin Shiau](https://sites.google.com/view/yojinshiau/english?authuser=0) (PhD Student then)
-    - [François Birgand](index.html) (NCSU)
-    - [Michael Burchell](https://www.bae.ncsu.edu/people/mrburche/) (NCSU)
-    - [Ken Krauss](https://www.usgs.gov/staff-profiles/ken-krauss?qt-staff_profile_science_products=0#qt-staff_profile_science_products) (USGS)
-    - [Chris Osburn](https://meas.sciences.ncsu.edu/people/closburn/) (NCSU)
+##### Participants and roles 
 
-- Timeline: 
-    - April 2010 - December 2014
+<div class = "row">
+<div class = "col-md-6">
+**PIs**<br/>
 
-- Funding Agencies: 
-    - the Environmental Protection Agency under Grant Nr EPA 2871 through NC Dept. of Environment and Natural Resources
-    - National Science Foundation under Grant Nr DGE-0750733 
-    - NC Sea Grant under grant 2011-R/MG-1108;
+  - [François Birgand](index.html) (lead-PI NCSU)
+  - [Michael Burchell](https://www.bae.ncsu.edu/people/mrburche/) (lead-PI NCSU)
+  - [Ken Krauss](https://www.usgs.gov/staff-profiles/ken-krauss?qt-staff_profile_science_products=0#qt-staff_profile_science_products) (co-PI USGS)
+  - [Chris Osburn](https://meas.sciences.ncsu.edu/people/closburn/) (co-PI NCSU)
+</div>
+<div class = "col-md-6">
+**Students**<br/>
+
+  - [Randall Etheridge](https://cet.ecu.edu/engineering/faculty-and-staff/randall-etheridge/) (BAE PhD Student)
+  - Molly Mikan (MEAS MS Student)
+  - [Yo-Jin Shiau](https://sites.google.com/view/yojinshiau/english?authuser=0) (BAE PhD Student)
+
+</div></div>
+<center>
+<img style="align: center; width: 50%;" src="images/NRpeople.png">
+<br/>
+</center>
+<br/>
+
+##### Timeline: 
+  - April 2010 - December 2014
+
+##### Funding Agencies: 
+  - the Environmental Protection Agency under Grant Nr EPA 2871 through NC Dept. of Environment and Natural Resources
+  - National Science Foundation under Grant Nr DGE-0750733 
+  - NC Sea Grant under grant 2011-R/MG-1108;
 
 <br/><br/>
 
@@ -101,7 +117,7 @@ Equipment setup at the outlet station with Spectro::lyser installed above water
 
 <br/><br/>
 
-## Results highlights in pictures
+## Result highlights in pictures
 
 ### Flow patterns in the marsh
 

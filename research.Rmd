@@ -9,11 +9,11 @@ title: "Research Projects"
 
 ### Biogeochemistry & Ecological Engineering
 
-- [Water quality benefits of and the nutrient and organic matter dynamics in a constructed coastal marsh](researchNR.html) 
+- [Water quality benefits of a constructed coastal marsh](researchNR.html) 
 
 - Water quality benefits of a stream restoration
 
-- Transforming Denitrifying Bioreactor Research and Applications: Unveiling the Inside of the Blackbox
+- [Transforming Denitrifying Bioreactor Research and Applications: Unveiling the Inside of the Blackbox](researchWB.html)
 
 <br/><br/>
 
@@ -23,7 +23,7 @@ title: "Research Projects"
 
 - Expanding high frequency water quality to high spatial resolution
 
-- Image-based water level monitoring: the GaugeCam project
+- [Image-based water level monitoring: the GaugeCam project](http://gaugecam.org/)
 
 - Image-based raingauge
 
