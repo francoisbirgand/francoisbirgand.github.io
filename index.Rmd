@@ -151,7 +151,7 @@ for (date in dates) {
 
 ### Graduate level
 
-* **BAE 590-607** – Biogeochemical  Processes for Ecological Engineering (3 hrs. Fall even years, Face to face + Distance Ed. -- instructor)
+* **[BAE 587](http://catalog.ncsu.edu/search/?search=bae+587)** – Biogeochemical  Processes for Ecological Engineering (3 hrs. Fall even years, Face to face + Distance Ed. -- instructor)
 
 <br/>
 
