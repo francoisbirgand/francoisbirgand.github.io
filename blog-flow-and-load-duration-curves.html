@@ -423,7 +423,7 @@ $(document).ready(function () {
 <h1>Blog: flow and load duration curves</h1>
 <div id="by-beth-allen-and-françois-birgand" class="section level3">
 <h3><em>by Beth Allen and François Birgand</em></h3>
-<p><em>started 2011-09-11 and updated 2021-02-22</em></p>
+<p><em>started 2011-09-11 and updated 2021-04-14</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -559,31 +559,45 @@ Mk=quantile(cumLSort,probs=seq(0.01,1,0.01))/tail(cumLSort,1)</code></pre>
           bg=&quot;white&quot;)
     title(main=&quot;Nitrate Load and flow duration curves&quot;) # the \n in the text allows for line break in the title</code></pre>
 <p><img src="blog-flow-and-load-duration-curves_files/figure-html/unnamed-chunk-7-1.png" width="864" /></p>
-<pre class="r"><code>    #Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails
-    v&lt;-c(1,2,3,5,10,25,50,75,90,95,97,98,99,100) #v is a set of user defined values of percentages of the total time to be used for calculating and plotting specific corresponding Wk% and Mk% values
-    x&lt;-v/100  #Sets x as values of v in percentages
-        y&lt;-Mk[v]  #Sets y as the set of Mk% values corresponding with percentages of the total time defined by values in x
-    xx&lt;-qnorm(x) #qnorm takes a given probability (x values in this case) and returns the corresponding cumulative distribution value (Z-score) based on a normal distribution curve   
-    yy&lt;-qnorm(y) #Here, qnorm is taking the percentages of the load that occur associated with percentages of the total time defined by values in x and calculating associated Z-scores according to a normal distribution curve
-    yV&lt;-Wk[v] #Sets yV as the set of Wk% values corresponding with percentages of the total time defined by values in x
-    yyV&lt;-qnorm(yV) #qnorm takes percentages of the flow occurring associated with percentages of the total time defined by x values and assigns Z-score values to each probability based on the normal distribution curve 
-    yy&lt;-cbind(yy,yyV) #Binds both sets of Z-score values corresponding with Mk% (yy) and Wk% (yV)
-    xx&lt;-cbind(xx,xx) #Binds both sets of Z-scores correspdonding with defined percentages of the total time (They are the same, this is for plotting purposes)
-    color&lt;-c(ColElmt,&quot;blue&quot;) #Defines the plot colors for yy and yV
+<pre class="r"><code>#Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails 
+# Q is understood as the entire time series of flow
+# C is understood as the enitre time series for nitrate    
+  
+  par(mar=c(4.5,4.5,3,0.5))
+  param &lt;- c(&quot;NO3&quot;,&quot;TP&quot;,&quot;SRP&quot;,&quot;SS&quot;)
+  ColElmt &lt;- c(&quot;deeppink1&quot;,&quot;brown&quot;,&quot;skyblue4&quot;,&quot;grey30&quot;)
+
+# The first thing to do is to select a few values among the 100 possible, such that the details at the tail ends are highlighted. This is what the next line does.  
+  
+  SelectPerc&lt;-c(1,2,3,5,10,25,50,75,90,95,97,98,99,100) # SelectPerc is a set of user defined values of percentages of the total time to be used for calculating and plotting specific corresponding Wk% (and Mk% values)
+ 
+  qnormSelectPerc&lt;-qnorm(SelectPerc/100) #All this does is transforming the selected values chosen in SelectPerc (divided by 100 to express them as percentage values) such that in the plotting, the tail ends of the values be highlighed. Technically, the qnorm function takes a given probability (x values in this case) and returns the corresponding cumulative distribution value (Z-score) based on a normal distribution curve   
+  
+  qnormWk&lt;-qnorm(Wk[SelectPerc]) #This does the same thing here with the Wk values corresponding with percentages of the total time defined by values in SelectPerc. Technically the qnorm function takes percentages of the flow occurring associated with percentages of the total time defined by SelectPerc values and assigns Z-score values to each probability based on the normal distribution curve 
+
+  plot(qnormSelectPerc,qnormWk,xlab=&quot;Probability of Occurrence (%)&quot;,ylab=&quot;Wk% and Mk%&quot;,
+           type=&quot;o&quot;,xaxt=&quot;n&quot;,yaxt=&quot;n&quot;,xlim=c(-2.5,2.5),ylim=c(-2.5,2.5),pch=19,col=&quot;blue&quot;) #Plots the qnorm transformed values of Wk as a function of qnorm transformed values of the selected percentage values. The option xaxt=&quot;n&quot;,yaxt=&quot;n&quot; tell R that none of the axis ticks and tick labels should be plotted at this point.
+
+  par(new=TRUE) # this tells R that we want to plot another curve on top of the existing one. 
+
+# The Mk has been defined above so there is no need to redefine it here.  Now, one needs to transform the values of Mk into this new stretched out axis at the tail ends using the qnorm function:
+  
+  qnormMk&lt;-qnorm(Mk[SelectPerc])  #Sets y as the set of Mk% values corresponding with percentages of the total time defined by values in SelectPerc
     
-    for (i in 1:2){
-    plot(xx[,i],yy[,i],xlab=&quot;Probability of Occurrence (%)&quot;,ylab=&quot;Mk% &amp; Wk%&quot;,type=&quot;o&quot;,xaxt=&quot;n&quot;,yaxt=&quot;n&quot;,xlim=c(-2.5,2.5),ylim=c(-2.5,2.5),pch=i,col=color[i])#Plots yy and yV values as a function of xx values
+  color&lt;-c(&quot;deeppink1&quot;) #Defines the plot color for the element to be plotted, here nitrate.
+
+  plot(qnormSelectPerc,qnormMk,xlab=&quot;&quot;,ylab=&quot;&quot;,
+         type=&quot;o&quot;,xaxt=&quot;n&quot;,yaxt=&quot;n&quot;,xlim=c(-2.5,2.5),ylim=c(-2.5,2.5),pch=2,col=color) #Plots yy and yV values as a function of xx values
     par(new=TRUE)
-    } 
-    
-    axis(1,at=xx[,1],labels=x*100)
-    axis(2,at=xx[,1],labels=x*100)
-    title(main=&quot;Double cumulative probability plot for nitrate load \nand for flow volume&quot;) # the \n in the text allows for line break in the title
-    abline(h=xx,lty=3,col=&quot;grey&quot;) #Plots gridlines
-    abline(v=xx,lty=3,col=&quot;grey&quot;)
+  
+    axis(1,at=qnormSelectPerc,labels=SelectPerc)
+    axis(2,at=qnormSelectPerc,labels=SelectPerc)
+    mtext(&quot;Flow and mass duration curve for the \nCuyahoga River at Independence, OH&quot;, side=3, line = 1) # the \n in the text allows for line break in the title
+    abline(h=qnormSelectPerc,lty=3,col=&quot;grey&quot;) #Plots gridlines
+    abline(v=qnormSelectPerc,lty=3,col=&quot;grey&quot;)
     legend(&quot;bottomright&quot;,c(&quot;Cumul NO3 load&quot;,&quot;Cumul Q&quot;),
-          pch=1:2,
-          col=color,
+          pch=c(19,2),
+          col=c(&quot;blue&quot;,color),
           bg=&quot;white&quot;)</code></pre>
 <p><img src="blog-flow-and-load-duration-curves_files/figure-html/unnamed-chunk-7-2.png" width="864" /> <br/><br/><br/></p>
 <p>Once again, the cumulative load calculated at each instantaneous flux value can be calculated as a percentage of the total load yielding Mk% values and the time elapsed at each point can be calculated as a percentage of the total time. Mk% and Wk% values can be plotted as functions of the probability of occurrence and multiple Mk% curves for various water quality components can be plotted simultaneously for comparison of loading as a function of probability of occurrence. For example, 50% of the nitrate load may be exported in 25% of the time whereas 50% of the ammonium load may be exported in only 5% of the time. The interaction of flow and concentrations could be examined further to explain differences among loading and flashiness of concentrations with event flow.</p>

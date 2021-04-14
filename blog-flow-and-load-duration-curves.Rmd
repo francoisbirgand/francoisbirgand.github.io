@@ -183,32 +183,47 @@ This method allows us to see the percentage of the total discharge that occurs i
           col=c("blue",ColElmt),
           bg="white")
     title(main="Nitrate Load and flow duration curves") # the \n in the text allows for line break in the title
+ 
+
+#Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails 
+# Q is understood as the entire time series of flow
+# C is understood as the enitre time series for nitrate    
+  
+  par(mar=c(4.5,4.5,3,0.5))
+  param <- c("NO3","TP","SRP","SS")
+  ColElmt <- c("deeppink1","brown","skyblue4","grey30")
+
+# The first thing to do is to select a few values among the 100 possible, such that the details at the tail ends are highlighted. This is what the next line does.  
+  
+  SelectPerc<-c(1,2,3,5,10,25,50,75,90,95,97,98,99,100) # SelectPerc is a set of user defined values of percentages of the total time to be used for calculating and plotting specific corresponding Wk% (and Mk% values)
+ 
+  qnormSelectPerc<-qnorm(SelectPerc/100) #All this does is transforming the selected values chosen in SelectPerc (divided by 100 to express them as percentage values) such that in the plotting, the tail ends of the values be highlighed. Technically, the qnorm function takes a given probability (x values in this case) and returns the corresponding cumulative distribution value (Z-score) based on a normal distribution curve   
+  
+  qnormWk<-qnorm(Wk[SelectPerc]) #This does the same thing here with the Wk values corresponding with percentages of the total time defined by values in SelectPerc. Technically the qnorm function takes percentages of the flow occurring associated with percentages of the total time defined by SelectPerc values and assigns Z-score values to each probability based on the normal distribution curve 
+
+  plot(qnormSelectPerc,qnormWk,xlab="Probability of Occurrence (%)",ylab="Wk% and Mk%",
+           type="o",xaxt="n",yaxt="n",xlim=c(-2.5,2.5),ylim=c(-2.5,2.5),pch=19,col="blue") #Plots the qnorm transformed values of Wk as a function of qnorm transformed values of the selected percentage values. The option xaxt="n",yaxt="n" tell R that none of the axis ticks and tick labels should be plotted at this point.
+
+  par(new=TRUE) # this tells R that we want to plot another curve on top of the existing one. 
+
+# The Mk has been defined above so there is no need to redefine it here.  Now, one needs to transform the values of Mk into this new stretched out axis at the tail ends using the qnorm function:
+  
+  qnormMk<-qnorm(Mk[SelectPerc])  #Sets y as the set of Mk% values corresponding with percentages of the total time defined by values in SelectPerc
     
-    #Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails
-    v<-c(1,2,3,5,10,25,50,75,90,95,97,98,99,100) #v is a set of user defined values of percentages of the total time to be used for calculating and plotting specific corresponding Wk% and Mk% values
-    x<-v/100  #Sets x as values of v in percentages
-		y<-Mk[v]  #Sets y as the set of Mk% values corresponding with percentages of the total time defined by values in x
-    xx<-qnorm(x) #qnorm takes a given probability (x values in this case) and returns the corresponding cumulative distribution value (Z-score) based on a normal distribution curve   
-    yy<-qnorm(y) #Here, qnorm is taking the percentages of the load that occur associated with percentages of the total time defined by values in x and calculating associated Z-scores according to a normal distribution curve
-    yV<-Wk[v] #Sets yV as the set of Wk% values corresponding with percentages of the total time defined by values in x
-    yyV<-qnorm(yV) #qnorm takes percentages of the flow occurring associated with percentages of the total time defined by x values and assigns Z-score values to each probability based on the normal distribution curve 
-    yy<-cbind(yy,yyV) #Binds both sets of Z-score values corresponding with Mk% (yy) and Wk% (yV)
-    xx<-cbind(xx,xx) #Binds both sets of Z-scores correspdonding with defined percentages of the total time (They are the same, this is for plotting purposes)
-    color<-c(ColElmt,"blue") #Defines the plot colors for yy and yV
-    
-    for (i in 1:2){
-    plot(xx[,i],yy[,i],xlab="Probability of Occurrence (%)",ylab="Mk% & Wk%",type="o",xaxt="n",yaxt="n",xlim=c(-2.5,2.5),ylim=c(-2.5,2.5),pch=i,col=color[i])#Plots yy and yV values as a function of xx values
+  color<-c("deeppink1") #Defines the plot color for the element to be plotted, here nitrate.
+
+  plot(qnormSelectPerc,qnormMk,xlab="",ylab="",
+         type="o",xaxt="n",yaxt="n",xlim=c(-2.5,2.5),ylim=c(-2.5,2.5),pch=2,col=color) #Plots yy and yV values as a function of xx values
     par(new=TRUE)
-    } 
-    
-    axis(1,at=xx[,1],labels=x*100)
-    axis(2,at=xx[,1],labels=x*100)
-    title(main="Double cumulative probability plot for nitrate load \nand for flow volume") # the \n in the text allows for line break in the title
-    abline(h=xx,lty=3,col="grey") #Plots gridlines
-    abline(v=xx,lty=3,col="grey")
+  
+    axis(1,at=qnormSelectPerc,labels=SelectPerc)
+    axis(2,at=qnormSelectPerc,labels=SelectPerc)
+    mtext("Flow and mass duration curve for the \nCuyahoga River at Independence, OH", side=3, line = 1) # the \n in the text allows for line break in the title
+    abline(h=qnormSelectPerc,lty=3,col="grey") #Plots gridlines
+    abline(v=qnormSelectPerc,lty=3,col="grey")
     legend("bottomright",c("Cumul NO3 load","Cumul Q"),
-          pch=1:2,
-          col=color,
+          pch=c(19,2),
+          col=c("blue",color),
           bg="white")
 
 ```
