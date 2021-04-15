@@ -187,11 +187,9 @@ This method allows us to see the percentage of the total discharge that occurs i
 
 #Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails 
 # Q is understood as the entire time series of flow
-# C is understood as the enitre time series for nitrate    
+# C is understood as the entire time series for nitrate    
   
-  par(mar=c(4.5,4.5,3,0.5))
-  param <- c("NO3","TP","SRP","SS")
-  ColElmt <- c("deeppink1","brown","skyblue4","grey30")
+  par(mar=c(4.5,4.5,3,0.5)) # this gives the sizes expressed in lines of the size of the margins around the plot, in that order bottom, left, top, right.
 
 # The first thing to do is to select a few values among the 100 possible, such that the details at the tail ends are highlighted. This is what the next line does.  
   
