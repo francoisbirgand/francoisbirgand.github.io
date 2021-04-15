@@ -218,10 +218,10 @@ This method allows us to see the percentage of the total discharge that occurs i
   
     axis(1,at=qnormSelectPerc,labels=SelectPerc)
     axis(2,at=qnormSelectPerc,labels=SelectPerc)
-    mtext("Flow and mass duration curve for the \nCuyahoga River at Independence, OH", side=3, line = 1) # the \n in the text allows for line break in the title
+    mtext("Flow and mass duration curve for the \nMaudouve River at Saint-Donan, France", side=3, line = 1) # the \n in the text allows for line break in the title
     abline(h=qnormSelectPerc,lty=3,col="grey") #Plots gridlines
     abline(v=qnormSelectPerc,lty=3,col="grey")
-    legend("bottomright",c("Cumul NO3 load","Cumul Q"),
+    legend("bottomright",c("Cumul Q","Cumul NO3 load"),
           pch=c(19,2),
           col=c("blue",color),
           bg="white")

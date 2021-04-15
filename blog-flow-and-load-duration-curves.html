@@ -423,7 +423,7 @@ $(document).ready(function () {
 <h1>Blog: flow and load duration curves</h1>
 <div id="by-beth-allen-and-françois-birgand" class="section level3">
 <h3><em>by Beth Allen and François Birgand</em></h3>
-<p><em>started 2011-09-11 and updated 2021-04-14</em></p>
+<p><em>started 2011-09-11 and updated 2021-04-15</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -592,10 +592,10 @@ Mk=quantile(cumLSort,probs=seq(0.01,1,0.01))/tail(cumLSort,1)</code></pre>
   
     axis(1,at=qnormSelectPerc,labels=SelectPerc)
     axis(2,at=qnormSelectPerc,labels=SelectPerc)
-    mtext(&quot;Flow and mass duration curve for the \nCuyahoga River at Independence, OH&quot;, side=3, line = 1) # the \n in the text allows for line break in the title
+    mtext(&quot;Flow and mass duration curve for the \nMaudouve River at Saint-Donan, France&quot;, side=3, line = 1) # the \n in the text allows for line break in the title
     abline(h=qnormSelectPerc,lty=3,col=&quot;grey&quot;) #Plots gridlines
     abline(v=qnormSelectPerc,lty=3,col=&quot;grey&quot;)
-    legend(&quot;bottomright&quot;,c(&quot;Cumul NO3 load&quot;,&quot;Cumul Q&quot;),
+    legend(&quot;bottomright&quot;,c(&quot;Cumul Q&quot;,&quot;Cumul NO3 load&quot;),
           pch=c(19,2),
           col=c(&quot;blue&quot;,color),
           bg=&quot;white&quot;)</code></pre>
