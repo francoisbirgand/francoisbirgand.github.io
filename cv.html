@@ -13,12 +13,21 @@
 
 <title>François Birgand</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -35,11 +44,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -52,32 +56,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -89,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -109,40 +83,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -170,7 +117,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -182,7 +129,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -193,10 +140,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -208,7 +168,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -345,7 +304,7 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-link"></span>
+    <span class="fa fa-link"></span>
      
     Connect
      
@@ -354,42 +313,42 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="mailto:francois_birgand@ncsu.edu">
-        <span class="fa fa fa fa-envelope-o"></span>
+        <span class="fa fa-envelope-o"></span>
          
         email
       </a>
     </li>
     <li>
       <a href="https://github.com/francoisbirgand">
-        <span class="fas fa-github"></span>
+        <span class="fa fa-github"></span>
          
         Github
       </a>
     </li>
     <li>
       <a href="https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos">
-        <span class="fas fa-youtube"></span>
+        <span class="fa fa-youtube"></span>
          
         Youtube
       </a>
     </li>
     <li>
       <a href="https://twitter.com/birgandwaterlab">
-        <span class="fas fa-twitter"></span>
+        <span class="fa fa-twitter"></span>
          
         Twitter
       </a>
     </li>
     <li>
       <a href="https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&amp;hl=en">
-        <span class="fas fa-google"></span>
+        <span class="fa fa-google"></span>
          
         Scholar
       </a>
     </li>
     <li>
       <a href="https://www.linkedin.com/in/françois-birgand-72836a63/">
-        <span class="fas fa-linkedin"></span>
+        <span class="fa fa-linkedin"></span>
          
         Linkedin
       </a>
@@ -399,7 +358,7 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="https://maps.ncsu.edu/#/buildings/dsw">
-        <span class="fas fa-map-marker"></span>
+        <span class="fa fa-map-marker"></span>
          
         148 Weaver
       </a>
@@ -411,7 +370,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -441,7 +400,7 @@ list-style-type: none;
 <i class="fa fa-globe" aria-hidden="true"></i> <a href="https://francoisbirgand.github.io/">https://francoisbirgand.github.io/</a>
 </li>
 <li>
-<i class="fa fa-clock-o" aria-hidden="true"></i> Last Updated: April 15, 2021
+<i class="fa fa-clock-o" aria-hidden="true"></i> Last Updated: February 04, 2022
 </li>
 <li>
 <i class='fa fa-download' aria-hidden='true'></i><a href='cv_francois_birgand.pdf'> Download CV (pdf)</a>
@@ -533,9 +492,18 @@ list-style-type: none;
 </ul>
 <hr />
 </div>
-<div id="refereed-journal-articles-63" class="section level1">
-<h1>Refereed Journal Articles <em>(63)</em></h1>
+<div id="refereed-journal-articles-66" class="section level1">
+<h1>Refereed Journal Articles <em>(66)</em></h1>
 <div id="section" class="section level3">
+<h3>2022 <em>(1)</em></h3>
+<p>Moin Sheida, Hunt William F, Birgand François, and Ratzlaff Steve (2022). “Effect of Visibility on Maintenance Investment and Consequent Performance of Urban Stormwater Control Measures”. In: <em>Journal of Sustainable Water in the Built Environment</em> 8.1, p. 05021005. DOI: <a href="https://doi.org/10.1061%2FJSWBAY.0000975">10.1061/JSWBAY.0000975</a>. URL: <a href="https://doi.org/10.1061/JSWBAY.0000975">https://doi.org/10.1061/JSWBAY.0000975</a>.</p>
+</div>
+<div id="section-1" class="section level3">
+<h3>2021 <em>(2)</em></h3>
+<p>Liu, W, F. Birgand, S. Tian, and C. Chen (2021). “Event-scale hysteresis metrics to reveal processes and mechanisms controlling constituent export from watersheds: A review✰”. En. In: <em>Water Res.</em> 200, p. 117254. DOI: <a href="https://doi.org/10.1016%2Fj.watres.2021.117254">10.1016/j.watres.2021.117254</a>. URL: <a href="http://dx.doi.org/10.1016/j.watres.2021.117254">http://dx.doi.org/10.1016/j.watres.2021.117254</a>.</p>
+<p>Shiau, Y, M. R. Burchell, K. W. Krauss, S. W. Broome, and F. Birgand (2021). “Corrigendum to ``Carbon storage potential in a recently created brackish marsh in eastern North Carolina, USA’’ [Ecological Engineering 127 (2019) 579-588]”. In: <em>Ecol. Eng.</em> 168, p. 106276. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2021.106276">10.1016/j.ecoleng.2021.106276</a>. URL: <a href="https://www.sciencedirect.com/science/article/pii/S0925857421001312">https://www.sciencedirect.com/science/article/pii/S0925857421001312</a>.</p>
+</div>
+<div id="section-2" class="section level3">
 <h3>2020 <em>(6)</em></h3>
 <p>Liu, W, B. Maxwell, F. Birgand, M. Youssef, G. Chescheir, and S. Tian (2020). “Multipoint High-Frequency Sampling System to Gain Deeper Insights on the Fate of Nitrate in Artificially Drained Fields”. En. In: <em>J. Irrig. Drain. Eng.</em> 146.1. DOI: <a href="https://doi.org/10.1061%2F%28ASCE%29IR.1943-4774.0001438">10.1061/(ASCE)IR.1943-4774.0001438</a>. URL: <a href="http://dx.doi.org/10.1061/(ASCE)IR.1943-4774.0001438">http://dx.doi.org/10.1061/(ASCE)IR.1943-4774.0001438</a>.</p>
 <p>Liu, W, M. A. Youssef, F. Birgand, G. M. Chescheir, S. Tian, and B. M. Maxwell (2020). “Processes and mechanisms controlling nitrate dynamics in an artificially drained field: Insights from high-frequency water quality measurements”. In: <em>Agric. Water Manage.</em> 232, p. 106032. DOI: <a href="https://doi.org/10.1016%2Fj.agwat.2020.106032">10.1016/j.agwat.2020.106032</a>. URL: <a href="http://www.sciencedirect.com/science/article/pii/S0378377419315744">http://www.sciencedirect.com/science/article/pii/S0378377419315744</a>.</p>
@@ -544,7 +512,7 @@ list-style-type: none;
 <p>Maxwell, B, D. Winter, and F. Birgand (2020). “Floating treatment wetland retrofit in a stormwater wet pond provides limited water quality improvements”. In: <em>Ecol. Eng.</em> 149, p. 105784. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2020.105784">10.1016/j.ecoleng.2020.105784</a>. URL: <a href="http://www.sciencedirect.com/science/article/pii/S0925857420300720">http://www.sciencedirect.com/science/article/pii/S0925857420300720</a>.</p>
 <p>Muwamba, A, D. M. Amatya, G. M. Chescheir, J. E. Nettles, T. Appelboom, E. W. Tollner, H. Ssegane, M. A. Youssef, F. Birgand, and T. Callahan (2020). “Response of Drainage Water Quality to Fertilizer Applications on a Switchgrass Intercropped Coastal Pine Forest”. En. In: <em>Water</em> 12.5, p. 1265. DOI: <a href="https://doi.org/10.3390%2Fw12051265">10.3390/w12051265</a>. URL: <a href="https://www.mdpi.com/2073-4441/12/5/1265">https://www.mdpi.com/2073-4441/12/5/1265</a>.</p>
 </div>
-<div id="section-1" class="section level3">
+<div id="section-3" class="section level3">
 <h3>2019 <em>(7)</em></h3>
 <p>Cizek, A. R, J. P. Johnson, F. Birgand, W. F. Hunt, and R. A. McLaughlin (2019). “Insights from using in-situ ultraviolet-visible spectroscopy to assess nitrogen treatment and subsurface dynamics in a regenerative stormwater conveyance (RSC) system”. In: <em>J. Environ. Manage.</em> 252, p. 109656. DOI: <a href="https://doi.org/10.1016%2Fj.jenvman.2019.109656">10.1016/j.jenvman.2019.109656</a>. URL: <a href="http://www.sciencedirect.com/science/article/pii/S030147971931374X">http://www.sciencedirect.com/science/article/pii/S030147971931374X</a>.</p>
 <p>Frazar, S, A. J. Gold, K. Addy, F. Moatar, F. Birgand, A. W. Schroth, D. Q. Kellogg, and S. M. Pradhanang (2019). “Contrasting behavior of nitrate and phosphate flux from high flow events on small agricultural and urban watersheds”. In: <em>Biogeochemistry</em>. DOI: <a href="https://doi.org/10.1007%2Fs10533-019-00596-z">10.1007/s10533-019-00596-z</a>. URL: <a href="https://doi.org/10.1007/s10533-019-00596-z">https://doi.org/10.1007/s10533-019-00596-z</a>.</p>
@@ -554,7 +522,7 @@ list-style-type: none;
 <p>Park, J, R. J. Batalla, F. Birgand, M. Esteves, F. Gentile, J. R. Harrington, O. Navratil, J. A. López-Tarazón, and D. Vericat (2019). “Influences of Catchment and River Channel Characteristics on the Magnitude and Dynamics of Storage and Re-Suspension of Fine Sediments in River Beds”. En. In: <em>Water</em> 11.5, p. 878. DOI: <a href="https://doi.org/10.3390%2Fw11050878">10.3390/w11050878</a>. URL: <a href="https://www.mdpi.com/2073-4441/11/5/878">https://www.mdpi.com/2073-4441/11/5/878</a>.</p>
 <p>Shiau, Y, M. R. Burchell, K. W. Krauss, S. W. Broome, and F. Birgand (2019). “Carbon storage potential in a recently created brackish marsh in eastern North Carolina, USA”. In: <em>Ecol. Eng.</em> 127, pp. 579-588. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2018.09.007">10.1016/j.ecoleng.2018.09.007</a>. URL: <a href="http://www.sciencedirect.com/science/article/pii/S0925857418303446">http://www.sciencedirect.com/science/article/pii/S0925857418303446</a>.</p>
 </div>
-<div id="section-2" class="section level3">
+<div id="section-4" class="section level3">
 <h3>2018 <em>(5)</em></h3>
 <p>Addy, K, A. J. Gold, J. A. Loffredo, A. W. Schroth, S. P. Inamdar, W. B. Bowden, D. Q. Kellogg, and F. Birgand (2018). “Stream response to an extreme drought-induced defoliation event”. In: <em>Biogeochemistry</em>. DOI: <a href="https://doi.org/10.1007%2Fs10533-018-0485-3">10.1007/s10533-018-0485-3</a>. URL: <a href="https://doi.org/10.1007/s10533-018-0485-3">https://doi.org/10.1007/s10533-018-0485-3</a>.</p>
 <p>Harmel, R. D, K. King, D. Busch, D. Smith, F. Birgand, and B. Haggard (2018). “Measuring edge-of-field water quality: Where we have been and the path forward”. In: <em>J. Soil Water Conserv.</em> 73.1, pp. 86-96. DOI: <a href="https://doi.org/10.2489%2Fjswc.73.1.86">10.2489/jswc.73.1.86</a>.</p>
@@ -562,7 +530,7 @@ list-style-type: none;
 <p>Maxwell, B. M, F. Birgand, B. Smith, and K. Aveni-Deforge (2018). “A small-volume multiplexed pumping system for automated, high-frequency water chemistry measurements in volume-limited applications”. En. In: <em>Hydrol. Earth Syst. Sci.</em> 22.11, pp. 5615-5628. DOI: <a href="https://doi.org/10.5194%2Fhess-22-5615-2018">10.5194/hess-22-5615-2018</a>. URL: <a href="https://www.hydrol-earth-syst-sci.net/22/5615/2018/">https://www.hydrol-earth-syst-sci.net/22/5615/2018/</a>.</p>
 <p>Vongvixay, A, C. Grimaldi, R. Dupas, O. Fovet, F. Birgand, N. Gilliet, and C. Gascuel-Odoux (2018). “Contrasting Suspended Sediment Export In Two Small Agricultural Catchments: Cross-influence Of Hydrological Behaviour and Landscape Degradation or Stream Bank Management”. In: <em>Land Degrad. Dev.</em>. DOI: <a href="https://doi.org/10.1002%2Fldr.2940">10.1002/ldr.2940</a>. URL: <a href="http://doi.wiley.com/10.1002/ldr.2940">http://doi.wiley.com/10.1002/ldr.2940</a>.</p>
 </div>
-<div id="section-3" class="section level3">
+<div id="section-5" class="section level3">
 <h3>2017 <em>(6)</em></h3>
 <p>Etheridge, J. R, M. R. Burchell II, and F. Birgand (2017). “Can created tidal marshes reduce nitrate export to downstream estuaries?” In: <em>Ecol. Eng.</em> 105, pp. 314-324. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2017.05.009">10.1016/j.ecoleng.2017.05.009</a>.</p>
 <p>Messer, T. L, M. R. Burchell, and F. Birgand (2017). “Comparison of Four Nitrate Removal Kinetic Models in Two Distinct Wetland Restoration Mesocosm Systems”. En. In: <em>Water</em> 9.7, p. 517. DOI: <a href="https://doi.org/10.3390%2Fw9070517">10.3390/w9070517</a>.</p>
@@ -571,14 +539,14 @@ list-style-type: none;
 <p>Ssegane, H, D. M. Amatya, A. Muwamba, G. M. Chescheir, T. Appelboom, E. W. Tollner, J. E. Nettles, M. A. Youssef, F. Birgand, and R. W. Skaggs (2017). “Calibration of paired watersheds: Utility of moving sums in presence of externalities”. In: <em>Hydrol. Process.</em> 31.20, pp. 3458-3471. DOI: <a href="https://doi.org/10.1002%2Fhyp.11248">10.1002/hyp.11248</a>.</p>
 <p>Vaughan, M. C. H, W. B. Bowden, J. B. Shanley, A. Vermilyea, R. Sleeper, A. J. Gold, S. M. Pradhanang, S. P. Inamdar, D. F. Levia, A. S. Andres, F. Birgand, and A. W. Schroth (2017). “High-frequency dissolved organic carbon and nitrate measurements reveal differences in storm hysteresis and loading in relation to land cover and seasonality”. In: <em>Water Resour. Res.</em> 53.7, pp. 5345-5363. DOI: <a href="https://doi.org/10.1002%2F2017WR020491">10.1002/2017WR020491</a>.</p>
 </div>
-<div id="section-4" class="section level3">
+<div id="section-6" class="section level3">
 <h3>2016 <em>(4)</em></h3>
 <p>Birgand, F, K. Aveni-Deforge, B. Smith, B. Maxwell, M. Horstman, A. B. Gerling, and C. C. Carey (2016). “First report of a novel multiplexer pumping system coupled to a water quality probe to collect high temporal frequency in situ water chemistry measurements at multiple sites”. In: <em>Limnol. Oceanogr. Methods</em> 14.12, pp. 767-783. DOI: <a href="https://doi.org/10.1002%2Flom3.10122">10.1002/lom3.10122</a>.</p>
 <p>Burnette, M. C, D. P. Genereux, and F. Birgand (2016). “In-situ falling-head test for hydraulic conductivity: Evaluation in layered sediments of an analysis derived for homogenous sediments”. In: <em>J. Hydrol.</em> 539, pp. 319-329. DOI: <a href="https://doi.org/10.1016%2Fj.jhydrol.2016.05.030">10.1016/j.jhydrol.2016.05.030</a>.</p>
 <p>Gilmore, T. E, D. P. Genereux, D. K. Solomon, J. E. Solder, B. A. Kimball, H. Mitasova, and F. Birgand (2016). “Quantifying the fate of agricultural nitrogen in an unconfined aquifer: Stream-based observations at three measurement scales”. In: <em>Water Resour. Res.</em> 52.3, pp. 1961-1983. DOI: <a href="https://doi.org/10.1002%2F2015WR017599">10.1002/2015WR017599</a>.</p>
 <p>Shiau, Y, M. R. Burchell, K. W. Krauss, F. Birgand, and S. W. Broome (2016). “Greenhouse Gas Emissions from a Created Brackish Marsh in Eastern North Carolina”. En. In: <em>Wetlands</em> 36.6, pp. 1009-1024. DOI: <a href="https://doi.org/10.1007%2Fs13157-016-0815-y">10.1007/s13157-016-0815-y</a>.</p>
 </div>
-<div id="section-5" class="section level3">
+<div id="section-7" class="section level3">
 <h3>2015 <em>(6)</em></h3>
 <p>Billy, V. de, J. Tournebize, G. Barnaud, M. Benoît, F. Birgand, J. Garnier, B. Lesaffre, C. Lévêque, G. de Marsily, S. Muller, A. Musy, and D. Zimmer (2015a). “Compenser la destruction de zones humides. Retours d’expérience sur les méthodes et réflexions inspirées par le projet d’aéroport de Notre-Dame-des-Landes (France)”. Fr. In: <em>Nat. Sci. Soc</em> 23.1, pp. 27-41. DOI: <a href="https://doi.org/10.1051%2Fnss%2F2015008">10.1051/nss/2015008</a>.</p>
 <p>Billy, V. de, J. Tournebize, G. Barnaud, M. Benoît, F. Birgand, J. Garnier, B. Lesaffre, C. Lévêque, G. de Marsily, S. Muller, A. Musy, and D. Zimmer (2015b). “Compenser la destruction de zones humides. Retours d’expérience sur les méthodes et réflexions inspirées par le projet d’aéroport de Notre-Dame-des-Landes (France)”. Fr. In: <em>Nat. Sci. Soc</em> 23.1, pp. 27-41. DOI: <a href="https://doi.org/10.1051%2Fnss%2F2015008">10.1051/nss/2015008</a>.</p>
@@ -587,13 +555,13 @@ list-style-type: none;
 <p>Osburn, C. L, M. P. Mikan, J. R. Etheridge, M. R. Burchell, and F. Birgand (2015). “Seasonal variation in the quality of dissolved and particulate organic matter exchanged between a salt marsh and its adjacent estuary”. In: <em>J. Geophys. Res. Biogeosci.</em> 120.7, p. 2014JG002897. DOI: <a href="https://doi.org/10.1002%2F2014JG002897">10.1002/2014JG002897</a>.</p>
 <p>Polizzotto, M. L, F. Birgand, A. B. M. Badruzzaman, and M. A. Ali (2015). “Amending irrigation channels with jute-mesh structures to decrease arsenic loading to rice fields in Bangladesh”. In: <em>Ecol. Eng.</em> 74, pp. 101-106. DOI: <a href="https://doi.org/10.1016%2Fj.ecoleng.2014.10.030">10.1016/j.ecoleng.2014.10.030</a>.</p>
 </div>
-<div id="section-6" class="section level3">
+<div id="section-8" class="section level3">
 <h3>2014 <em>(3)</em></h3>
 <p>Etheridge, J. R, F. Birgand, M. R. Burchell II, A. Lepistö, K. Rankinen, and K. Granlund (2014). “Technical Note: Alternative in-stream denitrification equation for the INCA-N model”. En. In: <em>Hydrol. Earth Syst. Sci.</em> 18.4, pp. 1467-1473. DOI: <a href="https://doi.org/10.5194%2Fhess-18-1467-2014">10.5194/hess-18-1467-2014</a>.</p>
 <p>Etheridge, J. R, F. Birgand, J. A. Osborne, C. L. Osburn, M. R. Burchell, and J. Irving (2014). “Using in situ ultraviolet-visual spectroscopy to measure nitrogen, carbon, phosphorus, and suspended solids concentrations at a high frequency in a brackish tidal marsh”. In: <em>Limnol. Oceanogr. Methods</em> 12.1, pp. 10-22. DOI: <a href="https://doi.org/10.4319%2Flom.2014.12.10">10.4319/lom.2014.12.10</a>.</p>
 <p>Etheridge, J. R, A. Lepistö, K. Granlund, K. Rankinen, F. Birgand, and M. R. Burchell (2014). “Reducing uncertainty in the calibration and validation of the INCA-N model by using soft data”. En. In: <em>Hydrol. Res.</em> 45.1, pp. 73-88. DOI: <a href="https://doi.org/10.2166%2Fnh.2013.039">10.2166/nh.2013.039</a>.</p>
 </div>
-<div id="section-7" class="section level3">
+<div id="section-9" class="section level3">
 <h3>2013 <em>(6)</em></h3>
 <p>Billy, C, F. Birgand, P. Ansart, J. Peschard, M. Sebilo, and J. Tournebize (2013). “Factors controlling nitrate concentrations in surface waters of an artificially drained agricultural watershed”. En. In: <em>Landsc. Ecol.</em> 28.4, pp. 665-684. DOI: <a href="https://doi.org/10.1007%2Fs10980-013-9872-2">10.1007/s10980-013-9872-2</a>.</p>
 <p>Birgand, F, G. Lellouche, and T. W. Appelboom (2013). “Measuring flow in non-ideal conditions for short-term projects: Uncertainties associated with the use of stage-discharge rating curves”. In: <em>J. Hydrol.</em> 503, pp. 186-195. DOI: <a href="https://doi.org/10.1016%2Fj.jhydrol.2013.09.007">10.1016/j.jhydrol.2013.09.007</a>.</p>
@@ -602,47 +570,47 @@ list-style-type: none;
 <p>Gilmore, T. E, F. Birgand, and K. W. Chapman (2013). “Source and magnitude of error in an inexpensive image-based water level measurement system”. In: <em>J. Hydrol.</em> 496, pp. 178-186. DOI: <a href="https://doi.org/10.1016%2Fj.jhydrol.2013.05.011">10.1016/j.jhydrol.2013.05.011</a>.</p>
 <p>Moatar, F, M. Meybeck, S. Raymond, F. Birgand, and F. Curie (2013). “River flux uncertainties predicted by hydrological variability and riverine material behaviour”. In: <em>Hydrol. Process.</em> 27.25, pp. 3535-3546. DOI: <a href="https://doi.org/10.1002%2Fhyp.9464">10.1002/hyp.9464</a>.</p>
 </div>
-<div id="section-8" class="section level3">
+<div id="section-10" class="section level3">
 <h3>2011 <em>(3)</em></h3>
 <p>Billy, C, F. Birgand, M. Sebilo, G. Billen, J. Tournebize, and C. Kao (2011). “Nitrate dynamics in artificially drained nested watersheds”. In: <em>Phys. Chem. Earth</em> 36.12, pp. 506-514. DOI: <a href="https://doi.org/10.1016%2Fj.pce.2008.09.007">10.1016/j.pce.2008.09.007</a>.</p>
 <p>Birgand, F, T. W. Appelboom, G. M. Chescheir, and R. W. Skaggs (2011). “Estimating Nitrogen, Phosphorus, and Carbon Fluxes in Forested and Mixed-used Watersheds of the Lower Coastal Plain of North Carolina: Uncertainties Associated with Infrequent Sampling”. In: <em>Trans. ASABE</em> 54.6, pp. 2099-2110. DOI: <a href="https://doi.org/10.13031%2F2013.40668">10.13031/2013.40668</a>.</p>
 <p>Birgand, F, C. Faucheux, G. Gruau, F. Moatar, and M. Meybeck (2011). “Uncertainties in Assessing Annual Nitrate Loads and Concentration Indicators: Part 2. Deriving Sampling Frequency Charts in Brittany, France”. In: <em>Trans. ASABE</em> 54.1, pp. 93-104. DOI: <a href="https://doi.org/10.13031%2F2013.36263">10.13031/2013.36263</a>.</p>
 </div>
-<div id="section-9" class="section level3">
+<div id="section-11" class="section level3">
 <h3>2010 <em>(4)</em></h3>
 <p>Appelboom, T. W, G. M. Chescheir, F. Birgand, R. W. Skaggs, J. W. Gilliam, and D. Amatya (2010). “Temperature Coefficient for Modeling Denitrification in Surface Water Sediments Using the Mass Transfer Coefficient”. In: <em>Trans. ASABE</em> 53.2, pp. 465-474. DOI: <a href="https://doi.org/10.13031%2F2013.29578">10.13031/2013.29578</a>.</p>
 <p>Billy, C, G. Billen, M. Sebilo, F. Birgand, and J. Tournebize (2010). “Nitrogen isotopic composition of leached nitrate and soil organic matter as an indicator of denitrification in a sloping drained agricultural plot and adjacent uncultivated riparian buffer strips”. In: <em>Soil Biol. Biochem.</em> 42.1, pp. 108-117. DOI: <a href="https://doi.org/10.1016%2Fj.soilbio.2009.09.026">10.1016/j.soilbio.2009.09.026</a>.</p>
 <p>Birgand, F, C. Faucheux, G. Gruau, B. Augeard, F. Moatar, and P. Bordenave (2010). “Uncertainties in Assessing Annual Nitrate Loads and Concentration Indicators: Part 1. Impact of Sampling Frequency and Load Estimation Algorithms”. In: <em>Trans. ASABE</em> 53.2, pp. 437-446. DOI: <a href="https://doi.org/10.13031%2F2013.29584">10.13031/2013.29584</a>.</p>
 <p>Henine, H, Y. Nédélec, B. Augeard, F. Birgand, C. Chaumont, P. Ribstein, and C. Kao (2010). “Effect of Pipe Pressurization on the Discharge of a Tile Drainage System”. In: <em>Vadose Zone J.</em> 9, pp. 36-42. DOI: <a href="https://doi.org/10.2136%2Fvzj2008.0152">10.2136/vzj2008.0152</a>.</p>
 </div>
-<div id="section-10" class="section level3">
+<div id="section-12" class="section level3">
 <h3>2009 <em>(3)</em></h3>
 <p>Birgand, F, C. Faucheux, G. Gruau, B. Augeard, F. Moatar, M. Meybeck, A. Bouédo, and P. Bordenave (2009). “Une approche quantitative du rôle de la fréquence d’échantillonnage sur les incertitudes associées aux calculs des flux et des concentrations moyennes en nitrate en Bretagne”. In: <em>Ingénieries</em> 59-60, pp. 23-37.</p>
 <p>Moatar, F, F. Birgand, M. Meybeck, C. Faucheux, and S. Raymond (2009a). “Incertitudes sur les métriques de qualité des cours d’eau (médianes et quantiles de concentrations, flux, cas des nutriments) évaluées a partir de suivis discrets”. Fr. In: <em>La Houille Blanche</em>, pp. 68-76. DOI: <a href="https://doi.org/10.1051%2Flhb%2F2009029">10.1051/lhb/2009029</a>.</p>
 <p>Moatar, F, F. Birgand, M. Meybeck, C. Faucheux, and S. Raymond (2009b). “Incertitudes sur les métriques de qualité des cours d’eau (médianes et quantiles de concentrations, flux, cas des nutriments) évaluées a partir de suivis discrets”. Fr. In: <em>La Houille Blanche</em>, pp. 68-76. DOI: <a href="https://doi.org/10.1051%2Flhb%2F2009029">10.1051/lhb/2009029</a>.</p>
 </div>
-<div id="section-11" class="section level3">
+<div id="section-13" class="section level3">
 <h3>2008 <em>(1)</em></h3>
 <p>Tournebize, J, M. Arlot, C. Billy, F. Birgand, J. Gillet, and A. Dutertre (2008). “Quantification et maîtrise des flux de nitrates : de la parcelle drainée au bassin versant”. In: <em>Ingénieries - Numéro Spécial ``Azote, Phosphore et pesticides’’</em>, pp. 5-25.</p>
 </div>
-<div id="section-12" class="section level3">
+<div id="section-14" class="section level3">
 <h3>2007 <em>(3)</em></h3>
 <p>Birgand, F, R. W. Skaggs, G. M. Chescheir, and J. W. Gilliam (2007). “Nitrogen Removal in Streams of Agricultural Catchments-A Literature Review”. In: <em>Crit. Rev. Environ. Sci. Technol.</em> 37.5, pp. 381-487. DOI: <a href="https://doi.org/10.1080%2F10643380600966426">10.1080/10643380600966426</a>. eprint: <a href="http://dx.doi.org/10.1080/10643380600966426" class="uri">http://dx.doi.org/10.1080/10643380600966426</a>.</p>
 <p>Peu, P, F. Birgand, and J. Martinez (2007). “Long term fate of slurry derived nitrogen in soil: a case study with a macro-lysimeter experiment having received high loads of pig slurry (Solepur)”. En. In: <em>Bioresour. Technol.</em> 98.17, pp. 3228-3234. DOI: <a href="https://doi.org/10.1016%2Fj.biortech.2006.07.019">10.1016/j.biortech.2006.07.019</a>.</p>
 <p>Turlan, T, F. Birgand, and P. Marmonier (2007). “Comparative use of field and laboratory mesocosms for in-stream nitrate uptake measurement”. En. In: <em>Int. J. Lim.</em> 43.1, pp. 41-51. DOI: <a href="https://doi.org/10.1051%2Flimn%2F2007026">10.1051/limn/2007026</a>.</p>
 </div>
-<div id="section-13" class="section level3">
+<div id="section-15" class="section level3">
 <h3>2005 <em>(4)</em></h3>
 <p>Birgand, F, J. Benoist, É. Novince, N. Gilliet, P. Saint-Cast, and É. Le Saos (2005a). “Guide d’application de la technique du Doppler continu pour une section calibrée en bois”. In: <em>Ingénieries</em> 41, pp. 77-82.</p>
 <p>Birgand, F, J. Benoist, É. Novince, N. Gilliet, P. Saint-Cast, and É. Le Saos (2005b). “Mesure des débits à l’aide de débitmètres ultrasoniques Doppler - Cas des petits cours d’eau ruraux”. In: <em>Ingénieries</em> 41, pp. 23-38.</p>
 <p>Kenny, C, S. Yamulki, M. Blackwell, E. Maltby, P. French, and F. Birgand (2005). “The release of nitrous oxide from the intertidal zones of two European estuaries in response to increased ammonium and nitrate loading”. En. In: <em>Water Air Soil Pollut. Focus</em> 4.6, pp. 61-66. DOI: <a href="https://doi.org/10.1007%2Fs11267-005-3014-z">10.1007/s11267-005-3014-z</a>.</p>
 <p>Turpin, N, P. Bontems, G. Rotillon, I. Bärlund, M. Kaljonen, S. Tattari, F. Feichtinger, P. Strauss, R. Haverkamp, M. Garnier, A. Lo Porto, G. Benigni, A. Leone, M. N. Ripa, O. Eklo, E. Romstad, T. Bioteau, F. Birgand, P. Bordenave, R. Laplana, et al. (2005). “AgriBMPWater: systems approach to environmentally acceptable farming”. In: <em>Environ. Model. Softw.</em> 20.2, pp. 187-196. DOI: <a href="https://doi.org/10.1016%2Fj.envsoft.2003.09.004">10.1016/j.envsoft.2003.09.004</a>.</p>
 </div>
-<div id="section-14" class="section level3">
+<div id="section-16" class="section level3">
 <h3>2004 <em>(1)</em></h3>
 <p>Birgand, F, J. Lefrançois, C. Grimaldi, É. Novince, N. Gilliet, and C. Gascuel-Odoux (2004). “Mesure des flux et échantillonnage des matières en suspension sur de petits cours d’eau”. In: <em>Ingénieries</em> 40, pp. 21-35.</p>
 </div>
-<div id="section-15" class="section level3">
+<div id="section-17" class="section level3">
 <h3>2002 <em>(1)</em></h3>
 <p>Benoist, J. and F. Birgand (2002). “Les dispositifs de mesure des débits dans les bassins versants agricoles”. In: <em>Ingénieries</em> 32, pp. 51-63.</p>
 <hr />
@@ -650,29 +618,29 @@ list-style-type: none;
 </div>
 <div id="refereed-articles-en-français-8" class="section level1">
 <h1>Refereed Articles en Français <em>(8)</em></h1>
-<div id="section-16" class="section level3">
+<div id="section-18" class="section level3">
 <h3>2015 <em>(1)</em></h3>
 <p>Billy, V. de, J. Tournebize, G. Barnaud, M. Benoît, F. Birgand, J. Garnier, B. Lesaffre, C. Lévêque, G. de Marsily, S. Muller, A. Musy, and D. Zimmer (2015). “Compenser la destruction de zones humides. Retours d’expérience sur les méthodes et réflexions inspirées par le projet d’aéroport de Notre-Dame-des-Landes (France)”. Fr. In: <em>Nat. Sci. Soc</em> 23.1, pp. 27-41. DOI: <a href="https://doi.org/10.1051%2Fnss%2F2015008">10.1051/nss/2015008</a>.</p>
 </div>
-<div id="section-17" class="section level3">
+<div id="section-19" class="section level3">
 <h3>2009 <em>(2)</em></h3>
 <p>Birgand, F, C. Faucheux, G. Gruau, B. Augeard, F. Moatar, M. Meybeck, A. Bouédo, and P. Bordenave (2009). “Une approche quantitative du rôle de la fréquence d’échantillonnage sur les incertitudes associées aux calculs des flux et des concentrations moyennes en nitrate en Bretagne”. In: <em>Ingénieries</em> 59-60, pp. 23-37.</p>
 <p>Moatar, F, F. Birgand, M. Meybeck, C. Faucheux, and S. Raymond (2009). “Incertitudes sur les métriques de qualité des cours d’eau (médianes et quantiles de concentrations, flux, cas des nutriments) évaluées a partir de suivis discrets”. Fr. In: <em>La Houille Blanche</em>, pp. 68-76. DOI: <a href="https://doi.org/10.1051%2Flhb%2F2009029">10.1051/lhb/2009029</a>.</p>
 </div>
-<div id="section-18" class="section level3">
+<div id="section-20" class="section level3">
 <h3>2008 <em>(1)</em></h3>
 <p>Tournebize, J, M. Arlot, C. Billy, F. Birgand, J. Gillet, and A. Dutertre (2008). “Quantification et maîtrise des flux de nitrates : de la parcelle drainée au bassin versant”. In: <em>Ingénieries - Numéro Spécial ``Azote, Phosphore et pesticides’’</em>, pp. 5-25.</p>
 </div>
-<div id="section-19" class="section level3">
+<div id="section-21" class="section level3">
 <h3>2005 <em>(2)</em></h3>
 <p>Birgand, F, J. Benoist, É. Novince, N. Gilliet, P. Saint-Cast, and É. Le Saos (2005a). “Guide d’application de la technique du Doppler continu pour une section calibrée en bois”. In: <em>Ingénieries</em> 41, pp. 77-82.</p>
 <p>Birgand, F, J. Benoist, É. Novince, N. Gilliet, P. Saint-Cast, and É. Le Saos (2005b). “Mesure des débits à l’aide de débitmètres ultrasoniques Doppler - Cas des petits cours d’eau ruraux”. In: <em>Ingénieries</em> 41, pp. 23-38.</p>
 </div>
-<div id="section-20" class="section level3">
+<div id="section-22" class="section level3">
 <h3>2004 <em>(1)</em></h3>
 <p>Birgand, F, J. Lefrançois, C. Grimaldi, É. Novince, N. Gilliet, and C. Gascuel-Odoux (2004). “Mesure des flux et échantillonnage des matières en suspension sur de petits cours d’eau”. In: <em>Ingénieries</em> 40, pp. 21-35.</p>
 </div>
-<div id="section-21" class="section level3">
+<div id="section-23" class="section level3">
 <h3>2002 <em>(1)</em></h3>
 <p>Benoist, J. and F. Birgand (2002). “Les dispositifs de mesure des débits dans les bassins versants agricoles”. In: <em>Ingénieries</em> 32, pp. 51-63.</p>
 <hr />
@@ -704,6 +672,10 @@ list-style-type: none;
 <div id="invited-speaker" class="section level1">
 <h1>Invited Speaker</h1>
 <ul>
+<li>2021 <em>(1)</em>
+<ul>
+<li>Birgand, F. “Challenges and future of water quality research and monitoring” <em>Yangzhou University International Forum on Irrigation and Drainage, December 21, 2021.</em> – <strong><em>Invited speaker</em></strong></li>
+</ul></li>
 <li>2020 <em>(1)</em>
 <ul>
 <li>Birgand, F., Maxwell, B, Thomas, A., Tian, S, Schipper, L, Christianson, L, Helmers, M, Williams, D, Chescheir, GM, Youssef, M. “Drying and wetting cycles of normally wet soils impact soil respiration and health” <em>FFAR Workshop: Linking Soil and Watershed Health to In-field and Edge-of-Field Water Management, Erickson Alumni Center, West Virginia University, January 23-24, 2020.</em> – <strong><em>Invited speaker</em></strong></li>
@@ -748,11 +720,12 @@ list-style-type: none;
 </ul>
 <hr />
 </div>
-<div id="oral-presentations-136" class="section level1">
-<h1>Oral Presentations <em>(136)</em></h1>
+<div id="oral-presentations-137" class="section level1">
+<h1>Oral Presentations <em>(137)</em></h1>
 <ul>
-<li>2021 <em>(1)</em>
+<li>2021 <em>(2)</em>
 <ul>
+<li>Birgand, F. “Challenges and future of water quality research and monitoring” <em>Yangzhou University International Forum on Irrigation and Drainage, December 21, 2021.</em> – <strong><em>Invited speaker</em></strong></li>
 <li>Birgand, F, BM Maxwell, W Liu, S Garvey. “Multi-Point High Frequency Water Quality Sampling for Drainage Research” <em>Conservation Drainage Network Annual Meeting, April 7-9, 2021.</em></li>
 </ul></li>
 <li>2020 <em>(2)</em>
@@ -1262,7 +1235,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
