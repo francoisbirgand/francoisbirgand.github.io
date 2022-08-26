@@ -13,6 +13,7 @@
 
 <title>blog-making-videos-in-r-the-old-fashion-way.knit</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -58,6 +59,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -82,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +243,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +256,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -262,7 +271,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -285,7 +294,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -303,7 +312,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -378,11 +387,12 @@ $(document).ready(function () {
 </div>
 
 
-<div id="blog-making-videos-in-r---the-old-fashion-way" class="section level1">
+<div id="blog-making-videos-in-r---the-old-fashion-way"
+class="section level1">
 <h1>Blog: making videos in R - the old fashion way</h1>
 <div id="by-françois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2015-10-15 and updated 2022-04-03</em></p>
+<p><em>started 2015-10-15 and updated 2022-08-26</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -394,17 +404,33 @@ $(document).ready(function () {
 </div>
 <div id="time-series-graphs" class="section level2">
 <h2>Time series graphs</h2>
-<p>The core of our data in hydrology and water quality are time series of flow and concentrations that tell the story of what happened through time. I have always felt frustrated not to be able to view this type of data as movies, in addition to the still images of hydro- and chemographs <br/><br/></p>
+<p>The core of our data in hydrology and water quality are time series
+of flow and concentrations that tell the story of what happened through
+time. I have always felt frustrated not to be able to view this type of
+data as movies, in addition to the still images of hydro- and
+chemographs <br/><br/></p>
 <div id="jpgvideo-to-ffmpeg" class="section level3">
 <h3>jpgvideo to ffmpeg</h3>
-<p>Our research team has been using R to create images of graphs and after using jpgvideo for a long time to animate these graphs, we have now switched to ffmpeg (could not make jpgvideo to work on our computers anymore…) <br/></p>
+<p>Our research team has been using R to create images of graphs and
+after using jpgvideo for a long time to animate these graphs, we have
+now switched to ffmpeg (could not make jpgvideo to work on our computers
+anymore…) <br/></p>
 </div>
 <div id="what-is-ffmpeg" class="section level3">
 <h3>What is ffmpeg?</h3>
-<p>ffmpeg seems to be the standard that true multimedia handlers use. It is a very powerful platform that will do almost anything with videos, one of which being to create videos from a series of images The program works on linux (sign that it is for real!), OS and windows.</p>
-<p>One can find all information to download and install and everything on the official site ffmpeg.org Lots of Youtube videos can be found on how to use it, etc. One that I liked was what to do to install it nicely on my PC or mac. <br/><br/></p>
+<p>ffmpeg seems to be the standard that true multimedia handlers use. It
+is a very powerful platform that will do almost anything with videos,
+one of which being to create videos from a series of images The program
+works on linux (sign that it is for real!), OS and windows.</p>
+<p>One can find all information to download and install and everything
+on the official site ffmpeg.org Lots of Youtube videos can be found on
+how to use it, etc. One that I liked was what to do to install it nicely
+on my PC or mac. <br/><br/></p>
 <p>###The code that works for me</p>
-<p>I created a lot of .jpg images in R for which I switched the xlim or range of the dates every 15 min. I put all the images in the same directory with the names image_0001.jpg, image_0002.jpg, …, and so on until as many images as one wants.</p>
+<p>I created a lot of .jpg images in R for which I switched the xlim or
+range of the dates every 15 min. I put all the images in the same
+directory with the names image_0001.jpg, image_0002.jpg, …, and so on
+until as many images as one wants.</p>
 <p>I then used the following code: <br/></p>
 <pre><code>ffmpeg -r 25 -t 10 -f image2 -start_number 51 -i image_%04d.jpg -qscale:v 1 output.avi
 
@@ -429,13 +455,21 @@ $(document).ready(function () {
   output.avi
     tells ffmpeg to save the outpout file in a AVI file called output.avi</code></pre>
 <p><br/><br/></p>
-<p>There are many other options available using ffmpeg but these are the basic ones that are enough to make decent videos. <br/><br/></p>
+<p>There are many other options available using ffmpeg but these are the
+basic ones that are enough to make decent videos. <br/><br/></p>
 </div>
 </div>
 <div id="an-example-of-the-results" class="section level2">
 <h2>An example of the results</h2>
-<p>I have found that publishing videos on Youtube is an efficient way to give access to them on a wide basis Now, embedded youtube videos during presentation can be a tricky business and it is sometimes preferable and safer to have a .avi or .wmv version at hand! But on a web page such as this one, online videos do the job very well!</p>
-<p>The video presents the flow and Total Suspended Sediment dynamics in a restored brackish marsh near Beaufort in NC during hurricane Sandy in 2012. All the details of the marsh and the research study can be found here</p>
+<p>I have found that publishing videos on Youtube is an efficient way to
+give access to them on a wide basis Now, embedded youtube videos during
+presentation can be a tricky business and it is sometimes preferable and
+safer to have a .avi or .wmv version at hand! But on a web page such as
+this one, online videos do the job very well!</p>
+<p>The video presents the flow and Total Suspended Sediment dynamics in
+a restored brackish marsh near Beaufort in NC during hurricane Sandy in
+2012. All the details of the marsh and the research study can be found
+here</p>
 <center>
 <iframe width="500" height="305" src="https://www.youtube.com/embed/lsWHdz6mF3A" frameborder="0" allowfullscreen>
 </iframe>

@@ -13,6 +13,7 @@
 
 <title>blog-retrieving-dates-in-r-using-strsplit.knit</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -58,6 +59,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -82,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +243,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +256,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -262,7 +271,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -285,7 +294,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -303,7 +312,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -378,11 +387,12 @@ $(document).ready(function () {
 </div>
 
 
-<div id="blog-retrieving-dates-in-r-using-strsplit" class="section level1">
+<div id="blog-retrieving-dates-in-r-using-strsplit"
+class="section level1">
 <h1>Blog: retrieving dates in R using strsplit</h1>
 <div id="by-françois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-13 and updated 2022-04-03</em></p>
+<p><em>started 2017-11-13 and updated 2022-08-26</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -395,19 +405,41 @@ $(document).ready(function () {
 </ul>
 <p><br/><br/></p>
 </div>
-<div id="retrieving-dates-manually-from-many-different-formats" class="section level3">
+<div id="retrieving-dates-manually-from-many-different-formats"
+class="section level3">
 <h3>Retrieving dates manually from many different formats</h3>
-<p>The reason for this blog is because I spent, as usual, a lot of time trying to do something very simple and I want to make sure I and others can find how I did this. The beginning is simple, I want to harmonize all my flow and water quality time series database in SI units, such that all flow rates would be in <span class="math inline">\(m^3/s\)</span> and that all concentrations would be in <span class="math inline">\(mg_{elemental-unit}/L\)</span>. I have acquired all these data from our own experiments, but also from agencies and other sources. It turns out that the date formats are a total mess, and until now I corrected the format on a case by case basis, but I have had enough, it is time to have a robust format.</p>
-<p><br/> R does have functions that can read dates in, e.g. <code>as.Date(), strptime()</code>, provided that the writing format is provided and consistent. This is exactly what I do not have in my database… And I am trying to find a more universal way to read all these dates in. Below are some examples of the date format that I have had to deal with: <br/></p>
+<p>The reason for this blog is because I spent, as usual, a lot of time
+trying to do something very simple and I want to make sure I and others
+can find how I did this. The beginning is simple, I want to harmonize
+all my flow and water quality time series database in SI units, such
+that all flow rates would be in <span
+class="math inline">\(m^3/s\)</span> and that all concentrations would
+be in <span class="math inline">\(mg_{elemental-unit}/L\)</span>. I have
+acquired all these data from our own experiments, but also from agencies
+and other sources. It turns out that the date formats are a total mess,
+and until now I corrected the format on a case by case basis, but I have
+had enough, it is time to have a robust format.</p>
+<p><br/> R does have functions that can read dates in,
+e.g. <code>as.Date(), strptime()</code>, provided that the writing
+format is provided and consistent. This is exactly what I do not have in
+my database… And I am trying to find a more universal way to read all
+these dates in. Below are some examples of the date format that I have
+had to deal with: <br/></p>
 <pre><code>d/m/yy h:mm
 dd/mm/yy hh:mm
 m/d/yyyy hh:mm:ss
 etc.</code></pre>
-<p>My goal was to transform all dates into <code>yyyy-mm-dd hh:mm:ss</code>, which is a robust format that R, Excel and other programs readily understand. <br/><br/></p>
+<p>My goal was to transform all dates into
+<code>yyyy-mm-dd hh:mm:ss</code>, which is a robust format that R, Excel
+and other programs readily understand. <br/><br/></p>
 </div>
-<div id="applying-strsplit-onto-a-vector-to-extract-dates-and-times" class="section level3">
-<h3>Applying <em><code>strsplit()</code></em> onto a vector to extract dates and times</h3>
-<p><code>strsplit()</code> stands for “string split” and this function will split at a given pattern, e.g., spaces, “:”, “/”, etc. In the example below, the result of the function is a list: <br/></p>
+<div id="applying-strsplit-onto-a-vector-to-extract-dates-and-times"
+class="section level3">
+<h3>Applying <em><code>strsplit()</code></em> onto a vector to extract
+dates and times</h3>
+<p><code>strsplit()</code> stands for “string split” and this function
+will split at a given pattern, e.g., spaces, “:”, “/”, etc. In the
+example below, the result of the function is a list: <br/></p>
 <pre class="r"><code>dates&lt;-c(&quot;8/1/91&quot;,&quot;9/1/91 1:00&quot;,&quot;10/1/91 2:30&quot;,&quot;11/1/91 4:00&quot;,&quot;12/1/91 5:30&quot;,&quot;13/1/91 7:00&quot;)
 inidates=dates
 datime&lt;-strsplit(dates,&quot; &quot;)
@@ -430,7 +462,11 @@ datime</code></pre>
 ## [[6]]
 ## [1] &quot;13/1/91&quot; &quot;7:00&quot;</code></pre>
 <p><br/></p>
-<p>Now, I am really looking for a vector with the date and a vector with the time, and playing with lists is not that easy. The way to do this is to use the <code>do.call()</code> function, where the list rows are bound together using <code>rbind()</code> (“row bind”) just like this: <br/><br/></p>
+<p>Now, I am really looking for a vector with the date and a vector with
+the time, and playing with lists is not that easy. The way to do this is
+to use the <code>do.call()</code> function, where the list rows are
+bound together using <code>rbind()</code> (“row bind”) just like this:
+<br/><br/></p>
 <pre class="r"><code>datime&lt;-do.call(rbind,strsplit(dates,&quot; &quot;))
 datime</code></pre>
 <pre><code>##      [,1]      [,2]    
@@ -445,21 +481,42 @@ temptime=datime[,2]
 temptime</code></pre>
 <pre><code>## [1] &quot;8/1/91&quot; &quot;1:00&quot;   &quot;2:30&quot;   &quot;4:00&quot;   &quot;5:30&quot;   &quot;7:00&quot;</code></pre>
 <p><br/><br/></p>
-<p>Notice that in the variable <code>temptime</code>, the first value is not a time variable. This is because in the original data, which was probably from Excel, the time values at midnight, which should be “0:00” are omitted. So the rbind function, uses what it can find to fill in a value for time when there is none. It finds a value in the first column and uses this to fill in a value in column 2. This must be taken care of later.</p>
-<p>The next step consists in repeating the previous one with the “date column” and the “time column”, once two possibilities for a general date format are provided: either “d/m/y” or “m/d/y”, regardless of the nubmer of digits for each of the day, month and year.<br />
+<p>Notice that in the variable <code>temptime</code>, the first value is
+not a time variable. This is because in the original data, which was
+probably from Excel, the time values at midnight, which should be “0:00”
+are omitted. So the rbind function, uses what it can find to fill in a
+value for time when there is none. It finds a value in the first column
+and uses this to fill in a value in column 2. This must be taken care of
+later.</p>
+<p>The next step consists in repeating the previous one with the “date
+column” and the “time column”, once two possibilities for a general date
+format are provided: either “d/m/y” or “m/d/y”, regardless of the nubmer
+of digits for each of the day, month and year.<br />
 <br/><br/></p>
 </div>
-<div id="using-formatc-for-harmonizing-all-final-formats" class="section level3">
-<h3>Using <em><code>formatC()</code></em> for harmonizing all final formats</h3>
-<p>The next trick is to transform all years into “yyyy”“, months into”mm“, days in”dd“, hours into”hh“, minutes into”mm“, and seconds into”ss&quot;. For this I have used the function <code>formatC()</code>. This is typically the function that one can spend a <em>lot</em> of time looking for it… Once found, it is pretty simple. For example to transform numbers from 1 to 10 into 0001, 0002, …., 0010, one can use this code: <br/></p>
+<div id="using-formatc-for-harmonizing-all-final-formats"
+class="section level3">
+<h3>Using <em><code>formatC()</code></em> for harmonizing all final
+formats</h3>
+<p>The next trick is to transform all years into “yyyy”“, months
+into”mm”, days in “dd”, hours into “hh”, minutes into “mm”, and seconds
+into “ss”. For this I have used the function <code>formatC()</code>.
+This is typically the function that one can spend a <em>lot</em> of time
+looking for it… Once found, it is pretty simple. For example to
+transform numbers from 1 to 10 into 0001, 0002, …., 0010, one can use
+this code: <br/></p>
 <pre class="r"><code>x=1:10
 formatC(x,digits = 0,width = 4,format = &quot;f&quot;,flag = &quot;0&quot;)</code></pre>
 <pre><code>##  [1] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; &quot;0007&quot; &quot;0008&quot; &quot;0009&quot; &quot;0010&quot;</code></pre>
 <p><br/><br/></p>
 </div>
-<div id="final-code-to-blindly-transform-dates-of-all-formats" class="section level3">
+<div id="final-code-to-blindly-transform-dates-of-all-formats"
+class="section level3">
 <h3>Final code to blindly transform dates of all formats</h3>
-<p>The only additional tricks here is the automatic check that there is a “time” component to the initial date, that if there are no seconds, they are automatically added, and that all years are automatically transformed into “yyyy”. <br/><br/></p>
+<p>The only additional tricks here is the automatic check that there is
+a “time” component to the initial date, that if there are no seconds,
+they are automatically added, and that all years are automatically
+transformed into “yyyy”. <br/><br/></p>
 <pre class="r"><code>formatdat = &quot;d/m/y&quot;
       datime&lt;-do.call( rbind , strsplit( as.character(dates) , &quot; &quot; ) )
       

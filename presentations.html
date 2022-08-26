@@ -13,6 +13,7 @@
 
 <title>presentations.knit</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -61,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -85,6 +87,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -142,11 +147,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -310,7 +319,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -323,7 +332,7 @@ div.tocify {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -338,7 +347,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -361,7 +370,7 @@ div.tocify {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -379,7 +388,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -455,187 +464,679 @@ div.tocify {
 
 
 <p><br/></p>
-<div id="oral-presentations-137" class="section level1">
-<h1>Oral Presentations <em>(137)</em></h1>
+<div id="oral-presentations-138" class="section level1">
+<h1>Oral Presentations <em>(138)</em></h1>
 <ul>
+<li>2022 <em>(1)</em>
+<ul>
+<li>Birgand, F. “Continuous water quality monitoring: what have we
+learned in the last 20 years?” <em>UMR-SAS Rennes, France, June 15,
+2022.</em> – <strong><em>Invited speaker</em></strong></li>
+</ul></li>
 <li>2021 <em>(2)</em>
 <ul>
-<li>Birgand, F. “Challenges and future of water quality research and monitoring” <em>Yangzhou University International Forum on Irrigation and Drainage, December 21, 2021.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F, BM Maxwell, W Liu, S Garvey. “Multi-Point High Frequency Water Quality Sampling for Drainage Research” <em>Conservation Drainage Network Annual Meeting, April 7-9, 2021.</em></li>
+<li>Birgand, F. “Challenges and future of water quality research and
+monitoring” <em>Yangzhou University International Forum on Irrigation
+and Drainage, December 21, 2021.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>Birgand, F, BM Maxwell, W Liu, S Garvey. “Multi-Point High Frequency
+Water Quality Sampling for Drainage Research” <em>Conservation Drainage
+Network Annual Meeting, April 7-9, 2021.</em></li>
 </ul></li>
 <li>2020 <em>(2)</em>
 <ul>
-<li>E Grande, MA Zimmer, EC Seybold, AE Brasswell, C Tatariw, A Greene, A Montalvo, F Birgand, A Visser. “Using high spatiotemporal nitrate measurements to assess nutrient transport and transformations at the terrestrial-marine interface of a tidal watershed” <em>AGU Fall Meeting 2020.</em></li>
-<li>Birgand, F., Maxwell, B, Thomas, A., Tian, S, Schipper, L, Christianson, L, Helmers, M, Williams, D, Chescheir, GM, Youssef, M. “Drying and wetting cycles of normally wet soils impact soil respiration and health” <em>FFAR Workshop: Linking Soil and Watershed Health to In-field and Edge-of-Field Water Management, Erickson Alumni Center, West Virginia University, January 23-24, 2020.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>E Grande, MA Zimmer, EC Seybold, AE Brasswell, C Tatariw, A Greene,
+A Montalvo, F Birgand, A Visser. “Using high spatiotemporal nitrate
+measurements to assess nutrient transport and transformations at the
+terrestrial-marine interface of a tidal watershed” <em>AGU Fall Meeting
+2020.</em></li>
+<li>Birgand, F., Maxwell, B, Thomas, A., Tian, S, Schipper, L,
+Christianson, L, Helmers, M, Williams, D, Chescheir, GM, Youssef, M.
+“Drying and wetting cycles of normally wet soils impact soil respiration
+and health” <em>FFAR Workshop: Linking Soil and Watershed Health to
+In-field and Edge-of-Field Water Management, Erickson Alumni Center,
+West Virginia University, January 23-24, 2020.</em> –
+<strong><em>Invited speaker</em></strong></li>
 </ul></li>
 <li>2019 <em>(9)</em>
 <ul>
-<li>Birgand, F., C.-W. Lin. “Water quality rating curves: optimizing the use of in situ spectrophotometers” <em>Yangzhou University, Department of Agricultural Engineering, Lecture 14 November.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F., Maxwell, B, Thomas, A., Schipper, L, Christianson, L, Tian, S, Helmers, M, Williams, D, Chescheir, GM, Youssef, M. “Wetting and drying cycles in denitrification beds: a simple method to largely increase nitrate removal” <em>Yangzhou University, Department of Agricultural Engineering, Lecture 15 November.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F.. “Uncertainty on pollutant loads: relevant indicators for assessment” <em>Yangzhou University, Department of Agricultural Engineering, Lecture 13 November.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F.. “Cumulative indicators as robust indicators to detect water quality improvements” <em>Yangzhou University, Department of Agricultural Engineering, Lecture 12 November.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Liu, W, Tian, S, Youssef, MA, Chescheir, GM, Birgand, F. “Long-Term Variation of Nitrate Concentration-Stream Discharge (C-Q) Relationship for an Agricultural Watershed in Midwest U.S” <em>ASABE Annual International Conference, Boston, MA, 7-10 July, 2019.</em></li>
-<li>Blackman, S, Chen, C, Maxwell, BM, Birgand, F. “Porewater Velocity as an Important Factor for Nitrate Removal Rates in Woodchip Bioreactors” <em>ASABE Annual International Conference, Boston, MA, 7-10 July, 2019.</em></li>
-<li>Birgand, F, Tian, S, Maxwell, BM, Youssef, MA, Schipper, LA, Christianson, LE, Helmers, LJ, Chescheir, GM, Williams, DJ. “Modeling the Capacity of Wetting and Drying Cycles to Enhance Denitrification in Woodchip Bioreactors” <em>ASABE Annual International Conference, Boston, MA, 7-10 July, 2019.</em></li>
-<li>Birgand, F, Thomas, A, Maxwell, BM, Williams, DJ, Youssef, MA, Schipper, LA, Christianson, LE, Tian, S, Helmers, LJ, Chescheir, GM. “Wetting and Drying Cycles Effects on Aqueous and Gaseous Nutrient Removal and Emissions in Woodchip Bioreactors” <em>ASABE Annual International Conference, Boston, MA, 7-10 July, 2019.</em></li>
-<li>Hang, Q, Birgand, F, Belenky, C, Lin, C-W. “The Short-term Response of Nutrient Loads to an Agricultural Stream Restoration in Coastal Plain of North Carolina” <em>ASABE Annual International Conference, Boston, MA, 7-10 July, 2019.</em></li>
+<li>Birgand, F., C.-W. Lin. “Water quality rating curves: optimizing the
+use of in situ spectrophotometers” <em>Yangzhou University, Department
+of Agricultural Engineering, Lecture 14 November.</em> –
+<strong><em>Invited speaker</em></strong></li>
+<li>Birgand, F., Maxwell, B, Thomas, A., Schipper, L, Christianson, L,
+Tian, S, Helmers, M, Williams, D, Chescheir, GM, Youssef, M. “Wetting
+and drying cycles in denitrification beds: a simple method to largely
+increase nitrate removal” <em>Yangzhou University, Department of
+Agricultural Engineering, Lecture 15 November.</em> –
+<strong><em>Invited speaker</em></strong></li>
+<li>Birgand, F.. “Uncertainty on pollutant loads: relevant indicators
+for assessment” <em>Yangzhou University, Department of Agricultural
+Engineering, Lecture 13 November.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>Birgand, F.. “Cumulative indicators as robust indicators to detect
+water quality improvements” <em>Yangzhou University, Department of
+Agricultural Engineering, Lecture 12 November.</em> –
+<strong><em>Invited speaker</em></strong></li>
+<li>Liu, W, Tian, S, Youssef, MA, Chescheir, GM, Birgand, F. “Long-Term
+Variation of Nitrate Concentration-Stream Discharge (C-Q) Relationship
+for an Agricultural Watershed in Midwest U.S” <em>ASABE Annual
+International Conference, Boston, MA, 7-10 July, 2019.</em></li>
+<li>Blackman, S, Chen, C, Maxwell, BM, Birgand, F. “Porewater Velocity
+as an Important Factor for Nitrate Removal Rates in Woodchip
+Bioreactors” <em>ASABE Annual International Conference, Boston, MA, 7-10
+July, 2019.</em></li>
+<li>Birgand, F, Tian, S, Maxwell, BM, Youssef, MA, Schipper, LA,
+Christianson, LE, Helmers, LJ, Chescheir, GM, Williams, DJ. “Modeling
+the Capacity of Wetting and Drying Cycles to Enhance Denitrification in
+Woodchip Bioreactors” <em>ASABE Annual International Conference, Boston,
+MA, 7-10 July, 2019.</em></li>
+<li>Birgand, F, Thomas, A, Maxwell, BM, Williams, DJ, Youssef, MA,
+Schipper, LA, Christianson, LE, Tian, S, Helmers, LJ, Chescheir, GM.
+“Wetting and Drying Cycles Effects on Aqueous and Gaseous Nutrient
+Removal and Emissions in Woodchip Bioreactors” <em>ASABE Annual
+International Conference, Boston, MA, 7-10 July, 2019.</em></li>
+<li>Hang, Q, Birgand, F, Belenky, C, Lin, C-W. “The Short-term Response
+of Nutrient Loads to an Agricultural Stream Restoration in Coastal Plain
+of North Carolina” <em>ASABE Annual International Conference, Boston,
+MA, 7-10 July, 2019.</em></li>
 </ul></li>
 <li>2018 <em>(21)</em>
 <ul>
-<li>Carey, C.C., Thomas, RQ, Figueiredo, RJ, Daneshmand, V, Bookout, BJ, Birgand, F. “Integrating environmental sensor networks and real-time ecological forecasting to adaptively manage water quality” <em>AGU Fall Meeting, Washington, D.C., 10-14 December 2018.</em></li>
-<li>Birgand, F. “High frequency Water Quality sensors: do we even have the choice of not using them in biogeochemical and watershed sciences?” <em>Duke University, Nicholas School of the Environment, November 13, 2018, Durham, NC.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F. “The challenges and rewards of acquiring high frequency water quality data” <em>ASABE NC Regional 2018 conference, October 26, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Birgand_ASABE_NC_Regional_conf_2018.pdf">pdf</a>) – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F. “High frequency sensors: do we even have the choice of not using them in drainage?” <em>2018 Eastern South Dakota Water conference, October 17, 2018, Brookings, SD.</em> (<a href="presentations_pdf/Birgand_SD_drainage_conference_2018.pdf">pdf</a>) – <strong><em>Keynote speaker</em></strong></li>
-<li>Birgand, F, Maxwell, B, Schipper, L, Christianson, L, Helmers, M, Youssef, M, Tian, S, Williams, D, Chescheir, GM, Liu, W. “Transforming denitrifying bioreactor research and applications: unveiling the inside of the black box” <em>USDA-NIFA Project Director meeting, Newark, DL, Oct 1-3, 2018.</em> (<a href="presentations_pdf/Birgand_USDA_PD_meeting_Oct03_2018.pdf">pdf</a>)</li>
-<li>Birgand, F, Maxwell, B. “Integrative indicators as robust metrics of catchment biogeochemical function” <em>ASABE annual international meeting, July 29 - August 1st, 2018, Detroit, Michigan.</em></li>
-<li>Birgand, F, Maxwell, B, Schipper, L, Christianson, L, Helmers, M, Youssef, M, Tian, S, Williams, D, Chescheir, GM. “Can drying-rewetting cycles in woodchip bioreactors increase short and long-term nitrate removal rates?” <em>ASABE annual international meeting, July 29 - August 1st, 2018, Detroit, Michigan.</em></li>
-<li>Belenky, C, Winter, D, Lin, C-W, Birgand, F. “Effect of Stream Restoration on Water Quality and Quantity in the Coastal Plain of North Carolina” <em>ASABE annual international meeting, July 29 - August 1st, 2018, Detroit, Michigan.</em></li>
-<li>Winter, D, Lin, C-W, Belenky, C, Birgand, F. “Comparison of Pre-Restoration and Post-Restoration In-Stream Solute Transport and Treatment in a Restored Coastal Plain Stream” <em>ASABE annual international meeting, July 29 - August 1st, 2018, Detroit, Michigan.</em></li>
-<li>Maxwell, B, Birgand, F. “Woodchip bioreactors for nitrate removal in wastewater : Findings, applications, and economics” <em>Nutrient Removal and Recovery Conference 2018 - Raleigh, NC, June 18–21, 2018.</em></li>
-<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Helmers, M, Youssef, M, Tian, S, Williams, D, Chescheir, GM. “Impacts of drying-rewetting cycles on nitrate removal in woodchip bioreactors” <em>EWRI - World Environmental &amp; Water Resources Congress Minneapolis, Minnesota, June 3–7, 2018.</em></li>
-<li>Moin, S, Hunt, WF III, Birgand, F, Ratzlaff, S. “Effect of Visibility on Maintenance Investment and Consequent Performance of Urban Stormwater Control Measures” <em>EWRI - World Environmental &amp; Water Resources Congress Minneapolis, Minnesota, June 3–7, 2018.</em></li>
-<li>Howden, N, Birgand, F, Burt, T, Worrall, F, Woods, R. “Identifying trends in hydrological data: using integrated indicators to identify non-stationary behaviour” <em>European Geosciences Union General Assembly 2018, Vienna, Austria, 8–13 April 2018.</em></li>
-<li>Birgand, F, Allen, E, Lin, C-W, Etheridge, R, Carey, C. “Generating Water Quality Rating Curves using in situ Spectrophotometers” <em>European Geosciences Union General Assembly 2018, Vienna, Austria, 8–13 April 2018.</em> (<a href="presentations_pdf/Birgand_WQRC_EGU2018.pdf">pdf</a>)</li>
-<li>Belenky, C, Winter, D, Lin, C-W, Birgand, F. “Effect of Stream Restoration on Water Quality and Quantity in the Coastal Plain of North Carolina” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Belenky_oral_WRRI_2018.pdf">pdf</a>)</li>
-<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Helmers, M, Youssef, M, Tian, S, Williams, D. “Impact of drying-rewetting cycles on nitrate removal rates in woodchip bioreactors” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Maxwell_oral_WRRI_ColumnStudy_2018.pdf">pdf</a>)</li>
-<li>Birgand, F, Etheridge, R, Burchell, M. “Could seasonal mean sea level variations explain long-reported nutrient outwelling in the southeast coastal ocean?” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Birgand_mean_sea_level_WRRI_2018.pdf">pdf</a>)</li>
-<li>Moin, S, Hunt, W F III, Birgand, F, Ratzlaff, S. “Effect of Visibility on Maintenance Investment and Consequent Performance of Urban Stormwater Control Measures” <em>NC WRRI Annual Conference March 14-15, 2018, Raleigh, NC.</em></li>
-<li>Winter, D, Fox, G, Birgand, F. “Solute Tracer Studies in a Restored Coastal Plain Stream” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Winter_oral_WRRI_2018_stream_tracer.pdf">pdf</a>)</li>
-<li>Maxwell, B, Winter, D, Birgand, F. “Can floating treatment wetlands improve water quality in ponds?” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Maxwell_oral_WRRI_FloatingWetland_2018.pdf">pdf</a>)</li>
-<li>Birgand, F. “Integrated vs. derivative indicators: robust indicators needed for detection of water quality improvement” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em></li>
+<li>Carey, C.C., Thomas, RQ, Figueiredo, RJ, Daneshmand, V, Bookout, BJ,
+Birgand, F. “Integrating environmental sensor networks and real-time
+ecological forecasting to adaptively manage water quality” <em>AGU Fall
+Meeting, Washington, D.C., 10-14 December 2018.</em></li>
+<li>Birgand, F. “High frequency Water Quality sensors: do we even have
+the choice of not using them in biogeochemical and watershed sciences?”
+<em>Duke University, Nicholas School of the Environment, November 13,
+2018, Durham, NC.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Birgand, F. “The challenges and rewards of acquiring high frequency
+water quality data” <em>ASABE NC Regional 2018 conference, October 26,
+2018, Raleigh, NC.</em> (<a
+href="presentations_pdf/Birgand_ASABE_NC_Regional_conf_2018.pdf">pdf</a>)
+– <strong><em>Invited speaker</em></strong></li>
+<li>Birgand, F. “High frequency sensors: do we even have the choice of
+not using them in drainage?” <em>2018 Eastern South Dakota Water
+conference, October 17, 2018, Brookings, SD.</em> (<a
+href="presentations_pdf/Birgand_SD_drainage_conference_2018.pdf">pdf</a>)
+– <strong><em>Keynote speaker</em></strong></li>
+<li>Birgand, F, Maxwell, B, Schipper, L, Christianson, L, Helmers, M,
+Youssef, M, Tian, S, Williams, D, Chescheir, GM, Liu, W. “Transforming
+denitrifying bioreactor research and applications: unveiling the inside
+of the black box” <em>USDA-NIFA Project Director meeting, Newark, DL,
+Oct 1-3, 2018.</em> (<a
+href="presentations_pdf/Birgand_USDA_PD_meeting_Oct03_2018.pdf">pdf</a>)</li>
+<li>Birgand, F, Maxwell, B. “Integrative indicators as robust metrics of
+catchment biogeochemical function” <em>ASABE annual international
+meeting, July 29 - August 1st, 2018, Detroit, Michigan.</em></li>
+<li>Birgand, F, Maxwell, B, Schipper, L, Christianson, L, Helmers, M,
+Youssef, M, Tian, S, Williams, D, Chescheir, GM. “Can drying-rewetting
+cycles in woodchip bioreactors increase short and long-term nitrate
+removal rates?” <em>ASABE annual international meeting, July 29 - August
+1st, 2018, Detroit, Michigan.</em></li>
+<li>Belenky, C, Winter, D, Lin, C-W, Birgand, F. “Effect of Stream
+Restoration on Water Quality and Quantity in the Coastal Plain of North
+Carolina” <em>ASABE annual international meeting, July 29 - August 1st,
+2018, Detroit, Michigan.</em></li>
+<li>Winter, D, Lin, C-W, Belenky, C, Birgand, F. “Comparison of
+Pre-Restoration and Post-Restoration In-Stream Solute Transport and
+Treatment in a Restored Coastal Plain Stream” <em>ASABE annual
+international meeting, July 29 - August 1st, 2018, Detroit,
+Michigan.</em></li>
+<li>Maxwell, B, Birgand, F. “Woodchip bioreactors for nitrate removal in
+wastewater : Findings, applications, and economics” <em>Nutrient Removal
+and Recovery Conference 2018 - Raleigh, NC, June 18–21, 2018.</em></li>
+<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Helmers, M,
+Youssef, M, Tian, S, Williams, D, Chescheir, GM. “Impacts of
+drying-rewetting cycles on nitrate removal in woodchip bioreactors”
+<em>EWRI - World Environmental &amp; Water Resources Congress
+Minneapolis, Minnesota, June 3–7, 2018.</em></li>
+<li>Moin, S, Hunt, WF III, Birgand, F, Ratzlaff, S. “Effect of
+Visibility on Maintenance Investment and Consequent Performance of Urban
+Stormwater Control Measures” <em>EWRI - World Environmental &amp; Water
+Resources Congress Minneapolis, Minnesota, June 3–7, 2018.</em></li>
+<li>Howden, N, Birgand, F, Burt, T, Worrall, F, Woods, R. “Identifying
+trends in hydrological data: using integrated indicators to identify
+non-stationary behaviour” <em>European Geosciences Union General
+Assembly 2018, Vienna, Austria, 8–13 April 2018.</em></li>
+<li>Birgand, F, Allen, E, Lin, C-W, Etheridge, R, Carey, C. “Generating
+Water Quality Rating Curves using in situ Spectrophotometers”
+<em>European Geosciences Union General Assembly 2018, Vienna, Austria,
+8–13 April 2018.</em> (<a
+href="presentations_pdf/Birgand_WQRC_EGU2018.pdf">pdf</a>)</li>
+<li>Belenky, C, Winter, D, Lin, C-W, Birgand, F. “Effect of Stream
+Restoration on Water Quality and Quantity in the Coastal Plain of North
+Carolina” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh,
+NC.</em> (<a
+href="presentations_pdf/Belenky_oral_WRRI_2018.pdf">pdf</a>)</li>
+<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Helmers, M,
+Youssef, M, Tian, S, Williams, D. “Impact of drying-rewetting cycles on
+nitrate removal rates in woodchip bioreactors” <em>NC WRRI Annual
+Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a
+href="presentations_pdf/Maxwell_oral_WRRI_ColumnStudy_2018.pdf">pdf</a>)</li>
+<li>Birgand, F, Etheridge, R, Burchell, M. “Could seasonal mean sea
+level variations explain long-reported nutrient outwelling in the
+southeast coastal ocean?” <em>NC WRRI Annual Conferenc March 14-15,
+2018, Raleigh, NC.</em> (<a
+href="presentations_pdf/Birgand_mean_sea_level_WRRI_2018.pdf">pdf</a>)</li>
+<li>Moin, S, Hunt, W F III, Birgand, F, Ratzlaff, S. “Effect of
+Visibility on Maintenance Investment and Consequent Performance of Urban
+Stormwater Control Measures” <em>NC WRRI Annual Conference March 14-15,
+2018, Raleigh, NC.</em></li>
+<li>Winter, D, Fox, G, Birgand, F. “Solute Tracer Studies in a Restored
+Coastal Plain Stream” <em>NC WRRI Annual Conferenc March 14-15, 2018,
+Raleigh, NC.</em> (<a
+href="presentations_pdf/Winter_oral_WRRI_2018_stream_tracer.pdf">pdf</a>)</li>
+<li>Maxwell, B, Winter, D, Birgand, F. “Can floating treatment wetlands
+improve water quality in ponds?” <em>NC WRRI Annual Conferenc March
+14-15, 2018, Raleigh, NC.</em> (<a
+href="presentations_pdf/Maxwell_oral_WRRI_FloatingWetland_2018.pdf">pdf</a>)</li>
+<li>Birgand, F. “Integrated vs. derivative indicators: robust indicators
+needed for detection of water quality improvement” <em>NC WRRI Annual
+Conferenc March 14-15, 2018, Raleigh, NC.</em></li>
 </ul></li>
 <li>2017 <em>(13)</em>
 <ul>
-<li>Birgand, F. “Eight years of Water Quality Sensors in the field: what have we learnt?” <em>Department of Civil Engineering, University of Bristol, December 06, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F. “Improvements in stream water quality: can we detect them, and if yes, how?” <em>Department of Civil Engineering, University of Bristol, November 30, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Moin, S, WF Hunt, F Birgand, S Ratzlaff. “Effect of Visibility on Maintenance Investment and Consequent Performance of Urban Stormwater Control Measures” <em>Operation &amp; Maintenance of Stormwater Control Measures, EWRI-ASCE, Denver, CO, November 6-9, 2017.</em></li>
-<li>Birgand, F. “High Frequency Water Quality Data: Perspective and Challenges” <em>Department of Geography, University of Birmingham, November 9, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Winter, D, Birgand, F . “Measuring the Water Quality Impact of a Stream Restoration during Construction” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
-<li>Lin, C -W, Birgand, F . “Characterizing stream solutes dynamics at storm event and seasonal scales in an agricultural coastal plain stream in pre-restoration period” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
-<li>Lin, C -W, Birgand, F . “Uncertainties estimation associated with UV-Visual spectrophotometers in measuring nutrient concentrations and loads in an agricultural watershed” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
-<li>Maxwell, B, Birgand F . “Multi-point Continuous Monitoring and Increasing our Understanding of Black Box Natural Systems” <em>ASABE Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
-<li>Birgand, F . “Monitoring water quality on a continuous basis: how good are the new sensors?” <em>HydroEco 2017 Ecohydrology on the Edge: ecology-hydrology-human interactions in a changing world 6th International Multidisciplinary Conference on Hydrology and Ecology. Birmingham, U.K., 18-23 June 2017.</em></li>
-<li>Winter, D, Birgand, F, C-W Lin, C Belenky. “Measuring Water Quality Impact of a Coastal Plain Stream Restoration during Construction” <em>17th Annual Meeting of The American Ecological Engineering Society, Athens, GA, May 23-25, 2017.</em></li>
-<li>Birgand, F . “High Frequency Water Quality Data: Perspective and Challenges” <em>Water seminar, University of Bristol, 10 March, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand, F . “Continuous water quality to capture all events: how good are the new sensors?” <em>AGU Chapman Conference, San Jose, PR, January 22-27, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Winter, D, Birgand, F . “Compaction of Floodplain Soils during Stream Restoration” <em>Soil Science Society of North Carolina Annual Meeting, Raleigh, NC, January 2017.</em></li>
+<li>Birgand, F. “Eight years of Water Quality Sensors in the field: what
+have we learnt?” <em>Department of Civil Engineering, University of
+Bristol, December 06, 2017.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>Birgand, F. “Improvements in stream water quality: can we detect
+them, and if yes, how?” <em>Department of Civil Engineering, University
+of Bristol, November 30, 2017.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>Moin, S, WF Hunt, F Birgand, S Ratzlaff. “Effect of Visibility on
+Maintenance Investment and Consequent Performance of Urban Stormwater
+Control Measures” <em>Operation &amp; Maintenance of Stormwater Control
+Measures, EWRI-ASCE, Denver, CO, November 6-9, 2017.</em></li>
+<li>Birgand, F. “High Frequency Water Quality Data: Perspective and
+Challenges” <em>Department of Geography, University of Birmingham,
+November 9, 2017.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Winter, D, Birgand, F . “Measuring the Water Quality Impact of a
+Stream Restoration during Construction” <em>ASABE Annual International
+meeting. Spokane WA, July 16-19, 2017.</em></li>
+<li>Lin, C -W, Birgand, F . “Characterizing stream solutes dynamics at
+storm event and seasonal scales in an agricultural coastal plain stream
+in pre-restoration period” <em>ASABE Annual International meeting.
+Spokane WA, July 16-19, 2017.</em></li>
+<li>Lin, C -W, Birgand, F . “Uncertainties estimation associated with
+UV-Visual spectrophotometers in measuring nutrient concentrations and
+loads in an agricultural watershed” <em>ASABE Annual International
+meeting. Spokane WA, July 16-19, 2017.</em></li>
+<li>Maxwell, B, Birgand F . “Multi-point Continuous Monitoring and
+Increasing our Understanding of Black Box Natural Systems” <em>ASABE
+Annual International meeting. Spokane WA, July 16-19, 2017.</em></li>
+<li>Birgand, F . “Monitoring water quality on a continuous basis: how
+good are the new sensors?” <em>HydroEco 2017 Ecohydrology on the Edge:
+ecology-hydrology-human interactions in a changing world 6th
+International Multidisciplinary Conference on Hydrology and Ecology.
+Birmingham, U.K., 18-23 June 2017.</em></li>
+<li>Winter, D, Birgand, F, C-W Lin, C Belenky. “Measuring Water Quality
+Impact of a Coastal Plain Stream Restoration during Construction”
+<em>17th Annual Meeting of The American Ecological Engineering Society,
+Athens, GA, May 23-25, 2017.</em></li>
+<li>Birgand, F . “High Frequency Water Quality Data: Perspective and
+Challenges” <em>Water seminar, University of Bristol, 10 March,
+2017.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Birgand, F . “Continuous water quality to capture all events: how
+good are the new sensors?” <em>AGU Chapman Conference, San Jose, PR,
+January 22-27, 2017.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>Winter, D, Birgand, F . “Compaction of Floodplain Soils during
+Stream Restoration” <em>Soil Science Society of North Carolina Annual
+Meeting, Raleigh, NC, January 2017.</em></li>
 </ul></li>
 <li>2016 <em>(12)</em>
 <ul>
-<li>Maxwell, B, Winter, D, Birgand F . “Quantifying treatment potential of floating treatment wetlands to benefit North Carolina waters using improved methodology and novel technology” <em>North Carolina Water Resources Research Institute Advisory Committee Meeting, Raleigh, NC, October 2016.</em></li>
-<li>Muwamba, A, D M Amatya, E W Tollner, G M Chescheir, T Appelboom, H Ssegane, J E Nettles, M A Youssef, F Birgand, R W Skaggs, and S Tian 2016. “Effect of Fertilizer Application on Nutrients in Pine/Switchgrass Forest Drainage Outflow” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Dobbs, N, F Birgand, B Philips, G M Chescheir, and M A Youssef. “Modeling the effects of pine (Pinus taeda) and switchgrass (Panicum virgatum) intercropping on hydrology in upland forested watersheds of southeastern United States” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Carter, T, N Dobbs, E Allen, E Bennett, F Birgand, G M Chescheir, and T M Appelboom. “Hydrology and Water Quality Impacts of Loblollypine (Pinus taeda) and switchgrass (Panicum virgatum) in Upland Mississippi Forested watershed” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Dobbs, N, F Birgand, G M Chescheir, E Bennett and E Allen. “Hydrology and water quality comparisons of the early establishment period of Loblolly pine <em>(Pinus taeda)</em> and switchgrass <em>(Panicum virgatum)</em> in upland forested watersheds of Alabama, USA” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Allen, E, F Birgand, and G M Chescheir. “Carbon and Nitrogen Stream Dynamics Determined by Optical Continuous Monitoring Methods in an Eastern NC Managed Forest/Switchgrass Intercropping Paired Watershed Study” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Etheridge, J R, F Birgand, and M Burchell. “Uncertainty of Using In Situ Optical Property Measurements as Surrogate Data to Continuously Monitor Nitrogen, Phosphorus and Carbon Concentrations in a Constructed Brackish Tidal Marsh” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Maxwell, B M and F Birgand. “Evaluating in-stream nitrate uptake in an in situ mesocosm experiment” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Lin, C -W, F Birgand, and B M Maxwell. “Innovative technology to characterize the dynamics of nutrient export in an agricultural coastal plain stream” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Maxwell, B M and F Birgand. “Woodchip Bioreactors : Overview, Findings, and Future Wetland Resilience in North Carolina” <em>Duke University, March 4, 2016.</em></li>
-<li>Etheridge, J R F Birgand, M R Burchell II. “In situ absorbance and fluorescence as surrogate data to continuously measure nitrogen, phosphorus, and carbon concentrations in a brackish tidal marsh” <em>Ocean Sciences Meeting. New Orleans, LA. February 21-26, 2016.</em></li>
-<li>Messer, T L, M R Burchell, and F Birgand. “Comparison of Four Nitrogen Removal Kinetic Models in Two Distinct Wetland Ecosystems Receiving Agricultural Drainage Water” <em>59th Annual Meeting of the Soil Science Society of North Carolina. 20 January 2016. Raleigh, NC.</em></li>
+<li>Maxwell, B, Winter, D, Birgand F . “Quantifying treatment potential
+of floating treatment wetlands to benefit North Carolina waters using
+improved methodology and novel technology” <em>North Carolina Water
+Resources Research Institute Advisory Committee Meeting, Raleigh, NC,
+October 2016.</em></li>
+<li>Muwamba, A, D M Amatya, E W Tollner, G M Chescheir, T Appelboom, H
+Ssegane, J E Nettles, M A Youssef, F Birgand, R W Skaggs, and S Tian
+2016. “Effect of Fertilizer Application on Nutrients in Pine/Switchgrass
+Forest Drainage Outflow” <em>ASABE Annual International meeting.
+Orlando, FL, July 17-20, 2016.</em></li>
+<li>Dobbs, N, F Birgand, B Philips, G M Chescheir, and M A Youssef.
+“Modeling the effects of pine (Pinus taeda) and switchgrass (Panicum
+virgatum) intercropping on hydrology in upland forested watersheds of
+southeastern United States” <em>ASABE Annual International meeting.
+Orlando, FL, July 17-20, 2016.</em></li>
+<li>Carter, T, N Dobbs, E Allen, E Bennett, F Birgand, G M Chescheir,
+and T M Appelboom. “Hydrology and Water Quality Impacts of Loblollypine
+(Pinus taeda) and switchgrass (Panicum virgatum) in Upland Mississippi
+Forested watershed” <em>ASABE Annual International meeting. Orlando, FL,
+July 17-20, 2016.</em></li>
+<li>Dobbs, N, F Birgand, G M Chescheir, E Bennett and E Allen.
+“Hydrology and water quality comparisons of the early establishment
+period of Loblolly pine <em>(Pinus taeda)</em> and switchgrass
+<em>(Panicum virgatum)</em> in upland forested watersheds of Alabama,
+USA” <em>ASABE Annual International meeting. Orlando, FL, July 17-20,
+2016.</em></li>
+<li>Allen, E, F Birgand, and G M Chescheir. “Carbon and Nitrogen Stream
+Dynamics Determined by Optical Continuous Monitoring Methods in an
+Eastern NC Managed Forest/Switchgrass Intercropping Paired Watershed
+Study” <em>ASABE Annual International meeting. Orlando, FL, July 17-20,
+2016.</em></li>
+<li>Etheridge, J R, F Birgand, and M Burchell. “Uncertainty of Using In
+Situ Optical Property Measurements as Surrogate Data to Continuously
+Monitor Nitrogen, Phosphorus and Carbon Concentrations in a Constructed
+Brackish Tidal Marsh” <em>ASABE Annual International meeting. Orlando,
+FL, July 17-20, 2016.</em></li>
+<li>Maxwell, B M and F Birgand. “Evaluating in-stream nitrate uptake in
+an in situ mesocosm experiment” <em>ASABE Annual International meeting.
+Orlando, FL, July 17-20, 2016.</em></li>
+<li>Lin, C -W, F Birgand, and B M Maxwell. “Innovative technology to
+characterize the dynamics of nutrient export in an agricultural coastal
+plain stream” <em>ASABE Annual International meeting. Orlando, FL, July
+17-20, 2016.</em></li>
+<li>Maxwell, B M and F Birgand. “Woodchip Bioreactors : Overview,
+Findings, and Future Wetland Resilience in North Carolina” <em>Duke
+University, March 4, 2016.</em></li>
+<li>Etheridge, J R F Birgand, M R Burchell II. “In situ absorbance and
+fluorescence as surrogate data to continuously measure nitrogen,
+phosphorus, and carbon concentrations in a brackish tidal marsh”
+<em>Ocean Sciences Meeting. New Orleans, LA. February 21-26,
+2016.</em></li>
+<li>Messer, T L, M R Burchell, and F Birgand. “Comparison of Four
+Nitrogen Removal Kinetic Models in Two Distinct Wetland Ecosystems
+Receiving Agricultural Drainage Water” <em>59th Annual Meeting of the
+Soil Science Society of North Carolina. 20 January 2016. Raleigh,
+NC.</em></li>
 </ul></li>
 <li>2015 <em>(11)</em>
 <ul>
-<li>Maxwell, B, Birgand F, and Aveni-Deforge. “Nitrogen Abatement in Streams - An In-Situ Mesocosm Study Quantifying and Characterizing Nitrogen Removal in a Coastal Stream” * ASABE Annual International meeting. New Orleans, USA. July 26-29, 2015.*</li>
-<li>Birgand F, Aveni-Deforge, K A, Etheridge, J R, Fauvet, O, Faucheux, M and Carey, C . “Water Quality Rating Curves: Is this for Real?” * ASABE Annual International meeting. New Orleans, USA. July 26-29, 2015.*</li>
-<li>Allen, E, Birgand F, Chescheir, G M, Skaggs, R W, Osburn, C and Etheridge, J R . “Application of a Combination of Optical Water Quality Monitoring Techniques to Evaluate the Effects of Switchgrass Intercropping in a Managed Loblolly Pine Forest in Eastern North Carolina” * ASABE Annual International meeting. New Orleans, USA. July 26-29, 2015.*</li>
-<li>Dobbs, N, Birgand F, Chescheir, G M and Allen, E 2015 . “Water quality impacts of intercropping Loblolly pine (Pinus taeda) and switchgrass (Pancium virgatum) in coastal plain watersheds of the southeastern United State” * ASABE Annual International meeting. New Orleans, USA. July 26-29, 2015.*</li>
-<li>Messer, T, Burchell, M R, Birgand F . “How to Model Nitrate Reduction in Restored Wetlands? An Evaluation of the Reliability of Four Nitrate Reduction Models” * ASABE Annual International meeting. New Orleans, USA. July 26-29, 2015.*</li>
-<li>Lin, C -W, Birgand F, Aveni-Deforge, K, Maxwell, B. “Characterize an agricultural stream before restoration period in Goldsboro, NC” * ASABE Annual International meeting. New Orleans, USA. July 26-29, 2015.*</li>
-<li>Maxwell, B, Birgand F, and Aveni-Deforge . “Further down the river: a novel, spectrometric, in-situ technology improving spatial and temporal data resolution to address heterogeneity in aquatic systems” <em>Society for Freshwater Science Annual Meeting. Milwaukee, WI, USA. May 17-21, 2015.</em></li>
-<li>Mansanarez, V, Le Coz, J, Renard, B, Lang, M and Birgand F . “Bayesian analysis of stage-discharge relationships affected by hysteresis and quantification of the associated uncertainties” <em>European Geosciences Union, General Assembly, Vienna Austria, 12-17 April 2015.</em></li>
-<li>Aveni-Deforge, K, Birgand F, Fauvet, O . “Should We Start Making Water Quality Rating Curves at Each Monitoring Station?” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em></li>
-<li>Lin, C -W, Birgand F, Aveni-Deforge, K, Maxwell, B . “Challenges for continuous monitoring of flow and water quality in a coastal plain stream” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em></li>
-<li>Messer, T, Burchell, M R, Birgand F Water Resources Research Institute of The University of North Carolina Annual Conference Raleigh, NC March 18-19, 2015 . “Comparison of Four Nitrogen Removal Kinetic Models in Two Distinct Wetland Ecosystems Receiving Agricultural Drainage Water” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em></li>
+<li>Maxwell, B, Birgand F, and Aveni-Deforge. “Nitrogen Abatement in
+Streams - An In-Situ Mesocosm Study Quantifying and Characterizing
+Nitrogen Removal in a Coastal Stream” * ASABE Annual International
+meeting. New Orleans, USA. July 26-29, 2015.*</li>
+<li>Birgand F, Aveni-Deforge, K A, Etheridge, J R, Fauvet, O, Faucheux,
+M and Carey, C . “Water Quality Rating Curves: Is this for Real?” *
+ASABE Annual International meeting. New Orleans, USA. July 26-29,
+2015.*</li>
+<li>Allen, E, Birgand F, Chescheir, G M, Skaggs, R W, Osburn, C and
+Etheridge, J R . “Application of a Combination of Optical Water Quality
+Monitoring Techniques to Evaluate the Effects of Switchgrass
+Intercropping in a Managed Loblolly Pine Forest in Eastern North
+Carolina” * ASABE Annual International meeting. New Orleans, USA. July
+26-29, 2015.*</li>
+<li>Dobbs, N, Birgand F, Chescheir, G M and Allen, E 2015 . “Water
+quality impacts of intercropping Loblolly pine (Pinus taeda) and
+switchgrass (Pancium virgatum) in coastal plain watersheds of the
+southeastern United State” * ASABE Annual International meeting. New
+Orleans, USA. July 26-29, 2015.*</li>
+<li>Messer, T, Burchell, M R, Birgand F . “How to Model Nitrate
+Reduction in Restored Wetlands? An Evaluation of the Reliability of Four
+Nitrate Reduction Models” * ASABE Annual International meeting. New
+Orleans, USA. July 26-29, 2015.*</li>
+<li>Lin, C -W, Birgand F, Aveni-Deforge, K, Maxwell, B. “Characterize an
+agricultural stream before restoration period in Goldsboro, NC” * ASABE
+Annual International meeting. New Orleans, USA. July 26-29, 2015.*</li>
+<li>Maxwell, B, Birgand F, and Aveni-Deforge . “Further down the river:
+a novel, spectrometric, in-situ technology improving spatial and
+temporal data resolution to address heterogeneity in aquatic systems”
+<em>Society for Freshwater Science Annual Meeting. Milwaukee, WI, USA.
+May 17-21, 2015.</em></li>
+<li>Mansanarez, V, Le Coz, J, Renard, B, Lang, M and Birgand F .
+“Bayesian analysis of stage-discharge relationships affected by
+hysteresis and quantification of the associated uncertainties”
+<em>European Geosciences Union, General Assembly, Vienna Austria, 12-17
+April 2015.</em></li>
+<li>Aveni-Deforge, K, Birgand F, Fauvet, O . “Should We Start Making
+Water Quality Rating Curves at Each Monitoring Station?” <em>Water
+Resources Research Institute of The University of North Carolina Annual
+Conference. Raleigh, NC. March 18-19, 2015.</em></li>
+<li>Lin, C -W, Birgand F, Aveni-Deforge, K, Maxwell, B . “Challenges for
+continuous monitoring of flow and water quality in a coastal plain
+stream” <em>Water Resources Research Institute of The University of
+North Carolina Annual Conference. Raleigh, NC. March 18-19,
+2015.</em></li>
+<li>Messer, T, Burchell, M R, Birgand F Water Resources Research
+Institute of The University of North Carolina Annual Conference Raleigh,
+NC March 18-19, 2015 . “Comparison of Four Nitrogen Removal Kinetic
+Models in Two Distinct Wetland Ecosystems Receiving Agricultural
+Drainage Water” <em>Water Resources Research Institute of The University
+of North Carolina Annual Conference. Raleigh, NC. March 18-19,
+2015.</em></li>
 </ul></li>
 <li>2014 <em>(20)</em>
 <ul>
-<li>Birgand F . “High Frequency Water Quality Data: perspectives and challenges” <em>Oklahoma State University - Biosystems and Agriculural Engineering Department. October 24, 2014.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Birgand F. “High Frequency Water Quality Data: Is this really necessary?” <em>Oklahoma 2014 Governor’s Water Conference and Research Symposium. October 23, 2014.</em> – <strong><em>Keynote speaker</em></strong></li>
-<li>Etheridge, J R, M Burchell and F Birgand . “Using Tidal Marsh Creation to Reduce Nitrogen Loads Reaching Estuaries” <em>ASABE Annual International meeting. Montr_al, Canada. July 14-16, 2014.</em> (<a href="presentations_pdf/Etheridge_Burchell_ASABE_2014_FB.pdf">pdf</a>)</li>
-<li>Gilmore, T E, D Genereux, K Solomon, J Solder, B Kimbrall, F Birgand, H Mitasova, M Burnette and S Becker . “Using groundwater discharge to assess an agricultural nitrogen legacy: three approaches to sampling in stream channels at different scales” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Skaggs, R W, G M Chescheir, D M Amatya and F Birgand . “Methods for Determining Field Effective Saturated Hydraulic Conductivity of Drained Catchments” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Allen, E A, F Birgand, F M Chescheir, E Bennett, J Nettles and T W Appelboom . “Hydrology and Water Quality Impacts of Site Preparation for Loblolly Pine (Pinus taeda) and Switchgrass (Panicum virgatum) Intercropping in Upland Forested Watersheds in Mississippi” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Allen, E A, F Birgand, F M Chescheir, C L Osburn and J R Etheridge . “Continuous Monitoring of Hydrology and Water Quality to Detect Impacts of Switchgrass Intercropping in Managed Loblolly Pine Plantations in Eastern North Carolina” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Birgand F, K Aveni-Deforge, J R Etheridge, O Fauvet and M Faucheux . “High frequency water quality data: what we get - the challenges” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Messer, T, M R Burchell, and F Birgand . “Determining Ideal Nitrogen Loads for Rerouted Agricultural Drainage Water into Restored Forested Wetlands - An Experimental and Modeling Approach” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Dobbs, N, M Youssef, F Birgand, B D Phillips, G M Chescheir and T W Appelboom . “Modeling the effects of pine <em>(Pinus taeda)</em> and switchgrass <em>(Panicum virgatum)</em> intercropping on hydrology and water quality in southeastern United States forests” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
-<li>Birgand F . “High Frequency Water Quality Data: The Next Leap in Hydrology?” <em>ASABE Annual International meeting. Montréal, Canada. July 14-16, 2014.</em> (<a href="presentations_pdf/Birgand_WQ_ASABE_2014.pdf">pdf</a>) – <strong><em>Invited speaker</em></strong></li>
-<li>M R Burchell, Messer, T L, and F Birgand 2014 . “Determining Ideal Nitrogen Loads in Restored Forested Wetlands Slated to Receive Agricultural Drainage” <em>AEES Conference. 10 June, Charleston, SC.</em></li>
-<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms” <em>Joint Aquatic Sciences Meeting. Portland, OR. May 18-23, 2014.</em></li>
-<li>Birgand F. “Moving Forward in Nutrient Research and Management: Critical Knowledge Provided by High Time Resolution Water Quality Data” <em>University of Florida Water in the Landscape, Distinguished Seminar Series, Gainsville, FA, 7 May 2014.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>F Birgand, Etheridge, J R, and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms” <em>Skidaway Research Institute. Savannah, GA.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms (view presentation)” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/Birgand_NR_WRRI_Outwelling_2014.pdf">pdf</a>)</li>
-<li>Etheridge, J R, F Birgand and M Burchell . “Using in situ UV_vis spectroscopy to measure N, C, P and suspended solids at a high frequency in a brackish tidal marsh” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/Birgand_UV-vis_WQ_WRRI_2014.pdf">pdf</a>)</li>
-<li>Etheridge, J R, F Birgand and M Burchell . “Illustrating critical knowledge (gap) provided by high time resolution water quality data (or lack thereof)” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/Birgand_WQ_critical_knowledge_WRRI_2014.pdf">pdf</a>)</li>
-<li>Messer, T, M R Burchell, and F Birgand . “Determining ideal nitrogen loads for rerouted agricultural drainage water into restored forested wetlands: An experimental and modeling approach” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em></li>
+<li>Birgand F . “High Frequency Water Quality Data: perspectives and
+challenges” <em>Oklahoma State University - Biosystems and Agriculural
+Engineering Department. October 24, 2014.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>Birgand F. “High Frequency Water Quality Data: Is this really
+necessary?” <em>Oklahoma 2014 Governor’s Water Conference and Research
+Symposium. October 23, 2014.</em> – <strong><em>Keynote
+speaker</em></strong></li>
+<li>Etheridge, J R, M Burchell and F Birgand . “Using Tidal Marsh
+Creation to Reduce Nitrogen Loads Reaching Estuaries” <em>ASABE Annual
+International meeting. Montr_al, Canada. July 14-16, 2014.</em> (<a
+href="presentations_pdf/Etheridge_Burchell_ASABE_2014_FB.pdf">pdf</a>)</li>
+<li>Gilmore, T E, D Genereux, K Solomon, J Solder, B Kimbrall, F
+Birgand, H Mitasova, M Burnette and S Becker . “Using groundwater
+discharge to assess an agricultural nitrogen legacy: three approaches to
+sampling in stream channels at different scales” <em>ASABE Annual
+International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
+<li>Skaggs, R W, G M Chescheir, D M Amatya and F Birgand . “Methods for
+Determining Field Effective Saturated Hydraulic Conductivity of Drained
+Catchments” <em>ASABE Annual International meeting. Montréal, Canada.
+July 14-16, 2014.</em></li>
+<li>Allen, E A, F Birgand, F M Chescheir, E Bennett, J Nettles and T W
+Appelboom . “Hydrology and Water Quality Impacts of Site Preparation for
+Loblolly Pine (Pinus taeda) and Switchgrass (Panicum virgatum)
+Intercropping in Upland Forested Watersheds in Mississippi” <em>ASABE
+Annual International meeting. Montréal, Canada. July 14-16,
+2014.</em></li>
+<li>Allen, E A, F Birgand, F M Chescheir, C L Osburn and J R Etheridge .
+“Continuous Monitoring of Hydrology and Water Quality to Detect Impacts
+of Switchgrass Intercropping in Managed Loblolly Pine Plantations in
+Eastern North Carolina” <em>ASABE Annual International meeting.
+Montréal, Canada. July 14-16, 2014.</em></li>
+<li>Birgand F, K Aveni-Deforge, J R Etheridge, O Fauvet and M Faucheux .
+“High frequency water quality data: what we get - the challenges”
+<em>ASABE Annual International meeting. Montréal, Canada. July 14-16,
+2014.</em></li>
+<li>Messer, T, M R Burchell, and F Birgand . “Determining Ideal Nitrogen
+Loads for Rerouted Agricultural Drainage Water into Restored Forested
+Wetlands - An Experimental and Modeling Approach” <em>ASABE Annual
+International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes
+as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms”
+<em>ASABE Annual International meeting. Montréal, Canada. July 14-16,
+2014.</em></li>
+<li>Dobbs, N, M Youssef, F Birgand, B D Phillips, G M Chescheir and T W
+Appelboom . “Modeling the effects of pine <em>(Pinus taeda)</em> and
+switchgrass <em>(Panicum virgatum)</em> intercropping on hydrology and
+water quality in southeastern United States forests” <em>ASABE Annual
+International meeting. Montréal, Canada. July 14-16, 2014.</em></li>
+<li>Birgand F . “High Frequency Water Quality Data: The Next Leap in
+Hydrology?” <em>ASABE Annual International meeting. Montréal, Canada.
+July 14-16, 2014.</em> (<a
+href="presentations_pdf/Birgand_WQ_ASABE_2014.pdf">pdf</a>) –
+<strong><em>Invited speaker</em></strong></li>
+<li>M R Burchell, Messer, T L, and F Birgand 2014 . “Determining Ideal
+Nitrogen Loads in Restored Forested Wetlands Slated to Receive
+Agricultural Drainage” <em>AEES Conference. 10 June, Charleston,
+SC.</em></li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes
+as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms”
+<em>Joint Aquatic Sciences Meeting. Portland, OR. May 18-23,
+2014.</em></li>
+<li>Birgand F. “Moving Forward in Nutrient Research and Management:
+Critical Knowledge Provided by High Time Resolution Water Quality Data”
+<em>University of Florida Water in the Landscape, Distinguished Seminar
+Series, Gainsville, FA, 7 May 2014.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>F Birgand, Etheridge, J R, and M Burchell . “Confirming Tidal
+Marshes as One-Way Outwelling Nutrient Pumps: Observations and
+Mechanisms” <em>Skidaway Research Institute. Savannah, GA.</em> –
+<strong><em>Invited speaker</em></strong></li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Confirming Tidal Marshes
+as One-Way Outwelling Nutrient Pumps: Observations and Mechanisms (view
+presentation)” <em>Water Resources Research Institute of The University
+of North Carolina Annual Conference. Raleigh, NC. March 19-20,
+2014.</em> (<a
+href="presentations_pdf/Birgand_NR_WRRI_Outwelling_2014.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Using in situ UV_vis
+spectroscopy to measure N, C, P and suspended solids at a high frequency
+in a brackish tidal marsh” <em>Water Resources Research Institute of The
+University of North Carolina Annual Conference. Raleigh, NC. March
+19-20, 2014.</em> (<a
+href="presentations_pdf/Birgand_UV-vis_WQ_WRRI_2014.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M Burchell . “Illustrating critical
+knowledge (gap) provided by high time resolution water quality data (or
+lack thereof)” <em>Water Resources Research Institute of The University
+of North Carolina Annual Conference. Raleigh, NC. March 19-20,
+2014.</em> (<a
+href="presentations_pdf/Birgand_WQ_critical_knowledge_WRRI_2014.pdf">pdf</a>)</li>
+<li>Messer, T, M R Burchell, and F Birgand . “Determining ideal nitrogen
+loads for rerouted agricultural drainage water into restored forested
+wetlands: An experimental and modeling approach” <em>Water Resources
+Research Institute of The University of North Carolina Annual
+Conference. Raleigh, NC. March 19-20, 2014.</em></li>
 </ul></li>
 <li>2013 <em>(11)</em>
 <ul>
-<li>Etheridge, J R, M Burchell and F Birgand . “What water quality benefits does a constructed brackish marsh provide when receiving nutrients from agricultural drainage waters?” <em>Southeast Tidal Creek Summit, Wilmington, NC. December 16-17, 2013.</em> (<a href="presentations_pdf/Etheridge_TCS_Wilmington_Dec_17_2013.pdf">pdf</a>)</li>
-<li>Skaggs, R W, S Tian, M A Youssef, D M Amatya, and F Birgand . “Effect of Afforestation on Watershed Outflows: A Simulation Study” <em>Society of American Foresters National Convention, Charleston, SC, Oct. 23-27, 2013.</em></li>
-<li>Moatar, F, M Meybeck, S Raymond and F Birgand . “Estimating riverine fluxes and their uncertainties from discrete surveys” * Joint IAHS, IAPSO, IASPEI. Gothenburg, Sweden. July 22-26, 2013.*</li>
-<li>Messer, T, M Burchell and F Birgand . “Determining ideal nitrogen loads in rerouted drainage water from the Pamlico sound to restored forested welands - an experimental and modeling approach” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Messer_ASABE_KC_13.pdf">pdf</a>)</li>
-<li>Bennett, E, F Birgand, G M Chescheir, E Allen, and T Appelboom . “Hydrology and Water Quality Impacts of Loblolly Pine <em>(Pinus taeda)</em> and Switchgrass <em>(Panicum virgatum)</em> Intercropped Systems in Upland Southeastern Forested Watersheds” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Bennett_Erin_ASABE_KC_07-23-13.pdf">pdf</a>)</li>
-<li>Etheridge,J R, F Birgand, M R Burchell II, R O Evans, S W Broome . “Long-term nutrient and suspended solids mass balance for a restored brackish marsh in eastern North Carolina” <em>13th Annual American Ecological Engineering Society Meeting. East Lansing, MI. June 10-12, 2013.</em></li>
-<li>Etheridge, J R, F Birgand, M R Burchell II, T M Barto . “Nutrient, organic matter, and suspended solids dynamics during and following Hurricane Sandy in a restored North Carolina brackish marsh” <em>13th Annual American Ecological Engineering Society Meeting. East Lansing, MI. June 10-12, 2013.</em></li>
-<li>Etheridge, J R, Birgand, F and M R Burchell, II . “Quantifying nitrogen fluxes in a tidal marsh: Insights from capturing the rapid changes of flow and concentrations” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 20-21, 2013.</em></li>
-<li>Burchell, M B II, T L Messer, and F Birgand . “Determining Ideal Nitrogen Loads for Two Distinct Restored Wetland Soils _ An Experimental and Modeling Approach” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 20-21, 2013.</em></li>
-<li>Burchell, M, R Etheridge, Y Shiau, F Birgand, S Broome, and K Bass . “Salt marsh restoration in eastern NC - A good idea in the face of SLR? A case study at North River Farms” <em>NOAA NC Sentinel Site Cooperative Sea Level Rise Research and Monitoring Coordination Workshop. Beaufort, NC. March 12-13, 2013.</em></li>
-<li>Birgand, F. “High time resolution water quality data: key to new knowledge in Ecological Engineering and Environmental Sciences” <em>Department of Geology, East Carolina University, February, 22nd, 2013.</em> – <strong><em>Invited speaker</em></strong></li>
+<li>Etheridge, J R, M Burchell and F Birgand . “What water quality
+benefits does a constructed brackish marsh provide when receiving
+nutrients from agricultural drainage waters?” <em>Southeast Tidal Creek
+Summit, Wilmington, NC. December 16-17, 2013.</em> (<a
+href="presentations_pdf/Etheridge_TCS_Wilmington_Dec_17_2013.pdf">pdf</a>)</li>
+<li>Skaggs, R W, S Tian, M A Youssef, D M Amatya, and F Birgand .
+“Effect of Afforestation on Watershed Outflows: A Simulation Study”
+<em>Society of American Foresters National Convention, Charleston, SC,
+Oct. 23-27, 2013.</em></li>
+<li>Moatar, F, M Meybeck, S Raymond and F Birgand . “Estimating riverine
+fluxes and their uncertainties from discrete surveys” * Joint IAHS,
+IAPSO, IASPEI. Gothenburg, Sweden. July 22-26, 2013.*</li>
+<li>Messer, T, M Burchell and F Birgand . “Determining ideal nitrogen
+loads in rerouted drainage water from the Pamlico sound to restored
+forested welands - an experimental and modeling approach” <em>ASABE
+Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em>
+(<a href="presentations_pdf/Messer_ASABE_KC_13.pdf">pdf</a>)</li>
+<li>Bennett, E, F Birgand, G M Chescheir, E Allen, and T Appelboom .
+“Hydrology and Water Quality Impacts of Loblolly Pine <em>(Pinus
+taeda)</em> and Switchgrass <em>(Panicum virgatum)</em> Intercropped
+Systems in Upland Southeastern Forested Watersheds” <em>ASABE Annual
+International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a
+href="presentations_pdf/Bennett_Erin_ASABE_KC_07-23-13.pdf">pdf</a>)</li>
+<li>Etheridge,J R, F Birgand, M R Burchell II, R O Evans, S W Broome .
+“Long-term nutrient and suspended solids mass balance for a restored
+brackish marsh in eastern North Carolina” <em>13th Annual American
+Ecological Engineering Society Meeting. East Lansing, MI. June 10-12,
+2013.</em></li>
+<li>Etheridge, J R, F Birgand, M R Burchell II, T M Barto . “Nutrient,
+organic matter, and suspended solids dynamics during and following
+Hurricane Sandy in a restored North Carolina brackish marsh” <em>13th
+Annual American Ecological Engineering Society Meeting. East Lansing,
+MI. June 10-12, 2013.</em></li>
+<li>Etheridge, J R, Birgand, F and M R Burchell, II . “Quantifying
+nitrogen fluxes in a tidal marsh: Insights from capturing the rapid
+changes of flow and concentrations” <em>Water Resources Research
+Institute of The University of North Carolina Annual Conference.
+Raleigh, NC. March 20-21, 2013.</em></li>
+<li>Burchell, M B II, T L Messer, and F Birgand . “Determining Ideal
+Nitrogen Loads for Two Distinct Restored Wetland Soils _ An Experimental
+and Modeling Approach” <em>Water Resources Research Institute of The
+University of North Carolina Annual Conference. Raleigh, NC. March
+20-21, 2013.</em></li>
+<li>Burchell, M, R Etheridge, Y Shiau, F Birgand, S Broome, and K Bass .
+“Salt marsh restoration in eastern NC - A good idea in the face of SLR?
+A case study at North River Farms” <em>NOAA NC Sentinel Site Cooperative
+Sea Level Rise Research and Monitoring Coordination Workshop. Beaufort,
+NC. March 12-13, 2013.</em></li>
+<li>Birgand, F. “High time resolution water quality data: key to new
+knowledge in Ecological Engineering and Environmental Sciences”
+<em>Department of Geology, East Carolina University, February, 22nd,
+2013.</em> – <strong><em>Invited speaker</em></strong></li>
 </ul></li>
 <li>2012 <em>(8)</em>
 <ul>
-<li>Birgand, F and R Muñoz-Carpena . “Quantifying uncertainties in watershed nutrient loads: apportionment of uncertainty sources” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em> (<a href="presentations_pdf/Presentation_Birgand_Munoz_Uncertainties_apportionment_ASABE_Aug_01_2012.pdf">pdf</a>)</li>
-<li>Etheridge, J R, F Birgand, and M R Burchell II . “Restored salt marsh: A source or a sink for nitrogen?” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em></li>
-<li>Allen, E L, V Andréassian, G M Chescheir and F Birgand . “Using the GR4J and NC Models to Quantify the Hydrologic Effects of Biomass Production” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em> (<a href="presentations_pdf/ASABEPresentationEAllen.pdf">pdf</a>)</li>
-<li>Birgand, F. “High time resolution water quality data: key to new knowledge in Ecological Engineering and Environmental Sciences” <em>Agricultural and Biological Engineering Department, University of Florida, May 31st, 2012.</em> – <strong><em>Invited speaker</em></strong></li>
-<li>Etheridge, J R, F Birgand, M R Burchell II and B Smith . “Capturing the ever changing world of a tidal marsh” <em>Stewards of the future: Research for Human Health and Global Sustainability, a conference hosted by College of Agriculture and Life Sciencesm NC State University. Raleigh, NC. April 17, 2012..</em></li>
-<li>Birgand, F, T Gilmore, A Brown and K Chapman . “Hydrology for all: measuring water levels using webcams” <em>Stewards of the future: Research for Human Health and Global Sustainability, a conference hosted by College of Agriculture and Life Sciencesm NC State University. Raleigh, NC. April 17, 2012.</em></li>
-<li>Birgand, F, M T Horstman, and B Reich . “Revising the kinetics of nitrate dissipation in wetlands and streams” <em>Annual NC WRRI conference. Raleigh, NC. March 27-29, 2012.</em> (<a href="presentations_pdf/Birgand_et_al_WRRI_March27_2012.pdf">pdf</a>)</li>
-<li>Etheridge, J R, F Birgand and M R Burchell II . “Nitrate Mass Balance in a Restored North Carolina Salt Marsh” <em>Annual NC WRRI conference. Raleigh, NC. March 27-29, 2012.</em> (<a href="presentations_pdf/Etheridge_et_al_WRRI_2012.pdf">pdf</a>)</li>
+<li>Birgand, F and R Muñoz-Carpena . “Quantifying uncertainties in
+watershed nutrient loads: apportionment of uncertainty sources”
+<em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01,
+2012.</em> (<a
+href="presentations_pdf/Presentation_Birgand_Munoz_Uncertainties_apportionment_ASABE_Aug_01_2012.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand, and M R Burchell II . “Restored salt
+marsh: A source or a sink for nitrogen?” <em>ASABE Annual International
+meeting. Dallas, TX. July 29 - August 01, 2012.</em></li>
+<li>Allen, E L, V Andréassian, G M Chescheir and F Birgand . “Using the
+GR4J and NC Models to Quantify the Hydrologic Effects of Biomass
+Production” <em>ASABE Annual International meeting. Dallas, TX. July 29
+- August 01, 2012.</em> (<a
+href="presentations_pdf/ASABEPresentationEAllen.pdf">pdf</a>)</li>
+<li>Birgand, F. “High time resolution water quality data: key to new
+knowledge in Ecological Engineering and Environmental Sciences”
+<em>Agricultural and Biological Engineering Department, University of
+Florida, May 31st, 2012.</em> – <strong><em>Invited
+speaker</em></strong></li>
+<li>Etheridge, J R, F Birgand, M R Burchell II and B Smith . “Capturing
+the ever changing world of a tidal marsh” <em>Stewards of the future:
+Research for Human Health and Global Sustainability, a conference hosted
+by College of Agriculture and Life Sciencesm NC State University.
+Raleigh, NC. April 17, 2012..</em></li>
+<li>Birgand, F, T Gilmore, A Brown and K Chapman . “Hydrology for all:
+measuring water levels using webcams” <em>Stewards of the future:
+Research for Human Health and Global Sustainability, a conference hosted
+by College of Agriculture and Life Sciencesm NC State University.
+Raleigh, NC. April 17, 2012.</em></li>
+<li>Birgand, F, M T Horstman, and B Reich . “Revising the kinetics of
+nitrate dissipation in wetlands and streams” <em>Annual NC WRRI
+conference. Raleigh, NC. March 27-29, 2012.</em> (<a
+href="presentations_pdf/Birgand_et_al_WRRI_March27_2012.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M R Burchell II . “Nitrate Mass
+Balance in a Restored North Carolina Salt Marsh” <em>Annual NC WRRI
+conference. Raleigh, NC. March 27-29, 2012.</em> (<a
+href="presentations_pdf/Etheridge_et_al_WRRI_2012.pdf">pdf</a>)</li>
 </ul></li>
 <li>2011 <em>(12)</em>
 <ul>
-<li>Amatya, D, G Chescheir, J Nettles, T Appelboom, W Skaggs, M Youssef, and F Birgand . “Long-term Hydrologic and Water Quality Monitoring in NC” <em>Forestry Research in the South - Forest Water Quality and Yield, Southern Forestry Research Partnership (SFRP), Inc. _ Center of Excellence, Monroe, GA..</em></li>
-<li>Etheridge, J R, F Birgand and M R Burchell . “Benefits and challenges of continuous flow and nitrogen monitoring in a restored salt marsh in North Carolina” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/080811_ASABE_Etheridgeetal.pdf">pdf</a>)</li>
-<li>Horstman, M T, F Birgand and E L Allen . “A Mesocosm Study to Explore the Enhancement of Nitrate Dissipation Capacity in Treatment Wetlands” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/ASABE_Presentation_MHorstman.pdf">pdf</a>)</li>
-<li>Gilmore, T, F Birgand K Chapman and A Brown . “GaugeCam: An Image-Based System to Measure Water Levels in Streams” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/ASABE_2011_final_TEG_30%20slides.pdf">pdf</a>)</li>
-<li>Birgand F . “Evaluation of Uncertainties on Annual Nutrient Load Induced by Time Proportional Composite Sampling Strategies” <em>ASABE Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a href="presentations_pdf/Birgand_Time_composite_sampling_strategies.pdf">pdf</a>)</li>
-<li>Etheridge, J R, F Birgand and M R Burchell . “Intensive monitoring to develop a water and nitrogen balance for a constructed tidal stream” <em>11th Annual meeting of the American Ecological Engineering Society. Ashville, NC. May 22-25, 2011.</em> (<a href="presentations_pdf/052511_AEES_Etheridgeetal.pdf">pdf</a>)</li>
-<li>Gardner, A, G Jennings, S McMillan, F Birgand and A Tuttle . “Enhancing nutrient retention/removal in stream restoration projects” <em>11th Annual meeting of the American Ecological Engineering Society. Ashville, NC. May 22-25, 2011.</em> (<a href="presentations_pdf/GardnerAEES2011.pdf">pdf</a>)</li>
-<li>Kao, Y, F Birgand, B Reich and W J Showers . “Addressing the uncertainties on annual nitrate load calculations in the Neuse River, NC” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Yimin_Kao_WRRI%202011.pdf">pdf</a>)</li>
-<li>Chescheir G M, F Birgand, M A Youssef, R W Skaggs and J Nettles . “Hydrology and water quality impacts of biofuel feedstock production on forestry lands” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/George_chescheir_WRRI_2011.pdf">pdf</a>)</li>
-<li>Etheridge, J R, M R Burchell II and F Birgand . “Continuously monitoring flow, carbon, and nitrogen in a restored North Carolina salt marsh” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Randall_Etheridge_WRRI_2011.pdf">pdf</a>)</li>
-<li>Birgand F, G Lellouche and T M Appelboom . “Is measuring flow in streams such an easy thing to do?” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Birgand_WRRI_2011.pdf">pdf</a>)</li>
-<li>Horstman, M, E Allen, F Birgand and P Harris . “The Evaluation of a Combined Multiplexer Pumping System and Water Quality Probe for Use as a Portable Water Quality Lab” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Marc_Horstman_WRRI_2011.pdf">pdf</a>)</li>
+<li>Amatya, D, G Chescheir, J Nettles, T Appelboom, W Skaggs, M Youssef,
+and F Birgand . “Long-term Hydrologic and Water Quality Monitoring in
+NC” <em>Forestry Research in the South - Forest Water Quality and Yield,
+Southern Forestry Research Partnership (SFRP), Inc. _ Center of
+Excellence, Monroe, GA..</em></li>
+<li>Etheridge, J R, F Birgand and M R Burchell . “Benefits and
+challenges of continuous flow and nitrogen monitoring in a restored salt
+marsh in North Carolina” <em>ASABE Annual International meeting.
+Louiville, KY. August 7-10, 2011.</em> (<a
+href="presentations_pdf/080811_ASABE_Etheridgeetal.pdf">pdf</a>)</li>
+<li>Horstman, M T, F Birgand and E L Allen . “A Mesocosm Study to
+Explore the Enhancement of Nitrate Dissipation Capacity in Treatment
+Wetlands” <em>ASABE Annual International meeting. Louiville, KY. August
+7-10, 2011.</em> (<a
+href="presentations_pdf/ASABE_Presentation_MHorstman.pdf">pdf</a>)</li>
+<li>Gilmore, T, F Birgand K Chapman and A Brown . “GaugeCam: An
+Image-Based System to Measure Water Levels in Streams” <em>ASABE Annual
+International meeting. Louiville, KY. August 7-10, 2011.</em> (<a
+href="presentations_pdf/ASABE_2011_final_TEG_30%20slides.pdf">pdf</a>)</li>
+<li>Birgand F . “Evaluation of Uncertainties on Annual Nutrient Load
+Induced by Time Proportional Composite Sampling Strategies” <em>ASABE
+Annual International meeting. Louiville, KY. August 7-10, 2011.</em> (<a
+href="presentations_pdf/Birgand_Time_composite_sampling_strategies.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand and M R Burchell . “Intensive monitoring
+to develop a water and nitrogen balance for a constructed tidal stream”
+<em>11th Annual meeting of the American Ecological Engineering Society.
+Ashville, NC. May 22-25, 2011.</em> (<a
+href="presentations_pdf/052511_AEES_Etheridgeetal.pdf">pdf</a>)</li>
+<li>Gardner, A, G Jennings, S McMillan, F Birgand and A Tuttle .
+“Enhancing nutrient retention/removal in stream restoration projects”
+<em>11th Annual meeting of the American Ecological Engineering Society.
+Ashville, NC. May 22-25, 2011.</em> (<a
+href="presentations_pdf/GardnerAEES2011.pdf">pdf</a>)</li>
+<li>Kao, Y, F Birgand, B Reich and W J Showers . “Addressing the
+uncertainties on annual nitrate load calculations in the Neuse River,
+NC” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em>
+(<a href="presentations_pdf/Yimin_Kao_WRRI%202011.pdf">pdf</a>)</li>
+<li>Chescheir G M, F Birgand, M A Youssef, R W Skaggs and J Nettles .
+“Hydrology and water quality impacts of biofuel feedstock production on
+forestry lands” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23,
+2011.</em> (<a
+href="presentations_pdf/George_chescheir_WRRI_2011.pdf">pdf</a>)</li>
+<li>Etheridge, J R, M R Burchell II and F Birgand . “Continuously
+monitoring flow, carbon, and nitrogen in a restored North Carolina salt
+marsh” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23,
+2011.</em> (<a
+href="presentations_pdf/Randall_Etheridge_WRRI_2011.pdf">pdf</a>)</li>
+<li>Birgand F, G Lellouche and T M Appelboom . “Is measuring flow in
+streams such an easy thing to do?” <em>Annual NC WRRI conference.
+Raleigh, NC. March 22-23, 2011.</em> (<a
+href="presentations_pdf/Birgand_WRRI_2011.pdf">pdf</a>)</li>
+<li>Horstman, M, E Allen, F Birgand and P Harris . “The Evaluation of a
+Combined Multiplexer Pumping System and Water Quality Probe for Use as a
+Portable Water Quality Lab” <em>Annual NC WRRI conference. Raleigh, NC.
+March 22-23, 2011.</em> (<a
+href="presentations_pdf/Marc_Horstman_WRRI_2011.pdf">pdf</a>)</li>
 </ul></li>
 <li>2010 <em>(3)</em>
 <ul>
-<li>Etheridge, J R, A Lepistö, K Granlund, K Rankinen, M R Burchell II and F Birgand . “Calibration of the INCA-N Model in the Pyhäjoki and Yläneenjoki Catchments in Finland” <em>ASABE International meeting, Pittsburgh, Pennsylvania, June 20 - June 23, 2010.</em></li>
-<li>Chescheir G M, F Birgand, S Tian and M A Youssef . “The effect of sampling frequency on the accuracy of nitrogen load estimates from a drained loblolly pine plantation in Eastern North Carolina” <em>ASABE’s 9th International Drainage symposium. June 13-17, 2010, Québec city, Canada.</em></li>
-<li>Birgand F, Bennett E, Gruau G . “Deriving Sampling Frequency Charts: example for Dissolved Organic Matter in Brittany, France” <em>NC WRRI Annual Conference, Raleigh, NC, March 31st, 2010.</em> (<a href="presentations_pdf/Birgand_Errors%20on%20OM%20fluxes%20in%20Brittany_03_31_10.pdf">pdf</a>)</li>
+<li>Etheridge, J R, A Lepistö, K Granlund, K Rankinen, M R Burchell II
+and F Birgand . “Calibration of the INCA-N Model in the Pyhäjoki and
+Yläneenjoki Catchments in Finland” <em>ASABE International meeting,
+Pittsburgh, Pennsylvania, June 20 - June 23, 2010.</em></li>
+<li>Chescheir G M, F Birgand, S Tian and M A Youssef . “The effect of
+sampling frequency on the accuracy of nitrogen load estimates from a
+drained loblolly pine plantation in Eastern North Carolina” <em>ASABE’s
+9th International Drainage symposium. June 13-17, 2010, Québec city,
+Canada.</em></li>
+<li>Birgand F, Bennett E, Gruau G . “Deriving Sampling Frequency Charts:
+example for Dissolved Organic Matter in Brittany, France” <em>NC WRRI
+Annual Conference, Raleigh, NC, March 31st, 2010.</em> (<a
+href="presentations_pdf/Birgand_Errors%20on%20OM%20fluxes%20in%20Brittany_03_31_10.pdf">pdf</a>)</li>
 </ul></li>
 <li>2009 <em>(3)</em>
 <ul>
-<li>Birgand F, Faucheux C, Moatar F, Meybeck M . “Quelles erreurs pour quelles stratégies d’échantillonnage de l’eau dans les bassins versants ? (What kind of error for what sampling strategies in watersheds?)” <em>Presentation at the international forum on integrated water resource management at the Université de Sherbrooke, Sherbrooke, Québec, June, 1-3, 2009.</em></li>
-<li>Birgand F, Chescheir, G M . “Measuring Nutrient Retention in Streams: Scale Matters” <em>ASABE International meeting, Reno, NE, June 21st-23rd, 2009.</em></li>
-<li>Birgand F, Faucheux C, Moatar F, Meybeck M . “Uncertainties on nitrate water quality indicators associated with infrequent sampling in Brittany, France” <em>ASABE International meeting, Reno, NE, June 21st-23rd, 2009.</em></li>
+<li>Birgand F, Faucheux C, Moatar F, Meybeck M . “Quelles erreurs pour
+quelles stratégies d’échantillonnage de l’eau dans les bassins versants
+? (What kind of error for what sampling strategies in watersheds?)”
+<em>Presentation at the international forum on integrated water resource
+management at the Université de Sherbrooke, Sherbrooke, Québec, June,
+1-3, 2009.</em></li>
+<li>Birgand F, Chescheir, G M . “Measuring Nutrient Retention in
+Streams: Scale Matters” <em>ASABE International meeting, Reno, NE, June
+21st-23rd, 2009.</em></li>
+<li>Birgand F, Faucheux C, Moatar F, Meybeck M . “Uncertainties on
+nitrate water quality indicators associated with infrequent sampling in
+Brittany, France” <em>ASABE International meeting, Reno, NE, June
+21st-23rd, 2009.</em></li>
 </ul></li>
 <li>2006 &amp; before <em>(10)</em>
 <ul>
-<li>Billy, B, Kao, C, Birgand, F, Tournebize, J and Sebilo, M . “Nitrate dynamics in a sub-surface drained agricultural watershed” <em>Man and Rivers II Symposium, 4-6th December 2006, Paris, France.</em></li>
-<li>Gruau G, Birgand F . “Long-Term Trends in Dissolved Organic Matter in French Rivers : Assessing the relative effects of climate change and human activities using long-term records” <em>Man and Rivers II Symposium, 4-6th December 2006, Paris, France.</em> (<a href="presentations_pdf/Oral_Man_Gruau_Birgand_05_12_06.pdf">pdf</a>)</li>
-<li>Birgand F, Faucheux C . “Evaluation of sampling strategies for estimating annual nutrient loads at the outlets of rural watersheds” <em>Man and Rivers II Symposium, 4-6th December 2006, Paris, France.</em> (<a href="presentations_pdf/Oral_Birgand_and_Faucheux_05_12_06.pdf">pdf</a>)</li>
-<li>Billy, B, Birgand, F, Kao, C, Tournebize, J . “Water and nitrate balance in a poorly drained forested and agricultural watershed” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em></li>
-<li>Birgand F, Appelboom T W, Chescheir G M, Skaggs R W and Gilliam J W . “Time Proportional Sampling Strategies for Estimating Annual Nutrient Fluxes at the Outlets of Coastal Plain Watersheds” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em> (<a href="presentations_pdf/Oral_Birgand_sampling_ASABE_2006.pdf">pdf</a>)</li>
-<li>Birgand F, Bordenave P, Saint-Cast P, Le Saos E and Serrand P . “Evaluation of sampling strategies for estimating nutrient fluxes at the outlets of agricultural watersheds” * International Conference of the EWRA. September 2005, Menton, France.* (<a href="presentations_pdf/Oral_Birgand_EWRA2005.pdf">pdf</a>)</li>
-<li>Laplana, R, Turpin, N, Kaljonen, M, Strauss, P, Bärlund, I, Benigni, G, Bioteau, T, Birgand, F, Bontems, P, Bordenave, P, Eklo, O M, Feichtinger, F, Garnier, M, Haverkamp, R, Leone, A, Tattari, S, Lescot, J M, Lo Porto, A, Piet, L, Ripa, M N, Romstad, E, Rotillon, G, Zahm, F . “How to compare best agricultural management practices at the watershed scale?” <em>EWRA 6th international conference Sharing a common vision of our water resources, Menton, 7-10 september 2005.</em></li>
-<li>Lefrançois J, Grimaldi C, Birgand F, Gascuel-Odoux C, Gilliet N . “Origins and dynamics of suspended sediment in two small agricultural catchments, Normandy, France” <em>Fourth Inter-Celtic Colloquium on Hydrology and Management of water resources, Portugal, July 11-13,2005.</em></li>
-<li>Lefrançois J, Grimaldi C, Gascuel-Odoux C, Birgand F, Gilliet N . “Suspended sediment concentration (SS)-discharge relationships : a way to identify the dominant processes implicated in the SS load on a small agricultural catchment” <em>VIIth Scientific Assembly of the International Association of Hydrological Sciences, Foz Do Iguaçu, April 3-9, 2005 .</em></li>
-<li>Peu, P, Martinez, J, Birgand, F, Hinsinger, P, Benedetti, M F . “Short term evolution of pig slurry macronutrients (N, P, K) accumulated into an over amended lysimeter (SOLEPUR)” <em>11th International conference of the FAO ESCORENA network on the recycling of agricultural, municipal and industrial residues in agriculture, Murcia, ESP, 6-9 October 2004. p. 55 - 58.</em></li>
+<li>Billy, B, Kao, C, Birgand, F, Tournebize, J and Sebilo, M . “Nitrate
+dynamics in a sub-surface drained agricultural watershed” <em>Man and
+Rivers II Symposium, 4-6th December 2006, Paris, France.</em></li>
+<li>Gruau G, Birgand F . “Long-Term Trends in Dissolved Organic Matter
+in French Rivers : Assessing the relative effects of climate change and
+human activities using long-term records” <em>Man and Rivers II
+Symposium, 4-6th December 2006, Paris, France.</em> (<a
+href="presentations_pdf/Oral_Man_Gruau_Birgand_05_12_06.pdf">pdf</a>)</li>
+<li>Birgand F, Faucheux C . “Evaluation of sampling strategies for
+estimating annual nutrient loads at the outlets of rural watersheds”
+<em>Man and Rivers II Symposium, 4-6th December 2006, Paris,
+France.</em> (<a
+href="presentations_pdf/Oral_Birgand_and_Faucheux_05_12_06.pdf">pdf</a>)</li>
+<li>Billy, B, Birgand, F, Kao, C, Tournebize, J . “Water and nitrate
+balance in a poorly drained forested and agricultural watershed”
+<em>International Conference Hydrology and Management of Forested
+Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em></li>
+<li>Birgand F, Appelboom T W, Chescheir G M, Skaggs R W and Gilliam J W
+. “Time Proportional Sampling Strategies for Estimating Annual Nutrient
+Fluxes at the Outlets of Coastal Plain Watersheds” <em>International
+Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12
+Avril, 2006 New Bern NC, USA.</em> (<a
+href="presentations_pdf/Oral_Birgand_sampling_ASABE_2006.pdf">pdf</a>)</li>
+<li>Birgand F, Bordenave P, Saint-Cast P, Le Saos E and Serrand P .
+“Evaluation of sampling strategies for estimating nutrient fluxes at the
+outlets of agricultural watersheds” * International Conference of the
+EWRA. September 2005, Menton, France.* (<a
+href="presentations_pdf/Oral_Birgand_EWRA2005.pdf">pdf</a>)</li>
+<li>Laplana, R, Turpin, N, Kaljonen, M, Strauss, P, Bärlund, I, Benigni,
+G, Bioteau, T, Birgand, F, Bontems, P, Bordenave, P, Eklo, O M,
+Feichtinger, F, Garnier, M, Haverkamp, R, Leone, A, Tattari, S, Lescot,
+J M, Lo Porto, A, Piet, L, Ripa, M N, Romstad, E, Rotillon, G, Zahm, F .
+“How to compare best agricultural management practices at the watershed
+scale?” <em>EWRA 6th international conference Sharing a common vision of
+our water resources, Menton, 7-10 september 2005.</em></li>
+<li>Lefrançois J, Grimaldi C, Birgand F, Gascuel-Odoux C, Gilliet N .
+“Origins and dynamics of suspended sediment in two small agricultural
+catchments, Normandy, France” <em>Fourth Inter-Celtic Colloquium on
+Hydrology and Management of water resources, Portugal, July
+11-13,2005.</em></li>
+<li>Lefrançois J, Grimaldi C, Gascuel-Odoux C, Birgand F, Gilliet N .
+“Suspended sediment concentration (SS)-discharge relationships : a way
+to identify the dominant processes implicated in the SS load on a small
+agricultural catchment” <em>VIIth Scientific Assembly of the
+International Association of Hydrological Sciences, Foz Do Iguaçu, April
+3-9, 2005 .</em></li>
+<li>Peu, P, Martinez, J, Birgand, F, Hinsinger, P, Benedetti, M F .
+“Short term evolution of pig slurry macronutrients (N, P, K) accumulated
+into an over amended lysimeter (SOLEPUR)” <em>11th International
+conference of the FAO ESCORENA network on the recycling of agricultural,
+municipal and industrial residues in agriculture, Murcia, ESP, 6-9
+October 2004. p. 55 - 58.</em></li>
 </ul></li>
 </ul>
 </div>
@@ -644,96 +1145,302 @@ div.tocify {
 <ul>
 <li>2020 <em>(1)</em>
 <ul>
-<li>Hammond, N., Schreiber, M., Bookout, B., Corrigan, R., Birgand, F., Carey, C.. “Assessing th Short-term Variability of Iron and Manganese Cycling in a Drinking-Water Reservoir Using a High-Frequency Water Quality Sensor” <em>AGU Fall Meeting 2020.</em> (<a href="presentations_pdf/Hammond_2020_AGU_poster.pdf">pdf</a>)</li>
+<li>Hammond, N., Schreiber, M., Bookout, B., Corrigan, R., Birgand, F.,
+Carey, C.. “Assessing th Short-term Variability of Iron and Manganese
+Cycling in a Drinking-Water Reservoir Using a High-Frequency Water
+Quality Sensor” <em>AGU Fall Meeting 2020.</em> (<a
+href="presentations_pdf/Hammond_2020_AGU_poster.pdf">pdf</a>)</li>
 </ul></li>
 <li>2019 <em>(7)</em>
 <ul>
-<li>Birgand, F., Maxwell, B, Thomas, A., Tian, S, Schipper, L, Christianson, L, Helmers, M, Williams, D, Chescheir, GM, Youssef, M. “Effects of drying and rewetting cycles on denitrification and greenhouse gas emissions in saturated ligneous substrate” <em>AGU Fall Meeting – San Francisco 9-13 December, 2019.</em> (<a href="presentations_pdf/Birgand_et_al_AGU_2019.pdf">pdf</a>)</li>
-<li>Liu, W, Maxwell, B, Birgand, F, Youssef, M, Chescheir, C. “Multi-Point High Frequency Sampling System to Gain Deeper Insights on the Fate of Nitrate in Artificially Drained Fields” <em>ASABE Annual International Conference, Boston, MA, 7-10 July, 2019.</em></li>
-<li>Howden, N, Burt, T, Worrall, F, Birgand, F, Gnann, S, Woods, R. “The dependence structure of daily UK hydrological time series” <em>Catchment Science: Interactions of Hydrology, Biology and Geochemistry, Gordon Research Conference, Andover, NH, 23-28 June 2019.</em> (<a href="presentations_pdf/GRC-Howden-Poster-2019.pdf">pdf</a>)</li>
-<li>Moin, S, Birgand, F, Hunt, WF. “Exploring the benefits of high frequency water quality sampling in stormwater wetlands” <em>ASCE - EWRI International Conference, Pittsburgh, PA, 19-23 May, 2019.</em></li>
-<li>Carey, C.C., R.Q. Thomas, R.J. Figueiredo, V. DaneshmandG, B.J. Bookout, F. Birgand, and H. Wander. “Integrating environmental sensor networks and real-time ecological forecasting to adaptively manage water quality” <em>Ecological Forecasting Initiative Conference, Washington, D.C., May 2019.</em></li>
-<li>Hang, Q, Birgand, F, Belenky, C, Lin, C-W. “The Short-term Response of Nutrient Loads to an Agricultural Stream Restoration in Coastal Plain of North Carolina” <em>Innovations in Agriculture, BASF, Durham, NC, 1 May 2019.</em> (<a href="presentations_pdf/BASF_Poster_QHang_2019.pdf">pdf</a>)</li>
-<li>Blackman, S, Chen, C, Birgand, F. “Modeling Flow-Driven Nitrate Removal Rates and Prototyping Electrical-Augmentation for Woodchip Bioreactors” <em>Undergraduate Research Symposium, Raleigh, N.C. , 4 April 2019.</em> (<a href="presentations_pdf/Blackman_WoodchipPoster_undergraduate_research.pdf">pdf</a>)</li>
+<li>Birgand, F., Maxwell, B, Thomas, A., Tian, S, Schipper, L,
+Christianson, L, Helmers, M, Williams, D, Chescheir, GM, Youssef, M.
+“Effects of drying and rewetting cycles on denitrification and
+greenhouse gas emissions in saturated ligneous substrate” <em>AGU Fall
+Meeting – San Francisco 9-13 December, 2019.</em> (<a
+href="presentations_pdf/Birgand_et_al_AGU_2019.pdf">pdf</a>)</li>
+<li>Liu, W, Maxwell, B, Birgand, F, Youssef, M, Chescheir, C.
+“Multi-Point High Frequency Sampling System to Gain Deeper Insights on
+the Fate of Nitrate in Artificially Drained Fields” <em>ASABE Annual
+International Conference, Boston, MA, 7-10 July, 2019.</em></li>
+<li>Howden, N, Burt, T, Worrall, F, Birgand, F, Gnann, S, Woods, R. “The
+dependence structure of daily UK hydrological time series” <em>Catchment
+Science: Interactions of Hydrology, Biology and Geochemistry, Gordon
+Research Conference, Andover, NH, 23-28 June 2019.</em> (<a
+href="presentations_pdf/GRC-Howden-Poster-2019.pdf">pdf</a>)</li>
+<li>Moin, S, Birgand, F, Hunt, WF. “Exploring the benefits of high
+frequency water quality sampling in stormwater wetlands” <em>ASCE - EWRI
+International Conference, Pittsburgh, PA, 19-23 May, 2019.</em></li>
+<li>Carey, C.C., R.Q. Thomas, R.J. Figueiredo, V. DaneshmandG, B.J.
+Bookout, F. Birgand, and H. Wander. “Integrating environmental sensor
+networks and real-time ecological forecasting to adaptively manage water
+quality” <em>Ecological Forecasting Initiative Conference, Washington,
+D.C., May 2019.</em></li>
+<li>Hang, Q, Birgand, F, Belenky, C, Lin, C-W. “The Short-term Response
+of Nutrient Loads to an Agricultural Stream Restoration in Coastal Plain
+of North Carolina” <em>Innovations in Agriculture, BASF, Durham, NC, 1
+May 2019.</em> (<a
+href="presentations_pdf/BASF_Poster_QHang_2019.pdf">pdf</a>)</li>
+<li>Blackman, S, Chen, C, Birgand, F. “Modeling Flow-Driven Nitrate
+Removal Rates and Prototyping Electrical-Augmentation for Woodchip
+Bioreactors” <em>Undergraduate Research Symposium, Raleigh, N.C. , 4
+April 2019.</em> (<a
+href="presentations_pdf/Blackman_WoodchipPoster_undergraduate_research.pdf">pdf</a>)</li>
 </ul></li>
 <li>2018 <em>(15)</em>
 <ul>
-<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Tian, S, Helmers, M, Williams, D, Chescheir, GM, Youssef, M. “Impact of drying-rewetting cycles on nitrate removal rates in woodchip bioreactors” <em>AGU Fall Meeting, Washington, D.C., 10-14 December 2018.</em></li>
-<li>Birgand, F, Howden, N, Belenky, C., Burt, T, Worall, F. “Integrative vs. derivative indicators: which should we use to detect water quality improvements?” <em>AGU Fall Meeting, Washington, D.C., 10-14 December 2018.</em></li>
-<li>Liu, W, Tian, S, Youssef, MA, Birgand, F, Chescheir, GM. “Long-term temporal variation of nitrate concentration - stream discharge (C-Q) relationship from an agricultural watershed in Midwest U.S.” <em>AGU Fall Meeting, Washington, D.C., 10-14 December 2018.</em></li>
-<li>Carey, C.C., Thomas, RQ, Figueiredo, RJ, Daneshmand, V, Bookout, BJ, Birgand, F. “Can we use GLM to predict fall turnover? Integrating sensor networks and real-time forecasting to manage water quality” <em>GLEON 20 All Hands’ Meeting, 3–7 December 2018, Rottnest Island (near Perth), Australia.</em></li>
-<li>Winter, D, Fox,G , Birgand, F. “Comparison of Pre-Restoration and Post-Restoration In-Stream Solute Transport and Treatment in a Restored Coastal Plain Stream” <em>ASABE annual international meeting, July 29 - August 1st, 2018, Detroit, Michigan.</em></li>
-<li>Maxwell, B, Birgand, F, Winter, D, Garvey, S, Ray, C, Gilmore, T. “Multi-point sampling methods to improve spatial and temporal resolution of water quality data” <em>EWRI - World Environmental &amp; Water Resources Congress Minneapolis, Minnesota, June 3–7, 2018.</em> (<a href="presentations_pdf/Maxwell_EWRI_Poster_2018_EWRI.pdf">pdf</a>)</li>
-<li>Moin, S, Birgand, F, Hunt, WF III. “Exploring The Benefits of High Resolution Water Quality Sampling in Stormwater Wetlands” <em>EWRI - World Environmental &amp; Water Resources Congress Minneapolis, Minnesota, June 3–7, 2018.</em></li>
-<li>Liu, W, Tian, S, Youssef, M, Birgand, F, Chescheir, GM. “Long-term temporal variation of nitrate concentration-stream discharge (C-Q) relationship for an agricultural watershed in Midwest USA” <em>Agricultural Drainage Management Systems Task Force/NCERA 217 - April 11-12, 2018 – Raleigh, NC.</em> (<a href="presentations_pdf/Liu_CQ_Poster_NCERA_2018.pdf">pdf</a>)</li>
-<li>Liu, W, Maxwell, B, Birgand, F, Youssef, M, Chescheir, GM. “Insights from intensive water quality sampling in a drained agricultural field” <em>Agricultural Drainage Management Systems Task Force/NCERA 217 - April 11-12, 2018 – Raleigh, NC.</em> (<a href="presentations_pdf/Liu_Maxwell_poster_high_res_WQ_2018.pdf">pdf</a>)</li>
-<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Helmers, M, Youssef, M, Tian, S, Chescheir, GM, Williams, D. “Impacts of drying-rewetting cycles on nitrate removal in woodchip bioreactors” <em>Agricultural Drainage Management Systems Task Force/NCERA 217 - April 11-12, 2018 – Raleigh, NC.</em> (<a href="presentations_pdf/Maxwell_Poster_Drainage_ADMS_2018.pdf">pdf</a>)</li>
-<li>Birgand, F, Lin, C-W. “Estimating uncertainties on annual nutrient loads using sensor concentrations” <em>European Geosciences Union General Assembly 2018, Vienna, Austria, 8–13 April 2018.</em> (<a href="presentations_pdf/Birgand_Lin_EGU_2018.pdf">pdf</a>)</li>
-<li>Moin, S, Birgand, F, Hunt, W F III. “Exploring The Benefits of High Resolution Water Quality Sampling in Stormwater Wetlands” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Moin-WRRI_2018_Poster.pdf">pdf</a>)</li>
-<li>Hang, Q, Birgand, F. “Quantifying the effects of stream restoration: A review” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em></li>
-<li>Winter, D, Maxwell, B, Birgand, F. “Microbes, Nutrients, and Twitter: What We Have Learned from a WRRI Student Grant” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a href="presentations_pdf/Winter_WRRI_2018_Poster.pdf">pdf</a>)</li>
-<li>Birgand, F, B Maxwell, S Tian, W Liu, L Negm, M Youssef, G Chescheir, L Schipper, L Christianson, M Helmers, D Williams. “Transforming denitrifying bioreactor research and applications: unveiling the inside of the blackbox” <em>USDA NIFA and NSF Water and Soils Meeting, Project Director Meeting, January 29-31, 2018.</em> (<a href="presentations_pdf/Birgand_poster_AFRI_Jan2018-final.pdf">pdf</a>)</li>
+<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Tian, S,
+Helmers, M, Williams, D, Chescheir, GM, Youssef, M. “Impact of
+drying-rewetting cycles on nitrate removal rates in woodchip
+bioreactors” <em>AGU Fall Meeting, Washington, D.C., 10-14 December
+2018.</em></li>
+<li>Birgand, F, Howden, N, Belenky, C., Burt, T, Worall, F. “Integrative
+vs. derivative indicators: which should we use to detect water quality
+improvements?” <em>AGU Fall Meeting, Washington, D.C., 10-14 December
+2018.</em></li>
+<li>Liu, W, Tian, S, Youssef, MA, Birgand, F, Chescheir, GM. “Long-term
+temporal variation of nitrate concentration - stream discharge (C-Q)
+relationship from an agricultural watershed in Midwest U.S.” <em>AGU
+Fall Meeting, Washington, D.C., 10-14 December 2018.</em></li>
+<li>Carey, C.C., Thomas, RQ, Figueiredo, RJ, Daneshmand, V, Bookout, BJ,
+Birgand, F. “Can we use GLM to predict fall turnover? Integrating sensor
+networks and real-time forecasting to manage water quality” <em>GLEON 20
+All Hands’ Meeting, 3–7 December 2018, Rottnest Island (near Perth),
+Australia.</em></li>
+<li>Winter, D, Fox,G , Birgand, F. “Comparison of Pre-Restoration and
+Post-Restoration In-Stream Solute Transport and Treatment in a Restored
+Coastal Plain Stream” <em>ASABE annual international meeting, July 29 -
+August 1st, 2018, Detroit, Michigan.</em></li>
+<li>Maxwell, B, Birgand, F, Winter, D, Garvey, S, Ray, C, Gilmore, T.
+“Multi-point sampling methods to improve spatial and temporal resolution
+of water quality data” <em>EWRI - World Environmental &amp; Water
+Resources Congress Minneapolis, Minnesota, June 3–7, 2018.</em> (<a
+href="presentations_pdf/Maxwell_EWRI_Poster_2018_EWRI.pdf">pdf</a>)</li>
+<li>Moin, S, Birgand, F, Hunt, WF III. “Exploring The Benefits of High
+Resolution Water Quality Sampling in Stormwater Wetlands” <em>EWRI -
+World Environmental &amp; Water Resources Congress Minneapolis,
+Minnesota, June 3–7, 2018.</em></li>
+<li>Liu, W, Tian, S, Youssef, M, Birgand, F, Chescheir, GM. “Long-term
+temporal variation of nitrate concentration-stream discharge (C-Q)
+relationship for an agricultural watershed in Midwest USA”
+<em>Agricultural Drainage Management Systems Task Force/NCERA 217 -
+April 11-12, 2018 – Raleigh, NC.</em> (<a
+href="presentations_pdf/Liu_CQ_Poster_NCERA_2018.pdf">pdf</a>)</li>
+<li>Liu, W, Maxwell, B, Birgand, F, Youssef, M, Chescheir, GM. “Insights
+from intensive water quality sampling in a drained agricultural field”
+<em>Agricultural Drainage Management Systems Task Force/NCERA 217 -
+April 11-12, 2018 – Raleigh, NC.</em> (<a
+href="presentations_pdf/Liu_Maxwell_poster_high_res_WQ_2018.pdf">pdf</a>)</li>
+<li>Maxwell, B, Birgand, F, Schipper, L, Christianson, L, Helmers, M,
+Youssef, M, Tian, S, Chescheir, GM, Williams, D. “Impacts of
+drying-rewetting cycles on nitrate removal in woodchip bioreactors”
+<em>Agricultural Drainage Management Systems Task Force/NCERA 217 -
+April 11-12, 2018 – Raleigh, NC.</em> (<a
+href="presentations_pdf/Maxwell_Poster_Drainage_ADMS_2018.pdf">pdf</a>)</li>
+<li>Birgand, F, Lin, C-W. “Estimating uncertainties on annual nutrient
+loads using sensor concentrations” <em>European Geosciences Union
+General Assembly 2018, Vienna, Austria, 8–13 April 2018.</em> (<a
+href="presentations_pdf/Birgand_Lin_EGU_2018.pdf">pdf</a>)</li>
+<li>Moin, S, Birgand, F, Hunt, W F III. “Exploring The Benefits of High
+Resolution Water Quality Sampling in Stormwater Wetlands” <em>NC WRRI
+Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a
+href="presentations_pdf/Moin-WRRI_2018_Poster.pdf">pdf</a>)</li>
+<li>Hang, Q, Birgand, F. “Quantifying the effects of stream restoration:
+A review” <em>NC WRRI Annual Conferenc March 14-15, 2018, Raleigh,
+NC.</em></li>
+<li>Winter, D, Maxwell, B, Birgand, F. “Microbes, Nutrients, and
+Twitter: What We Have Learned from a WRRI Student Grant” <em>NC WRRI
+Annual Conferenc March 14-15, 2018, Raleigh, NC.</em> (<a
+href="presentations_pdf/Winter_WRRI_2018_Poster.pdf">pdf</a>)</li>
+<li>Birgand, F, B Maxwell, S Tian, W Liu, L Negm, M Youssef, G
+Chescheir, L Schipper, L Christianson, M Helmers, D Williams.
+“Transforming denitrifying bioreactor research and applications:
+unveiling the inside of the blackbox” <em>USDA NIFA and NSF Water and
+Soils Meeting, Project Director Meeting, January 29-31, 2018.</em> (<a
+href="presentations_pdf/Birgand_poster_AFRI_Jan2018-final.pdf">pdf</a>)</li>
 </ul></li>
 <li>2017 <em>(4)</em>
 <ul>
-<li>Birgand, F, N Howden, T Burt, and F Worrall. “Integrative indicators as robust metrics of catchment biogeochemical function” <em>AGU fall meeting, New Orleans, December 11-15, 2017.</em> (<a href="presentations_pdf/Birgand_Howden_et_al_poster_AGU_2017.pdf">pdf</a>)</li>
-<li>Liu, W, M Youssef, F Birgand, GM Chescheir, B Maxwell, S Tian. “Nitrate concentration-drainage flow (C-Q) relationship for a drained agricultural field in Eastern North Carolina Plain” <em>AGU fall meeting, New Orleans, December 11-15, 2017.</em> (<a href="presentations_pdf/Liu_2017_AGU_Poster2.pdf">pdf</a>)</li>
-<li>Maxwell, B, Winter, D, Birgand F . “Monitoring of a floating treatment wetland retrofit on a stormwater pond using continuous, multipoint_in_situ sampling methods” <em>17th Annual Meeting of The American Ecological Engineering Society, Athens, GA, May 23-25, 2017.</em></li>
-<li>Winter, D, Gardner, T, Birgand, F, Owiti, D, Maxwell, B . “Microbial Community Analysis of a Floating Island System in a Stormwater Wet Detention Basin” <em>Soil Science Society of North Carolina Annual Meeting, Raleigh, NC, January 2017.</em></li>
+<li>Birgand, F, N Howden, T Burt, and F Worrall. “Integrative indicators
+as robust metrics of catchment biogeochemical function” <em>AGU fall
+meeting, New Orleans, December 11-15, 2017.</em> (<a
+href="presentations_pdf/Birgand_Howden_et_al_poster_AGU_2017.pdf">pdf</a>)</li>
+<li>Liu, W, M Youssef, F Birgand, GM Chescheir, B Maxwell, S Tian.
+“Nitrate concentration-drainage flow (C-Q) relationship for a drained
+agricultural field in Eastern North Carolina Plain” <em>AGU fall
+meeting, New Orleans, December 11-15, 2017.</em> (<a
+href="presentations_pdf/Liu_2017_AGU_Poster2.pdf">pdf</a>)</li>
+<li>Maxwell, B, Winter, D, Birgand F . “Monitoring of a floating
+treatment wetland retrofit on a stormwater pond using continuous,
+multipoint_in_situ sampling methods” <em>17th Annual Meeting of The
+American Ecological Engineering Society, Athens, GA, May 23-25,
+2017.</em></li>
+<li>Winter, D, Gardner, T, Birgand, F, Owiti, D, Maxwell, B . “Microbial
+Community Analysis of a Floating Island System in a Stormwater Wet
+Detention Basin” <em>Soil Science Society of North Carolina Annual
+Meeting, Raleigh, NC, January 2017.</em></li>
 </ul></li>
 <li>2016 <em>(3)</em>
 <ul>
-<li>Winter, D, Gardner, T, Birgand, F, Owiti, D, Maxwell, B . “Microbial Community Analysis of a Floating Island System in a Stormwater Wet Detention Basin” <em>NCSU’s Undergraduate Research Summer Symposium, Raleigh, NC, August 2016.</em></li>
-<li>Winter, D, Birgand, F and C-W Lin. “Measuring the Water Quality Impact of a Stream Restoration during Construction” <em>ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.</em></li>
-<li>Maxwell, B M and F Birgand . &quot; Can we rejuventate bioreactors using wetting and drying cycles? &quot; * ASABE Annual International meeting. Orlando, FL, July 17-20, 2016.*</li>
+<li>Winter, D, Gardner, T, Birgand, F, Owiti, D, Maxwell, B . “Microbial
+Community Analysis of a Floating Island System in a Stormwater Wet
+Detention Basin” <em>NCSU’s Undergraduate Research Summer Symposium,
+Raleigh, NC, August 2016.</em></li>
+<li>Winter, D, Birgand, F and C-W Lin. “Measuring the Water Quality
+Impact of a Stream Restoration during Construction” <em>ASABE Annual
+International meeting. Orlando, FL, July 17-20, 2016.</em></li>
+<li>Maxwell, B M and F Birgand . ” Can we rejuventate bioreactors using
+wetting and drying cycles? ” * ASABE Annual International meeting.
+Orlando, FL, July 17-20, 2016.*</li>
 </ul></li>
 <li>2015 <em>(1)</em>
 <ul>
-<li>Dobbs, N, Allen, E, Carter, T, Birgand, F, and Aveni-Deforge, K . “Challenges of Monitoring Water Quality on a Continuous Basis at the Watershed Scale” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 18-19, 2015.</em> (<a href="presentations_pdf/Dobbs_wrri_2015_poster.pdf">pdf</a>)</li>
+<li>Dobbs, N, Allen, E, Carter, T, Birgand, F, and Aveni-Deforge, K .
+“Challenges of Monitoring Water Quality on a Continuous Basis at the
+Watershed Scale” <em>Water Resources Research Institute of The
+University of North Carolina Annual Conference. Raleigh, NC. March
+18-19, 2015.</em> (<a
+href="presentations_pdf/Dobbs_wrri_2015_poster.pdf">pdf</a>)</li>
 </ul></li>
 <li>2014 <em>(3)</em>
 <ul>
-<li>Maxwell, B, F Birgand, K Aveni-Deforge, and B Smith . “Water Quality Data at High Time and Space Resolution in the Field : Expanding Spectrophotometer Capabilities with Arduino Driven Sequential Autosampler” <em>AGU Fall Meeting. San Francisco, CA. December 14-19, 2014.</em> (<a href="presentations_pdf/Maxwell_AGU_2014_poster.pdf">pdf</a>)</li>
-<li>Muwamba, A, D M Amatya, H Ssegane, E W, Tollner, J Nettles, G Chescheir, F Birgand, M Youssef, T W Appelboom and R W Skaggs . “Effects of Intercropping Switchgrass on Drainage Water Nutrients and Sediment of a Planted Pine Forest in Coastal North Carolina” <em>ASABE Annual International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
-<li>Maxwell, B, F Birgand, K Aveni-Deforge, B Smith and E Allen . “Evaluation of an Automated Micro-Volume in situ Spectrometry-based Lab for High Spatial and Temporal Resolution” <em>Water Resources Research Institute of The University of North Carolina Annual Conference. Raleigh, NC. March 19-20, 2014.</em> (<a href="presentations_pdf/Maxwell_WRRI_2014_poster.pdf">pdf</a>)</li>
+<li>Maxwell, B, F Birgand, K Aveni-Deforge, and B Smith . “Water Quality
+Data at High Time and Space Resolution in the Field : Expanding
+Spectrophotometer Capabilities with Arduino Driven Sequential
+Autosampler” <em>AGU Fall Meeting. San Francisco, CA. December 14-19,
+2014.</em> (<a
+href="presentations_pdf/Maxwell_AGU_2014_poster.pdf">pdf</a>)</li>
+<li>Muwamba, A, D M Amatya, H Ssegane, E W, Tollner, J Nettles, G
+Chescheir, F Birgand, M Youssef, T W Appelboom and R W Skaggs . “Effects
+of Intercropping Switchgrass on Drainage Water Nutrients and Sediment of
+a Planted Pine Forest in Coastal North Carolina” <em>ASABE Annual
+International meeting. Montréal, Canada. July 14 - 16, 2014.</em></li>
+<li>Maxwell, B, F Birgand, K Aveni-Deforge, B Smith and E Allen .
+“Evaluation of an Automated Micro-Volume in situ Spectrometry-based Lab
+for High Spatial and Temporal Resolution” <em>Water Resources Research
+Institute of The University of North Carolina Annual Conference.
+Raleigh, NC. March 19-20, 2014.</em> (<a
+href="presentations_pdf/Maxwell_WRRI_2014_poster.pdf">pdf</a>)</li>
 </ul></li>
 <li>2013 <em>(5)</em>
 <ul>
-<li>Etheridge, J R, F Birgand and M Burchell. “Insights into the Impact of Tropical Systems on Tidal Marshes: Results from High Frequency Monitoring in a Constructed Marsh During Hurricane Sandy” <em>Southeast Tidal Creek Summit, Wilmington, NC. December 16-17, 2013.</em> (<a href="presentations_pdf/Etheridge_TSS_Sandy_2013_poster.pdf">pdf</a>)</li>
-<li>Allen, E, F Birgand, G M Chescheir, C L Osburn, K Aveni-Deforge, R Etheridge and J Nettles. “Continuous Monitoring of Hydrology and Water Quality to Detect Impacts of Biomass Intercropping in Managed Pine Plantations of the Southeastern United States” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Allen_KC_13_continuous_WQ_poster.pdf">pdf</a>)</li>
-<li>Allen, E, F Birgand, G M Chescheir, E Bennett, V Andréassian, C Perrin and T Appelboom. “Hydrology and Water Quality Impacts of Biomass Intercropping in Managed Pine Plantations of the Southeastern United States” <em>ASABE Annual International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a href="presentations_pdf/Allen_KC_13_biomass_MS_poster.pdf">pdf</a>)</li>
-<li>Barto, T, F Birgand, R Etheridge, M Polizzotto and M Burchell. “The role of solid phases in nutrient cycling in a restored coastal marsh” <em>Undergraduate Research Symposium, NCSU, Raleigh, NC. April 10, 2013.</em></li>
-<li>Polizzotto, M, F Birgand, E Lineberger, B Badruzzaman, A Ali . “Novel Approaches for Removing Arsenic from Irrigation Water and Protecting Food Security in South Asia” <em>India Reception, NCSU, Raleigh, NC, March 26, 2013.</em></li>
+<li>Etheridge, J R, F Birgand and M Burchell. “Insights into the Impact
+of Tropical Systems on Tidal Marshes: Results from High Frequency
+Monitoring in a Constructed Marsh During Hurricane Sandy” <em>Southeast
+Tidal Creek Summit, Wilmington, NC. December 16-17, 2013.</em> (<a
+href="presentations_pdf/Etheridge_TSS_Sandy_2013_poster.pdf">pdf</a>)</li>
+<li>Allen, E, F Birgand, G M Chescheir, C L Osburn, K Aveni-Deforge, R
+Etheridge and J Nettles. “Continuous Monitoring of Hydrology and Water
+Quality to Detect Impacts of Biomass Intercropping in Managed Pine
+Plantations of the Southeastern United States” <em>ASABE Annual
+International meeting. Kansas City, MO. July 21 - 24, 2013.</em> (<a
+href="presentations_pdf/Allen_KC_13_continuous_WQ_poster.pdf">pdf</a>)</li>
+<li>Allen, E, F Birgand, G M Chescheir, E Bennett, V Andréassian, C
+Perrin and T Appelboom. “Hydrology and Water Quality Impacts of Biomass
+Intercropping in Managed Pine Plantations of the Southeastern United
+States” <em>ASABE Annual International meeting. Kansas City, MO. July 21
+- 24, 2013.</em> (<a
+href="presentations_pdf/Allen_KC_13_biomass_MS_poster.pdf">pdf</a>)</li>
+<li>Barto, T, F Birgand, R Etheridge, M Polizzotto and M Burchell. “The
+role of solid phases in nutrient cycling in a restored coastal marsh”
+<em>Undergraduate Research Symposium, NCSU, Raleigh, NC. April 10,
+2013.</em></li>
+<li>Polizzotto, M, F Birgand, E Lineberger, B Badruzzaman, A Ali .
+“Novel Approaches for Removing Arsenic from Irrigation Water and
+Protecting Food Security in South Asia” <em>India Reception, NCSU,
+Raleigh, NC, March 26, 2013.</em></li>
 </ul></li>
 <li>2012 <em>(1)</em>
 <ul>
-<li>Birgand, F, G Lellouche and T M Appelboom. “Uncertainties on flow calculated from stage-discharge rating curves in small streams” <em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01, 2012.</em> (<a href="presentations_pdf/Birgand_Q_uncertainties_poster_ASABE.pdf">pdf</a>)</li>
+<li>Birgand, F, G Lellouche and T M Appelboom. “Uncertainties on flow
+calculated from stage-discharge rating curves in small streams”
+<em>ASABE Annual International meeting. Dallas, TX. July 29 - August 01,
+2012.</em> (<a
+href="presentations_pdf/Birgand_Q_uncertainties_poster_ASABE.pdf">pdf</a>)</li>
 </ul></li>
 <li>2011 <em>(3)</em>
 <ul>
-<li>Etheridge, J R, F Birgand, and M R Burchell. “Quantifying the Water Quality Benefits of a Restored Tidal Stream Using Intensive Nitrate and Flow Monitoring” * Southeast Tidal Creeks Summit, Charleston, SC. December 5-6, 2011.* (<a href="presentations_pdf/Etheridge_et_al_2011_tidal_conf.pdf">pdf</a>)</li>
-<li>Mikan, M, C Osburn and F Birgand. “Chromophoric dissolved and particulate organic matter cycling through a tidally influenced restored marsh ecosystem in Eastern North Carolina” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Mikan_poster_Final_small.pdf">pdf</a>)</li>
-<li>Gardner, A, McMillan, S, Tuttle, A, Birgand F and G Jennings. “Evaluating Nutrient Retention in Restored and Unrestored Urban Streams” <em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a href="presentations_pdf/Angela_Gardner_WRRI_Poster2011_small.pdf">pdf</a>)</li>
+<li>Etheridge, J R, F Birgand, and M R Burchell. “Quantifying the Water
+Quality Benefits of a Restored Tidal Stream Using Intensive Nitrate and
+Flow Monitoring” * Southeast Tidal Creeks Summit, Charleston, SC.
+December 5-6, 2011.* (<a
+href="presentations_pdf/Etheridge_et_al_2011_tidal_conf.pdf">pdf</a>)</li>
+<li>Mikan, M, C Osburn and F Birgand. “Chromophoric dissolved and
+particulate organic matter cycling through a tidally influenced restored
+marsh ecosystem in Eastern North Carolina” <em>Annual NC WRRI
+conference. Raleigh, NC. March 22-23, 2011.</em> (<a
+href="presentations_pdf/Mikan_poster_Final_small.pdf">pdf</a>)</li>
+<li>Gardner, A, McMillan, S, Tuttle, A, Birgand F and G Jennings.
+“Evaluating Nutrient Retention in Restored and Unrestored Urban Streams”
+<em>Annual NC WRRI conference. Raleigh, NC. March 22-23, 2011.</em> (<a
+href="presentations_pdf/Angela_Gardner_WRRI_Poster2011_small.pdf">pdf</a>)</li>
 </ul></li>
 <li>2010 <em>(6)</em>
 <ul>
-<li>Birgand, F and G M Chescheir. “Evaluation of Uncertainties on Annual Nutrient Load Induced by Time Proportional Composite Sampling Strategies” <em>ASABE International meeting, Pittsburgh, Pennsylvania, June 20 - June 23, 2010.</em> (<a href="presentations_pdf/Poster_Birgand_Time_Composite_Sampling_ASABE_2010.pdf">pdf</a>)</li>
-<li>Crouse, J A, Birgand, F Boyette M and Y Nedelec. “New instruments for surveying cross sections in stream restoration projects” <em>ASABE International meeting, Pittsburgh, Pennsylvania, June 20 - June 23, 2010.</em> (<a href="presentations_pdf/Poster_Crouse_et_al_ASABE_2010.pdf">pdf</a>)</li>
-<li>Gardner, A, S McMillan, G Jennings, F Birgand and A Tuttle. “Nutrient Injections: Evaluating differences in nutrient retention in restored and unrestored stream reaches” <em>NC WRRI Annual Conference, Raleigh, NC, March 31st, 2010.</em> (<a href="presentations_pdf/Poster_Gardner_et_al_2010B.pdf">pdf</a>)</li>
-<li>Perkinson, A, Garland, C, Fitzgerald, S Perry, W, F Birgand, Boyette, M and Harris, P. “Multiplexor system to expand continuous water quality monitoring to multiple sources” <em>National Academy of Engineering Grand Challenge Regional Summit, Raleigh, NC March 03-05.</em></li>
-<li>Bennett, E Birgand, F, and Gruau, G. “Deriving sampling frequency guidelines for monitoring dissolved organic matter in Brittany, France” <em>National Academy of Engineering Grand Challenge Regional Summit, Raleigh, NC March 03-05.</em> (<a href="presentations_pdf/Poster_frequency_charts_OM_Brittany_NAE_2010.pdf">pdf</a>)</li>
-<li>Gilmore, T Birgand, F, Chapman, K, and Brown, A. &quot; Providing Real_Time Hydrologic Data Using Webcams&quot; <em>National Academy of Engineering Grand Challenge Regional Summit, Raleigh, NC March 03-05.</em> (<a href="presentations_pdf/GaugeCam_Poster_for_Raleigh_Grand_Challenge_Colors.pdf">pdf</a>)</li>
+<li>Birgand, F and G M Chescheir. “Evaluation of Uncertainties on Annual
+Nutrient Load Induced by Time Proportional Composite Sampling
+Strategies” <em>ASABE International meeting, Pittsburgh, Pennsylvania,
+June 20 - June 23, 2010.</em> (<a
+href="presentations_pdf/Poster_Birgand_Time_Composite_Sampling_ASABE_2010.pdf">pdf</a>)</li>
+<li>Crouse, J A, Birgand, F Boyette M and Y Nedelec. “New instruments
+for surveying cross sections in stream restoration projects” <em>ASABE
+International meeting, Pittsburgh, Pennsylvania, June 20 - June 23,
+2010.</em> (<a
+href="presentations_pdf/Poster_Crouse_et_al_ASABE_2010.pdf">pdf</a>)</li>
+<li>Gardner, A, S McMillan, G Jennings, F Birgand and A Tuttle.
+“Nutrient Injections: Evaluating differences in nutrient retention in
+restored and unrestored stream reaches” <em>NC WRRI Annual Conference,
+Raleigh, NC, March 31st, 2010.</em> (<a
+href="presentations_pdf/Poster_Gardner_et_al_2010B.pdf">pdf</a>)</li>
+<li>Perkinson, A, Garland, C, Fitzgerald, S Perry, W, F Birgand,
+Boyette, M and Harris, P. “Multiplexor system to expand continuous water
+quality monitoring to multiple sources” <em>National Academy of
+Engineering Grand Challenge Regional Summit, Raleigh, NC March
+03-05.</em></li>
+<li>Bennett, E Birgand, F, and Gruau, G. “Deriving sampling frequency
+guidelines for monitoring dissolved organic matter in Brittany, France”
+<em>National Academy of Engineering Grand Challenge Regional Summit,
+Raleigh, NC March 03-05.</em> (<a
+href="presentations_pdf/Poster_frequency_charts_OM_Brittany_NAE_2010.pdf">pdf</a>)</li>
+<li>Gilmore, T Birgand, F, Chapman, K, and Brown, A. ” Providing
+Real_Time Hydrologic Data Using Webcams” <em>National Academy of
+Engineering Grand Challenge Regional Summit, Raleigh, NC March
+03-05.</em> (<a
+href="presentations_pdf/GaugeCam_Poster_for_Raleigh_Grand_Challenge_Colors.pdf">pdf</a>)</li>
 </ul></li>
 <li>2009 <em>(1)</em>
 <ul>
-<li>Gilmore, T Birgand, F, Chapman, K. “Internet-Connected Water Level Detection” <em>State of North Carolina Undergraduate Research &amp; Creativity Symposium. University of North Carolina, Wilmington, NC. Nov. 21st, 2009.</em> (<a href="presentations_pdf/GaugeCam_Poster_Fall09.pdf">pdf</a>)</li>
+<li>Gilmore, T Birgand, F, Chapman, K. “Internet-Connected Water Level
+Detection” <em>State of North Carolina Undergraduate Research &amp;
+Creativity Symposium. University of North Carolina, Wilmington, NC.
+Nov. 21st, 2009.</em> (<a
+href="presentations_pdf/GaugeCam_Poster_Fall09.pdf">pdf</a>)</li>
 </ul></li>
 <li>2006 &amp; before <em>(4)</em>
 <ul>
-<li>Birgand, F, Giraud F <em>(deceased)</em>, Chescheir G M, Skaggs R W and J W Gilliam. “Measurement and modeling of denitrification in poorly drained soils of the lower coastal plain” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em> (<a href="presentations_pdf/Poster_Birgand_soil_denitrification_ASABE_2006.pdf">pdf</a>)</li>
-<li>Birgand, F, Chescheir G M, Skaggs R W and J W Gilliam. “Quantification and modeling of in-stream processes in forest impacted agricultural canals of the lower coastal plain” <em>International Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006 New Bern NC, USA.</em> (<a href="presentations_pdf/Poster_Birgand_in-stream_ASABE_2006.pdf">pdf</a>)</li>
-<li>Riffard M, Birgand F Loumagne C Andréassian V, Kao, C and Ansart P. “ORACLE: An experimental site since 1962 for the study of hydrological hazards and biogeochemical processes” <em>EGU General Assembly, Vienna, April 2006. Geophysical Research Abstracts, Vol. 8, 02338, 2006.</em></li>
-<li>Gruau, G, Jardé, E, Novince, E, Birgand, F, Panaget, T, Le Roy, S . “Pollution des Eaux Continentales Bretonnes par les Matières Organiques Facteurs de Contrôle, Indicateurs et Evolution dans le Temps” <em>BV Futur : savoirs et savoir-faire sur les bassins versants. Vannes, 20-21 et 22 avril 2004.</em> (<a href="presentations_pdf/Poster_MO_Gruau_et_al_2004.pdf">pdf</a>)</li>
+<li>Birgand, F, Giraud F <em>(deceased)</em>, Chescheir G M, Skaggs R W
+and J W Gilliam. “Measurement and modeling of denitrification in poorly
+drained soils of the lower coastal plain” <em>International Conference
+Hydrology and Management of Forested Wetlands, ASABE, 8-12 Avril, 2006
+New Bern NC, USA.</em> (<a
+href="presentations_pdf/Poster_Birgand_soil_denitrification_ASABE_2006.pdf">pdf</a>)</li>
+<li>Birgand, F, Chescheir G M, Skaggs R W and J W Gilliam.
+“Quantification and modeling of in-stream processes in forest impacted
+agricultural canals of the lower coastal plain” <em>International
+Conference Hydrology and Management of Forested Wetlands, ASABE, 8-12
+Avril, 2006 New Bern NC, USA.</em> (<a
+href="presentations_pdf/Poster_Birgand_in-stream_ASABE_2006.pdf">pdf</a>)</li>
+<li>Riffard M, Birgand F Loumagne C Andréassian V, Kao, C and Ansart P.
+“ORACLE: An experimental site since 1962 for the study of hydrological
+hazards and biogeochemical processes” <em>EGU General Assembly, Vienna,
+April 2006. Geophysical Research Abstracts, Vol. 8, 02338,
+2006.</em></li>
+<li>Gruau, G, Jardé, E, Novince, E, Birgand, F, Panaget, T, Le Roy, S .
+“Pollution des Eaux Continentales Bretonnes par les Matières Organiques
+Facteurs de Contrôle, Indicateurs et Evolution dans le Temps” <em>BV
+Futur : savoirs et savoir-faire sur les bassins versants. Vannes, 20-21
+et 22 avril 2004.</em> (<a
+href="presentations_pdf/Poster_MO_Gruau_et_al_2004.pdf">pdf</a>)</li>
 </ul></li>
 </ul>
 </div>

@@ -13,6 +13,7 @@
 
 <title>blog-elementary-tidyr-ggplot.knit</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -58,6 +59,29 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -82,6 +106,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +166,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +265,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +278,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -262,7 +293,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -285,7 +316,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -303,7 +334,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -382,7 +413,7 @@ $(document).ready(function () {
 <h1>Blog: Elementary tidyr and ggplot</h1>
 <div id="by-françois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-23 and updated 2022-04-03</em></p>
+<p><em>started 2017-11-23 and updated 2022-08-26</em></p>
 <p><br/><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -395,30 +426,85 @@ $(document).ready(function () {
 </div>
 <div id="going-with-the-changes" class="section level2">
 <h2>Going with the changes</h2>
-<p>I must say that I have only recently started working with tools such as <code>tidyr</code> or <code>tidyverse</code>, which are really making a revolution in the way one uses <code>R</code> to analyze data. Like all my students until now, I have learned, and I am still learning, <code>R</code> almost all by myself, with no formal training. The good news is that students in our department are about to have this oppotunity thanks to <a href="https://www.bae.ncsu.edu/people/nnelson4/">Dr Natalie Nelson</a> who just joined us.</p>
-<p>The reason for this post is that I have been trying to switch from the old graphics packages to <code>ggplot</code>. But to get there, it is very important to prepare data in proper format. The current <code>R</code> jargon for this is to make the data <code>tidy</code>. So I bought the book “R for data science” and I thought this was going to vastly help me. I do not know whether it is the kindle version that I have, but I have not found it easy to work with and I am not sure I have learned a lot from it…</p>
-<p>In particular, I wanted to make my data tidy so that I could start using <code>ggplot</code> for some of my analyses. I could tell that much of the trick was in the ability to use the <code>gather()</code> and the <code>spread()</code> features of the <code>tidyr</code> package. I have spent countless hours trying to decipher and reproduce the examples in the book, or on tutorials on the web, but I just could find things that would work for me.</p>
-<p>I slowly realized that all the examples given always use either <code>gather</code> or <code>spread</code>, but using <em>both</em> together is not something well reported, or at least I missed that. I will thus report how I managed to solve my problems here. <br/><br/><br/></p>
+<p>I must say that I have only recently started working with tools such
+as <code>tidyr</code> or <code>tidyverse</code>, which are really making
+a revolution in the way one uses <code>R</code> to analyze data. Like
+all my students until now, I have learned, and I am still learning,
+<code>R</code> almost all by myself, with no formal training. The good
+news is that students in our department are about to have this
+oppotunity thanks to <a
+href="https://www.bae.ncsu.edu/people/nnelson4/">Dr Natalie Nelson</a>
+who just joined us.</p>
+<p>The reason for this post is that I have been trying to switch from
+the old graphics packages to <code>ggplot</code>. But to get there, it
+is very important to prepare data in proper format. The current
+<code>R</code> jargon for this is to make the data <code>tidy</code>. So
+I bought the book “R for data science” and I thought this was going to
+vastly help me. I do not know whether it is the kindle version that I
+have, but I have not found it easy to work with and I am not sure I have
+learned a lot from it…</p>
+<p>In particular, I wanted to make my data tidy so that I could start
+using <code>ggplot</code> for some of my analyses. I could tell that
+much of the trick was in the ability to use the <code>gather()</code>
+and the <code>spread()</code> features of the <code>tidyr</code>
+package. I have spent countless hours trying to decipher and reproduce
+the examples in the book, or on tutorials on the web, but I just could
+find things that would work for me.</p>
+<p>I slowly realized that all the examples given always use either
+<code>gather</code> or <code>spread</code>, but using <em>both</em>
+together is not something well reported, or at least I missed that. I
+will thus report how I managed to solve my problems here.
+<br/><br/><br/></p>
 </div>
-<div id="minimum-water-quality-improvement-needed-to-be-detectable" class="section level2">
+<div id="minimum-water-quality-improvement-needed-to-be-detectable"
+class="section level2">
 <h2>Minimum water quality improvement needed to be detectable</h2>
-<p>I have worked for quite a few years on calculating uncertainties on nutrient loads at the catchment scale<span class="citation"><sup><a href="#ref-Moatar2013-aa">1</a>–<a href="#ref-Birgand2004-fm">8</a></sup></span>, but there are many angles one can approach this problem. Recently, I have decided to illustrate minimum water quality improvement reauired for us to be confident that they are real, and that as a function of the sampling frequency.</p>
-<p>For that, I have written routines that take reference flow and concentration data collected hourly. To simulate water quality (WQ) improvements, I multiply concentrations by 0.99, for a 1% WQ improvement, 0.98 for a 2% WQ improvement, etc. I then degrade the original and the <em>WQ–improved</em> data to simulate common sampling frequency, such as monthly sampling, and compare whether the concentrations from the original and the <em>WQ–improved</em> data are significantly different. I do that for water quality improvements from 1 to 60%, and I look for, for example monthly sampling, the minimum level of WQ improvement required for which I can confidently say (95% confident) that the original and the <em>WQ–improved</em> data are different.</p>
+<p>I have worked for quite a few years on calculating uncertainties on
+nutrient loads at the catchment scale<span class="citation"><sup><a
+href="#ref-Moatar2013-aa" role="doc-biblioref">1</a>–<a
+href="#ref-Birgand2004-fm" role="doc-biblioref">8</a></sup></span>, but
+there are many angles one can approach this problem. Recently, I have
+decided to illustrate minimum water quality improvement reauired for us
+to be confident that they are real, and that as a function of the
+sampling frequency.</p>
+<p>For that, I have written routines that take reference flow and
+concentration data collected hourly. To simulate water quality (WQ)
+improvements, I multiply concentrations by 0.99, for a 1% WQ
+improvement, 0.98 for a 2% WQ improvement, etc. I then degrade the
+original and the <em>WQ–improved</em> data to simulate common sampling
+frequency, such as monthly sampling, and compare whether the
+concentrations from the original and the <em>WQ–improved</em> data are
+significantly different. I do that for water quality improvements from 1
+to 60%, and I look for, for example monthly sampling, the minimum level
+of WQ improvement required for which I can confidently say (95%
+confident) that the original and the <em>WQ–improved</em> data are
+different.</p>
 <p><br/><br/><br/></p>
 <div id="the-original-dataset" class="section level3">
 <h3>The original dataset</h3>
-<p>The dataset is available <a href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/probadetectblog.csv">here</a>. The way I have stored the simulations include:</p>
+<p>The dataset is available <a
+href="https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/probadetectblog.csv">here</a>.
+The way I have stored the simulations include:</p>
 <ul>
-<li><code>Wshd</code>: the name of the watershed (here the watershed of the <a href="https://fr.wikipedia.org/wiki/Saint-Donan">Maudouve river at Saint-Donan</a> in Brittany, France),</li>
-<li><code>elmt</code>: the name of the element for the analysis, here nitrate,</li>
-<li><code>type</code>: the type of data represented in <strong>rows</strong>:
+<li><code>Wshd</code>: the name of the watershed (here the watershed of
+the <a href="https://fr.wikipedia.org/wiki/Saint-Donan">Maudouve river
+at Saint-Donan</a> in Brittany, France),</li>
+<li><code>elmt</code>: the name of the element for the analysis, here
+nitrate,</li>
+<li><code>type</code>: the type of data represented in
+<strong>rows</strong>:
 <ul>
-<li><code>samp_interval</code>: the values of the sampling intervals chosen in days</li>
-<li><code>probaC</code>: the percentage of needed concentration improvement to be detected corresponding to each sampling interval</li>
-<li><code>probaL</code>: the percentage of needed load improvement to be detected corresponding to each sampling interval</li>
+<li><code>samp_interval</code>: the values of the sampling intervals
+chosen in days</li>
+<li><code>probaC</code>: the percentage of needed concentration
+improvement to be detected corresponding to each sampling interval</li>
+<li><code>probaL</code>: the percentage of needed load improvement to be
+detected corresponding to each sampling interval</li>
 </ul></li>
-<li><code>Year</code>: the hydrological year from which the analyses were done</li>
-<li><code>X02d</code> to <code>X60d</code>: the sampling intervals from 2 to 60 days <br/><br/><br/></li>
+<li><code>Year</code>: the hydrological year from which the analyses
+were done</li>
+<li><code>X02d</code> to <code>X60d</code>: the sampling intervals from
+2 to 60 days <br/><br/><br/></li>
 </ul>
 <pre class="r"><code>detect&lt;-read.csv(&quot;https://raw.githubusercontent.com/francoisbirgand/francoisbirgand.github.io/master/probadetectblog.csv&quot;, header = TRUE)
 
@@ -465,8 +551,23 @@ head(detect_df)</code></pre>
 <h3><em>Tidying</em> the data for use with <code>ggplot</code></h3>
 <div id="using-gather" class="section level4">
 <h4>Using <em><code>gather()</code></em></h4>
-<p>My goal is to be able to plot the minimum WQ improvement required as a function of sampling intervals for all the years available, and see the type of relationship that may exist between the two. In the version of the <code>detect</code> dataframe, the data are in rows, but for <code>ggplot</code>, I need to put them into columns. The first step is to use the <code>gather</code> function. The part that was extremely unclear to me was the syntax for the gather function. In particular, I could not find that one might want to <strong><em>create new variable names</em></strong>.</p>
-<p>I want to put all the columns <code>X02d</code> to <code>X60d</code> as row-variables, so they need to be in lines now. First, I need to create a new column-variable, in which all the sampling interval names <code>X02d</code> to <code>X60d</code> will be stored. I have called it <code>Interval</code>. Second, I need to store all the values corresponding to all sampling intervals into another column-variable, and I need to provide a name for it. I have chosen <code>value</code>.</p>
+<p>My goal is to be able to plot the minimum WQ improvement required as
+a function of sampling intervals for all the years available, and see
+the type of relationship that may exist between the two. In the version
+of the <code>detect</code> dataframe, the data are in rows, but for
+<code>ggplot</code>, I need to put them into columns. The first step is
+to use the <code>gather</code> function. The part that was extremely
+unclear to me was the syntax for the gather function. In particular, I
+could not find that one might want to <strong><em>create new variable
+names</em></strong>.</p>
+<p>I want to put all the columns <code>X02d</code> to <code>X60d</code>
+as row-variables, so they need to be in lines now. First, I need to
+create a new column-variable, in which all the sampling interval names
+<code>X02d</code> to <code>X60d</code> will be stored. I have called it
+<code>Interval</code>. Second, I need to store all the values
+corresponding to all sampling intervals into another column-variable,
+and I need to provide a name for it. I have chosen
+<code>value</code>.</p>
 <pre class="r"><code>detect_df&lt;-as.data.frame(detect)
 detect_df&lt;- detect_df %&gt;%
   gather(Interval,value,5:63)
@@ -479,8 +580,21 @@ head(detect_df)</code></pre>
 ## 5 Maudouve  NO3        probaC 1998-1999     X02d     2
 ## 6 Maudouve  NO3        probaL 1998-1999     X02d     1</code></pre>
 <p><br/><br/><br/></p>
-<p>This is where most posts stop when I “googled” <em><code>gather()</code></em> and <code>tidyr</code>, but clearly the data is just not in a usable form, yet. The good news is that the 59 columns are now spread into rows, but I still cannot plot <code>probaC</code> as a function of <code>samp_interval</code>. This is where It finally dawned on me that I could <em>spread</em> the data stored in rows in the column <em>type</em>, and make them become columns. This is where the <code>spread()</code> functions comes in.</p>
-<p>In that function, you define origin column you want to spread into several column-variables, which names will become the unique items from the origin column. In my case here, I want the three unique values in <code>type</code> to become columns, and I want that the correponding values (stored into the column <code>value</code>, I know it is not the best name), be assigned to these new columns. The code to do this is below. <br/><br/><br/></p>
+<p>This is where most posts stop when I “googled”
+<em><code>gather()</code></em> and <code>tidyr</code>, but clearly the
+data is just not in a usable form, yet. The good news is that the 59
+columns are now spread into rows, but I still cannot plot
+<code>probaC</code> as a function of <code>samp_interval</code>. This is
+where It finally dawned on me that I could <em>spread</em> the data
+stored in rows in the column <em>type</em>, and make them become
+columns. This is where the <code>spread()</code> functions comes in.</p>
+<p>In that function, you define origin column you want to spread into
+several column-variables, which names will become the unique items from
+the origin column. In my case here, I want the three unique values in
+<code>type</code> to become columns, and I want that the correponding
+values (stored into the column <code>value</code>, I know it is not the
+best name), be assigned to these new columns. The code to do this is
+below. <br/><br/><br/></p>
 <pre class="r"><code>tidy_df&lt;-detect_df %&gt;%
   spread(type,value)
 head(tidy_df)</code></pre>
@@ -492,7 +606,11 @@ head(tidy_df)</code></pre>
 ## 5 Maudouve  NO3 1997-1998     X06d      5      5             6
 ## 6 Maudouve  NO3 1997-1998     X07d      7     10             7</code></pre>
 <p><br/><br/><br/></p>
-<p>So now, I have columns for the sampling intervals (<code>samp_interval</code>) and the simulated values stored in <code>probaC</code> and <code>probaL</code>. The power of <code>ggplot</code> can now be used to plot the relationship between the minimum concentration difference required to be detected, per year.</p>
+<p>So now, I have columns for the sampling intervals
+(<code>samp_interval</code>) and the simulated values stored in
+<code>probaC</code> and <code>probaL</code>. The power of
+<code>ggplot</code> can now be used to plot the relationship between the
+minimum concentration difference required to be detected, per year.</p>
 <p><br/><br/><br/></p>
 </div>
 </div>
@@ -504,7 +622,8 @@ head(tidy_df)</code></pre>
   geom_smooth(data = tidy_df[tidy_df$Year == &quot;1999-2000&quot;,],method = &quot;lm&quot;, se = FALSE)
 print(p)</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot1-1.png" width="864" style="display: block; margin: auto;" /> <br/><br/><br/></p>
+<p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot1-1.png" width="864" style="display: block; margin: auto;" />
+<br/><br/><br/></p>
 </div>
 <div id="plotting-for-all-years-facetted" class="section level3">
 <h3>Plotting for all years, facetted</h3>
@@ -515,40 +634,101 @@ print(p)</code></pre>
   facet_grid(~Year)
 print(p)</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot2-1.png" width="864" style="display: block; margin: auto;" /> <br/><br/><br/></p>
+<p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot2-1.png" width="864" style="display: block; margin: auto;" />
+<br/><br/><br/></p>
 </div>
 <div id="comments-on-the-wq-results" class="section level3">
 <h3>Comments on the WQ results</h3>
-<p>The purpose of this blog post is to display the use of an <code>R</code> code and tricks that I find important to share, but I have to admit that it would be a bit frustrating not to comment the results at all. I have asked <code>ggplot</code> to fit the data with a linear model, and I must say that it is probably not the very best model, as clearly the model would tend to overestimate the minimum WQ improvements required for them to be detected, for weekly or better sampling frequencies. But otherwise, the linear model is probably a pretty good first approach.</p>
-<p>Depending on the years, the results suggest that for a monthly sampling scheme to confidently detect a WQ improvement, improvement would have to be at least around 20%. In other words, for this watershed, and for nitrate, the results show that if water quality would improve by 10% (which is not insignificant), monthly sampling would not be able to confidently detect it…! Think about all false negative that have been reported…! This is one of the reasons why our team has invested in sensors! <br/><br/><br/></p>
+<p>The purpose of this blog post is to display the use of an
+<code>R</code> code and tricks that I find important to share, but I
+have to admit that it would be a bit frustrating not to comment the
+results at all. I have asked <code>ggplot</code> to fit the data with a
+linear model, and I must say that it is probably not the very best
+model, as clearly the model would tend to overestimate the minimum WQ
+improvements required for them to be detected, for weekly or better
+sampling frequencies. But otherwise, the linear model is probably a
+pretty good first approach.</p>
+<p>Depending on the years, the results suggest that for a monthly
+sampling scheme to confidently detect a WQ improvement, improvement
+would have to be at least around 20%. In other words, for this
+watershed, and for nitrate, the results show that if water quality would
+improve by 10% (which is not insignificant), monthly sampling would not
+be able to confidently detect it…! Think about all false negative that
+have been reported…! This is one of the reasons why our team has
+invested in sensors! <br/><br/><br/></p>
 </div>
 </div>
 <div id="references" class="section level2 unnumbered">
-<h2>References</h2>
-<div id="refs" class="references">
-<div id="ref-Moatar2013-aa">
-<p>1. Moatar, F., Meybeck, M., Raymond, S., Birgand, F. &amp; Curie, F. River flux uncertainties predicted by hydrological variability and riverine material behaviour. <em>Hydrol. Process.</em> <strong>27,</strong> 3535–3546 (2013).</p>
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body" line-spacing="2">
+<div id="ref-Moatar2013-aa" class="csl-entry">
+<div class="csl-left-margin">1. </div><div
+class="csl-right-inline">Moatar, F., Meybeck, M., Raymond, S., Birgand,
+F. &amp; Curie, F. <a href="https://doi.org/10.1002/hyp.9464">River flux
+uncertainties predicted by hydrological variability and riverine
+material behaviour</a>. <em>Hydrol. Process.</em> <strong>27,</strong>
+3535–3546 (2013).</div>
 </div>
-<div id="ref-Birgand2013-dr">
-<p>2. Birgand, F., Lellouche, G. &amp; Appelboom, T. W. Measuring flow in non-ideal conditions for short-term projects: Uncertainties associated with the use of stage-discharge rating curves. <em>J. Hydrol.</em> <strong>503,</strong> 186–195 (2013).</p>
+<div id="ref-Birgand2013-dr" class="csl-entry">
+<div class="csl-left-margin">2. </div><div
+class="csl-right-inline">Birgand, F., Lellouche, G. &amp; Appelboom, T.
+W. <a href="https://doi.org/10.1016/j.jhydrol.2013.09.007">Measuring
+flow in non-ideal conditions for short-term projects: Uncertainties
+associated with the use of stage-discharge rating curves</a>. <em>J.
+Hydrol.</em> <strong>503,</strong> 186–195 (2013).</div>
 </div>
-<div id="ref-Birgand2011-cp">
-<p>3. Birgand, F., Appelboom, T. W., Chescheir, G. M. &amp; Skaggs, R. W. Estimating nitrogen, phosphorus, and carbon fluxes in forested and mixed-used watersheds of the lower coastal plain of north carolina: Uncertainties associated with infrequent sampling. <em>Trans. ASABE</em> <strong>54,</strong> 2099–2110 (2011).</p>
+<div id="ref-Birgand2011-cp" class="csl-entry">
+<div class="csl-left-margin">3. </div><div
+class="csl-right-inline">Birgand, F., Appelboom, T. W., Chescheir, G. M.
+&amp; Skaggs, R. W. <a
+href="https://doi.org/10.13031/2013.40668">Estimating nitrogen,
+phosphorus, and carbon fluxes in forested and mixed-used watersheds of
+the lower coastal plain of north carolina: Uncertainties associated with
+infrequent sampling</a>. <em>Trans. ASABE</em> <strong>54,</strong>
+2099–2110 (2011).</div>
 </div>
-<div id="ref-Birgand2011-og">
-<p>4. Birgand, F., Faucheux, C., Gruau, G., Moatar, F. &amp; Meybeck, M. Uncertainties in assessing annual nitrate loads and concentration indicators: Part 2. Deriving sampling frequency charts in brittany, france. <em>Trans. ASABE</em> <strong>54,</strong> 93–104 (2011).</p>
+<div id="ref-Birgand2011-og" class="csl-entry">
+<div class="csl-left-margin">4. </div><div
+class="csl-right-inline">Birgand, F., Faucheux, C., Gruau, G., Moatar,
+F. &amp; Meybeck, M. <a
+href="https://doi.org/10.13031/2013.36263">Uncertainties in assessing
+annual nitrate loads and concentration indicators: Part 2. Deriving
+sampling frequency charts in brittany, france</a>. <em>Trans. ASABE</em>
+<strong>54,</strong> 93–104 (2011).</div>
 </div>
-<div id="ref-Birgand2010-qd">
-<p>5. Birgand, F. <em>et al.</em> Uncertainties in assessing annual nitrate loads and concentration indicators: Part 1. Impact of sampling frequency and load estimation algorithms. <em>Trans. ASABE</em> <strong>53,</strong> 437–446 (2010).</p>
+<div id="ref-Birgand2010-qd" class="csl-entry">
+<div class="csl-left-margin">5. </div><div
+class="csl-right-inline">Birgand, F. <em>et al.</em> <a
+href="https://doi.org/10.13031/2013.29584">Uncertainties in assessing
+annual nitrate loads and concentration indicators: Part 1. Impact of
+sampling frequency and load estimation algorithms</a>. <em>Trans.
+ASABE</em> <strong>53,</strong> 437–446 (2010).</div>
 </div>
-<div id="ref-Birgand2009-bw">
-<p>6. Birgand, F. <em>et al.</em> Une approche quantitative du rôle de la fréquence d’échantillonnage sur les incertitudes associées aux calculs des flux et des concentrations moyennes en nitrate en bretagne. <em>Ingénieries</em> <strong>59-60,</strong> 23–37 (2009).</p>
+<div id="ref-Birgand2009-bw" class="csl-entry">
+<div class="csl-left-margin">6. </div><div
+class="csl-right-inline">Birgand, F. <em>et al.</em> Une approche
+quantitative du r<span>ô</span>le de la fr<span>é</span>quence
+d’<span>é</span>chantillonnage sur les incertitudes
+associ<span>é</span>es aux calculs des flux et des concentrations
+moyennes en nitrate en bretagne. <em>Ing<span>é</span>nieries</em>
+<strong>59-60,</strong> 23–37 (2009).</div>
 </div>
-<div id="ref-Moatar2009-db">
-<p>7. Moatar, F., Birgand, F., Meybeck, M., Faucheux, C. &amp; Raymond, S. Incertitudes sur les métriques de qualité des cours d’eau (médianes et quantiles de concentrations, flux, cas des nutriments) évaluées a partir de suivis discrets. <em>La Houille Blanche</em> 68–76 (2009). doi:<a href="https://doi.org/10.1051/lhb/2009029">10.1051/lhb/2009029</a></p>
+<div id="ref-Moatar2009-db" class="csl-entry">
+<div class="csl-left-margin">7. </div><div
+class="csl-right-inline">Moatar, F., Birgand, F., Meybeck, M., Faucheux,
+C. &amp; Raymond, S. Incertitudes sur les m<span>é</span>triques de
+qualit<span>é</span> des cours d’eau (m<span>é</span>dianes et quantiles
+de concentrations, flux, cas des nutriments) <span
+class="nocase">é</span>valu<span>é</span>es a partir de suivis discrets.
+<em>La Houille Blanche</em> 68–76 (2009). doi:<a
+href="https://doi.org/10.1051/lhb/2009029">10.1051/lhb/2009029</a></div>
 </div>
-<div id="ref-Birgand2004-fm">
-<p>8. Birgand, F. <em>et al.</em> Mesure des flux et échantillonnage des matières en suspension sur de petits cours d’eau. <em>Ingénieries</em> <strong>40,</strong> 21–35 (2004).</p>
+<div id="ref-Birgand2004-fm" class="csl-entry">
+<div class="csl-left-margin">8. </div><div
+class="csl-right-inline">Birgand, F. <em>et al.</em> Mesure des flux et
+<span class="nocase">é</span>chantillonnage des mati<span>è</span>res en
+suspension sur de petits cours d’eau. <em>Ing<span>é</span>nieries</em>
+<strong>40,</strong> 21–35 (2004).</div>
 </div>
 </div>
 </div>

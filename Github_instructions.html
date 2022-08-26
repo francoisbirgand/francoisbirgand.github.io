@@ -15,6 +15,7 @@
 
 <title>Instructions to get started with Github</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -60,6 +61,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -84,6 +86,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -141,11 +146,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -236,7 +245,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -249,7 +258,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -264,7 +273,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -287,7 +296,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -305,7 +314,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -376,7 +385,8 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Instructions to get started with Github</h1>
+<h1 class="title toc-ignore">Instructions to get started with
+Github</h1>
 <h4 class="author">François Birgand</h4>
 <h4 class="date">2017-10-05</h4>
 
@@ -386,44 +396,87 @@ $(document).ready(function () {
 <p><br/></p>
 <div id="moving-towards-markdown-and-github" class="section level2">
 <h2>Moving towards Markdown and Github</h2>
-<p>My dear collaborators, I am convinced that within a very near future, all our research will have to be consigned, written, and published using GitHub as a plateform to host, review, and communicate our research material, and that markdown, R markdown in particular, bookdown, etc. are going to be among the tools we will all need to master to let others know about our research. I am convinced that if we use these tools well, they will largely simplify our work and make it a lot better.</p>
-<p>There is a bit of a learning curve and I went through it myself this summer 2017 and I would like to share some of the things I have found with you, hoping to make the learning curve slope a bit less steep for you. So I have started assembling material that, hopefully, will help. However, there is no way around it: you are the ones who will need to read, watch, install, and learn. I cannot do it for you. And I know that you will, just like me, be glad you did.</p>
+<p>My dear collaborators, I am convinced that within a very near future,
+all our research will have to be consigned, written, and published using
+GitHub as a plateform to host, review, and communicate our research
+material, and that markdown, R markdown in particular, bookdown, etc.
+are going to be among the tools we will all need to master to let others
+know about our research. I am convinced that if we use these tools well,
+they will largely simplify our work and make it a lot better.</p>
+<p>There is a bit of a learning curve and I went through it myself this
+summer 2017 and I would like to share some of the things I have found
+with you, hoping to make the learning curve slope a bit less steep for
+you. So I have started assembling material that, hopefully, will help.
+However, there is no way around it: you are the ones who will need to
+read, watch, install, and learn. I cannot do it for you. And I know that
+you will, just like me, be glad you did.</p>
 <p><br/></p>
 </div>
 <div id="getting-started-with-github" class="section level2">
 <h2>Getting started with GitHub</h2>
-<p>I just cannot explain GitHub better than the guys who have made it, so here is a list of websites that I have chosen that explain things rather well:</p>
+<p>I just cannot explain GitHub better than the guys who have made it,
+so here is a list of websites that I have chosen that explain things
+rather well:</p>
 <ul>
-<li><a href="https://guides.github.com">guides.github.com</a> has all the links you can dream of to get started</li>
-<li><a href="https://guides.github.com/activities/hello-world/">what is GitHub</a> is I think the real good starter that I recommend reading</li>
-<li><a href="https://guides.github.com/features/pages/">workflow on Github</a></li>
+<li><a href="https://guides.github.com">guides.github.com</a> has all
+the links you can dream of to get started</li>
+<li><a href="https://guides.github.com/activities/hello-world/">what is
+GitHub</a> is I think the real good starter that I recommend
+reading</li>
+<li><a href="https://guides.github.com/features/pages/">workflow on
+Github</a></li>
 <li>I invite you to read all the other guides that they provide</li>
-<li>Soon you should set up your own GitHub repository after you are done with these websites</li>
+<li>Soon you should set up your own GitHub repository after you are done
+with these websites</li>
 </ul>
 <p><br/></p>
 </div>
 <div id="install-git-on-your-computer" class="section level2">
 <h2>Install <em>Git</em> on your computer</h2>
-<p>Now, after I spent quite a bit of time trying to understand the master, branches, commit, etc. I was a bit confused I must admit. The more I read blogs, posts, etc., the more I realized that the easiest way to “add”,“commit”, “push”, and “pull”, from my local directory to my repository on GitHub was not through the browser, but through the good old terminal (for mac) or cmd (for windows).</p>
-<p>I realize that this way to navigate through the directories of your computer is not something you have been taught. Well, in the 1990s in BAE, we had to learn Unix, so I happen to be somewhat familiar with the process. There is really nothing to be afraid of. Once you start a little bit, you will be glad you started this.</p>
-<p>All this to say that I think that you should install <em>Git</em> on your computer. <a href="https://www.atlassian.com/git/tutorials/install-git">This website</a> has the directions on how to do it. This is what I did and it worked for me.</p>
+<p>Now, after I spent quite a bit of time trying to understand the
+master, branches, commit, etc. I was a bit confused I must admit. The
+more I read blogs, posts, etc., the more I realized that the easiest way
+to “add”,“commit”, “push”, and “pull”, from my local directory to my
+repository on GitHub was not through the browser, but through the good
+old terminal (for mac) or cmd (for windows).</p>
+<p>I realize that this way to navigate through the directories of your
+computer is not something you have been taught. Well, in the 1990s in
+BAE, we had to learn Unix, so I happen to be somewhat familiar with the
+process. There is really nothing to be afraid of. Once you start a
+little bit, you will be glad you started this.</p>
+<p>All this to say that I think that you should install <em>Git</em> on
+your computer. <a
+href="https://www.atlassian.com/git/tutorials/install-git">This
+website</a> has the directions on how to do it. This is what I did and
+it worked for me.</p>
 <ul>
-<li><a href="http://lauraliparulo.altervista.org/github-working-with-the-git-command-line-on-windows/">other detailed instructions for windows</a> I think you want to choose ‘git bash’ during installation. It is the command line but a little better than the bare one.</li>
-<li><a href="https://github.com/blog/1510-installing-git-from-github-for-mac">best instructions for installation for mac</a></li>
+<li><a
+href="http://lauraliparulo.altervista.org/github-working-with-the-git-command-line-on-windows/">other
+detailed instructions for windows</a> I think you want to choose ‘git
+bash’ during installation. It is the command line but a little better
+than the bare one.</li>
+<li><a
+href="https://github.com/blog/1510-installing-git-from-github-for-mac">best
+instructions for installation for mac</a></li>
 </ul>
 <p><br/></p>
 </div>
 <div id="follow-tutorials-on-the-web" class="section level2">
 <h2>Follow tutorials on the web</h2>
-<p>I think there are two complementary ways to learn how all this works:</p>
+<p>I think there are two complementary ways to learn how all this
+works:</p>
 <ul>
 <li>By watching beginners tutorials on YouTube
 <ul>
-<li><a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc">I watched this one</a> and although it is basic it makes things rather clear</li>
-<li><a href="https://www.youtube.com/watch?v=HVsySz-h9r4">this one goes a little further</a> and is quite good</li>
-<li>Just type in google “GitHub beginner Youtube” and you will only have 27 million hits…!</li>
+<li><a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc">I watched this
+one</a> and although it is basic it makes things rather clear</li>
+<li><a href="https://www.youtube.com/watch?v=HVsySz-h9r4">this one goes
+a little further</a> and is quite good</li>
+<li>Just type in google “GitHub beginner Youtube” and you will only have
+27 million hits…!</li>
 </ul></li>
-<li>AND By trying to load real files for your work. This is where all the things you have seen will matter</li>
+<li>AND By trying to load real files for your work. This is where all
+the things you have seen will matter</li>
 </ul>
 <p><br/></p>
 </div>
@@ -432,74 +485,165 @@ $(document).ready(function () {
 <p><br/></p>
 <div id="first-steps-in-your-github-main-page" class="section level3">
 <h3>First steps: in your GitHub main page</h3>
-<p>I have made quite a few mistakes when I tried to do this so if I can help such that you do not make the same mistakes, then I will have done something good! Eventually you will create a directory on your own computer where you will host all the files that you want to be tracked with GitHub. But before you do that, go to your GitHub page (you will have signed in and created your own page above), and click on repositories at the top of your page like below (just right of the ‘overview’ tab).</p>
+<p>I have made quite a few mistakes when I tried to do this so if I can
+help such that you do not make the same mistakes, then I will have done
+something good! Eventually you will create a directory on your own
+computer where you will host all the files that you want to be tracked
+with GitHub. But before you do that, go to your GitHub page (you will
+have signed in and created your own page above), and click on
+repositories at the top of your page like below (just right of the
+‘overview’ tab).</p>
 <div class="figure">
-<img src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/GitHub_main_page.png" title="FB_GitHub page" alt="alt text" />
+<img
+src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/GitHub_main_page.png"
+title="FB_GitHub page" alt="" />
 <p class="caption">alt text</p>
 </div>
-<p>When you do this, you should get to a page that looks just like this:<br/></p>
+<p>When you do this, you should get to a page that looks just like
+this:<br/></p>
 <div class="figure">
-<img src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/GitHub_repos_page.png" title="Repos GitHub page" alt="alt text" />
+<img
+src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/GitHub_repos_page.png"
+title="Repos GitHub page" alt="" />
 <p class="caption">alt text</p>
 </div>
 <p><br/></p>
-<p>Click on the green “New” icon and you should get to a page that looks just like this. Type the name of your repository. You will see that GitHub automatically adds dashes for spaces in the name. In fact, in GitHub and markdown, it seems to be better to use “-” instead of &quot;_&quot;.</p>
+<p>Click on the green “New” icon and you should get to a page that looks
+just like this. Type the name of your repository. You will see that
+GitHub automatically adds dashes for spaces in the name. In fact, in
+GitHub and markdown, it seems to be better to use “-” instead of
+“_“.</p>
 <div class="figure">
-<img src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/GitHub_newrepos_page.png" title="New Repos GitHub page" alt="alt text" />
+<img
+src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/GitHub_newrepos_page.png"
+title="New Repos GitHub page" alt="" />
 <p class="caption">alt text</p>
 </div>
 <p><br/></p>
-<p>The initial page will give you something that will look like this:<br/> <img src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/Git_initial_instructions.png" title="Initial instructions of new repository page" alt="alt text" /><br/> <strong>Do not close</strong> this webpage! There are very useful code in there that you will need later. But first, go to the next step.</p>
+<p>The initial page will give you something that will look like
+this:<br/> <img
+src="https://github.com/francoisbirgand/Github-and-markdown-instructions/raw/master/images/Git_initial_instructions.png"
+title="Initial instructions of new repository page"
+alt="alt text" /><br/> <strong>Do not close</strong> this webpage! There
+are very useful code in there that you will need later. But first, go to
+the next step.</p>
 <p><br/></p>
 </div>
 <div id="second-steps-in-the-command-lines" class="section level3">
 <h3>Second steps: in the command lines</h3>
-<p>Now, and only now, is the time for you to create a directory where all your files will be locally stored. Make sure that there are no files in this directory, yet. I made that mistake several times and I spent lots of time to find the instructions to correct for this. If you do things in this order, it should really make things smooth. Actually, after I rewatched some of the videos, it might be possible to have files in a directory in the end, but really I am not sure as my experience is that things will stop working if you do…</p>
+<p>Now, and only now, is the time for you to create a directory where
+all your files will be locally stored. Make sure that there are no files
+in this directory, yet. I made that mistake several times and I spent
+lots of time to find the instructions to correct for this. If you do
+things in this order, it should really make things smooth. Actually,
+after I rewatched some of the videos, it might be possible to have files
+in a directory in the end, but really I am not sure as my experience is
+that things will stop working if you do…</p>
 <p><br/></p>
-<div id="background-instructions-on-how-to-navigate-your-computer" class="section level4">
+<div id="background-instructions-on-how-to-navigate-your-computer"
+class="section level4">
 <h4>Background instructions on how to navigate your computer</h4>
-<p>Now, it is time to feel like you know a bit about computers (I do not, as you all already know…!): time to navigate through your computer using the cmd or terminal.</p>
+<p>Now, it is time to feel like you know a bit about computers (I do
+not, as you all already know…!): time to navigate through your computer
+using the cmd or terminal.</p>
 <ul>
-<li>in Windows, click on the Windows icon at the bottom left corner of your screen and type “cmd” in the blank text box at the bottom. If you installed ‘git bash’, just start it. It should be listed among your programs, or just type ‘git bash’ in the Windows text box.</li>
-<li>on Mac, simultaneously press the cmd-space keys, and type “terminal” in the pop-up window. You also have access to all applications by pressing F4.</li>
+<li>in Windows, click on the Windows icon at the bottom left corner of
+your screen and type “cmd” in the blank text box at the bottom. If you
+installed ‘git bash’, just start it. It should be listed among your
+programs, or just type ‘git bash’ in the Windows text box.</li>
+<li>on Mac, simultaneously press the cmd-space keys, and type “terminal”
+in the pop-up window. You also have access to all applications by
+pressing F4.</li>
 </ul>
-<p>Now it is time to navigate your directory tree with the command line. I really think that the commands you will need for this are extremely simple. For both Windows and Mac, the command that you will most use is “cd”, for “change directory”. To go one level before (or upstream in the directory tree), you just need to type “cd ..” + enter. If you need to go two directories backward, type “cd ../..”.</p>
+<p>Now it is time to navigate your directory tree with the command line.
+I really think that the commands you will need for this are extremely
+simple. For both Windows and Mac, the command that you will most use is
+“cd”, for “change directory”. To go one level before (or upstream in the
+directory tree), you just need to type “cd ..” + enter. If you need to
+go two directories backward, type “cd ../..”.</p>
 <p>But where are we in the tree? The commands vary here:</p>
 <ul>
 <li>For Windows: “dir” + enter (for “directory”)</li>
 <li>for Mac OS: “ls” + enter (for “list”)</li>
 </ul>
-<p>These commands will list all the files and directory that are in the current directory. Now if you need to navigate forward from your current directory to a directory called “example_directory”, type “cd example_directory”. A very nice feature with the command lines is that you do not have to spell all the word “example_directory”, but the first one or two letters and then press the “tab” key, and it will fill the name automatically as long as it is unique. Sometimes, you have files with the same name with different extensions, then it will fill until it can and then you have to add other letters and press “tab” again to make a unique possibility.</p>
+<p>These commands will list all the files and directory that are in the
+current directory. Now if you need to navigate forward from your current
+directory to a directory called “example_directory”, type “cd
+example_directory”. A very nice feature with the command lines is that
+you do not have to spell all the word “example_directory”, but the first
+one or two letters and then press the “tab” key, and it will fill the
+name automatically as long as it is unique. Sometimes, you have files
+with the same name with different extensions, then it will fill until it
+can and then you have to add other letters and press “tab” again to make
+a unique possibility.</p>
 <ul>
-<li><a href="https://www.digitalcitizen.life/command-prompt-how-use-basic-commands">More details on using the Windows command lines</a> at this page</li>
-<li><a href="https://github.com/0nn0/terminal-mac-cheatsheet">More details on using the Terminal command lines on mac</a> at this page</li>
+<li><a
+href="https://www.digitalcitizen.life/command-prompt-how-use-basic-commands">More
+details on using the Windows command lines</a> at this page</li>
+<li><a href="https://github.com/0nn0/terminal-mac-cheatsheet">More
+details on using the Terminal command lines on mac</a> at this page</li>
 </ul>
 <p><br/></p>
 </div>
-<div id="the-initial-command-lines-to-start-a-repository-from-your-computers-end" class="section level4">
-<h4>The initial command lines to start a repository from your computer’s end</h4>
-<p>OK, so by now, you should have started a repository from your browser. Navigate to the directory where your files are going to be stored and “pushed” to GitHub. Remember, this directory should be <strong>empty</strong>. It is now time to copy and paste the text under “… or create a new repository on the command line” that came . Normally now, you are set up and you are good to go!! It did take me a while to get there because I did not follow all the good instructions and burnt steps, etc. Hopefully this worked for you a bit more smoothly…!</p>
+<div
+id="the-initial-command-lines-to-start-a-repository-from-your-computers-end"
+class="section level4">
+<h4>The initial command lines to start a repository from your computer’s
+end</h4>
+<p>OK, so by now, you should have started a repository from your
+browser. Navigate to the directory where your files are going to be
+stored and “pushed” to GitHub. Remember, this directory should be
+<strong>empty</strong>. It is now time to copy and paste the text under
+“… or create a new repository on the command line” that came . Normally
+now, you are set up and you are good to go!! It did take me a while to
+get there because I did not follow all the good instructions and burnt
+steps, etc. Hopefully this worked for you a bit more smoothly…!</p>
 <p><br/></p>
 </div>
 </div>
 </div>
-<div id="the-main-commands-that-you-will-use-in-git" class="section level2">
+<div id="the-main-commands-that-you-will-use-in-git"
+class="section level2">
 <h2>The main commands that you will use in Git</h2>
-<p>On the <a href="https://guides.github.com/introduction/flow/">GitHub workflow</a> page, they insist (rightfully so), on the importance of “branches” compare to “master”. This is the prerequisite for working on a collaborative basis. Now, at the time I am writing this post, I have not needed to use branches, yet. I suggest that as a first step, you need not to either, just yet.</p>
-<p>At this introductory stage, you really need less than 10 commands. I think <a href="http://rogerdudler.github.io/git-guide/">this page</a> really has all you need here! I am going to paraphrase this with I have used.</p>
-<p>OK, so you want to have your file published in Github. The first thing you need to do is <em>add</em> the files in the ‘adding batch’ or ‘stage area’ using: * git add</p>
+<p>On the <a href="https://guides.github.com/introduction/flow/">GitHub
+workflow</a> page, they insist (rightfully so), on the importance of
+“branches” compare to “master”. This is the prerequisite for working on
+a collaborative basis. Now, at the time I am writing this post, I have
+not needed to use branches, yet. I suggest that as a first step, you
+need not to either, just yet.</p>
+<p>At this introductory stage, you really need less than 10 commands. I
+think <a href="http://rogerdudler.github.io/git-guide/">this page</a>
+really has all you need here! I am going to paraphrase this with I have
+used.</p>
+<p>OK, so you want to have your file published in Github. The first
+thing you need to do is <em>add</em> the files in the ‘adding batch’ or
+‘stage area’ using: * git add</p>
 <pre><code>$ git add &lt;filename&gt;</code></pre>
-<p>In reality, in most cases you may want to add all the new files you have created so you can use to synthaxes for this:</p>
+<p>In reality, in most cases you may want to add all the new files you
+have created so you can use to synthaxes for this:</p>
 <pre><code>$ git add .</code></pre>
 <p>or</p>
 <pre><code>$ git add -a</code></pre>
 <p>(-a for all)</p>
-<p>Then you will want to <em>commit</em> these files that you want to upload. The idea here is that the <em>commit</em> command will check whether or not there has been changes in what you have done and want to upload. So the code is:</p>
+<p>Then you will want to <em>commit</em> these files that you want to
+upload. The idea here is that the <em>commit</em> command will check
+whether or not there has been changes in what you have done and want to
+upload. So the code is:</p>
 <pre><code>$ git commit -m &quot;this is the reason for this commit&quot;</code></pre>
-<p>You can just do “git commit” with no extension but it will send you to some very weird screen (you will have to press insert, type your message and then press esc, and then type ‘:wq’, as you might have seen in the videos). so the synthax ‘-m “your message”’ (-m for ‘message’) is thus the way to go. The content of the message is particularly needed when the project is a collaborative work. If you are the only one <em>committing</em>, then you just want to have a history of what you have done. But for thesis editing, I think we will want to be precise in there.</p>
-<p>Then you want to <em>push</em> what you have committed by just typing</p>
+<p>You can just do “git commit” with no extension but it will send you
+to some very weird screen (you will have to press insert, type your
+message and then press esc, and then type ‘:wq’, as you might have seen
+in the videos). so the synthax ‘-m “your message”’ (-m for ‘message’) is
+thus the way to go. The content of the message is particularly needed
+when the project is a collaborative work. If you are the only one
+<em>committing</em>, then you just want to have a history of what you
+have done. But for thesis editing, I think we will want to be precise in
+there.</p>
+<p>Then you want to <em>push</em> what you have committed by just
+typing</p>
 <pre><code>$ git push</code></pre>
-<p>At this point you should be able to see your additions in your GitHub browser. All other useful commands are in the address above.</p>
+<p>At this point you should be able to see your additions in your GitHub
+browser. All other useful commands are in the address above.</p>
 </div>
 
 

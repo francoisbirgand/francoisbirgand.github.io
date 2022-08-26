@@ -3,7 +3,7 @@ output:
   html_document:
     toc: true
     toc_float: true
-bibliography: RMD_course_BibTeX.BibTeX
+bibliography: RMD_course_BibTeX.bib
 link-citations: true
 csl: nature.csl
 ---

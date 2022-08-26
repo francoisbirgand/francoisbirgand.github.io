@@ -13,6 +13,7 @@
 
 <title>people.knit</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -58,6 +59,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -82,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +243,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +256,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -262,7 +271,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -285,7 +294,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -303,7 +312,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -387,25 +396,63 @@ $(document).ready(function () {
 <div class="row">
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/FrancoisBirgand2016.jpg"> <br/><br/> <a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>   <a href='https://github.com/francoisbirgand'><i class="fa fa-github fa-2x"></i></a>   <a href='https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos'><i class="fa fa-youtube fa-2x"></i></a>   <a href='https://twitter.com/birgandwaterlab'><i class="fa fa-twitter fa-2x"></i></a>   <a href='https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en'><i class="fa fa-google fa-2x"></i></a>   <a href='https://www.linkedin.com/in/françois-birgand-72836a63/'><i class="fa fa-linkedin fa-2x"></i></a>   <a href='https://maps.ncsu.edu/#/buildings/dsw'><i class="fa fa-map-marker fa-2x"></i></a>
+<img style="align: center; width: 55%;" src="images/people/FrancoisBirgand2016.jpg">
+<br/><br/>
+<a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>  
+<a href='https://github.com/francoisbirgand'><i class="fa fa-github fa-2x"></i></a>  
+<a href='https://www.youtube.com/channel/UC1_TZx_oSjdEB33OTuVAjUQ/videos'><i class="fa fa-youtube fa-2x"></i></a>  
+<a href='https://twitter.com/birgandwaterlab'><i class="fa fa-twitter fa-2x"></i></a>  
+<a href='https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en'><i class="fa fa-google fa-2x"></i></a>  
+<a href='https://www.linkedin.com/in/françois-birgand-72836a63/'><i class="fa fa-linkedin fa-2x"></i></a>  
+<a href='https://maps.ncsu.edu/#/buildings/dsw'><i class="fa fa-map-marker fa-2x"></i></a>
 </center>
 </div>
-<div class="col-md-8">
-<h3 id="françois-birgand">François Birgand</h3>
-<p>I am a Professor of Hydrology and Ecological Engineering and I direct the Biogeochemistry and Ecological Engineering Water lab since 2008 where we try to improve the treatment efficiencies of streams, wetlands, soils or woodchip bioreactors. There are three main reasons why I am in academia: I have an insatiable need to know more (the scientist in me), I want to provide smart solutions (the <em>ingénieur</em> in me), and I love to teach what I have understood (teacher in me). <br/> On <a href="https://en.wikipedia.org/wiki/Theory_of_multiple_intelligences">Howard Garner’s theory of multiple intelligences</a>, I score the highest on the <em>naturalistic</em> one. Much of my research approaches are rooted in the unquenchable need to observe and quest to better understand nature. I am not particularly good at conceptualizing, and I tend to believe things for which there is or I can find/provide very strong evidence. Naturally (!), I like birds, botany, classical music, singing, spirituality, and R!</p>
+<div id="françois-birgand" class="section level3 col-md-8">
+<h3>François Birgand</h3>
+<p>I am a Professor of Hydrology and Ecological Engineering and I direct
+the Biogeochemistry and Ecological Engineering Water lab since 2008
+where we try to improve the treatment efficiencies of streams, wetlands,
+soils or woodchip bioreactors. There are three main reasons why I am in
+academia: I have an insatiable need to know more (the scientist in me),
+I want to provide smart solutions (the <em>ingénieur</em> in me), and I
+love to teach what I have understood (teacher in me). <br/> On <a
+href="https://en.wikipedia.org/wiki/Theory_of_multiple_intelligences">Howard
+Garner’s theory of multiple intelligences</a>, I score the highest on
+the <em>naturalistic</em> one. Much of my research approaches are rooted
+in the unquenchable need to observe and quest to better understand
+nature. I am not particularly good at conceptualizing, and I tend to
+believe things for which there is or I can find/provide very strong
+evidence. Naturally (!), I like birds, botany, classical music, singing,
+spirituality, and R!</p>
 </div>
 </div>
 <p><br/></p>
 <hr />
 <p><br/></p>
 <div class="row">
-<div class="col-md-8">
-<h3 id="samuel-garvey">Samuel Garvey</h3>
-<p>Research Assistant. I have a hand in everything from logistical, organizational and safety initiatives to installation and maintenance of equipment and field work, but my primary interest is electronics. I’m starting with Caleb Ray’s (described below) excellent work on the multiplexer pumping systems and refining them further. I’m implementing features like serial communications and data logging while cutting costs, streamlining manufacture, and maintaining or improving the current standard of robustness. All this is being done with an eye on commercial viability. My other project is a remote monitoring solution for some of our more far flung field sites. If instrumentation can be monitored remotely, problems can be identified more quickly and data loss can be minimized. My goal is to streamline processes any way I can, be it hardware, software, organization or logistics. I aim to sweep away as much of the minutiae that separates the team from their research as I can.</p>
+<div id="samuel-garvey" class="section level3 col-md-8">
+<h3>Samuel Garvey</h3>
+<p>Research Assistant. I have a hand in everything from logistical,
+organizational and safety initiatives to installation and maintenance of
+equipment and field work, but my primary interest is electronics. I’m
+starting with Caleb Ray’s (described below) excellent work on the
+multiplexer pumping systems and refining them further. I’m implementing
+features like serial communications and data logging while cutting
+costs, streamlining manufacture, and maintaining or improving the
+current standard of robustness. All this is being done with an eye on
+commercial viability. My other project is a remote monitoring solution
+for some of our more far flung field sites. If instrumentation can be
+monitored remotely, problems can be identified more quickly and data
+loss can be minimized. My goal is to streamline processes any way I can,
+be it hardware, software, organization or logistics. I aim to sweep away
+as much of the minutiae that separates the team from their research as I
+can.</p>
 </div>
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/sam_garvey.png"> <br/><br/> <a href='mailto:sjgarvey@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<img style="align: center; width: 55%;" src="images/people/sam_garvey.png">
+<br/><br/>
+<a href='mailto:sjgarvey@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
 </div>
@@ -419,53 +466,39 @@ $(document).ready(function () {
 <div class="row">
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/beth_allen.png"> <br/><br/> <a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<img style="align: center; width: 55%;" src="images/people/beth_allen.png">
+<br/><br/>
+<a href='mailto:birgand@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
-<div class="col-md-8">
-<h3 id="beth-allen">Beth Allen</h3>
-<p>Ph.D. candidate. I am the main developer of the <em>Water Quality Rating Curve</em> package to predict concentrations from absorbance data.</p>
+<div id="beth-allen" class="section level3 col-md-8">
+<h3>Beth Allen</h3>
+<p>Ph.D. candidate. I am the main developer of the <em>Water Quality
+Rating Curve</em> package to predict concentrations from absorbance
+data.</p>
 </div>
 </div>
 <p><br/></p>
 <hr />
 <p><br/></p>
 <div class="row">
-<div class="col-md-8">
-<h3 id="bryan-maxwell">Bryan Maxwell</h3>
-<p>Ph.D. student. I grew up in Charlotte, North Carolina and came to NC State for my undergraduate degree. After 2 years in Civil Engineering I switched into Bio &amp; Ag Engineering department. I stayed at NCSU to pursue a doctoral degree. My research focus is to improve our understanding of agricultural and urban BMPs. My main tool is to apply multi-point sampling methods to obtain high-resolution data in space and in time. This technology can help us understand these systems better and ultimately improve their design. My primary research application is in woodchip bioreactors for improving drainage water quality.</p>
+<div id="bryan-maxwell" class="section level3 col-md-8">
+<h3>Bryan Maxwell</h3>
+<p>Ph.D. student. I grew up in Charlotte, North Carolina and came to NC
+State for my undergraduate degree. After 2 years in Civil Engineering I
+switched into Bio &amp; Ag Engineering department. I stayed at NCSU to
+pursue a doctoral degree. My research focus is to improve our
+understanding of agricultural and urban BMPs. My main tool is to apply
+multi-point sampling methods to obtain high-resolution data in space and
+in time. This technology can help us understand these systems better and
+ultimately improve their design. My primary research application is in
+woodchip bioreactors for improving drainage water quality.</p>
 </div>
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/bryan_maxwell.png"> <br/><br/> <a href='mailto:bmmaxwel@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
-</center>
-</div>
-</div>
-<p><br/></p>
-<hr />
-<p><br/></p>
-<div class="row">
-<div class="col-md-4">
-<center>
-<img style="align: center; width: 55%;" src="images/people/sheida_moin.jpg"> <br/><br/> <a href='mailto:smoin@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>   <a href='https://www.linkedin.com/in/sheida-moin/'><i class="fa fa-linkedin fa-2x"></i></a>
-</center>
-</div>
-<div class="col-md-8">
-<h3 id="sheida-moin">Sheida Moin</h3>
-<p>Ph.D. student. I work on characterizing the internal functioning of urban wetlands and on using smart technology to improve their treatment efficiency. More short biography here.</p>
-</div>
-</div>
-<p><br/></p>
-<hr />
-<p><br/></p>
-<div class="row">
-<div class="col-md-8">
-<h3 id="cyrus-belenky">Cyrus Belenky</h3>
-<p>M.S. Student. Born and raised in the D.C. suburbs, I attended NC State for my undergraduate, graduating with a B.S. in Bio &amp; Ag Engineering and a German Studies Minor. I returned to NC State after some time off to pursue my masters Bio &amp; Ag Engineering, focusing on the effects of stream restoration on water quality.</p>
-</div>
-<div class="col-md-4">
-<center>
-<img style="align: center; width: 55%;" src="images/people/IMG_1749.JPG"> <br/><br/> <a href='mailto:cnbelenk@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<img style="align: center; width: 55%;" src="images/people/bryan_maxwell.png">
+<br/><br/>
+<a href='mailto:bmmaxwel@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
 </div>
@@ -475,13 +508,65 @@ $(document).ready(function () {
 <div class="row">
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/qianyu_hang.png"> <br/><br/> <a href='mailto:qhang@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>   <a href='https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en'><i class="fa fa-google fa-2x"></i></a>   <a href='https://www.researchgate.net/profile/Qianyu_Hang2'>RG</a>  
+<img style="align: center; width: 55%;" src="images/people/sheida_moin.jpg">
+<br/><br/>
+<a href='mailto:smoin@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>  
+<a href='https://www.linkedin.com/in/sheida-moin/'><i class="fa fa-linkedin fa-2x"></i></a>
 </center>
 </div>
-<div class="col-md-8">
-<h3 id="qianyu-joey-hang">Qianyu (Joey) Hang</h3>
-<p>Ph.D. student. I came to NC State after completing my Master’s degree in environmental engineering at Chinese Research Academy of Environmental Sciences in China. During my master’s study, I focused on the application of plant carbon source in improving nitrate removal efficiency for treatment of nitrate-rich agricultural runoff by constructed wetlands and bioreactors.<br />
-At NC State, I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. The overarching questions that motivate my research are 1) whether stream restoration does improve water quality? 2) how do we precisely quantify and interpret the real impacts of stream restoration on water quality?</p>
+<div id="sheida-moin" class="section level3 col-md-8">
+<h3>Sheida Moin</h3>
+<p>Ph.D. student. I work on characterizing the internal functioning of
+urban wetlands and on using smart technology to improve their treatment
+efficiency. More short biography here.</p>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div id="cyrus-belenky" class="section level3 col-md-8">
+<h3>Cyrus Belenky</h3>
+<p>M.S. Student. Born and raised in the D.C. suburbs, I attended NC
+State for my undergraduate, graduating with a B.S. in Bio &amp; Ag
+Engineering and a German Studies Minor. I returned to NC State after
+some time off to pursue my masters Bio &amp; Ag Engineering, focusing on
+the effects of stream restoration on water quality.</p>
+</div>
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/IMG_1749.JPG">
+<br/><br/>
+<a href='mailto:cnbelenk@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+</center>
+</div>
+</div>
+<p><br/></p>
+<hr />
+<p><br/></p>
+<div class="row">
+<div class="col-md-4">
+<center>
+<img style="align: center; width: 55%;" src="images/people/qianyu_hang.png">
+<br/><br/>
+<a href='mailto:qhang@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>  
+<a href='https://scholar.google.co.uk/citations?user=uZDOygMAAAAJ&hl=en'><i class="fa fa-google fa-2x"></i></a>  
+<a href='https://www.researchgate.net/profile/Qianyu_Hang2'>RG</a>  
+</center>
+</div>
+<div id="qianyu-joey-hang" class="section level3 col-md-8">
+<h3>Qianyu (Joey) Hang</h3>
+<p>Ph.D. student. I came to NC State after completing my Master’s degree
+in environmental engineering at Chinese Research Academy of
+Environmental Sciences in China. During my master’s study, I focused on
+the application of plant carbon source in improving nitrate removal
+efficiency for treatment of nitrate-rich agricultural runoff by
+constructed wetlands and bioreactors.<br />
+At NC State, I work on quantifying the water quality benefits of a
+stream restoration in the coastal plain of NC. The overarching questions
+that motivate my research are 1) whether stream restoration does improve
+water quality? 2) how do we precisely quantify and interpret the real
+impacts of stream restoration on water quality?</p>
 </div>
 </div>
 <p><br/></p>
@@ -492,13 +577,17 @@ At NC State, I work on quantifying the water quality benefits of a stream restor
 <h2>Undergraduate Students</h2>
 <p><br/></p>
 <div class="row">
-<div class="col-md-8">
-<h3 id="dani-winter">Dani Winter</h3>
-<p>Undergraduate senior. I work on quantifying the water quality benefits of a stream restoration in the coastal plain of NC. More short biography here.</p>
+<div id="dani-winter" class="section level3 col-md-8">
+<h3>Dani Winter</h3>
+<p>Undergraduate senior. I work on quantifying the water quality
+benefits of a stream restoration in the coastal plain of NC. More short
+biography here.</p>
 </div>
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/dani_winter.png"> <br/><br/> <a href='mailto:dewinter@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<img style="align: center; width: 55%;" src="images/people/dani_winter.png">
+<br/><br/>
+<a href='mailto:dewinter@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
 </div>
@@ -508,30 +597,55 @@ At NC State, I work on quantifying the water quality benefits of a stream restor
 <div class="row">
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/andrew_yount.jpg"> <br/><br/> <a href='mailto:jayount2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<img style="align: center; width: 55%;" src="images/people/andrew_yount.jpg">
+<br/><br/>
+<a href='mailto:jayount2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
-<div class="col-md-8">
-<h3 id="andrew-yount">Andrew Yount</h3>
-<p>Undergraduate junior at NC State University, working toward a B.S. in Biological Engineering, with a concentration on ecological engineering. I came to the university unsure of what I wanted to study, but stumbled upon the Bio &amp; Ag Engineering department and found myself to be quite at home here. I have a strong desire to develop and apply innovative solutions to addressing concerns regarding water and soil resources. This past summer, in 2017, I acted as an undergraduate research assistant in Dr. Birgand’s laboratory, helping out in various ways. This academic year, from Fall 2017 through Spring 2018, I am participating in a team research project investigating the effectiveness of employing Floating Treatment Wetlands to improve water quality by removing excess nutrients.</p>
+<div id="andrew-yount" class="section level3 col-md-8">
+<h3>Andrew Yount</h3>
+<p>Undergraduate junior at NC State University, working toward a B.S. in
+Biological Engineering, with a concentration on ecological engineering.
+I came to the university unsure of what I wanted to study, but stumbled
+upon the Bio &amp; Ag Engineering department and found myself to be
+quite at home here. I have a strong desire to develop and apply
+innovative solutions to addressing concerns regarding water and soil
+resources. This past summer, in 2017, I acted as an undergraduate
+research assistant in Dr. Birgand’s laboratory, helping out in various
+ways. This academic year, from Fall 2017 through Spring 2018, I am
+participating in a team research project investigating the effectiveness
+of employing Floating Treatment Wetlands to improve water quality by
+removing excess nutrients.</p>
 </div>
 </div>
 <p><br/></p>
 <hr />
 <p><br/></p>
 <div class="row">
-<div class="col-md-8">
-<h3 id="maya-hoon">Maya Hoon</h3>
-<p>Undergraduate junior in Environmental Sciences. I arrived at NC State initially majoring in International Studies in the Humanities department, however as I took more environmentally-focused courses, I developed a desire to better understand ways to protect the environment and to construct solutions to the problem. In order to satiate this desire for knowledge, I have transitioned into Environmental Sciences, and I am currently working on a team research project to quantify the water quality benefits and effectiveness of Floating Treatment Wetlands. Our main research questions address the following:</p>
+<div id="maya-hoon" class="section level3 col-md-8">
+<h3>Maya Hoon</h3>
+<p>Undergraduate junior in Environmental Sciences. I arrived at NC State
+initially majoring in International Studies in the Humanities
+department, however as I took more environmentally-focused courses, I
+developed a desire to better understand ways to protect the environment
+and to construct solutions to the problem. In order to satiate this
+desire for knowledge, I have transitioned into Environmental Sciences,
+and I am currently working on a team research project to quantify the
+water quality benefits and effectiveness of Floating Treatment Wetlands.
+Our main research questions address the following:</p>
 <ol style="list-style-type: decimal">
-<li>Do planted mats have higher nitrogen and phosphorous removal potential than unplanted mats?</li>
+<li>Do planted mats have higher nitrogen and phosphorous removal
+potential than unplanted mats?</li>
 <li>Does recirculating water improve the rates of removal?</li>
 <li>Does microbial biofilm improve removal rates?</li>
 </ol>
 </div>
 <div class="col-md-4">
 <center>
-<br/><br/> <img style="align: center; width: 55%;" src="images/people/maya_hoon.jpg"> <br/><br/> <a href='mailto:mhoon@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<br/><br/>
+<img style="align: center; width: 55%;" src="images/people/maya_hoon.jpg">
+<br/><br/>
+<a href='mailto:mhoon@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
 </div>
@@ -541,12 +655,18 @@ At NC State, I work on quantifying the water quality benefits of a stream restor
 <div class="row">
 <div class="col-md-4">
 <center>
-<img style="align: center; width: 55%;" src="images/people/caleb_ray.png"> <br/><br/> <a href='mailto:cnray2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<img style="align: center; width: 55%;" src="images/people/caleb_ray.png">
+<br/><br/>
+<a href='mailto:cnray2@ncsu.edu'><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 </center>
 </div>
-<div class="col-md-8">
-<h3 id="caleb-ray">Caleb Ray</h3>
-<p>Undergraduate senior in Electrical and Computer Engineering. I have built a robust version of the multiplexer pumping systems to expand the capabilities of water quality sensors to spatial resolution. I have work in Birgand Water lab for the last two years and have participated in field campaigns.</p>
+<div id="caleb-ray" class="section level3 col-md-8">
+<h3>Caleb Ray</h3>
+<p>Undergraduate senior in Electrical and Computer Engineering. I have
+built a robust version of the multiplexer pumping systems to expand the
+capabilities of water quality sensors to spatial resolution. I have work
+in Birgand Water lab for the last two years and have participated in
+field campaigns.</p>
 </div>
 </div>
 <p><br/></p>
@@ -556,11 +676,16 @@ At NC State, I work on quantifying the water quality benefits of a stream restor
 <div id="previous-personnel" class="section level1">
 <h1>Previous personnel</h1>
 <ul>
-<li>Dr <a href="https://www.linkedin.com/in/chiao-wen-lin-a21008147/">Chiao-Wen Lin</a> – Ph.D. 2017</li>
+<li>Dr <a
+href="https://www.linkedin.com/in/chiao-wen-lin-a21008147/">Chiao-Wen
+Lin</a> – Ph.D. 2017</li>
 <li>Dr Nicole Dobbs – Ph.D. 2016</li>
 <li>Mrs Taylor Carter – M.S. 2016</li>
-<li><a href="https://engineering.unl.edu/bse/faculty/troy-gilmore/">Dr Troy Gilmore</a> – Ph.D. 2015</li>
-<li><a href="http://www.ecu.edu/cs-cet/engineering/James-Etheridge.cfm">Dr Randall Etheridge</a> – Ph.D. 2013</li>
+<li><a href="https://engineering.unl.edu/bse/faculty/troy-gilmore/">Dr
+Troy Gilmore</a> – Ph.D. 2015</li>
+<li><a
+href="http://www.ecu.edu/cs-cet/engineering/James-Etheridge.cfm">Dr
+Randall Etheridge</a> – Ph.D. 2013</li>
 <li>Mr Brad Smith – B.S. 2013</li>
 <li>Ms Erin Bennett – M.S. 2013</li>
 <li>Mr Marc Horstman – M.S. 2011</li>

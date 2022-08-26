@@ -13,6 +13,7 @@
 
 <title>Unveiling the Inside of the Denitrifying Bioreactor Black box</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -58,6 +59,29 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -82,6 +106,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +166,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +265,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +278,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -262,7 +293,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -285,7 +316,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -303,7 +334,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -374,7 +405,8 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Unveiling the Inside of the Denitrifying Bioreactor Black box</h1>
+<h1 class="title toc-ignore">Unveiling the Inside of the Denitrifying
+Bioreactor Black box</h1>
 
 </div>
 
@@ -390,11 +422,18 @@ $(document).ready(function () {
 <ul>
 <li><a href="index.html">François Birgand</a> (Lead-PI NCSU)</li>
 <li>Chip Chescheir (co-PI NCSU, emeritus)</li>
-<li><a href="https://cropsciences.illinois.edu/people/profile/lechris">Laura Christianson</a> (co-PI University of Illinois)</li>
-<li><a href="https://www.abe.iastate.edu/matthew-helmers/">Matt Helmers</a> (co-PI Iowa State University)</li>
-<li><a href="https://scholar.google.com/citations?user=DkXX6dMp1oEC&amp;hl=en">Louis Schipper</a> (co-PI University of Waikato)</li>
-<li><a href="https://www.linkedin.com/in/david-williams-1aa4202b/">David William</a> (co-PI US EPA)</li>
-<li><a href="https://www.bae.ncsu.edu/people/mayousse/">Mohamed Youssef</a> (co-PI NCSU)</li>
+<li><a
+href="https://cropsciences.illinois.edu/people/profile/lechris">Laura
+Christianson</a> (co-PI University of Illinois)</li>
+<li><a href="https://www.abe.iastate.edu/matthew-helmers/">Matt
+Helmers</a> (co-PI Iowa State University)</li>
+<li><a
+href="https://scholar.google.com/citations?user=DkXX6dMp1oEC&amp;hl=en">Louis
+Schipper</a> (co-PI University of Waikato)</li>
+<li><a href="https://www.linkedin.com/in/david-williams-1aa4202b/">David
+William</a> (co-PI US EPA)</li>
+<li><a href="https://www.bae.ncsu.edu/people/mayousse/">Mohamed
+Youssef</a> (co-PI NCSU)</li>
 <li>Sam Garvey (Research assistant)</li>
 </ul>
 </div>
@@ -403,19 +442,31 @@ $(document).ready(function () {
 <strong>Students and Postdocs</strong>
 </center>
 <ul>
-<li><a href="https://www.researchgate.net/scientific-contributions/Bryan-Maxwell-2143225971">Bryan Maxwell</a> (BAE PhD Student)</li>
-<li><a href="https://scholar.google.com/citations?user=5_uL0OYAAAAJ&amp;hl=en">Wenlong Liu</a> (BAE PhD Student)</li>
-<li><a href="https://www.linkedin.com/in/augustin-thomas-60a631112/?originalSubdomain=fr">Augustin Thomas</a> (École Polytechnique Student Intern)</li>
-<li><a href="https://www.linkedin.com/in/samuel-blackman-87697a108/">Sam Blackman</a> (BAE undergraduate Student Intern)</li>
-<li><a href="https://www.linkedin.com/in/mallory-alman/">Mallory Alman</a> (BAE undergraduate Student Intern)</li>
+<li><a
+href="https://www.researchgate.net/scientific-contributions/Bryan-Maxwell-2143225971">Bryan
+Maxwell</a> (BAE PhD Student)</li>
+<li><a
+href="https://scholar.google.com/citations?user=5_uL0OYAAAAJ&amp;hl=en">Wenlong
+Liu</a> (BAE PhD Student)</li>
+<li><a
+href="https://www.linkedin.com/in/augustin-thomas-60a631112/?originalSubdomain=fr">Augustin
+Thomas</a> (École Polytechnique Student Intern)</li>
+<li><a href="https://www.linkedin.com/in/samuel-blackman-87697a108/">Sam
+Blackman</a> (BAE undergraduate Student Intern)</li>
+<li><a href="https://www.linkedin.com/in/mallory-alman/">Mallory
+Alman</a> (BAE undergraduate Student Intern)</li>
 <li>Caleb Ray (Electrical Engineering undergraduate student)</li>
-<li><a href="https://scholar.google.com/citations?user=4XvnXVUAAAAJ&amp;hl=en">Lamyaa Negm</a> (BAE PostDoc)</li>
-<li><a href="https://www.researchgate.net/profile/Shiying_Tian">Shiying Tian</a> (BAE PostDoc)</li>
+<li><a
+href="https://scholar.google.com/citations?user=4XvnXVUAAAAJ&amp;hl=en">Lamyaa
+Negm</a> (BAE PostDoc)</li>
+<li><a href="https://www.researchgate.net/profile/Shiying_Tian">Shiying
+Tian</a> (BAE PostDoc)</li>
 </ul>
 </div>
 </div>
 <center>
-<img style="align: center; width: 100%;" src="images/WBpeople.png"> <br/>
+<img style="align: center; width: 100%;" src="images/WBpeople.png">
+<br/>
 </center>
 <p><br/></p>
 </div>
@@ -437,18 +488,43 @@ $(document).ready(function () {
 <div id="project-overview" class="section level2">
 <h2>Project Overview</h2>
 <p><br/></p>
-<p>Denitrifying bioreactors hold great promise as one of the tools to reduce nitrogen loadings to estuaries and coastal waters. The idea is simple: create hot spots of denitrification at the edge of field, and pipe nitrated waters into this hotspot. Practically, denitrifying bioreactors usually consist in large lined containers filled with a solid carbon substrate (often wood chips or other carbon source locally available and inexpensive), and through which water containing nitrate is passed. The carbon acts as electron donor to microbes for their respiratory needs. Nitrate becomes the first electron acceptor after oxygen has been depleted, and during denitrification, nitrogen leaves the aquatic system in gaseous forms as N<sub>2</sub> and N<sub>2</sub>O.</p>
+<p>Denitrifying bioreactors hold great promise as one of the tools to
+reduce nitrogen loadings to estuaries and coastal waters. The idea is
+simple: create hot spots of denitrification at the edge of field, and
+pipe nitrated waters into this hotspot. Practically, denitrifying
+bioreactors usually consist in large lined containers filled with a
+solid carbon substrate (often wood chips or other carbon source locally
+available and inexpensive), and through which water containing nitrate
+is passed. The carbon acts as electron donor to microbes for their
+respiratory needs. Nitrate becomes the first electron acceptor after
+oxygen has been depleted, and during denitrification, nitrogen leaves
+the aquatic system in gaseous forms as N<sub>2</sub> and
+N<sub>2</sub>O.</p>
 <p><br/></p>
 <center>
-<img style="align: center; width: 60%;" src="images/BioreactorChristiansonHelmers.png"> <br/> Typical denitrifying bioreactor installed at the edge of field intercepting drainage water at the edge of field <span class="citation">(Christianson and Helmers 2011)</span>
+<img style="align: center; width: 60%;" src="images/BioreactorChristiansonHelmers.png">
+<br/> Typical denitrifying bioreactor installed at the edge of field
+intercepting drainage water at the edge of field <span
+class="citation">(Christianson and Helmers 2011)</span>
 </center>
 <p><br/><br/></p>
-<p>These treatment systems are simple in many ways often involving minimal maintenance for 15-20 years. Typical “average” removals are estimated to be on the order of 25 to 50% of the annual nitrate mass loaded to them, although as low 11% and as high as 74% removals have been reported.</p>
+<p>These treatment systems are simple in many ways often involving
+minimal maintenance for 15-20 years. Typical “average” removals are
+estimated to be on the order of 25 to 50% of the annual nitrate mass
+loaded to them, although as low 11% and as high as 74% removals have
+been reported.</p>
 <p>This project arose from the conjunction of three observations:</p>
 <ol style="list-style-type: decimal">
-<li>bioreactors are generally viewed as ‘black boxes’, where their internal hydraulic and biochemical functioning remain unknown, leaving little opportunity to better quantify processes and their kinetics, therefore little opportunity to improve them</li>
-<li>their efficiencies seem to drastically diminish after one to five years, calling to find ways to ‘rejuvenate’ them and/or maintain their nitrate removal activities</li>
-<li>our <a href="researchHRD.html">lab developped instrumentation</a> able to measure water quality at a high resolution in time and in space, which had the potential to address the first two points</li>
+<li>bioreactors are generally viewed as ‘black boxes’, where their
+internal hydraulic and biochemical functioning remain unknown, leaving
+little opportunity to better quantify processes and their kinetics,
+therefore little opportunity to improve them</li>
+<li>their efficiencies seem to drastically diminish after one to five
+years, calling to find ways to ‘rejuvenate’ them and/or maintain their
+nitrate removal activities</li>
+<li>our <a href="researchHRD.html">lab developped instrumentation</a>
+able to measure water quality at a high resolution in time and in space,
+which had the potential to address the first two points</li>
 </ol>
 <p><br/><br/></p>
 </div>
@@ -456,13 +532,26 @@ $(document).ready(function () {
 <h2>Hypotheses</h2>
 <p><br/></p>
 <ol style="list-style-type: decimal">
-<li>We hypothesized that, using our instrumentation, one could measure and predict the movement of elementary volumes and the fate of nitrate and other nutrients they contain during flow inside bioreactors, for a variety of water management conditions<br />
+<li>We hypothesized that, using our instrumentation, one could measure
+and predict the movement of elementary volumes and the fate of nitrate
+and other nutrients they contain during flow inside bioreactors, for a
+variety of water management conditions<br />
 </li>
-<li>We hypothesized that to maintain denitrification potentials in bioreactors, one could find ways to ‘rejuvenate’ the substrate and that this could be modeled in biochemical modules</li>
-<li>We hypothesized that bioreactors could be ‘rejuvenated’ at an acceptable increase of collateral emissions and an acceptable decrease of substrate lifetime</li>
-<li>We hypothesized that N<sub>2</sub>O isotopic ratios and information on the nature of the organic matter produced would help identify metabolic pathways and be instrumental in modeling</li>
-<li>We hypothesized that hydrodynamics and biochemical functioning could be integrated into biogeochemical computer models to reconstruct apparent nitrate removal rates</li>
-<li>We hypothesized that these models could be used to define optimized design and management guidelines, across a gradient of substrate, climate and hydrological functioning</li>
+<li>We hypothesized that to maintain denitrification potentials in
+bioreactors, one could find ways to ‘rejuvenate’ the substrate and that
+this could be modeled in biochemical modules</li>
+<li>We hypothesized that bioreactors could be ‘rejuvenated’ at an
+acceptable increase of collateral emissions and an acceptable decrease
+of substrate lifetime</li>
+<li>We hypothesized that N<sub>2</sub>O isotopic ratios and information
+on the nature of the organic matter produced would help identify
+metabolic pathways and be instrumental in modeling</li>
+<li>We hypothesized that hydrodynamics and biochemical functioning could
+be integrated into biogeochemical computer models to reconstruct
+apparent nitrate removal rates</li>
+<li>We hypothesized that these models could be used to define optimized
+design and management guidelines, across a gradient of substrate,
+climate and hydrological functioning</li>
 </ol>
 <p><br/><br/></p>
 </div>
@@ -470,361 +559,945 @@ $(document).ready(function () {
 <h2>Objectives</h2>
 <p><br/></p>
 <ol style="list-style-type: decimal">
-<li>Validate a micro-volume multiplexed sampler coupled to a spectrophotometer to obtain high frequency nitrate and Dissolved organic carbon (DOC) on a replicated manner and/or at a high spatial resolution</li>
-<li>Quantify in the lab the impact of Drying-ReWetting (DRW) cycles on nitrate removal rates to assess whether it could be used as a rejuvenation method</li>
-<li>Quantify in the lab the impact of Drying-ReWetting (DRW) cycles on N<sub>2</sub>O and CO<sub>2</sub> gaseous emissions</li>
-<li>Quantify the impact of water pore velocity inside bioreactors on the nitrate removal rates in the lab</li>
-<li>Identify potential metabilic pathways associated with Drying-ReWetting (DRW) cycles</li>
-<li>Quantify the transport and fate of nitrate in three field woodchip bioreactors over several week periods in different climatic settings</li>
-<li>Provide algorithms predicting nitrate removal in woodchip bioreactors</li>
+<li>Validate a micro-volume multiplexed sampler coupled to a
+spectrophotometer to obtain high frequency nitrate and Dissolved organic
+carbon (DOC) on a replicated manner and/or at a high spatial
+resolution</li>
+<li>Quantify in the lab the impact of Drying-ReWetting (DRW) cycles on
+nitrate removal rates to assess whether it could be used as a
+rejuvenation method</li>
+<li>Quantify in the lab the impact of Drying-ReWetting (DRW) cycles on
+N<sub>2</sub>O and CO<sub>2</sub> gaseous emissions</li>
+<li>Quantify the impact of water pore velocity inside bioreactors on the
+nitrate removal rates in the lab</li>
+<li>Identify potential metabilic pathways associated with
+Drying-ReWetting (DRW) cycles</li>
+<li>Quantify the transport and fate of nitrate in three field woodchip
+bioreactors over several week periods in different climatic
+settings</li>
+<li>Provide algorithms predicting nitrate removal in woodchip
+bioreactors</li>
 </ol>
 <p><br/><br/></p>
 </div>
 <div id="methods" class="section level2">
 <h2>Methods</h2>
 <p><br/></p>
-<p>In this project, we ran lab and field experiments, and used the results to inform and steer the modeling effort.</p>
+<p>In this project, we ran lab and field experiments, and used the
+results to inform and steer the modeling effort.</p>
 <ul>
 <li>In the lab, we ran a total of four column experiments.
 <ul>
-<li>Most of the effort was concentrated on two long-term (287 and 105 days) testing and quantifying the ability of DRW cycles to increase nitrate removal in woodchip bioreactors.</li>
-<li>Two shorter term (11 weeks) experiments were conducted to quantify the impact of porewater velocity on nitrate removal rates, and we started an experiment on the ability of using electrical current to stimulate denitrification (aborted because of Covid-19)</li>
+<li>Most of the effort was concentrated on two long-term (287 and 105
+days) testing and quantifying the ability of DRW cycles to increase
+nitrate removal in woodchip bioreactors.</li>
+<li>Two shorter term (11 weeks) experiments were conducted to quantify
+the impact of porewater velocity on nitrate removal rates, and we
+started an experiment on the ability of using electrical current to
+stimulate denitrification (aborted because of Covid-19)</li>
 </ul></li>
 <li>In the field,
 <ul>
-<li>we monitored water quality during 14 months at the inlet of the Plymouth bioreactor (North Carolina), and</li>
-<li>we conducted three short-term (2-5 weeks) experiments quantifying the fate and transport of nitrate inside the Nashua (Iowa) and the Tatanui (New Zealand) bioreactors</li>
+<li>we monitored water quality during 14 months at the inlet of the
+Plymouth bioreactor (North Carolina), and</li>
+<li>we conducted three short-term (2-5 weeks) experiments quantifying
+the fate and transport of nitrate inside the Nashua (Iowa) and the
+Tatanui (New Zealand) bioreactors</li>
 </ul></li>
 </ul>
 <p><br/></p>
-<div id="multiplexed-high-frequency-gas-and-water-quality-sensors-in-lab-and-field-experiments" class="section level3">
-<h3>Multiplexed high frequency gas and water quality sensors in lab and field experiments</h3>
+<div
+id="multiplexed-high-frequency-gas-and-water-quality-sensors-in-lab-and-field-experiments"
+class="section level3">
+<h3>Multiplexed high frequency gas and water quality sensors in lab and
+field experiments</h3>
 <p><br/></p>
-<p>The common theme in the methodological approach in this project was high frequency sensors coupled with multiplexed sampling devices. The high frequency sensor for water quality was the <a href="https://www.s-can.at/products/spectrometer-probes">Spectro::lyser</a>® spectrophotometer from S::CAN®. This instrument measures the absorbance of light in water, from which one can calculate nitrate and DOC concentrations, among others. The spectrophotometer was essentially used as a high-frequency portable lab.</p>
+<p>The common theme in the methodological approach in this project was
+high frequency sensors coupled with multiplexed sampling devices. The
+high frequency sensor for water quality was the <a
+href="https://www.s-can.at/products/spectrometer-probes">Spectro::lyser</a>®
+spectrophotometer from S::CAN®. This instrument measures the absorbance
+of light in water, from which one can calculate nitrate and DOC
+concentrations, among others. The spectrophotometer was essentially used
+as a high-frequency portable lab.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/ScanLabField.png"> <br/><br/> Spectro::lysers from S::can fitted with a flow-through cuvette in the lab (left, behind the black cuvette holder) and installed in the field at the Nashua (Iowa) bioreactor in June 2017 (right, flow-through cuvette held by Dr. Bryan Maxwell)
+<img style="align: center; width: 90%;" src="images/ScanLabField.png">
+<br/><br/> Spectro::lysers from S::can fitted with a flow-through
+cuvette in the lab (left, behind the black cuvette holder) and installed
+in the field at the Nashua (Iowa) bioreactor in June 2017 (right,
+flow-through cuvette held by Dr. Bryan Maxwell)
 </center>
 <p><br/><br/></p>
-<p>In the lab, the Spectro::lyser was fitted with a small volume multiplexer (µMUX) <span class="citation">(Maxwell et al. 2018)</span>, developed in Birgand’s lab, able to sequentially sample water from each of the eight experimental columns to the Spectro::lyser probe for a final 2-hour resolution for each column. The sample volume was minimized to about 30 ml per sample thanks to a 0.9 mm tubing manifold, to least disturb the column functioning. In the field, Spectro::lysers were fitted with the MUX™ developed in Birgand’s lab <span class="citation">(Birgand et al. 2016)</span> and now available via <a href="https://www.multiplexollc.com">MultiplexÔ, LLC</a>, a company started during the project. The MUX™ uses ⅛ inch diameter allowing to pump for longer distances, but for conditions in which a sample volume of 300-500 ml is thought not to perturb the system.</p>
+<p>In the lab, the Spectro::lyser was fitted with a small volume
+multiplexer (µMUX) <span class="citation">(Maxwell et al. 2018)</span>,
+developed in Birgand’s lab, able to sequentially sample water from each
+of the eight experimental columns to the Spectro::lyser probe for a
+final 2-hour resolution for each column. The sample volume was minimized
+to about 30 ml per sample thanks to a 0.9 mm tubing manifold, to least
+disturb the column functioning. In the field, Spectro::lysers were
+fitted with the MUX™ developed in Birgand’s lab <span
+class="citation">(Birgand et al. 2016)</span> and now available via <a
+href="https://www.multiplexollc.com">MultiplexÔ, LLC</a>, a company
+started during the project. The MUX™ uses ⅛ inch diameter allowing to
+pump for longer distances, but for conditions in which a sample volume
+of 300-500 ml is thought not to perturb the system.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/WBSmallMUX.png"> <br/><br/> The small multiplexed water sampler used in the lab (left) and a large volume multiplexed sampler (MUX™) used in the field (June 2017, Nashua bioreactor, Iowa)
+<img style="align: center; width: 90%;" src="images/WBSmallMUX.png">
+<br/><br/> The small multiplexed water sampler used in the lab (left)
+and a large volume multiplexed sampler (MUX™) used in the field (June
+2017, Nashua bioreactor, Iowa)
 </center>
 <p><br/><br/></p>
-<p>Two high frequency gaseous sensors were used for experiments in the lab. A DYNOMITE dual quantum cascade laser (QCL) measurement system (DYnamic Nitrous Oxide Measurements in Terrestrial Ecosystems, Model CWQCL-200-D, Aerodyne Research Inc., Billerica, MA) was used to measure N<sub>2</sub>O gas and its isotopomers <sup>14</sup>N<sup>14</sup>NO, <sup>15</sup>N<sup>14</sup>NO, and <sup>14</sup>N<sup>15</sup>NO. A LI-850 CO<sub>2</sub>/H<sub>2</sub>O (LI-COR™, Lincoln, Nebraska, USA) gas analyzer was used to measure CO<sub>2</sub>. Both instruments were installed in series and coupled with a multiplexed pumping system.</p>
+<p>Two high frequency gaseous sensors were used for experiments in the
+lab. A DYNOMITE dual quantum cascade laser (QCL) measurement system
+(DYnamic Nitrous Oxide Measurements in Terrestrial Ecosystems, Model
+CWQCL-200-D, Aerodyne Research Inc., Billerica, MA) was used to measure
+N<sub>2</sub>O gas and its isotopomers <sup>14</sup>N<sup>14</sup>NO,
+<sup>15</sup>N<sup>14</sup>NO, and <sup>14</sup>N<sup>15</sup>NO. A
+LI-850 CO<sub>2</sub>/H<sub>2</sub>O (LI-COR™, Lincoln, Nebraska, USA)
+gas analyzer was used to measure CO<sub>2</sub>. Both instruments were
+installed in series and coupled with a multiplexed pumping system.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/WBGasAnalysesSystems.png"> <br/><br/> Instruments for gas analysis, including a LI-COR 850 for CO<sub>2</sub> measurements (top left), a DYNOMITE dual quantum cascade laser (QCL) for N<sub>2</sub>O measurement (top right), and the 16-way valve for multiplexed measurements
+<img style="align: center; width: 90%;" src="images/WBGasAnalysesSystems.png">
+<br/><br/> Instruments for gas analysis, including a LI-COR 850 for
+CO<sub>2</sub> measurements (top left), a DYNOMITE dual quantum cascade
+laser (QCL) for N<sub>2</sub>O measurement (top right), and the 16-way
+valve for multiplexed measurements
 </center>
 <p><br/><br/></p>
 </div>
 <div id="lab-experiments-setup" class="section level3">
 <h3>Lab experiments setup</h3>
-<p>The lab experiments tested the ability of DRW cycles to stimulate denitrification in woodchip bioreactors. The literature has established that intermittent wetting of <em>normally unsaturated soils</em> tends to stimulate the mineralization of organic matter. We <strong>hypothesized that DRW cycles would similarly stimulate mineralization of a <em>normally saturated</em> carbon substrate exposed to intermittent aerobic conditions</strong>. We hypothesized that DRW cycles in woodchip bioreactors would generate more and possibly better labile carbon for denitrifiers.</p>
+<p>The lab experiments tested the ability of DRW cycles to stimulate
+denitrification in woodchip bioreactors. The literature has established
+that intermittent wetting of <em>normally unsaturated soils</em> tends
+to stimulate the mineralization of organic matter. We
+<strong>hypothesized that DRW cycles would similarly stimulate
+mineralization of a <em>normally saturated</em> carbon substrate exposed
+to intermittent aerobic conditions</strong>. We hypothesized that DRW
+cycles in woodchip bioreactors would generate more and possibly better
+labile carbon for denitrifiers.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/Column_overall_setup.png"> <br/><br/> General setup for the lab experiment in 2017
+<img style="align: center; width: 90%;" src="images/Column_overall_setup.png">
+<br/><br/> General setup for the lab experiment in 2017
 </center>
 <p><br/><br/></p>
-<p>For this, we ran a first 287-day experiment in 2017, which lead to the second 105-day in 2018. In the first experiment, we tested the effect on denitrification of weekly 8-hour exposure of woodships to aerobic conditions. In 2018, we tested the effect of the duration of the weekly aerobic conditions (2, 8, 24 hours). These experiments were lead by Bryan Maxwell. In 2019, we ran on the same columns a 7-wk experiment where we assessed the impact of the porewater velocity on the nitrate volumetric removal rates (experiment lead by Sam Blackman). In 2019-20, we started an experiment to quantify the impact of adding electrons from an electrical current to stimulate denitrification (experiment started by Mallory Alman but aborted because of Covid-19).</p>
+<p>For this, we ran a first 287-day experiment in 2017, which lead to
+the second 105-day in 2018. In the first experiment, we tested the
+effect on denitrification of weekly 8-hour exposure of woodships to
+aerobic conditions. In 2018, we tested the effect of the duration of the
+weekly aerobic conditions (2, 8, 24 hours). These experiments were lead
+by Bryan Maxwell. In 2019, we ran on the same columns a 7-wk experiment
+where we assessed the impact of the porewater velocity on the nitrate
+volumetric removal rates (experiment lead by Sam Blackman). In 2019-20,
+we started an experiment to quantify the impact of adding electrons from
+an electrical current to stimulate denitrification (experiment started
+by Mallory Alman but aborted because of Covid-19).</p>
 <p><br/><br/></p>
 <center>
 <iframe width="720" height="450" src="https://www.youtube.com/embed/vuD1cFtiSOI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<br/><br/> Video illustrating the suite of equipment, pumping and sampling used during lab experiments
+<br/><br/> Video illustrating the suite of equipment, pumping and
+sampling used during lab experiments
 </center>
 <p><br/><br/></p>
-<p>The experiments consisted in eight upflow experimental columns of 15.2-cm-diam., 95-cm-tall poly-vinylchloride filled with aged woodchips. Woodchips were collected from a 6-yr-old field bioreactor treating drainage from a hog lagoon sprayfield in Plymouth, NC. Each column had gravel at the bottom, overlaid by about 50 cm of woodchip, and 37 cm of headspace accounting for about 6.7 liters. Nitrated water prepared in stock tanks was pumped via an 8-channel peristaltic pump at the bottom of each column.</p>
+<p>The experiments consisted in eight upflow experimental columns of
+15.2-cm-diam., 95-cm-tall poly-vinylchloride filled with aged woodchips.
+Woodchips were collected from a 6-yr-old field bioreactor treating
+drainage from a hog lagoon sprayfield in Plymouth, NC. Each column had
+gravel at the bottom, overlaid by about 50 cm of woodchip, and 37 cm of
+headspace accounting for about 6.7 liters. Nitrated water prepared in
+stock tanks was pumped via an 8-channel peristaltic pump at the bottom
+of each column.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 70%;" src="images/WBColumnPump.png"> <br/><br/> Schematic of each column setup with sampling ports for water and gas measurements (top left), the 8-channel peristaltic pump (bottom left) and the composite bottles (bottom right) from which 8-hr average flow rates were calculated.
+<img style="align: center; width: 70%;" src="images/WBColumnPump.png">
+<br/><br/> Schematic of each column setup with sampling ports for water
+and gas measurements (top left), the 8-channel peristaltic pump (bottom
+left) and the composite bottles (bottom right) from which 8-hr average
+flow rates were calculated.
 </center>
 <p><br/><br/></p>
-<p>Nitrate and DOC concentrations were measured at the inlet and the outlet of each column sequentially using the µMUX-Spectro::lyser system for a 2-hour resolution on each column. Water automatically sampled by the µMUX was sampled manually during the purging phase and concentrations measured in the lab were correlated with the absorbance values for calibration <span class="citation">(B. M. Maxwell et al. 2019a, 2019b)</span>. Temperature and dissolved oxygen were measured using an Oxy-10 from PreSens® at the inlet and the outlet of each column at 1-hr resolution. Flow rates were measured by measuring water accumulated over 5-8 hour periods in composite bottles.</p>
+<p>Nitrate and DOC concentrations were measured at the inlet and the
+outlet of each column sequentially using the µMUX-Spectro::lyser system
+for a 2-hour resolution on each column. Water automatically sampled by
+the µMUX was sampled manually during the purging phase and
+concentrations measured in the lab were correlated with the absorbance
+values for calibration <span class="citation">(Maxwell et al. 2019a,
+2019b)</span>. Temperature and dissolved oxygen were measured using an
+Oxy-10 from PreSens® at the inlet and the outlet of each column at 1-hr
+resolution. Flow rates were measured by measuring water accumulated over
+5-8 hour periods in composite bottles.</p>
 <p><br/><br/></p>
 <center>
 <iframe width="720" height="450" src="https://www.youtube.com/embed/J_1XrY7EAgs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<br/><br/> Video of the high-frequency water sampling and analysis using the multiplexer-Spectro::lyser coupled system
+<br/><br/> Video of the high-frequency water sampling and analysis using
+the multiplexer-Spectro::lyser coupled system
 </center>
 <p><br/><br/></p>
-<p>For each column, headspace air was pumped over 5-min periods to the instruments which measured concentrations at 1 hz. After 5-min, the multiplexer switched to the next column, to our reference ‘zero air’ and ambient air, such that the final resolution on gaseous concentrations would be calculated hourly. The sampled air was replenished with ambient air via a 10 cm open tubing at the top of each column. CO<sub>2</sub> and N<sub>2</sub>O gases being heavier than air, it was expected that there would be minimum leakage of these gases out of the columns.</p>
+<p>For each column, headspace air was pumped over 5-min periods to the
+instruments which measured concentrations at 1 hz. After 5-min, the
+multiplexer switched to the next column, to our reference ‘zero air’ and
+ambient air, such that the final resolution on gaseous concentrations
+would be calculated hourly. The sampled air was replenished with ambient
+air via a 10 cm open tubing at the top of each column. CO<sub>2</sub>
+and N<sub>2</sub>O gases being heavier than air, it was expected that
+there would be minimum leakage of these gases out of the columns.</p>
 <p><br/><br/></p>
 <center>
 <iframe width="720" height="450" src="https://www.youtube.com/embed/tOhs-3CloRo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<br/><br/> Video of the headspace quality sampling with the sensors in place in 2017
+<br/><br/> Video of the headspace quality sampling with the sensors in
+place in 2017
 </center>
 <p><br/><br/></p>
 <center>
 <iframe width="720" height="450" src="https://www.youtube.com/embed/-UJXoMwqPyA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<br/><br/> Video of the CO<sub>2</sub> concentrations headspace quality sampling with the sensors in place in 2017
+<br/><br/> Video of the CO<sub>2</sub> concentrations headspace quality
+sampling with the sensors in place in 2017
 </center>
 <p><br/><br/></p>
 </div>
 <div id="field-experiments-setups" class="section level3">
 <h3>Field experiments setups</h3>
-<div id="setup-at-the-plymouth-site-north-carolina" class="section level4">
+<div id="setup-at-the-plymouth-site-north-carolina"
+class="section level4">
 <h4>Setup at the Plymouth site, North Carolina</h4>
 <p><br/></p>
-<p>The Plymouth bioreactor which was supposed to be the flagship of the field experiments because of its proximity to Raleigh (2.5 hour drive), was found to be essentially clogged… We then decided to apply our sampling methods to the monitoring of drainage water at the inlet of the bioreactor (which bypassed the bioreactor) and of the groundwater at several depths and distances from the drain line. This was a welcome addition to another research project lead by Dr. Youssef and Wenlong Liu’s Ph.D. project <span class="citation">(Liu, Maxwell, et al. 2020; Liu, Youssef, et al. 2020)</span>. The MUX™ capabilities were adapted to pump water from the bioreactor inlet, acid-rinse, and water-rinse the flow-through cuvette to keep iron fouling to a minimum. All information obtained would be used in the project as a databse for the modeling effort. This monitoring lasted a total of 14 months from January 2017 to March 2018.</p>
+<p>The Plymouth bioreactor which was supposed to be the flagship of the
+field experiments because of its proximity to Raleigh (2.5 hour drive),
+was found to be essentially clogged… We then decided to apply our
+sampling methods to the monitoring of drainage water at the inlet of the
+bioreactor (which bypassed the bioreactor) and of the groundwater at
+several depths and distances from the drain line. This was a welcome
+addition to another research project lead by Dr. Youssef and Wenlong
+Liu’s Ph.D. project <span class="citation">(Liu, Maxwell, et al. 2020;
+Liu, Youssef, et al. 2020)</span>. The MUX™ capabilities were adapted to
+pump water from the bioreactor inlet, acid-rinse, and water-rinse the
+flow-through cuvette to keep iron fouling to a minimum. All information
+obtained would be used in the project as a databse for the modeling
+effort. This monitoring lasted a total of 14 months from January 2017 to
+March 2018.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 70%;" src="images/WBPlymouthFieldSetup.png"> <br/><br/> Layout of high spatio-temporal resolution water quality monitoring at the Plymouth site (North Carolina). a) Nested wells at variable depths and distance from the drain to monitor shallow groundwater; (b) schematic of the groundwater sampling well; (c and d) pictures of the cups at the bottom of the wells intercepting water at an identified depth; (e) Bryan Maxwell (left) and Sam Garvey (right) near the sampling system at the bioreactor inlet; (f) picture of the the whole sampling system in the field <span class="citation">(Liu, Maxwell, et al. 2020; Liu, Youssef, et al. 2020)</span>
+<img style="align: center; width: 70%;" src="images/WBPlymouthFieldSetup.png">
+<br/><br/> Layout of high spatio-temporal resolution water quality
+monitoring at the Plymouth site (North Carolina). a) Nested wells at
+variable depths and distance from the drain to monitor shallow
+groundwater; (b) schematic of the groundwater sampling well; (c and d)
+pictures of the cups at the bottom of the wells intercepting water at an
+identified depth; (e) Bryan Maxwell (left) and Sam Garvey (right) near
+the sampling system at the bioreactor inlet; (f) picture of the the
+whole sampling system in the field <span class="citation">(Liu, Maxwell,
+et al. 2020; Liu, Youssef, et al. 2020)</span>
 </center>
 <p><br/><br/></p>
 </div>
-<div id="setup-at-the-nashua-iowa-and-tatanui-new-zealand-bioreactors" class="section level4">
-<h4>Setup at the Nashua (Iowa) and Tatanui (New Zealand) bioreactors</h4>
+<div id="setup-at-the-nashua-iowa-and-tatanui-new-zealand-bioreactors"
+class="section level4">
+<h4>Setup at the Nashua (Iowa) and Tatanui (New Zealand)
+bioreactors</h4>
 <p><br/></p>
-<p>The experiments for the Nashua (IA) and Tatanui (NZ) bioreactors involved capturing the temporal and spatial dynamics of nitrate and DOC concentrations along the flow path within these field bioreactors. These experiments were temporary and short-term by nature. The monitoring involved sampling deep and shallow wells installed along the length of the bioreactors at a high temporal resolution (40 and 60 min for IA and NZ, respectively).</p>
+<p>The experiments for the Nashua (IA) and Tatanui (NZ) bioreactors
+involved capturing the temporal and spatial dynamics of nitrate and DOC
+concentrations along the flow path within these field bioreactors. These
+experiments were temporary and short-term by nature. The monitoring
+involved sampling deep and shallow wells installed along the length of
+the bioreactors at a high temporal resolution (40 and 60 min for IA and
+NZ, respectively).</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 70%;" src="images/WBNashuaTatanuiLayout.png"> <br/><br/> Layout of the wells used for high spatio-temporal resolution water quality inside the IA and NZ bioreactors
+<img style="align: center; width: 70%;" src="images/WBNashuaTatanuiLayout.png">
+<br/><br/> Layout of the wells used for high spatio-temporal resolution
+water quality inside the IA and NZ bioreactors
 </center>
 <p><br/><br/></p>
-<p>The woodchip bioreactor at Northeast Research Farm in Nashua, Iowa (42.9°N, 92.6° W) was monitored for 11 d from June 2–13 in 2017 and 13 d from April 1–14 in 2018. This field bioreactor (referred to as IA) receives tile drainage from a 14.2 ha corn-soybean rotation and was constructed in April 2009. The unlined bioreactor (128 m³) has a trapezoidal geometry (36.6 m L x 4.6 m top W x 2.4 m bottom W x 1.0 m D). The water table can fluctuate in this bioreactor leaving an always saturated volume and a volume that undergoes unsaturation. The six sets of existing shallow and deep wells were sequentially sampled by two MUX-spectro::lyser systems (one for the inlet and upper three sets, the other for the outlet and the lower three sets) for a resolution of 40 min for each well and in- or outlet.</p>
+<p>The woodchip bioreactor at Northeast Research Farm in Nashua, Iowa
+(42.9°N, 92.6° W) was monitored for 11 d from June 2–13 in 2017 and 13 d
+from April 1–14 in 2018. This field bioreactor (referred to as IA)
+receives tile drainage from a 14.2 ha corn-soybean rotation and was
+constructed in April 2009. The unlined bioreactor (128 m³) has a
+trapezoidal geometry (36.6 m L x 4.6 m top W x 2.4 m bottom W x 1.0 m
+D). The water table can fluctuate in this bioreactor leaving an always
+saturated volume and a volume that undergoes unsaturation. The six sets
+of existing shallow and deep wells were sequentially sampled by two
+MUX-spectro::lyser systems (one for the inlet and upper three sets, the
+other for the outlet and the lower three sets) for a resolution of 40
+min for each well and in- or outlet.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/WBFieldSetupIANZ.png"> <br/><br/> Pictures of the monitoring setup at the Nashua (IA, left; Bryan Maxwell and Caleb Ray from left to right) in June 2017, and at the Tatanui (NZ, right) in August 2018 to measure transport and fate of nitrate and DOC along bioreators over time
+<img style="align: center; width: 90%;" src="images/WBFieldSetupIANZ.png">
+<br/><br/> Pictures of the monitoring setup at the Nashua (IA, left;
+Bryan Maxwell and Caleb Ray from left to right) in June 2017, and at the
+Tatanui (NZ, right) in August 2018 to measure transport and fate of
+nitrate and DOC along bioreators over time
 </center>
 <p><br/><br/></p>
-<p>The second bioreactor located on a privately owned dairy farm close to Morrinsville, NZ (37.6°S, 175.6°E) was monitored for 30 d from August 8 – September 8 in 2018. This below-ground bioreactor (referred to as NZ) was constructed in 2016 with a rectangular pyramidal geometry (11.4 m top L x 9 m bottom L x 7.4 m top W x 5 m bottom W x 1.2 m D, 1:1 side slope, lined on the bottom and sides with an impermeable liner, a geotextile liner placed above the woodchips, and finally covered excavated soil. This bioreactor is permanently saturated below the water table with 0.94 m water depth during periods of no flow. A total of 19 wells plus the inlet and outlet were monitored throughout the bioreactor by two MUX-spectro::lyser systems (one near the inlet and the other near the outlet) for a resolution of 60 min for each well and in- or outlet.</p>
-<p>In Iowa, a nitrate injection was performed during monitoring to trace the fate of added nitrate down the bioreactor. In New Zealand, several rainfall events were associated with pulses of inlet nitrate concentrations, which could be traced along the bioreactor.</p>
+<p>The second bioreactor located on a privately owned dairy farm close
+to Morrinsville, NZ (37.6°S, 175.6°E) was monitored for 30 d from August
+8 – September 8 in 2018. This below-ground bioreactor (referred to as
+NZ) was constructed in 2016 with a rectangular pyramidal geometry (11.4
+m top L x 9 m bottom L x 7.4 m top W x 5 m bottom W x 1.2 m D, 1:1 side
+slope, lined on the bottom and sides with an impermeable liner, a
+geotextile liner placed above the woodchips, and finally covered
+excavated soil. This bioreactor is permanently saturated below the water
+table with 0.94 m water depth during periods of no flow. A total of 19
+wells plus the inlet and outlet were monitored throughout the bioreactor
+by two MUX-spectro::lyser systems (one near the inlet and the other near
+the outlet) for a resolution of 60 min for each well and in- or
+outlet.</p>
+<p>In Iowa, a nitrate injection was performed during monitoring to trace
+the fate of added nitrate down the bioreactor. In New Zealand, several
+rainfall events were associated with pulses of inlet nitrate
+concentrations, which could be traced along the bioreactor.</p>
 <p><br/><br/></p>
 </div>
 </div>
 <div id="modeling-nitrate-removal-kinetics" class="section level3">
 <h3>Modeling nitrate removal kinetics</h3>
 <p><br/><br/></p>
-<p>The laboratory results were used as a database to establish, calibrate, and validate nitrate removal kinetics. The very simple woodchip columns turned out to be anything but simple to model. Many findings did result from this exercise. There was, however, an inherent conflict between the conditions in which the lab experiments were designed and run, and the modeling needs. Indeed, the long-term (&gt; 100 days) lab column experiments where the DRW treament was repeated weekly involved keeping all other factors to vary at a minimum. Luckily, factors such as the lab temperature and the pumping rate to each column hence the hydraulic residence time (HRT) did vary, outside of our control. As a result, it was possible to investigate the impact of nitrate concentration, apparent DOC concentration, temperature and HRT in our modeling effort.</p>
+<p>The laboratory results were used as a database to establish,
+calibrate, and validate nitrate removal kinetics. The very simple
+woodchip columns turned out to be anything but simple to model. Many
+findings did result from this exercise. There was, however, an inherent
+conflict between the conditions in which the lab experiments were
+designed and run, and the modeling needs. Indeed, the long-term (&gt;
+100 days) lab column experiments where the DRW treament was repeated
+weekly involved keeping all other factors to vary at a minimum. Luckily,
+factors such as the lab temperature and the pumping rate to each column
+hence the hydraulic residence time (HRT) did vary, outside of our
+control. As a result, it was possible to investigate the impact of
+nitrate concentration, apparent DOC concentration, temperature and HRT
+in our modeling effort.</p>
 <p><br/><br/></p>
 </div>
 </div>
 <div id="result-highlights-from-lab-experiments" class="section level2">
 <h2>Result highlights from lab experiments</h2>
-<div id="drw-cycles-stimulate-denitrification-in-woodchip-bioreactors" class="section level3">
+<div id="drw-cycles-stimulate-denitrification-in-woodchip-bioreactors"
+class="section level3">
 <h3>DRW cycles stimulate denitrification in woodchip bioreactors</h3>
 <p><br/></p>
-<p>The 287-d experiment conducted in 2017 investigated the effects of weekly DRW cycles on nitrate removal in woodchip laboratory columns. Four columns were exposed to continuous saturation (SAT) and four columns to weekly, 8-h drying-rewetting (8 h of aerobiosis followed by saturation) cycles (DRW). Drying–rewetting columns showed greater export of total and dissolved organic carbon and increased nitrate removal rates. Treatment occurred throughout the 287 days but high frequency monitoring was continuous over three discontinuous periods (weeks 1-11, 19-22, and 35-39).</p>
+<p>The 287-d experiment conducted in 2017 investigated the effects of
+weekly DRW cycles on nitrate removal in woodchip laboratory columns.
+Four columns were exposed to continuous saturation (SAT) and four
+columns to weekly, 8-h drying-rewetting (8 h of aerobiosis followed by
+saturation) cycles (DRW). Drying–rewetting columns showed greater export
+of total and dissolved organic carbon and increased nitrate removal
+rates. Treatment occurred throughout the 287 days but high frequency
+monitoring was continuous over three discontinuous periods (weeks 1-11,
+19-22, and 35-39).</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 80%;" src="images/WBDRWeffects2017-1.png"> <br/><br/> Box plots of temperature (A) and volumetric nitrate removal rates, RNO3, (B) for both DRW and SAT columns from Periods 2–11, 19–22, and 35–39 (Days 28–287). Dashed and solid lines indicate weekly means for each Period for DRW and SAT groups, respectively <span class="citation">(B. M. Maxwell et al. 2019a)</span>
+<img style="align: center; width: 80%;" src="images/WBDRWeffects2017-1.png">
+<br/><br/> Box plots of temperature (A) and volumetric nitrate removal
+rates, RNO3, (B) for both DRW and SAT columns from Periods 2–11, 19–22,
+and 35–39 (Days 28–287). Dashed and solid lines indicate weekly means
+for each Period for DRW and SAT groups, respectively <span
+class="citation">(Maxwell et al. 2019a)</span>
 </center>
 <p><br/><br/></p>
-<p>Nitrate removal rates in DRW columns increased by up to 80%, relative to SAT columns, although DRW removal rates decreased quickly within 3 d after rewetting. Increased nitrate removal in DRW columns continued even after 39 DRW cycles, with ~33% higher total nitrate mass removed over each weekly DRW cycle. Data collected in this experiment provide strong evidence that DRW cycles can dramatically improve nitrate removal in woodchip bioreactors, with carbon availability being a likely driver of improved efficiency.</p>
+<p>Nitrate removal rates in DRW columns increased by up to 80%, relative
+to SAT columns, although DRW removal rates decreased quickly within 3 d
+after rewetting. Increased nitrate removal in DRW columns continued even
+after 39 DRW cycles, with ~33% higher total nitrate mass removed over
+each weekly DRW cycle. Data collected in this experiment provide strong
+evidence that DRW cycles can dramatically improve nitrate removal in
+woodchip bioreactors, with carbon availability being a likely driver of
+improved efficiency.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 60%;" src="images/WBDRWeffects2017.png"> <br/><br/> Boxplots of volumetric NO3 removal rates (RNO3) according to the number of days since the previous drying-rewetting (DRW) event (for Periods 19–22 &amp; 35–39). Removal rates in DRW columns were ~80% greater than SAT columns on the first day after rewetting, with DRW RNO3 decreasing and eventually stabilizing ~4 days after rewetting <span class="citation">(B. M. Maxwell et al. 2019a)</span>
+<img style="align: center; width: 60%;" src="images/WBDRWeffects2017.png">
+<br/><br/> Boxplots of volumetric NO3 removal rates (RNO3) according to
+the number of days since the previous drying-rewetting (DRW) event (for
+Periods 19–22 &amp; 35–39). Removal rates in DRW columns were ~80%
+greater than SAT columns on the first day after rewetting, with DRW RNO3
+decreasing and eventually stabilizing ~4 days after rewetting <span
+class="citation">(Maxwell et al. 2019a)</span>
 </center>
 <p><br/><br/></p>
 </div>
-<div id="increased-duration-of-drw-cycles-increases-nitrate-removal-in-woodchip-bioreactors" class="section level3">
-<h3>Increased Duration of DRW Cycles Increases Nitrate Removal in Woodchip Bioreactors</h3>
-<p>The 2018 lab experiment was a follow-up of the 2017 experiment designed to determine the effect of duration of unsaturated conditions on nitrate removal after rewetting. Three different levels of DRW duration were tested in the 105-d column experiment (n = 2), with woodchips left unsaturated once a week for either 2 h, 8 h, or 24 h. Increasing duration of unsaturated conditions significantly increased nitrate removal rates. The longest DRW duration of 24 h resulted in the greatest increase in nitrate removal rates, relative to constantly saturated woodchips, with mean rate increases reaching 172% by the end of the experiment.</p>
+<div
+id="increased-duration-of-drw-cycles-increases-nitrate-removal-in-woodchip-bioreactors"
+class="section level3">
+<h3>Increased Duration of DRW Cycles Increases Nitrate Removal in
+Woodchip Bioreactors</h3>
+<p>The 2018 lab experiment was a follow-up of the 2017 experiment
+designed to determine the effect of duration of unsaturated conditions
+on nitrate removal after rewetting. Three different levels of DRW
+duration were tested in the 105-d column experiment (n = 2), with
+woodchips left unsaturated once a week for either 2 h, 8 h, or 24 h.
+Increasing duration of unsaturated conditions significantly increased
+nitrate removal rates. The longest DRW duration of 24 h resulted in the
+greatest increase in nitrate removal rates, relative to constantly
+saturated woodchips, with mean rate increases reaching 172% by the end
+of the experiment.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 70%;" src="images/WBDRWeffects2018.png"> <br/><br/> Box plots of volumetric nitrate removal rates (RNO3) during each weekly period, with Period 0 being the 33 d baseline period where all columns received the SAT treatment. The grey vertical bar indicates the beginning of DRW cycles <span class="citation">(B. M. Maxwell et al. 2019b)</span>
+<img style="align: center; width: 70%;" src="images/WBDRWeffects2018.png">
+<br/><br/> Box plots of volumetric nitrate removal rates (RNO3) during
+each weekly period, with Period 0 being the 33 d baseline period where
+all columns received the SAT treatment. The grey vertical bar indicates
+the beginning of DRW cycles <span class="citation">(Maxwell et al.
+2019b)</span>
 </center>
 <p><br/><br/></p>
 </div>
-<div id="nitrate-removal-in-denitrifying-bioreactors-is-carbon-limited" class="section level3">
+<div id="nitrate-removal-in-denitrifying-bioreactors-is-carbon-limited"
+class="section level3">
 <h3>Nitrate Removal in Denitrifying Bioreactors is Carbon Limited</h3>
-<p>Results from the lab 2017 and 2018 experiments show that there was a strong correlation between the volumetric nitrate removal rates and the apparent DOC leaching rates in the columns, regardless of the treatment. This strongly suggests that nitrate removal in denitrifying bioreactors is carbon limited.</p>
+<p>Results from the lab 2017 and 2018 experiments show that there was a
+strong correlation between the volumetric nitrate removal rates and the
+apparent DOC leaching rates in the columns, regardless of the treatment.
+This strongly suggests that nitrate removal in denitrifying bioreactors
+is carbon limited.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 70%;" src="images/WBDRWeffectsDOC.png"> <br/><br/> Nitrate removal rates plotted against DOC leaching rates. Nitrate removal was strongly correlated with LDOC, even in SAT columns not undergoing DRW cycles
+<img style="align: center; width: 70%;" src="images/WBDRWeffectsDOC.png">
+<br/><br/> Nitrate removal rates plotted against DOC leaching rates.
+Nitrate removal was strongly correlated with LDOC, even in SAT columns
+not undergoing DRW cycles
 </center>
 <p><br/><br/></p>
 </div>
-<div id="carbon-dioxide-emissions-proportional-to-the-duration-of-drw-cycles" class="section level3">
-<h3>Carbon dioxide emissions proportional to the duration of DRW cycles</h3>
-<p>Quantifying the gaseous emission rates was not the easiest thing to do but we (Augustin Thomas), was able to show that the open chamber approach was satisfactory to measure CO<sub>2</sub> and N<sub>2</sub>O emission rates. In the end we were able to show that the CO<sub>2</sub> emissions had a clear typology where the emissions rose rapidly right after the draining of the column. There always was a large CO<sub>2</sub> emission peak during the rewetting of the columns, likely corresponding to the flushing of accumlated gases in the then unsaturated woodchip. The data from the 24 h aerobic DRW cycle suggests that around 10 hours of exposure to aerobic conditions, an additional pulse of CO<sub>2</sub>occurred suggesting that the microbial activity increased at about this time.</p>
+<div
+id="carbon-dioxide-emissions-proportional-to-the-duration-of-drw-cycles"
+class="section level3">
+<h3>Carbon dioxide emissions proportional to the duration of DRW
+cycles</h3>
+<p>Quantifying the gaseous emission rates was not the easiest thing to
+do but we (Augustin Thomas), was able to show that the open chamber
+approach was satisfactory to measure CO<sub>2</sub> and N<sub>2</sub>O
+emission rates. In the end we were able to show that the CO<sub>2</sub>
+emissions had a clear typology where the emissions rose rapidly right
+after the draining of the column. There always was a large
+CO<sub>2</sub> emission peak during the rewetting of the columns, likely
+corresponding to the flushing of accumlated gases in the then
+unsaturated woodchip. The data from the 24 h aerobic DRW cycle suggests
+that around 10 hours of exposure to aerobic conditions, an additional
+pulse of CO<sub>2</sub>occurred suggesting that the microbial activity
+increased at about this time.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 60%;" src="images/WBCO2emissions.png"> <br/><br/> Typology of the CO<sub>2</sub> emission rate dynamics during the drying and rewetting periods of the lab columns
+<img style="align: center; width: 60%;" src="images/WBCO2emissions.png">
+<br/><br/> Typology of the CO<sub>2</sub> emission rate dynamics during
+the drying and rewetting periods of the lab columns
 </center>
 <p><br/><br/></p>
-<p>Unfortunately, the dissolved CO<sub>2</sub> was not measured and most of the apparent CO<sub>2</sub> emissions correspond to the those observed in the gaseous phase, and these correspond to the several hours of drying and rewetting, hence the apparent larger CO<sub>2</sub> emissions for the longer durations of DRW.</p>
+<p>Unfortunately, the dissolved CO<sub>2</sub> was not measured and most
+of the apparent CO<sub>2</sub> emissions correspond to the those
+observed in the gaseous phase, and these correspond to the several hours
+of drying and rewetting, hence the apparent larger CO<sub>2</sub>
+emissions for the longer durations of DRW.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 60%;" src="images/WBCO2emissionsPeriods.png"> <br/><br/> Weekly rates of gaseous CO<sub>2</sub> emitted by the bioreactor columns during DRW cycles showing increasing emissions with increasing DRW cycle durations
+<img style="align: center; width: 60%;" src="images/WBCO2emissionsPeriods.png">
+<br/><br/> Weekly rates of gaseous CO<sub>2</sub> emitted by the
+bioreactor columns during DRW cycles showing increasing emissions with
+increasing DRW cycle durations
 </center>
 </div>
-<div id="low-n2o-gaseous-emissions-with-drw-cycles" class="section level3">
+<div id="low-n2o-gaseous-emissions-with-drw-cycles"
+class="section level3">
 <h3>Low N<sub>2</sub>O gaseous emissions with DRW cycles</h3>
-<p>The N<sub>2</sub>O emissions observed in 2017 suggest that the 8 hr DRW cycles produced more N<sub>2</sub>O than the constantly saturated (SAT) columns. This could be due to the high solubility of N<sub>2</sub>O which in the case of the SAT columns would have remained dissolved while 8 hr of unsaturated conditions allowed N<sub>2</sub>O to be emitted in the gaseous phase. The DRW duration experiment in 2018 suggest to the contrary that the longer the DRW duration, the lower the N<sub>2</sub>O emissions</p>
+<p>The N<sub>2</sub>O emissions observed in 2017 suggest that the 8 hr
+DRW cycles produced more N<sub>2</sub>O than the constantly saturated
+(SAT) columns. This could be due to the high solubility of
+N<sub>2</sub>O which in the case of the SAT columns would have remained
+dissolved while 8 hr of unsaturated conditions allowed N<sub>2</sub>O to
+be emitted in the gaseous phase. The DRW duration experiment in 2018
+suggest to the contrary that the longer the DRW duration, the lower the
+N<sub>2</sub>O emissions</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 50%;" src="images/WBN2Oemissions2018.png"> <br/><br/> Weekly rates of gaseous N<sub>2</sub>O emitted by the bioreactor columns during DRW cycles showing decreasing emissions with increasing DRW cycle durations
+<img style="align: center; width: 50%;" src="images/WBN2Oemissions2018.png">
+<br/><br/> Weekly rates of gaseous N<sub>2</sub>O emitted by the
+bioreactor columns during DRW cycles showing decreasing emissions with
+increasing DRW cycle durations
 </center>
 <p><br/><br/></p>
-<p>Unfortunately, the dissolved concentration of N<sub>2</sub>O was not measured either and the total mass of N<sub>2</sub>O emitted by the bioreactor columns remains unknown but we <strong><em>were able to estimate that the N<sub>2</sub>O emitted in the gaseous form did not exceed 0.2% of the nitrate removed</em></strong> by the woodchip bioreactors. Our results also suggest that the DRW cycles appear to in the long run lower the N<sub>2</sub>O emitted by woodchip bioreactors.</p>
+<p>Unfortunately, the dissolved concentration of N<sub>2</sub>O was not
+measured either and the total mass of N<sub>2</sub>O emitted by the
+bioreactor columns remains unknown but we <strong><em>were able to
+estimate that the N<sub>2</sub>O emitted in the gaseous form did not
+exceed 0.2% of the nitrate removed</em></strong> by the woodchip
+bioreactors. Our results also suggest that the DRW cycles appear to in
+the long run lower the N<sub>2</sub>O emitted by woodchip
+bioreactors.</p>
 <p><br/><br/></p>
 </div>
-<div id="microbial-pathways-derived-from-n2o-isotopomer-measurements" class="section level3">
-<h3>Microbial pathways derived from N<sub>2</sub>O isotopomer measurements</h3>
-<p>The different pathways for denitrification, hence for the production of N<sub>2</sub>O before it is reduced to N<sub>2</sub>, are thought to be accompanied with isotopic fractionation (Shearer and Kohl, 1988). Based on possible combination of nitrogen and oxygen isotopes, the asymmetric structure of N<sub>2</sub>O could result in five most abundant natural isotopomers: <sup>14</sup>N<sup>14</sup>N<sup>16</sup>O, <sup>14</sup>N <sup>15</sup>N <sup>16</sup>O, <sup>15</sup>N <sup>14</sup>N <sup>16</sup>O, <sup>14</sup>N <sup>14</sup>N <sup>17</sup>O and <sup>14</sup>N <sup>14</sup>N <sup>18</sup>O <span class="citation">(Yoshida and Toyoda 2000)</span>. The bulk nitrogen isotope ratio, <sup>15</sup>R<sup>bulk</sup> = ( <sup>14</sup>N <sup>15</sup>N <sup>16</sup>O + <sup>15</sup>N <sup>14</sup>N <sup>16</sup>O)/(2 × <sup>14</sup>N <sup>14</sup>N <sup>16</sup>O), and oxygen isotope ratio, <sup>18</sup>R = <sup>14</sup>N <sup>14</sup>N <sup>18</sup>O/ <sup>14</sup>N <sup>14</sup>N <sup>16</sup>O or <sup>17</sup>R = <sup>14</sup>N <sup>14</sup>N <sup>17</sup>O/ <sup>14</sup>N <sup>14</sup>N <sup>16</sup>O, have been found to vary from different environments or N<sub>2</sub>O-producing processes <span class="citation">(Wahlen and Yoshinari 1985; Yoshida 1988)</span>. The differences in <sup>15</sup>R<sup>bulk</sup> for N<sub>2</sub>O production of denitrification process are because reduction of N<sub>2</sub>O to N<sub>2</sub> favors <sup>14</sup>N, leading to enrichment of <sup>15</sup>N in the remaining unreacted N<sub>2</sub>O <span class="citation">(Barford et al. 1999; Webster and Hopkins 1996)</span>.</p>
+<div id="microbial-pathways-derived-from-n2o-isotopomer-measurements"
+class="section level3">
+<h3>Microbial pathways derived from N<sub>2</sub>O isotopomer
+measurements</h3>
+<p>The different pathways for denitrification, hence for the production
+of N<sub>2</sub>O before it is reduced to N<sub>2</sub>, are thought to
+be accompanied with isotopic fractionation (Shearer and Kohl, 1988).
+Based on possible combination of nitrogen and oxygen isotopes, the
+asymmetric structure of N<sub>2</sub>O could result in five most
+abundant natural isotopomers:
+<sup>14</sup>N<sup>14</sup>N<sup>16</sup>O, <sup>14</sup>N
+<sup>15</sup>N <sup>16</sup>O, <sup>15</sup>N <sup>14</sup>N
+<sup>16</sup>O, <sup>14</sup>N <sup>14</sup>N <sup>17</sup>O and
+<sup>14</sup>N <sup>14</sup>N <sup>18</sup>O <span
+class="citation">(Yoshida and Toyoda 2000)</span>. The bulk nitrogen
+isotope ratio, <sup>15</sup>R<sup>bulk</sup> = ( <sup>14</sup>N
+<sup>15</sup>N <sup>16</sup>O + <sup>15</sup>N <sup>14</sup>N
+<sup>16</sup>O)/(2 × <sup>14</sup>N <sup>14</sup>N <sup>16</sup>O), and
+oxygen isotope ratio, <sup>18</sup>R = <sup>14</sup>N <sup>14</sup>N
+<sup>18</sup>O/ <sup>14</sup>N <sup>14</sup>N <sup>16</sup>O or
+<sup>17</sup>R = <sup>14</sup>N <sup>14</sup>N <sup>17</sup>O/
+<sup>14</sup>N <sup>14</sup>N <sup>16</sup>O, have been found to vary
+from different environments or N<sub>2</sub>O-producing processes <span
+class="citation">(Wahlen and Yoshinari 1985; Yoshida 1988)</span>. The
+differences in <sup>15</sup>R<sup>bulk</sup> for N<sub>2</sub>O
+production of denitrification process are because reduction of
+N<sub>2</sub>O to N<sub>2</sub> favors <sup>14</sup>N, leading to
+enrichment of <sup>15</sup>N in the remaining unreacted N<sub>2</sub>O
+<span class="citation">(Barford et al. 1999; Webster and Hopkins
+1996)</span>.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/WBToyodaFigs.png"> <br/><br/> A- Microbial pathways resulting in isotopic fractionation of N<sub>2</sub>O <span class="citation">(Toyoda, Yoshida, and Koba 2015)</span>; B- Microbial pathway signature in a SP = f(δ<sup>15</sup>N<sup>bulk</sup>) <span class="citation">(Toyoda et al. 2011)</span>
+<img style="align: center; width: 90%;" src="images/WBToyodaFigs.png">
+<br/><br/> A- Microbial pathways resulting in isotopic fractionation of
+N<sub>2</sub>O <span class="citation">(Toyoda, Yoshida, and Koba
+2015)</span>; B- Microbial pathway signature in a SP =
+f(δ<sup>15</sup>N<sup>bulk</sup>) <span class="citation">(Toyoda et al.
+2011)</span>
 </center>
 <p><br/><br/></p>
-<p>The nitrogen isotope ratio, <sup>15</sup>R<sup>α</sup> = <sup>14</sup>N<sup>15</sup>N<sup>16</sup>O/<sup>14</sup>N<sup>14</sup>N<sup>16</sup>O and <sup>15</sup>R<sup>β</sup> = <sup>15</sup>N<sup>14</sup>N<sup>16</sup>O/<sup>14</sup>N<sup>14</sup>N<sup>16</sup>O, can be used to calculate <sup>15</sup>N-site preference (SP), SP = <sup>15</sup>R<sup>α</sup> - <sup>15</sup>R<sup>β</sup>. Many studies have shown that different N<sub>2</sub>O-producing groups have distinct <sup>15</sup>N-SP. Toyoca et al. <span class="citation">(2011)</span> have suggested that microbial pathway signatures can be plotted in a SP = f(δ<sup>15</sup>N<sup>bulk</sup>) space.</p>
+<p>The nitrogen isotope ratio, <sup>15</sup>R<sup>α</sup> =
+<sup>14</sup>N<sup>15</sup>N<sup>16</sup>O/<sup>14</sup>N<sup>14</sup>N<sup>16</sup>O
+and <sup>15</sup>R<sup>β</sup> =
+<sup>15</sup>N<sup>14</sup>N<sup>16</sup>O/<sup>14</sup>N<sup>14</sup>N<sup>16</sup>O,
+can be used to calculate <sup>15</sup>N-site preference (SP), SP =
+<sup>15</sup>R<sup>α</sup> - <sup>15</sup>R<sup>β</sup>. Many studies
+have shown that different N<sub>2</sub>O-producing groups have distinct
+<sup>15</sup>N-SP. Toyoca et al. <span class="citation">(2011)</span>
+have suggested that microbial pathway signatures can be plotted in a SP
+= f(δ<sup>15</sup>N<sup>bulk</sup>) space.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/WBSP15Nbulkcol8.png"> <br/><br/> The pathway, while a little chaotic concerning its “Saturated” part, shows a clear shift in Site Preference from -5‰ to +40‰, concurrent with an increase quickly followed by a decrease of the bulk ratio, giving (more or less depending on the week) a semi-circle shape to the pathway (Column 8, week 3 (A) and 9 (B).
+<img style="align: center; width: 90%;" src="images/WBSP15Nbulkcol8.png">
+<br/><br/> The pathway, while a little chaotic concerning its
+“Saturated” part, shows a clear shift in Site Preference from -5‰ to
++40‰, concurrent with an increase quickly followed by a decrease of the
+bulk ratio, giving (more or less depending on the week) a semi-circle
+shape to the pathway (Column 8, week 3 (A) and 9 (B).
 </center>
 <p><br/><br/></p>
-<p>Using the procedure proposed by Toyoca et al. <span class="citation">(2011)</span>, we created a centroid model where we considered denitrification, nitrification and reduction. The apportionement of each of this processes is calculated as a function of the location on the data points on the SP = f(δ<sup>15</sup>N<sup>bulk</sup>) space. The relative apportionement (the sum of three equals one) is illustrated in the figure below. It clearly shows the shift from denitrification to nitrification, concurrent with the increasing importance of reduction. This shift does not happen at the same time depending on the week number, which hints at a evolution in the microbial population over the weeks.</p>
+<p>Using the procedure proposed by Toyoca et al. <span
+class="citation">(2011)</span>, we created a centroid model where we
+considered denitrification, nitrification and reduction. The
+apportionement of each of this processes is calculated as a function of
+the location on the data points on the SP =
+f(δ<sup>15</sup>N<sup>bulk</sup>) space. The relative apportionement
+(the sum of three equals one) is illustrated in the figure below. It
+clearly shows the shift from denitrification to nitrification,
+concurrent with the increasing importance of reduction. This shift does
+not happen at the same time depending on the week number, which hints at
+a evolution in the microbial population over the weeks.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/WBProcessApportionement.png"> <br/><br/> <strong>Relative</strong> apportionment of denitrification, nitrification and N<sub>2</sub>O reduction during DRW cycles. Notice the shifts that occurred in 8 weeks
+<img style="align: center; width: 90%;" src="images/WBProcessApportionement.png">
+<br/><br/> <strong>Relative</strong> apportionment of denitrification,
+nitrification and N<sub>2</sub>O reduction during DRW cycles. Notice the
+shifts that occurred in 8 weeks
 </center>
 <p><br/><br/></p>
-<p>The same data multiplied by the emission rates show an overall predominance of denitrification in the production of N<sub>2</sub>O during the drying and rewetting cycles. However, some of the N<sub>2</sub>O appears to be emitted through nitrification, possibly as a response to the intermittent aerobic conditions.</p>
+<p>The same data multiplied by the emission rates show an overall
+predominance of denitrification in the production of N<sub>2</sub>O
+during the drying and rewetting cycles. However, some of the
+N<sub>2</sub>O appears to be emitted through nitrification, possibly as
+a response to the intermittent aerobic conditions.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 90%;" src="images/WBProcessAbsoluteApportionement.png"> <br/><br/> <strong>Absolute</strong> apportionment of denitrification, nitrification and N<sub>2</sub>O reduction during DRW cycles. Notice the shifts that occurred in 8 weeks
+<img style="align: center; width: 90%;" src="images/WBProcessAbsoluteApportionement.png">
+<br/><br/> <strong>Absolute</strong> apportionment of denitrification,
+nitrification and N<sub>2</sub>O reduction during DRW cycles. Notice the
+shifts that occurred in 8 weeks
 </center>
 <p><br/><br/></p>
 </div>
-<div id="very-small-porewater-velocity-may-limit-nitrate-removal-in-denitrifying-bioreactors" class="section level3">
-<h3>Very Small Porewater Velocity may Limit Nitrate Removal in Denitrifying Bioreactors</h3>
-<p>The 76-d experiment quantifying the impact of porewater velocity and lead by Sam Blackman involved pumping nitrated waters through the columns at variable rates resulting in variable porewater velocities throughout the columns. The hypothesis was that increased porewater velocities would increase removal rates, as it was hypothesized that mixing in the column would lower the nitrate diffusion limitation at the microsite level. The results show a mild limitation of the porewater velocity to limit nitrate removal rates (unpublished results).</p>
+<div
+id="very-small-porewater-velocity-may-limit-nitrate-removal-in-denitrifying-bioreactors"
+class="section level3">
+<h3>Very Small Porewater Velocity may Limit Nitrate Removal in
+Denitrifying Bioreactors</h3>
+<p>The 76-d experiment quantifying the impact of porewater velocity and
+lead by Sam Blackman involved pumping nitrated waters through the
+columns at variable rates resulting in variable porewater velocities
+throughout the columns. The hypothesis was that increased porewater
+velocities would increase removal rates, as it was hypothesized that
+mixing in the column would lower the nitrate diffusion limitation at the
+microsite level. The results show a mild limitation of the porewater
+velocity to limit nitrate removal rates (unpublished results).</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 70%;" src="images/WBPorewaterVelEffects2019.png"> <br/><br/> Nitrate removal rates as a function of pumping rates showing a slight limitation at pumping rates lower than 0.25 ml/s
+<img style="align: center; width: 70%;" src="images/WBPorewaterVelEffects2019.png">
+<br/><br/> Nitrate removal rates as a function of pumping rates showing
+a slight limitation at pumping rates lower than 0.25 ml/s
 </center>
 <p><br/><br/></p>
 </div>
 </div>
-<div id="result-highlights-from-field-experiments" class="section level2">
+<div id="result-highlights-from-field-experiments"
+class="section level2">
 <h2>Result highlights from field experiments</h2>
-<div id="high-frequency-in-situ-sampling-of-field-woodchip-bioreactors-revealed-sources-of-sampling-error" class="section level3">
-<h3>High-frequency, <em>in situ</em> sampling of field woodchip bioreactors revealed sources of sampling error</h3>
-<p>The high frequency concentration and flow data at the in- and outlets of the IA and NZ bioreactors were resampled to simulate traditional methods of quantifying bioreactor performance in the field. These mostly rely on low-frequency, time-based (weekly to monthly sampling interval) or flow-weighted sample collection at the inlet and outlets.</p>
-<p>The results suggest that nitrate removal rates calculated from infrequent sampling of simultaneous in- and outlets are fraught with large uncertainties. Simulations revealed significant differences between the reference rates calculated from high-frequency data and those that would be obtained using traditional methods. Using traditional methods, the calculated nitrate removal rates could be twice overestimated or underestimated by less than half the actual ones. When sampling during events, percentage removal rates could be calculated to as low as 50% or as high as 95%, blurring the information reported.</p>
+<div
+id="high-frequency-in-situ-sampling-of-field-woodchip-bioreactors-revealed-sources-of-sampling-error"
+class="section level3">
+<h3>High-frequency, <em>in situ</em> sampling of field woodchip
+bioreactors revealed sources of sampling error</h3>
+<p>The high frequency concentration and flow data at the in- and outlets
+of the IA and NZ bioreactors were resampled to simulate traditional
+methods of quantifying bioreactor performance in the field. These mostly
+rely on low-frequency, time-based (weekly to monthly sampling interval)
+or flow-weighted sample collection at the inlet and outlets.</p>
+<p>The results suggest that nitrate removal rates calculated from
+infrequent sampling of simultaneous in- and outlets are fraught with
+large uncertainties. Simulations revealed significant differences
+between the reference rates calculated from high-frequency data and
+those that would be obtained using traditional methods. Using
+traditional methods, the calculated nitrate removal rates could be twice
+overestimated or underestimated by less than half the actual ones. When
+sampling during events, percentage removal rates could be calculated to
+as low as 50% or as high as 95%, blurring the information reported.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 80%;" src="images/WBFieldRateUncert.png"> <br/><br/> Probability distributions of the nitrate removal that would have been calculated from traditional infrequent sampling methods expressed as volumetric nitrate removal rates (left), and percent reduction (NZ) for the IA and NZ bioreactors. Horizontal black bars indicate the 2.5 and 97.5%iles and black circles indicate the median. Points of the same color indicate all measurements made during each respective monitoring period. All bioreactors showed variability in measured values, with the highest variability in measured percent reduction seen at the NZ bioreactor.
+<img style="align: center; width: 80%;" src="images/WBFieldRateUncert.png">
+<br/><br/> Probability distributions of the nitrate removal that would
+have been calculated from traditional infrequent sampling methods
+expressed as volumetric nitrate removal rates (left), and percent
+reduction (NZ) for the IA and NZ bioreactors. Horizontal black bars
+indicate the 2.5 and 97.5%iles and black circles indicate the median.
+Points of the same color indicate all measurements made during each
+respective monitoring period. All bioreactors showed variability in
+measured values, with the highest variability in measured percent
+reduction seen at the NZ bioreactor.
 </center>
 <p><br/><br/></p>
 </div>
-<div id="high-frequency-in-situ-sampling-unveiled-magnitude-in-concentration-lag-between-in--and-outlet" class="section level3">
-<h3>High-frequency, <em>in situ</em> sampling unveiled magnitude in concentration lag between in- and outlet</h3>
-<p>The nitrate concentration time series at the inlet and outlet, and in the wells of the NZ bioreactor in particular show the migration of nitrate pulses associated with flow peaks. This shows that the apparent chemographs change dramatically depending on where the sampling is done.</p>
+<div
+id="high-frequency-in-situ-sampling-unveiled-magnitude-in-concentration-lag-between-in--and-outlet"
+class="section level3">
+<h3>High-frequency, <em>in situ</em> sampling unveiled magnitude in
+concentration lag between in- and outlet</h3>
+<p>The nitrate concentration time series at the inlet and outlet, and in
+the wells of the NZ bioreactor in particular show the migration of
+nitrate pulses associated with flow peaks. This shows that the apparent
+chemographs change dramatically depending on where the sampling is
+done.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 80%;" src="images/WBNZwellsAnimated.gif"> <br/><br/> Animation of the nitrate concentration time series obtained along the NZ bioreactor in August 2018, showing the propagation of the nitrate pulse associated with an hydrological event
+<img style="align: center; width: 80%;" src="images/WBNZwellsAnimated.gif">
+<br/><br/> Animation of the nitrate concentration time series obtained
+along the NZ bioreactor in August 2018, showing the propagation of the
+nitrate pulse associated with an hydrological event
 </center>
 <p><br/><br/></p>
-<p>It also shows that the nitrate peaks at the inlet and outlets in this bioreactor were lagging by about 3 days, showing that the hypothesis of steady state conditions must be met to use traditional methods of sampling, or gross errors may ensue in the interpretation of the result. Indeed, nitrate removal rates calculated during peak flow at the inlet, which would be associated with a nitrate peak, would result into calculating a large apparent removal rate. Sampling at the time when the nitrate would peak at the outlet would suggest that the apparent removal rate would be much lower for a much lower flow rate. In the end, one would conclude, most likely falsely, that the removal rates are positively correlated with flow rates, which is not possible since this would correspond to the lowest residence times.</p>
+<p>It also shows that the nitrate peaks at the inlet and outlets in this
+bioreactor were lagging by about 3 days, showing that the hypothesis of
+steady state conditions must be met to use traditional methods of
+sampling, or gross errors may ensue in the interpretation of the result.
+Indeed, nitrate removal rates calculated during peak flow at the inlet,
+which would be associated with a nitrate peak, would result into
+calculating a large apparent removal rate. Sampling at the time when the
+nitrate would peak at the outlet would suggest that the apparent removal
+rate would be much lower for a much lower flow rate. In the end, one
+would conclude, most likely falsely, that the removal rates are
+positively correlated with flow rates, which is not possible since this
+would correspond to the lowest residence times.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 80%;" src="images/WBNZNitratePeakLags.png"> <br/><br/> Time series of [NO3] for the NZ bioreactor showed lags between peaks of inlet [NO3] (red arrows) and outlet [NO3] (black arrows) of 2–3 days. Grey bars indicate 24 h intervals at midnight of each day.
+<img style="align: center; width: 80%;" src="images/WBNZNitratePeakLags.png">
+<br/><br/> Time series of [NO3] for the NZ bioreactor showed lags
+between peaks of inlet [NO3] (red arrows) and outlet [NO3] (black
+arrows) of 2–3 days. Grey bars indicate 24 h intervals at midnight of
+each day.
 </center>
 <p><br/><br/></p>
 </div>
-<div id="high-frequency-in-situ-sampling-of-field-woodchip-bioreactors-revealed-hydraulic-inefficiencies" class="section level3">
-<h3>High-frequency, <em>in situ</em> sampling of field woodchip bioreactors revealed hydraulic inefficiencies</h3>
-<p>Nitrate concentration time series from a nitrate pulsed addition in the IA bioreactor in April 2017 showed that in this 8 year old bioreactor, the hydraulic conductivity was likely limited at the bottom of the bioreactor as the nitrate pulse did not reach the lower layers nearly as fast as it did in the shallow part of the bioreactor. This was attributed to the accumulation of finer woodchip residue at the bottom of the bioreactor. The effective volume participating in nitrate removal is thus less than the woodchip volume. Over time the active nitrate removing volume is expected to shrink, likely explaining in part the general observed decrease over time of nitrate removal capacities of aging bioreactors.</p>
+<div
+id="high-frequency-in-situ-sampling-of-field-woodchip-bioreactors-revealed-hydraulic-inefficiencies"
+class="section level3">
+<h3>High-frequency, <em>in situ</em> sampling of field woodchip
+bioreactors revealed hydraulic inefficiencies</h3>
+<p>Nitrate concentration time series from a nitrate pulsed addition in
+the IA bioreactor in April 2017 showed that in this 8 year old
+bioreactor, the hydraulic conductivity was likely limited at the bottom
+of the bioreactor as the nitrate pulse did not reach the lower layers
+nearly as fast as it did in the shallow part of the bioreactor. This was
+attributed to the accumulation of finer woodchip residue at the bottom
+of the bioreactor. The effective volume participating in nitrate removal
+is thus less than the woodchip volume. Over time the active nitrate
+removing volume is expected to shrink, likely explaining in part the
+general observed decrease over time of nitrate removal capacities of
+aging bioreactors.</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 80%;" src="images/WBIAHydraulicInefficiencies.png"> <br/><br/> Time series of [NO3] in the IA bioreactor following a KNO3 injection (dashed grey line) at low flow. Peak in [NO3] at 5.2 m was higher in the shallow well, relative to the deep well, and passed more quickly through it. Increases in [NO3] in the shallow wells at 11.7 and 17.7 m were greater and arrived sooner than [NO3] increases in deep wells at the same distance from the inlet
+<img style="align: center; width: 80%;" src="images/WBIAHydraulicInefficiencies.png">
+<br/><br/> Time series of [NO3] in the IA bioreactor following a KNO3
+injection (dashed grey line) at low flow. Peak in [NO3] at 5.2 m was
+higher in the shallow well, relative to the deep well, and passed more
+quickly through it. Increases in [NO3] in the shallow wells at 11.7 and
+17.7 m were greater and arrived sooner than [NO3] increases in deep
+wells at the same distance from the inlet
 </center>
 <p><br/><br/></p>
 </div>
 </div>
 <div id="modeling-result-highlights" class="section level2">
 <h2>Modeling Result highlights</h2>
-<p>The lab experiments were specifically designed to quantify the effects on denitrification rates of drying-rewetting cycles where normally saturated woodchips were exposed to weekly unsaturated aerobic conditions that lasted 0, 2, 8, and 24 hours. Given the experimental settings, volumetric nitrate removal rates were best described by combining a Q<sub>10</sub> function for temperature, a Michaelis−Menten function describing labile carbon availability, and an exponential function describing the negative impact of hydraulic residence time (HRT).</p>
+<p>The lab experiments were specifically designed to quantify the
+effects on denitrification rates of drying-rewetting cycles where
+normally saturated woodchips were exposed to weekly unsaturated aerobic
+conditions that lasted 0, 2, 8, and 24 hours. Given the experimental
+settings, volumetric nitrate removal rates were best described by
+combining a Q<sub>10</sub> function for temperature, a Michaelis−Menten
+function describing labile carbon availability, and an exponential
+function describing the negative impact of hydraulic residence time
+(HRT).</p>
 <p><br/><br/></p>
 <center>
-<img style="align: center; width: 70%;" src="images/WBModelingSequence.png"> <br/><br/> Goodness of fit between model and observed along a sequence of predictors: temperature only, temperature + the apparent release of DOC, and temperature + the apparent release of DOC + a negatice HRT effect
+<img style="align: center; width: 70%;" src="images/WBModelingSequence.png">
+<br/><br/> Goodness of fit between model and observed along a sequence
+of predictors: temperature only, temperature + the apparent release of
+DOC, and temperature + the apparent release of DOC + a negatice HRT
+effect
 </center>
 <p><br/><br/></p>
-<p>Results show that the calibrated kinetic model was able to predict the nitrate removal rates for all treatments with high accuracy in model calibration and validation periods. The model performed worse during the model validation period in treatments with longer durations of unsaturated conditions. The thousands of data points available for comparison revealed a temporal evolution in the cumulative model bias.</p>
-<p>Our hypothesis is that the negative exponential effect of the hydraulic residence time appears as a proxy describing the negative effect of yet to be defined biochemical factors which accumulation over time may be correlated with HRT in woodchip bioreactors. This modeling analysis reveals, however, that the algorithms chosen did not fully satisfactorily take into account the probable physical and biochemical internal changes of the bioreactors occurring over time both in columns under constant saturation and those undergoing weekly drying-rewetting cycles. Findings from this study are useful for future mechanistic models of nitrate removal in woodchip bioreactors and provide insights into the interactions among internal factors affecting performance of woodchip bioreactor.</p>
+<p>Results show that the calibrated kinetic model was able to predict
+the nitrate removal rates for all treatments with high accuracy in model
+calibration and validation periods. The model performed worse during the
+model validation period in treatments with longer durations of
+unsaturated conditions. The thousands of data points available for
+comparison revealed a temporal evolution in the cumulative model
+bias.</p>
+<p>Our hypothesis is that the negative exponential effect of the
+hydraulic residence time appears as a proxy describing the negative
+effect of yet to be defined biochemical factors which accumulation over
+time may be correlated with HRT in woodchip bioreactors. This modeling
+analysis reveals, however, that the algorithms chosen did not fully
+satisfactorily take into account the probable physical and biochemical
+internal changes of the bioreactors occurring over time both in columns
+under constant saturation and those undergoing weekly drying-rewetting
+cycles. Findings from this study are useful for future mechanistic
+models of nitrate removal in woodchip bioreactors and provide insights
+into the interactions among internal factors affecting performance of
+woodchip bioreactor.</p>
 <p><br/><br/></p>
 </div>
 <div id="project-summary" class="section level2">
 <h2>Project Summary</h2>
 <p><br/></p>
-<p>This project supported and/or provided the research basis for Bryan Maxwell and Wenlong Liu’s Ph.D., and for Augustin Thomas’ equivalent of MS. This project partly supported the PostDocs of Drs. Lamyaa Negm and Shying Tian. The project gave undergraduate research opportunities for Sam Blackman, Caleb Ray, and Mallory Alman. The projet involved PIs from five different institution, including four universities and a the US EPA. The project also helped launch the MultiplexÔ, LLC company.</p>
-<p>This project was transformative in many ways as it showed the crucial importance of high frequency water and air quality data. In particular, it is thanks to the high resolution data that in the lab:</p>
+<p>This project supported and/or provided the research basis for Bryan
+Maxwell and Wenlong Liu’s Ph.D., and for Augustin Thomas’ equivalent of
+MS. This project partly supported the PostDocs of Drs. Lamyaa Negm and
+Shying Tian. The project gave undergraduate research opportunities for
+Sam Blackman, Caleb Ray, and Mallory Alman. The projet involved PIs from
+five different institution, including four universities and a the US
+EPA. The project also helped launch the MultiplexÔ, LLC company.</p>
+<p>This project was transformative in many ways as it showed the crucial
+importance of high frequency water and air quality data. In particular,
+it is thanks to the high resolution data that in the lab:</p>
 <ul>
-<li>We could show that DRW cycles have a definitive effect on nitrate removal in bioreactors</li>
-<li>We could show that the longer the duration of aerobic conditions during DRW cycles, the larger the DRW effects on denitrification</li>
-<li>We could show that denitrification rates in the bioreactor columns tested were carbon limited, but that the observed rates could be best modeled using temperature, apparent DOC leaching, and a negative impact associated with residence time</li>
-<li>We could show that the DRW cycles appeared to be associated with minor release of gaseous N<sub>2</sub>O</li>
+<li>We could show that DRW cycles have a definitive effect on nitrate
+removal in bioreactors</li>
+<li>We could show that the longer the duration of aerobic conditions
+during DRW cycles, the larger the DRW effects on denitrification</li>
+<li>We could show that denitrification rates in the bioreactor columns
+tested were carbon limited, but that the observed rates could be best
+modeled using temperature, apparent DOC leaching, and a negative impact
+associated with residence time</li>
+<li>We could show that the DRW cycles appeared to be associated with
+minor release of gaseous N<sub>2</sub>O</li>
 </ul>
-<p>The implication of this part of our research suggests that DRW cycles may be used as a management to rejuvenate woodchip bioreactors to help them maintain or boost their nitrate removal efficiency. DRW cycles seem to be associated with an increase in mineralization and release of labile carbon. As a result, carbon is consumed at a faster rate, which implies that woodchip bioreactors may have to be fed with woodchips more often.</p>
+<p>The implication of this part of our research suggests that DRW cycles
+may be used as a management to rejuvenate woodchip bioreactors to help
+them maintain or boost their nitrate removal efficiency. DRW cycles seem
+to be associated with an increase in mineralization and release of
+labile carbon. As a result, carbon is consumed at a faster rate, which
+implies that woodchip bioreactors may have to be fed with woodchips more
+often.</p>
 <p>It is also thanks to the high resolution data that in the field:</p>
 <ul>
-<li>We were able to show that traditional sampling methods involving biweekly or monthly simultaneous in- and outlet sampling may result in large errors in the reported rates</li>
-<li>We were able to show that within field bioreactors, the flow field may be highly heterogeneous as small particles accumulate at the bottom, hydraulic inefficiencies result, diminishing the effective denitrifying volume.</li>
+<li>We were able to show that traditional sampling methods involving
+biweekly or monthly simultaneous in- and outlet sampling may result in
+large errors in the reported rates</li>
+<li>We were able to show that within field bioreactors, the flow field
+may be highly heterogeneous as small particles accumulate at the bottom,
+hydraulic inefficiencies result, diminishing the effective denitrifying
+volume.</li>
 </ul>
-<p>The modeling results also suggest that process-based modeling of as simple systems as woodchip bioreactor columns is far from simple and that there is still much to uncover to have a chance to model denitrification rates in these systems, let alone in much more complicated systems such as soils.</p>
+<p>The modeling results also suggest that process-based modeling of as
+simple systems as woodchip bioreactor columns is far from simple and
+that there is still much to uncover to have a chance to model
+denitrification rates in these systems, let alone in much more
+complicated systems such as soils.</p>
 <p><br/><br/><br/><br/></p>
 </div>
-<div id="publications-associated-with-this-project" class="section level2">
+<div id="publications-associated-with-this-project"
+class="section level2">
 <h2>Publications associated with this project</h2>
 <p><br/></p>
-<p>Liu, W, B. Maxwell, F. Birgand, M. Youssef, G. Chescheir, and S. Tian (2020). “Multipoint High-Frequency Sampling System to Gain Deeper Insights on the Fate of Nitrate in Artificially Drained Fields”. En. In: <em>J. Irrig. Drain. Eng.</em> 146.1. DOI: <a href="https://doi.org/10.1061%2F%28ASCE%29IR.1943-4774.0001438">10.1061/(ASCE)IR.1943-4774.0001438</a>. URL: <a href="http://dx.doi.org/10.1061/(ASCE)IR.1943-4774.0001438">http://dx.doi.org/10.1061/(ASCE)IR.1943-4774.0001438</a>.</p>
-<p>Liu, W, M. A. Youssef, F. Birgand, G. M. Chescheir, S. Tian, and B. M. Maxwell (2020). “Processes and mechanisms controlling nitrate dynamics in an artificially drained field: Insights from high-frequency water quality measurements”. In: <em>Agric. Water Manage.</em> 232, p. 106032. DOI: <a href="https://doi.org/10.1016%2Fj.agwat.2020.106032">10.1016/j.agwat.2020.106032</a>. URL: <a href="http://www.sciencedirect.com/science/article/pii/S0378377419315744">http://www.sciencedirect.com/science/article/pii/S0378377419315744</a>.</p>
-<p>Maxwell, B. M, F. Birgand, L. A. Schipper, G. Barkle, A. A. Rivas, M. J. Helmers, and L. E. Christianson (2020). “High-frequency, in situ sampling of field woodchip bioreactors reveals sources of sampling error and hydraulic inefficiencies”. In: <em>J. Environ. Manage.</em> 272, p. 110996. DOI: <a href="https://doi.org/10.1016%2Fj.jenvman.2020.110996">10.1016/j.jenvman.2020.110996</a>. URL: <a href="http://www.sciencedirect.com/science/article/pii/S0301479720309245">http://www.sciencedirect.com/science/article/pii/S0301479720309245</a>.</p>
-<p>Maxwell, B. M, F. Birgand, L. A. Schipper, L. E. Christianson, S. Tian, M. J. Helmers, D. J. Williams, G. M. Chescheir, and M. A. Youssef (2019a). “Drying-Rewetting Cycles Affect Nitrate Removal Rates in Woodchip Bioreactors”. In: <em>J. Environ. Qual.</em> 48.1, pp. 93-101. DOI: <a href="https://doi.org/10.2134%2Fjeq2018.05.0199">10.2134/jeq2018.05.0199</a>. URL: <a href="http://dx.doi.org/10.2134/jeq2018.05.0199">http://dx.doi.org/10.2134/jeq2018.05.0199</a>.</p>
-<p>Maxwell, B. M, F. Birgand, L. A. Schipper, L. E. Christianson, S. Tian, M. J. Helmers, D. J. Williams, G. M. Chescheir, and M. A. Youssef (2019b). “Increased Duration of Drying-Rewetting Cycles Increases Nitrate Removal in Woodchip Bioreactors”. In: <em>Agricultural &amp; Environmental Letters</em> 4. DOI: <a href="https://doi.org/10.2134%2Fael2019.07.0028">10.2134/ael2019.07.0028</a>. URL: <a href="http://dx.doi.org/10.2134/ael2019.07.0028">http://dx.doi.org/10.2134/ael2019.07.0028</a>.</p>
-<p>Maxwell, B. M, F. Birgand, B. Smith, and K. Aveni-Deforge (2018). “A small-volume multiplexed pumping system for automated, high-frequency water chemistry measurements in volume-limited applications”. En. In: <em>Hydrol. Earth Syst. Sci.</em> 22.11, pp. 5615-5628. DOI: <a href="https://doi.org/10.5194%2Fhess-22-5615-2018">10.5194/hess-22-5615-2018</a>. URL: <a href="https://www.hydrol-earth-syst-sci.net/22/5615/2018/">https://www.hydrol-earth-syst-sci.net/22/5615/2018/</a>.</p>
+<p>Liu, W, B. Maxwell, F. Birgand, M. Youssef, G. Chescheir, and S. Tian
+(2020). “Multipoint High-Frequency Sampling System to Gain Deeper
+Insights on the Fate of Nitrate in Artificially Drained Fields”. En. In:
+<em>J. Irrig. Drain. Eng.</em> 146.1. DOI: <a
+href="https://doi.org/10.1061%2F%28ASCE%29IR.1943-4774.0001438">10.1061/(ASCE)IR.1943-4774.0001438</a>.
+URL: <a
+href="http://dx.doi.org/10.1061/(ASCE)IR.1943-4774.0001438">http://dx.doi.org/10.1061/(ASCE)IR.1943-4774.0001438</a>.</p>
+<p>Liu, W, M. A. Youssef, F. Birgand, G. M. Chescheir, S. Tian, and B.
+M. Maxwell (2020). “Processes and mechanisms controlling nitrate
+dynamics in an artificially drained field: Insights from high-frequency
+water quality measurements”. In: <em>Agric. Water Manage.</em> 232,
+p. 106032. DOI: <a
+href="https://doi.org/10.1016%2Fj.agwat.2020.106032">10.1016/j.agwat.2020.106032</a>.
+URL: <a
+href="http://www.sciencedirect.com/science/article/pii/S0378377419315744">http://www.sciencedirect.com/science/article/pii/S0378377419315744</a>.</p>
+<p>Maxwell, B. M, F. Birgand, L. A. Schipper, G. Barkle, A. A. Rivas, M.
+J. Helmers, and L. E. Christianson (2020). “High-frequency, in situ
+sampling of field woodchip bioreactors reveals sources of sampling error
+and hydraulic inefficiencies”. In: <em>J. Environ. Manage.</em> 272, p.
+110996. DOI: <a
+href="https://doi.org/10.1016%2Fj.jenvman.2020.110996">10.1016/j.jenvman.2020.110996</a>.
+URL: <a
+href="http://www.sciencedirect.com/science/article/pii/S0301479720309245">http://www.sciencedirect.com/science/article/pii/S0301479720309245</a>.</p>
+<p>Maxwell, B. M, F. Birgand, L. A. Schipper, L. E. Christianson, S.
+Tian, M. J. Helmers, D. J. Williams, G. M. Chescheir, and M. A. Youssef
+(2019a). “Drying-Rewetting Cycles Affect Nitrate Removal Rates in
+Woodchip Bioreactors”. In: <em>J. Environ. Qual.</em> 48.1, pp. 93-101.
+DOI: <a
+href="https://doi.org/10.2134%2Fjeq2018.05.0199">10.2134/jeq2018.05.0199</a>.
+URL: <a
+href="http://dx.doi.org/10.2134/jeq2018.05.0199">http://dx.doi.org/10.2134/jeq2018.05.0199</a>.</p>
+<p>Maxwell, B. M, F. Birgand, L. A. Schipper, L. E. Christianson, S.
+Tian, M. J. Helmers, D. J. Williams, G. M. Chescheir, and M. A. Youssef
+(2019b). “Increased Duration of Drying-Rewetting Cycles Increases
+Nitrate Removal in Woodchip Bioreactors”. In: <em>Agricultural &amp;
+Environmental Letters</em> 4. DOI: <a
+href="https://doi.org/10.2134%2Fael2019.07.0028">10.2134/ael2019.07.0028</a>.
+URL: <a
+href="http://dx.doi.org/10.2134/ael2019.07.0028">http://dx.doi.org/10.2134/ael2019.07.0028</a>.</p>
+<p>Maxwell, B. M, F. Birgand, B. Smith, and K. Aveni-Deforge (2018). “A
+small-volume multiplexed pumping system for automated, high-frequency
+water chemistry measurements in volume-limited applications”. En. In:
+<em>Hydrol. Earth Syst. Sci.</em> 22.11, pp. 5615-5628. DOI: <a
+href="https://doi.org/10.5194%2Fhess-22-5615-2018">10.5194/hess-22-5615-2018</a>.
+URL: <a
+href="https://www.hydrol-earth-syst-sci.net/22/5615/2018/">https://www.hydrol-earth-syst-sci.net/22/5615/2018/</a>.</p>
 <p><br/><br/><br/><br/></p>
 </div>
 <div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="refs" class="references">
-<div id="ref-Barford1999-ve">
-<p>Barford, Carol C, Joseph P Montoya, Mark A Altabet, and Ralph Mitchell. 1999. “Steady-State Nitrogen Isotope Effects of N2 and N2O Production in Paracoccus Denitrificans.” <em>Appl. Environ. Microbiol.</em> 65 (3). American Society for Microbiology: 989–94. <a href="https://doi.org/10.1128/AEM.65.3.989-994.1999">https://doi.org/10.1128/AEM.65.3.989-994.1999</a>.</p>
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Barford1999-ve" class="csl-entry">
+Barford, Carol C, Joseph P Montoya, Mark A Altabet, and Ralph Mitchell.
+1999. <span>“<span>Steady-State</span> Nitrogen Isotope Effects of
+<span>N2</span> and <span>N2o</span> Production in Paracoccus
+Denitrificans.”</span> <em>Appl. Environ. Microbiol.</em> 65 (3):
+989–94. <a
+href="https://doi.org/10.1128/AEM.65.3.989-994.1999">https://doi.org/10.1128/AEM.65.3.989-994.1999</a>.
 </div>
-<div id="ref-Birgand2016-to">
-<p>Birgand, François, Kyle Aveni-Deforge, Brad Smith, Bryan Maxwell, Marc Horstman, Alexandra B Gerling, and Cayelan C Carey. 2016. “First Report of a Novel Multiplexer Pumping System Coupled to a Water Quality Probe to Collect High Temporal Frequency in Situ Water Chemistry Measurements at Multiple Sites.” <em>Limnol. Oceanogr. Methods</em> 14 (12): 767–83. <a href="https://doi.org/10.1002/lom3.10122">https://doi.org/10.1002/lom3.10122</a>.</p>
+<div id="ref-Birgand2016-to" class="csl-entry">
+Birgand, François, Kyle Aveni-Deforge, Brad Smith, Bryan Maxwell, Marc
+Horstman, Alexandra B Gerling, and Cayelan C Carey. 2016. <span>“First
+Report of a Novel Multiplexer Pumping System Coupled to a Water Quality
+Probe to Collect High Temporal Frequency in Situ Water Chemistry
+Measurements at Multiple Sites.”</span> <em>Limnol. Oceanogr.
+Methods</em> 14 (12): 767–83. <a
+href="https://doi.org/10.1002/lom3.10122">https://doi.org/10.1002/lom3.10122</a>.
 </div>
-<div id="ref-Christianson2011-bu">
-<p>Christianson, L, and M Helmers. 2011. “Woodchip Bioreactors for Nitrate in Agricultural Drainage.” <em>Iowa State University. Extension and Outreach. PMR 1008</em>.</p>
+<div id="ref-Christianson2011-bu" class="csl-entry">
+Christianson, L, and M Helmers. 2011. <span>“Woodchip Bioreactors for
+Nitrate in Agricultural Drainage.”</span> <em>Iowa State University.
+Extension and Outreach. PMR 1008</em>.
 </div>
-<div id="ref-Liu2020-ke">
-<p>Liu, Wenlong, Bryan Maxwell, François Birgand, Mohamed Youssef, George Chescheir, and Shiying Tian. 2020. “Multipoint High-Frequency Sampling System to Gain Deeper Insights on the Fate of Nitrate in Artificially Drained Fields.” <em>J. Irrig. Drain. Eng.</em> 146 (1). 1801 Alexander Bell Dr, Reston, Va 20191-4400 USA: Asce-Amer Soc Civil Engineers. <a href="https://doi.org/10.1061/(ASCE)IR.1943-4774.0001438">https://doi.org/10.1061/(ASCE)IR.1943-4774.0001438</a>.</p>
+<div id="ref-Liu2020-ke" class="csl-entry">
+Liu, Wenlong, Bryan Maxwell, François Birgand, Mohamed Youssef, George
+Chescheir, and Shiying Tian. 2020. <span>“Multipoint
+<span>High-Frequency</span> Sampling System to Gain Deeper Insights on
+the Fate of Nitrate in Artificially Drained Fields.”</span> <em>J.
+Irrig. Drain. Eng.</em> 146 (1). <a
+href="https://doi.org/10.1061/(ASCE)IR.1943-4774.0001438">https://doi.org/10.1061/(ASCE)IR.1943-4774.0001438</a>.
 </div>
-<div id="ref-Liu2020-jl">
-<p>Liu, Wenlong, Mohamed A Youssef, François Birgand, George M Chescheir, Shiying Tian, and Bryan M Maxwell. 2020. “Processes and Mechanisms Controlling Nitrate Dynamics in an Artificially Drained Field: Insights from High-Frequency Water Quality Measurements.” <em>Agric. Water Manage.</em> 232 (April): 106032. <a href="https://doi.org/10.1016/j.agwat.2020.106032">https://doi.org/10.1016/j.agwat.2020.106032</a>.</p>
+<div id="ref-Liu2020-jl" class="csl-entry">
+Liu, Wenlong, Mohamed A Youssef, François Birgand, George M Chescheir,
+Shiying Tian, and Bryan M Maxwell. 2020. <span>“Processes and Mechanisms
+Controlling Nitrate Dynamics in an Artificially Drained Field: Insights
+from High-Frequency Water Quality Measurements.”</span> <em>Agric. Water
+Manage.</em> 232 (April): 106032. <a
+href="https://doi.org/10.1016/j.agwat.2020.106032">https://doi.org/10.1016/j.agwat.2020.106032</a>.
 </div>
-<div id="ref-Maxwell2019-ht">
-<p>Maxwell, Bryan M, François Birgand, Louis A Schipper, Laura E Christianson, Shiying Tian, Matthew J Helmers, David J Williams, George M Chescheir, and Mohamed A Youssef. 2019a. “Drying–Rewetting Cycles Affect Nitrate Removal Rates in Woodchip Bioreactors.” <em>J. Environ. Qual.</em> 48 (1). Madison, WI: The American Society of Agronomy, Crop Science Society of America, and Soil Science Society of America, Inc.: 93–101. <a href="https://doi.org/10.2134/jeq2018.05.0199">https://doi.org/10.2134/jeq2018.05.0199</a>.</p>
+<div id="ref-Maxwell2019-ht" class="csl-entry">
+Maxwell, Bryan M, François Birgand, Louis A Schipper, Laura E
+Christianson, Shiying Tian, Matthew J Helmers, David J Williams, George
+M Chescheir, and Mohamed A Youssef. 2019a.
+<span>“<span>Drying–Rewetting</span> Cycles Affect Nitrate Removal Rates
+in Woodchip Bioreactors.”</span> <em>J. Environ. Qual.</em> 48 (1):
+93–101. <a
+href="https://doi.org/10.2134/jeq2018.05.0199">https://doi.org/10.2134/jeq2018.05.0199</a>.
 </div>
-<div id="ref-Maxwell2019-ol">
-<p>———. 2019b. “Increased Duration of Drying–Rewetting Cycles Increases Nitrate Removal in Woodchip Bioreactors.” <em>Agricultural &amp; Environmental Letters</em> 4. Madison, WI: The American Society of Agronomy, Crop Science Society of America, and Soil Science Society of America, Inc. <a href="https://doi.org/10.2134/ael2019.07.0028">https://doi.org/10.2134/ael2019.07.0028</a>.</p>
+<div id="ref-Maxwell2019-ol" class="csl-entry">
+———. 2019b. <span>“Increased Duration of <span>Drying–Rewetting</span>
+Cycles Increases Nitrate Removal in Woodchip Bioreactors.”</span>
+<em>Agricultural &amp; Environmental Letters</em> 4. <a
+href="https://doi.org/10.2134/ael2019.07.0028">https://doi.org/10.2134/ael2019.07.0028</a>.
 </div>
-<div id="ref-Maxwell2018-tf">
-<p>Maxwell, Bryan M, François Birgand, Brad Smith, and Kyle Aveni-Deforge. 2018. “A Small-Volume Multiplexed Pumping System for Automated, High-Frequency Water Chemistry Measurements in Volume-Limited Applications.” <em>Hydrol. Earth Syst. Sci.</em> 22 (11). Copernicus GmbH: 5615–28. <a href="https://doi.org/10.5194/hess-22-5615-2018">https://doi.org/10.5194/hess-22-5615-2018</a>.</p>
+<div id="ref-Maxwell2018-tf" class="csl-entry">
+Maxwell, Bryan M, François Birgand, Brad Smith, and Kyle Aveni-Deforge.
+2018. <span>“A Small-Volume Multiplexed Pumping System for Automated,
+High-Frequency Water Chemistry Measurements in Volume-Limited
+Applications.”</span> <em>Hydrol. Earth Syst. Sci.</em> 22 (11):
+5615–28. <a
+href="https://doi.org/10.5194/hess-22-5615-2018">https://doi.org/10.5194/hess-22-5615-2018</a>.
 </div>
-<div id="ref-TOYODA2011">
-<p>Toyoda, Sakae, Midori Yano, Sei-ichi Nishimura, Hiroko Akiyama, Atsushi Hayakawa, Keisuke Koba, Shigeto Sudo, et al. 2011. “Characterization and Production and Consumption Processes of N2o Emitted from Temperate Agricultural Soils Determined via Isotopomer Ratio Analysis.” <em>Global Biogeochemical Cycles - GLOBAL BIOGEOCHEM CYCLE</em> 25 (June). <a href="https://doi.org/10.1029/2009GB003769">https://doi.org/10.1029/2009GB003769</a>.</p>
+<div id="ref-TOYODA2011" class="csl-entry">
+Toyoda, Sakae, Midori Yano, Sei-ichi Nishimura, Hiroko Akiyama, Atsushi
+Hayakawa, Keisuke Koba, Shigeto Sudo, et al. 2011.
+<span>“Characterization and Production and Consumption Processes of N2o
+Emitted from Temperate Agricultural Soils Determined via Isotopomer
+Ratio Analysis.”</span> <em>Global Biogeochemical Cycles - GLOBAL
+BIOGEOCHEM CYCLE</em> 25 (June). <a
+href="https://doi.org/10.1029/2009GB003769">https://doi.org/10.1029/2009GB003769</a>.
 </div>
-<div id="ref-TOYODA2015">
-<p>Toyoda, Sakae, Naohiro Yoshida, and Keisuke Koba. 2015. “Isotopocule analysis of biologically produced nitrous oxide in various environments.” <em>MASS SPECTROMETRY REVIEWS</em> 36 (2): 135–60. <a href="https://doi.org/{10.1002/mas.21459}">https://doi.org/{10.1002/mas.21459}</a>.</p>
+<div id="ref-TOYODA2015" class="csl-entry">
+Toyoda, Sakae, Naohiro Yoshida, and Keisuke Koba. 2015. <span>“<span
+class="nocase">Isotopocule analysis of biologically produced nitrous
+oxide in various environments</span>.”</span> <em><span>MASS
+SPECTROMETRY REVIEWS</span></em> <span>36</span> (<span>2</span>):
+135–60. <a
+href="https://doi.org/{10.1002/mas.21459}">https://doi.org/{10.1002/mas.21459}</a>.
 </div>
-<div id="ref-Wahlen1985-in">
-<p>Wahlen, M, and T Yoshinari. 1985. “Oxygen Isotope Ratios in N2O from Different Environments.” <em>Nature</em> 313 (6005): 780–82. <a href="https://doi.org/10.1038/313780a0">https://doi.org/10.1038/313780a0</a>.</p>
+<div id="ref-Wahlen1985-in" class="csl-entry">
+Wahlen, M, and T Yoshinari. 1985. <span>“Oxygen Isotope Ratios in
+<span>N2o</span> from Different Environments.”</span> <em>Nature</em>
+313 (6005): 780–82. <a
+href="https://doi.org/10.1038/313780a0">https://doi.org/10.1038/313780a0</a>.
 </div>
-<div id="ref-Webster1996-xm">
-<p>Webster, E A, and D W Hopkins. 1996. “Nitrogen and Oxygen Isotope Ratios of Nitrous Oxide Emitted from Soil and Produced by Nitrifying and Denitrifying Bacteria.” <em>Biol. Fertil. Soils</em> 22 (4): 326–30. <a href="https://doi.org/10.1007/BF00334577">https://doi.org/10.1007/BF00334577</a>.</p>
+<div id="ref-Webster1996-xm" class="csl-entry">
+Webster, E A, and D W Hopkins. 1996. <span>“Nitrogen and Oxygen Isotope
+Ratios of Nitrous Oxide Emitted from Soil and Produced by Nitrifying and
+Denitrifying Bacteria.”</span> <em>Biol. Fertil. Soils</em> 22 (4):
+326–30. <a
+href="https://doi.org/10.1007/BF00334577">https://doi.org/10.1007/BF00334577</a>.
 </div>
-<div id="ref-Yoshida1988-fm">
-<p>Yoshida, Naohiro. 1988. “15N-Depleted N2O as a Product of Nitrification.” <em>Nature</em> 335 (6190): 528–29. <a href="https://doi.org/10.1038/335528a0">https://doi.org/10.1038/335528a0</a>.</p>
+<div id="ref-Yoshida1988-fm" class="csl-entry">
+Yoshida, Naohiro. 1988. <span>“15n-Depleted <span>N2o</span> as a
+Product of Nitrification.”</span> <em>Nature</em> 335 (6190): 528–29. <a
+href="https://doi.org/10.1038/335528a0">https://doi.org/10.1038/335528a0</a>.
 </div>
-<div id="ref-Yoshida2000-nb">
-<p>Yoshida, Naohiro, and Sakae Toyoda. 2000. “Constraining the Atmospheric N2O Budget from Intramolecular Site Preference in N2O Isotopomers.” <em>Nature</em> 405: 330–34.</p>
+<div id="ref-Yoshida2000-nb" class="csl-entry">
+Yoshida, Naohiro, and Sakae Toyoda. 2000. <span>“Constraining the
+Atmospheric <span>N2o</span> Budget from Intramolecular Site Preference
+in <span>N2o</span> Isotopomers.”</span> <em>Nature</em> 405: 330–34.
 </div>
 </div>
 </div>

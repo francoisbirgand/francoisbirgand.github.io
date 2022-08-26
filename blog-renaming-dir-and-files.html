@@ -13,6 +13,7 @@
 
 <title>blog-renaming-dir-and-files.knit</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -58,6 +59,29 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -82,6 +106,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +166,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +265,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +278,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -262,7 +293,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -285,7 +316,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -303,7 +334,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -382,7 +413,7 @@ $(document).ready(function () {
 <h1>Blog: renaming directories and files</h1>
 <div id="by-françois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-03 and updated 2022-04-03</em></p>
+<p><em>started 2017-11-03 and updated 2022-08-26</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -400,30 +431,56 @@ $(document).ready(function () {
 </div>
 <div id="file-database-in-a-directory-tree" class="section level2">
 <h2>File database in a directory tree</h2>
-<p>I keep a database of high frequency flow and concentration data, which my colleagues and I have used to calculate uncertainties on annual nutrient and material loads<span class="citation"><sup><a href="#ref-Moatar2013-aa">1</a>–<a href="#ref-Birgand2004-fm">8</a></sup></span>. Until now, I had found very practical to keep the data in <em>hydrological years</em>, which for the Northern hemisphere and in temperate climates starts around the first of september and ends late August the next year. I thus kept in the filenames, e.g., “99-00” to show that the data contained were obtained between Sep 01, 1999 and Aug 31, 2000.</p>
-<p>I have recently worked with daily rainfall data from Oxford, U.K., dating back from 1828. The two digit system has thus become obsolete… So I decided to change everything back to four digits for years. Two problems arose:</p>
+<p>I keep a database of high frequency flow and concentration data,
+which my colleagues and I have used to calculate uncertainties on annual
+nutrient and material loads<span class="citation"><sup><a
+href="#ref-Moatar2013-aa" role="doc-biblioref">1</a>–<a
+href="#ref-Birgand2004-fm" role="doc-biblioref">8</a></sup></span>.
+Until now, I had found very practical to keep the data in
+<em>hydrological years</em>, which for the Northern hemisphere and in
+temperate climates starts around the first of september and ends late
+August the next year. I thus kept in the filenames, e.g., “99-00” to
+show that the data contained were obtained between Sep 01, 1999 and Aug
+31, 2000.</p>
+<p>I have recently worked with daily rainfall data from Oxford, U.K.,
+dating back from 1828. The two digit system has thus become obsolete… So
+I decided to change everything back to four digits for years. Two
+problems arose:</p>
 <ol style="list-style-type: decimal">
 <li>I had lots of files to change…</li>
-<li>The directory tree also contained years in the same “99-00” format just like below:</li>
+<li>The directory tree also contained years in the same “99-00” format
+just like below:</li>
 </ol>
 <p><br/></p>
 <pre><code>[51] &quot;/Data/Yar/MO/99-00/Lin_1min_Yar_MO_99-00.txt&quot;                        
 [52] &quot;/Data/Yar/MO/99-00/Lin_2min_Yar_MO_99-00.txt&quot;                        
 [53] &quot;/Data/Yar/MO/99-00/Lin_5min_Yar_MO_99-00.txt&quot; </code></pre>
 <p><br/></p>
-<p>I decided to use the <code>file.rename()</code> function in R to deal with the problem. I found this <a href="https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/">very good “Programatically rename files (or do other stuff to them) in R” post</a>, I tried to follow it but it did not work…</p>
+<p>I decided to use the <code>file.rename()</code> function in R to deal
+with the problem. I found this <a
+href="https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/">very
+good “Programatically rename files (or do other stuff to them) in R”
+post</a>, I tried to follow it but it did not work…</p>
 <p><br/></p>
-<p>After a bit of frustration, I realized that as I was trying to rename <strong>both the files and the directories at the same time</strong>, and I got the angry <code>'No such file or directory'</code>. This is the reason for the post.</p>
+<p>After a bit of frustration, I realized that as I was trying to rename
+<strong>both the files and the directories at the same time</strong>,
+and I got the angry <code>'No such file or directory'</code>. This is
+the reason for the post.</p>
 <p><br/></p>
 <blockquote>
-<p>When one needs to change the <em>same pattern</em> in the names of both directories and files, things must be done in sequence, directory names first and filenames in second.</p>
+<p>When one needs to change the <em>same pattern</em> in the names of
+both directories and files, things must be done in sequence, directory
+names first and filenames in second.</p>
 </blockquote>
 <p><br/></p>
-<p>Now, I stumbled upon lots of mistakes and I certainly spent more time than I would have changing everything by hand… But I would not have learned and shared things. <br/></p>
+<p>Now, I stumbled upon lots of mistakes and I certainly spent more time
+than I would have changing everything by hand… But I would not have
+learned and shared things. <br/></p>
 </div>
 <div id="make-a-list-of-patterns" class="section level2">
 <h2>Make a list of patterns</h2>
-<p>I used this code to generate a list of “00-01” and corresponding “2000-2001”:</p>
+<p>I used this code to generate a list of “00-01” and corresponding
+“2000-2001”:</p>
 <pre class="r"><code>years&lt;-(1979:2017)
 pattern&lt;-matrix(NA,nrow = length(years)-1,2)
 j = 1
@@ -445,7 +502,8 @@ head(pattern)</code></pre>
 </div>
 <div id="automatically-rename-directories" class="section level2">
 <h2>Automatically rename directories</h2>
-<p>For this, I used the code below, which contains interesting tricks <br/></p>
+<p>For this, I used the code below, which contains interesting tricks
+<br/></p>
 <pre class="r"><code>for (i in 1:nrow(pattern)){
   is.pattern = grep(pattern[i,1],dirlist)
   if (identical(is.pattern,integer(0)) == FALSE){
@@ -457,7 +515,10 @@ head(pattern)</code></pre>
 <p><br/></p>
 <div id="listing-directory-names" class="section level3">
 <h3>Listing directory names</h3>
-<p>First, the code to make a list of all directories down a directory tree is, as long as the file for the code is physically located in a directory downstream of which one wants all the recursive directories. I go into more details ablout this further down.</p>
+<p>First, the code to make a list of all directories down a directory
+tree is, as long as the file for the code is physically located in a
+directory downstream of which one wants all the recursive directories. I
+go into more details ablout this further down.</p>
 <pre class="r"><code>dirlist&lt;-list.dirs(recursive = TRUE)</code></pre>
 <p><br/> This yielded this:</p>
 <pre><code>[1] &quot;.&quot;  &quot;./A1&quot;  &quot;./A1/Cl&quot;  &quot;./A1/Cl/98-99&quot;  &quot;./A1/DIC&quot; &quot;./A1/DIC/98-99&quot; &quot;./A1/DOC&quot;      
@@ -465,16 +526,34 @@ head(pattern)</code></pre>
 [15] &quot;./A1/PO4&quot; &quot;./A1/PO4/98-99&quot; &quot;./A1/TN&quot;  &quot;./A1/TN/98-99&quot;  &quot;./A1/TP&quot;  &quot;./A1/TP/98-99&quot; 
 and more</code></pre>
 <p><br/></p>
-<p>Then I used the <code>grep()</code> function, to list the row name of the return <code>dirlist</code>. When there was no match, R returned <code>integer(0)</code> which means a vector of length 0. I had to only make changes when there was a match so that was in the case the return from the <code>grep()</code> function was not <code>integer(0)</code>. I found the <code>identical()</code> function that yields a boolean <code>TRUE</code> or <code>FALSE</code>.</p>
+<p>Then I used the <code>grep()</code> function, to list the row name of
+the return <code>dirlist</code>. When there was no match, R returned
+<code>integer(0)</code> which means a vector of length 0. I had to only
+make changes when there was a match so that was in the case the return
+from the <code>grep()</code> function was not <code>integer(0)</code>. I
+found the <code>identical()</code> function that yields a boolean
+<code>TRUE</code> or <code>FALSE</code>.</p>
 <p><br/></p>
 </div>
-<div id="applying-changes-through-the-whole-directory-tree" class="section level3">
+<div id="applying-changes-through-the-whole-directory-tree"
+class="section level3">
 <h3>Applying changes through the whole directory tree</h3>
-<p>The heart of the automatic changes is really with the <code>sapply()</code> function here, which I borrowed from the <a href="https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/">post</a>. It is very smart and efficient.</p>
+<p>The heart of the automatic changes is really with the
+<code>sapply()</code> function here, which I borrowed from the <a
+href="https://www.r-bloggers.com/programatically-rename-files-or-do-other-stuff-to-them-in-r/">post</a>.
+It is very smart and efficient.</p>
 <p><br/></p>
 <pre class="r"><code>sapply(dirlist[is.pattern],FUN=function(eachPath){ 
       file.rename(from=eachPath,to= sub(pattern= pattern[i,2],replacement = pattern[i,1],eachPath))</code></pre>
-<p><br/> The last important thing I want to share is that to have the code work for any directory on your computer, it is better to provide absolute file names. For this, I have chosen to add a path to files and make directory and file lists from it. Now, there is a subtlety: Notice in the code below that I purposely did not add a <code>/</code> at the end of the path name. This is because the function <code>list.dirs()</code> automatically adds one, but not the function <code>list.files()</code>…! So to get the full file name, I just added a <code>/</code> in the code so that the file list be correct.<br />
+<p><br/> The last important thing I want to share is that to have the
+code work for any directory on your computer, it is better to provide
+absolute file names. For this, I have chosen to add a path to files and
+make directory and file lists from it. Now, there is a subtlety: Notice
+in the code below that I purposely did not add a <code>/</code> at the
+end of the path name. This is because the function
+<code>list.dirs()</code> automatically adds one, but not the function
+<code>list.files()</code>…! So to get the full file name, I just added a
+<code>/</code> in the code so that the file list be correct.<br />
 <br/></p>
 <pre class="r"><code>path&lt;-&quot;/Users/francoisbirgand/Google Drive/Echantillonnage/Methods/Data&quot;
 dirlist&lt;-list.dirs(path,recursive = TRUE)      # recursive = TRUE means that all dir in the tree will appear
@@ -516,31 +595,76 @@ for (i in 1:nrow(pattern)){
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="refs" class="references">
-<div id="ref-Moatar2013-aa">
-<p>1. Moatar, F., Meybeck, M., Raymond, S., Birgand, F. &amp; Curie, F. River flux uncertainties predicted by hydrological variability and riverine material behaviour. <em>Hydrol. Process.</em> <strong>27,</strong> 3535–3546 (2013).</p>
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body" line-spacing="2">
+<div id="ref-Moatar2013-aa" class="csl-entry">
+<div class="csl-left-margin">1. </div><div
+class="csl-right-inline">Moatar, F., Meybeck, M., Raymond, S., Birgand,
+F. &amp; Curie, F. <a href="https://doi.org/10.1002/hyp.9464">River flux
+uncertainties predicted by hydrological variability and riverine
+material behaviour</a>. <em>Hydrol. Process.</em> <strong>27,</strong>
+3535–3546 (2013).</div>
 </div>
-<div id="ref-Birgand2013-dr">
-<p>2. Birgand, F., Lellouche, G. &amp; Appelboom, T. W. Measuring flow in non-ideal conditions for short-term projects: Uncertainties associated with the use of stage-discharge rating curves. <em>J. Hydrol.</em> <strong>503,</strong> 186–195 (2013).</p>
+<div id="ref-Birgand2013-dr" class="csl-entry">
+<div class="csl-left-margin">2. </div><div
+class="csl-right-inline">Birgand, F., Lellouche, G. &amp; Appelboom, T.
+W. <a href="https://doi.org/10.1016/j.jhydrol.2013.09.007">Measuring
+flow in non-ideal conditions for short-term projects: Uncertainties
+associated with the use of stage-discharge rating curves</a>. <em>J.
+Hydrol.</em> <strong>503,</strong> 186–195 (2013).</div>
 </div>
-<div id="ref-Birgand2011-cp">
-<p>3. Birgand, F., Appelboom, T. W., Chescheir, G. M. &amp; Skaggs, R. W. Estimating nitrogen, phosphorus, and carbon fluxes in forested and mixed-used watersheds of the lower coastal plain of north carolina: Uncertainties associated with infrequent sampling. <em>Trans. ASABE</em> <strong>54,</strong> 2099–2110 (2011).</p>
+<div id="ref-Birgand2011-cp" class="csl-entry">
+<div class="csl-left-margin">3. </div><div
+class="csl-right-inline">Birgand, F., Appelboom, T. W., Chescheir, G. M.
+&amp; Skaggs, R. W. <a
+href="https://doi.org/10.13031/2013.40668">Estimating nitrogen,
+phosphorus, and carbon fluxes in forested and mixed-used watersheds of
+the lower coastal plain of north carolina: Uncertainties associated with
+infrequent sampling</a>. <em>Trans. ASABE</em> <strong>54,</strong>
+2099–2110 (2011).</div>
 </div>
-<div id="ref-Birgand2011-og">
-<p>4. Birgand, F., Faucheux, C., Gruau, G., Moatar, F. &amp; Meybeck, M. Uncertainties in assessing annual nitrate loads and concentration indicators: Part 2. Deriving sampling frequency charts in brittany, france. <em>Trans. ASABE</em> <strong>54,</strong> 93–104 (2011).</p>
+<div id="ref-Birgand2011-og" class="csl-entry">
+<div class="csl-left-margin">4. </div><div
+class="csl-right-inline">Birgand, F., Faucheux, C., Gruau, G., Moatar,
+F. &amp; Meybeck, M. <a
+href="https://doi.org/10.13031/2013.36263">Uncertainties in assessing
+annual nitrate loads and concentration indicators: Part 2. Deriving
+sampling frequency charts in brittany, france</a>. <em>Trans. ASABE</em>
+<strong>54,</strong> 93–104 (2011).</div>
 </div>
-<div id="ref-Birgand2010-qd">
-<p>5. Birgand, F. <em>et al.</em> Uncertainties in assessing annual nitrate loads and concentration indicators: Part 1. Impact of sampling frequency and load estimation algorithms. <em>Trans. ASABE</em> <strong>53,</strong> 437–446 (2010).</p>
+<div id="ref-Birgand2010-qd" class="csl-entry">
+<div class="csl-left-margin">5. </div><div
+class="csl-right-inline">Birgand, F. <em>et al.</em> <a
+href="https://doi.org/10.13031/2013.29584">Uncertainties in assessing
+annual nitrate loads and concentration indicators: Part 1. Impact of
+sampling frequency and load estimation algorithms</a>. <em>Trans.
+ASABE</em> <strong>53,</strong> 437–446 (2010).</div>
 </div>
-<div id="ref-Birgand2009-bw">
-<p>6. Birgand, F. <em>et al.</em> Une approche quantitative du rôle de la fréquence d’échantillonnage sur les incertitudes associées aux calculs des flux et des concentrations moyennes en nitrate en bretagne. <em>Ingénieries</em> <strong>59-60,</strong> 23–37 (2009).</p>
+<div id="ref-Birgand2009-bw" class="csl-entry">
+<div class="csl-left-margin">6. </div><div
+class="csl-right-inline">Birgand, F. <em>et al.</em> Une approche
+quantitative du r<span>ô</span>le de la fr<span>é</span>quence
+d’<span>é</span>chantillonnage sur les incertitudes
+associ<span>é</span>es aux calculs des flux et des concentrations
+moyennes en nitrate en bretagne. <em>Ing<span>é</span>nieries</em>
+<strong>59-60,</strong> 23–37 (2009).</div>
 </div>
-<div id="ref-Moatar2009-db">
-<p>7. Moatar, F., Birgand, F., Meybeck, M., Faucheux, C. &amp; Raymond, S. Incertitudes sur les métriques de qualité des cours d’eau (médianes et quantiles de concentrations, flux, cas des nutriments) évaluées a partir de suivis discrets. <em>La Houille Blanche</em> 68–76 (2009). doi:<a href="https://doi.org/10.1051/lhb/2009029">10.1051/lhb/2009029</a></p>
+<div id="ref-Moatar2009-db" class="csl-entry">
+<div class="csl-left-margin">7. </div><div
+class="csl-right-inline">Moatar, F., Birgand, F., Meybeck, M., Faucheux,
+C. &amp; Raymond, S. Incertitudes sur les m<span>é</span>triques de
+qualit<span>é</span> des cours d’eau (m<span>é</span>dianes et quantiles
+de concentrations, flux, cas des nutriments) <span
+class="nocase">é</span>valu<span>é</span>es a partir de suivis discrets.
+<em>La Houille Blanche</em> 68–76 (2009). doi:<a
+href="https://doi.org/10.1051/lhb/2009029">10.1051/lhb/2009029</a></div>
 </div>
-<div id="ref-Birgand2004-fm">
-<p>8. Birgand, F. <em>et al.</em> Mesure des flux et échantillonnage des matières en suspension sur de petits cours d’eau. <em>Ingénieries</em> <strong>40,</strong> 21–35 (2004).</p>
+<div id="ref-Birgand2004-fm" class="csl-entry">
+<div class="csl-left-margin">8. </div><div
+class="csl-right-inline">Birgand, F. <em>et al.</em> Mesure des flux et
+<span class="nocase">é</span>chantillonnage des mati<span>è</span>res en
+suspension sur de petits cours d’eau. <em>Ing<span>é</span>nieries</em>
+<strong>40,</strong> 21–35 (2004).</div>
 </div>
 </div>
 </div>

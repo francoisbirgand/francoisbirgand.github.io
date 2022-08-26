@@ -16,12 +16,12 @@ var imlocation = "images/";
  }
 image = new ImageArray(7);
 image[0] = 'bioreactor-column.png';
-image[1] = 'CLDN_Gaugecam.png';
+image[1] = 'gauging.JPG';
 image[2] = 'CLMD_Jun8-18.png';
-image[3] = 'daniatCLMD.png';
+image[3] = 'Claridge-workers.JPG';
 image[4] = 'lonniepoolwetland.png';
-image[5] = 'CLDNwinter.png';
-image[6] = 'CLDN_winter.png';
+image[5] = 'REEP-bioreactor-header.png';
+image[6] = 'scan-on-knees.jpg';
 var currentdate = new Date();
 var imagenumber = currentdate.getDay();
 document.write('<img src="' + imlocation + image[imagenumber] + '">');

@@ -13,6 +13,7 @@
 
 <title>Research Projects</title>
 
+<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -58,6 +59,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -82,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -234,7 +243,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +256,7 @@ $(document).ready(function () {
   <a href="research.html">Research</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Publications
      
     <span class="caret"></span>
@@ -262,7 +271,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Teaching
      
     <span class="caret"></span>
@@ -285,7 +294,7 @@ $(document).ready(function () {
   <a href="people.html">People</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NC State
      
     <span class="caret"></span>
@@ -303,7 +312,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-link"></span>
      
     Connect
@@ -386,28 +395,36 @@ $(document).ready(function () {
 <div id="biogeochemistry-ecological-engineering" class="section level3">
 <h3>Biogeochemistry &amp; Ecological Engineering</h3>
 <ul>
-<li><p><a href="researchNR.html">Water quality benefits of a constructed coastal marsh</a></p></li>
+<li><p><a href="researchNR.html">Water quality benefits of a constructed
+coastal marsh</a></p></li>
 <li><p>Water quality benefits of a stream restoration</p></li>
-<li><p><a href="researchWB.html">Transforming Denitrifying Bioreactor Research and Applications: Unveiling the Inside of the Blackbox</a></p></li>
+<li><p><a href="researchWB.html">Transforming Denitrifying Bioreactor
+Research and Applications: Unveiling the Inside of the
+Blackbox</a></p></li>
 </ul>
 <p><br/><br/></p>
 </div>
-<div id="innovations-in-hydrology-and-water-quality-monitoring" class="section level3">
+<div id="innovations-in-hydrology-and-water-quality-monitoring"
+class="section level3">
 <h3>Innovations in Hydrology and Water Quality Monitoring</h3>
 <ul>
 <li><p>High frequency water quality monitoring</p></li>
-<li><p>Expanding high frequency water quality to high spatial resolution</p></li>
-<li><p><a href="http://gaugecam.org/">Image-based water level monitoring: the GaugeCam project</a></p></li>
+<li><p>Expanding high frequency water quality to high spatial
+resolution</p></li>
+<li><p><a href="http://gaugecam.org/">Image-based water level
+monitoring: the GaugeCam project</a></p></li>
 <li><p>Image-based raingauge</p></li>
 </ul>
 <p><br/><br/></p>
 </div>
-<div id="metrology-of-sampling-strategies-in-watersheds" class="section level3">
+<div id="metrology-of-sampling-strategies-in-watersheds"
+class="section level3">
 <h3>Metrology of Sampling Strategies in Watersheds</h3>
 <ul>
 <li><p>Deriving sampling frequency charts in Brittany, France</p></li>
 <li><p>Deriving sampling frequency charts in North Carolina</p></li>
-<li><p>Evaluation of time proportional sampling for the evaluation of annual nutrient fluxes at the watershed scale</p></li>
+<li><p>Evaluation of time proportional sampling for the evaluation of
+annual nutrient fluxes at the watershed scale</p></li>
 </ul>
 <p><br/><br/><br/><br/></p>
 </div>
@@ -416,34 +433,91 @@ $(document).ready(function () {
 <h2>Recent and current grants</h2>
 <p><br/></p>
 <ul>
-<li><p>Low-Cost Visual Sensing of Stormwater Outlet Flow. <em>NC DOT</em> – <strong>$185,482</strong>      Jan 2022 to Dec 2024</p></li>
-<li><p>Hydrological Effects of a Eucalyptus Plantation in Uruguay. <em>Colonvade</em> – <strong>$44,002</strong>      Jun 2019 to Dec 2021</p></li>
-<li><p>Collaborative Research: Consequences of changing oxygen availability for carbon cycling in freshwater ecosystems. <em>NSF</em> – <strong>$63,073</strong>      Sep 2018 to Aug 2022</p></li>
-<li><p>Continuing Intensive Monitoring of Nutrient and Material Load in Claridge Nursery Stream “the Canal”: assessing the water quality impacts &amp; benefits of a stream restoration in the coastal plain. <em>NC Department of Transportation</em> – <strong>$528,412</strong>      Aug 2016 to Oct 2020</p></li>
-<li><p>Using Smart Control and Real-Time Data Collection to Improve SCM Design and Performance. <em>Clean Water Management Trust Fund</em> – <strong>$298,135</strong>      Oct 2016 to Jul 2020</p></li>
-<li><p>Transforming Denitrifying Bioreactor Research and Applications: Unveiling the Inside of the Blackbox. <em>USDA NIFA</em> – <strong>$499,900</strong>      Jun 2016 to Dec 2020 <br/><br/><br/><br/></p></li>
+<li><p>Low-Cost Visual Sensing of Stormwater Outlet Flow. <em>NCDOT</em>
+– <strong>$185,482</strong>      Jan 2022 to Dec 2024</p></li>
+<li><p>Hydrological Effects of a Eucalyptus Plantation in Uruguay.
+<em>Colonvade</em> – <strong>$44,002</strong>      Jun 2019 to Dec
+2021</p></li>
+<li><p>Collaborative Research: Consequences of changing oxygen
+availability for carbon cycling in freshwater ecosystems. <em>NSF</em> –
+<strong>$63,073</strong>      Sep 2018 to Aug 2022</p></li>
+<li><p>Continuing Intensive Monitoring of Nutrient and Material Load in
+Claridge Nursery Stream “the Canal”: assessing the water quality impacts
+&amp; benefits of a stream restoration in the coastal plain. <em>NC
+Department of Transportation</em> – <strong>$528,412</strong>      Aug
+2016 to Oct 2020</p></li>
+<li><p>Using Smart Control and Real-Time Data Collection to Improve SCM
+Design and Performance. <em>Clean Water Management Trust Fund</em> –
+<strong>$298,135</strong>      Oct 2016 to Jul 2020</p></li>
+<li><p>Transforming Denitrifying Bioreactor Research and Applications:
+Unveiling the Inside of the Blackbox. <em>USDA NIFA</em> –
+<strong>$499,900</strong>      Jun 2016 to Dec 2020
+<br/><br/><br/><br/></p></li>
 </ul>
 </div>
 <div id="past-projects" class="section level2">
 <h2>Past projects</h2>
 <p><br/></p>
 <ul>
-<li><p>Quantifying Treatment Potential of Floating Treatment Wetlands to Benefit North Carolina Waters Unising Improved Methodology and Novel Technology. <em>NCSU Water Resources Research Institute</em> – <strong>$9,994</strong>      Apr 2016 to Aug 2018</p></li>
-<li><p>A Mesocosm Study to Determine Nitrogen Assimilation Capacity of a Restored Wetland Slated to Receive Pumped Drainage Water - a Critical Component to Maximize Improvement to the Pamlico Sound. <em>NCSU Water Resources Research Institute</em> – <strong>$29,914</strong>      Mar 2013 to Feb 2016</p></li>
-<li><p>Intensive Monitoring of Nutrient and Material Load in Claridge Nursery Stream ‘The Canal’ Pre-, During and Post Construction of Highway 70 Bypass in Wayne County, NC. <em>NC Department of Transportation</em> – <strong>$367,644</strong>      May 2013 to Jun 2016</p></li>
-<li><p>Predicting Water Quality Impacts of Rerouting Drainage Water From the Pamlico Sound to Restored Wetlands. <em>USDC NOAA</em> – <strong>$19,814</strong>      Sep 2012 to Apr 2012</p></li>
-<li><p>Predicting Water Quality Impacts of Rerouting Drainage Water From the Pamlico Sound to Restored Wetlands. <em>NCSU Water Resources Research Institute</em> – <strong>$19,814</strong>      Sep 2012 to Aug 2014</p></li>
-<li><p>Effects of Biofuel Planting, Growth and Harvesting on the Hydrology and Water Quality of Pine Plantations. <em>Weyerhaeuser NR Co.</em> – <strong>$780,000</strong>      Apr 2012 to Dec 2015</p></li>
-<li><p>Carbon Sequestration and Greenhouse Gas Emissions in Restored Salt Marshes. <em>USGS</em> – <strong>$56,808</strong>      Aug 2011 to Jan 2014</p></li>
-<li><p>Quantification of Nutrient and Organic Matter Fluxes in a Restore Tidal Marsh. <em>NC Sea Grant Program</em> – <strong>$9,500</strong>      Apr 2011 to Sep 2012</p></li>
-<li><p>Quantification of Nutrient and Organic Matter Fluxes in a Restored Tidal Marsh. <em>NCSU Water Resources Research Institute</em> – <strong>$20,000</strong>      Apr 2011 to Sep 2012</p></li>
-<li><p>Design and Implementation of an Innovative Water management system in Hyde County, NC: Phase 1. <em>NC Coastal Federation</em> – <strong>$108,934</strong>      Feb 2011 to Jun 2019</p></li>
-<li><p>Water Quality &amp; Biota Monitoring and Assessment of NC DFR Projects in Wayne, Durham and Granville Counties. <em>NC DENR</em> – <strong>$17,000</strong>      Jul 2010 to Jun 2011</p></li>
-<li><p>Deriving Sampling Frequency Guidelines For Water Quality Monitoring in North Carolina. <em>NCSU Water Resources Research Institute</em> – <strong>$30,754</strong>      Jul 2010 to Aug 2011</p></li>
-<li><p>Optimization of Southeastern Forest Biomass Crop Production: A Watershed Scale Evaluation of the Sustainability and Productivity of Dedicated Energy Crop and Woody Biomass Operations. <em>US Department of Energy</em> – <strong>$2,092,892</strong>      Sep 2010 to Sep 2016</p></li>
-<li><p>Quantification of In-Stream Water Quality Benefits of a Restored Coastal Marsh. <em>NC DENR</em> – <strong>$166,170</strong>      Apr 2010 to Dec 2012</p></li>
-<li><p>Analysis of the Effects of Biofuel Planting, Growth, and Harvesting on the Hydrology and Water Quality of Pine Plantations. <em>Weyerhaeuser Co.</em> – <strong>$620,320</strong>      Dec 2008 to Dec 2011</p></li>
-<li><p>Hydrologic Impacts of Rerouting Pumped Agricultural Drainage Water Through a Historical and Restored Wetland System as Part of a Innovative Integrated Water Management System in Hyde County, NC. <em>NC Coastal Federation</em> – <strong>$19,202</strong>      Sep 2008 to Jul 2012</p></li>
+<li><p>Quantifying Treatment Potential of Floating Treatment Wetlands to
+Benefit North Carolina Waters Unising Improved Methodology and Novel
+Technology. <em>NCSU Water Resources Research Institute</em> –
+<strong>$9,994</strong>      Apr 2016 to Aug 2018</p></li>
+<li><p>A Mesocosm Study to Determine Nitrogen Assimilation Capacity of a
+Restored Wetland Slated to Receive Pumped Drainage Water - a Critical
+Component to Maximize Improvement to the Pamlico Sound. <em>NCSU Water
+Resources Research Institute</em> – <strong>$29,914</strong>      Mar
+2013 to Feb 2016</p></li>
+<li><p>Intensive Monitoring of Nutrient and Material Load in Claridge
+Nursery Stream ‘The Canal’ Pre-, During and Post Construction of Highway
+70 Bypass in Wayne County, NC. <em>NC Department of Transportation</em>
+– <strong>$367,644</strong>      May 2013 to Jun 2016</p></li>
+<li><p>Predicting Water Quality Impacts of Rerouting Drainage Water From
+the Pamlico Sound to Restored Wetlands. <em>USDC NOAA</em> –
+<strong>$19,814</strong>      Sep 2012 to Apr 2012</p></li>
+<li><p>Predicting Water Quality Impacts of Rerouting Drainage Water From
+the Pamlico Sound to Restored Wetlands. <em>NCSU Water Resources
+Research Institute</em> – <strong>$19,814</strong>      Sep 2012 to Aug
+2014</p></li>
+<li><p>Effects of Biofuel Planting, Growth and Harvesting on the
+Hydrology and Water Quality of Pine Plantations. <em>Weyerhaeuser NR
+Co.</em> – <strong>$780,000</strong>      Apr 2012 to Dec 2015</p></li>
+<li><p>Carbon Sequestration and Greenhouse Gas Emissions in Restored
+Salt Marshes. <em>USGS</em> – <strong>$56,808</strong>      Aug 2011 to
+Jan 2014</p></li>
+<li><p>Quantification of Nutrient and Organic Matter Fluxes in a Restore
+Tidal Marsh. <em>NC Sea Grant Program</em> – <strong>$9,500</strong>    
+ Apr 2011 to Sep 2012</p></li>
+<li><p>Quantification of Nutrient and Organic Matter Fluxes in a
+Restored Tidal Marsh. <em>NCSU Water Resources Research Institute</em> –
+<strong>$20,000</strong>      Apr 2011 to Sep 2012</p></li>
+<li><p>Design and Implementation of an Innovative Water management
+system in Hyde County, NC: Phase 1. <em>NC Coastal Federation</em> –
+<strong>$108,934</strong>      Feb 2011 to Jun 2019</p></li>
+<li><p>Water Quality &amp; Biota Monitoring and Assessment of NC DFR
+Projects in Wayne, Durham and Granville Counties. <em>NC DENR</em> –
+<strong>$17,000</strong>      Jul 2010 to Jun 2011</p></li>
+<li><p>Deriving Sampling Frequency Guidelines For Water Quality
+Monitoring in North Carolina. <em>NCSU Water Resources Research
+Institute</em> – <strong>$30,754</strong>      Jul 2010 to Aug
+2011</p></li>
+<li><p>Optimization of Southeastern Forest Biomass Crop Production: A
+Watershed Scale Evaluation of the Sustainability and Productivity of
+Dedicated Energy Crop and Woody Biomass Operations. <em>US Department of
+Energy</em> – <strong>$2,092,892</strong>      Sep 2010 to Sep
+2016</p></li>
+<li><p>Quantification of In-Stream Water Quality Benefits of a Restored
+Coastal Marsh. <em>NC DENR</em> – <strong>$166,170</strong>      Apr
+2010 to Dec 2012</p></li>
+<li><p>Analysis of the Effects of Biofuel Planting, Growth, and
+Harvesting on the Hydrology and Water Quality of Pine Plantations.
+<em>Weyerhaeuser Co.</em> – <strong>$620,320</strong>      Dec 2008 to
+Dec 2011</p></li>
+<li><p>Hydrologic Impacts of Rerouting Pumped Agricultural Drainage
+Water Through a Historical and Restored Wetland System as Part of a
+Innovative Integrated Water Management System in Hyde County, NC. <em>NC
+Coastal Federation</em> – <strong>$19,202</strong>      Sep 2008 to Jul
+2012</p></li>
 </ul>
 </div>
 
