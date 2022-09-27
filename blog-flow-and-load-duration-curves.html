@@ -391,7 +391,7 @@ $(document).ready(function () {
 <h1>Blog: flow and load duration curves</h1>
 <div id="by-beth-allen-and-françois-birgand" class="section level3">
 <h3><em>by Beth Allen and François Birgand</em></h3>
-<p><em>started 2011-09-11 and updated 2022-08-26</em></p>
+<p><em>started 2011-09-11 and updated 2022-09-27</em></p>
 <p><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -412,9 +412,10 @@ chemistry in watersheds. One of the techniques in which we have applied
 to an entire year of water quality and hydrology data is a method that
 assesses how relatively reactive nutrient/sediment loading is to flow
 and the relative flashiness of a watershed. This method, referred to as
-load and flow duration curves, determines the percentages of the total
-load or Mass (Mk%) and volume of Water (Wk%) that occur in a percentage
-of the total sampling time, termed probability of occurrence.</p>
+cumulative load and flow volume duration curves, determines the
+percentages of the total load or Mass (Mk%) and volume of Water (Wk%)
+that occur in a percentage of the total sampling time, termed
+probability of occurrence.</p>
 <p>Mk% and Wk% duration curves can be plotted as a function of the
 probability of occurrence, which provides an interesting way of
 demonstrating how loading relates to flow and varies among water quality
@@ -497,11 +498,11 @@ par(mar=c(4.5,4.5,4,4.5))     # defines the sizes, in number of lines, for the m
 </div>
 <div id="sorting-flow-and-load-values" class="section level2">
 <h2>Sorting flow and load values</h2>
-<p>Flow duration curves represent the percentage of the total flow that
-occurred in x% of the time corresponding to the highest flows. The same
-applies for loads. This might sound a bit merky, but hopefully it will
-not with the further explanations below. To get there, one first needs
-to order flow and loads in descending order. <br/><br/></p>
+<p>Flow volume duration curves represent the percentage of the total
+flow that occurred in x% of the time corresponding to the highest flows.
+The same applies for loads. This might sound a bit merky, but hopefully
+it will not with the further explanations below. To get there, one first
+needs to order flow and loads in descending order. <br/><br/></p>
 <pre class="r"><code>QSort=sort(Q,decreasing = TRUE)   #Sorts instantaneous flow rates in descending order
 LSort=sort(L,decreasing = TRUE)   #Sorts instantaneous flux values in descending order</code></pre>
 <p><br/><br/></p>
@@ -544,8 +545,8 @@ that the cumulative number of flow value does not really add a lot to
 the analysis. However, it becomes very interesting to transform these
 values in probability of occurence. Each value has 1/N the probability
 to occur. We can also calculate the cumulative probability of occurence
-of flow values. Flow and load duration curves are thus derived this
-way.</p>
+of flow values. Flow volume and cumulative load duration curves are thus
+derived this way.</p>
 <p>In more details, the cumulative discharge calculated at each
 instantaneous flow rate can be calculated as a percentage of the total
 discharge yielding Wk% values corresponding to the kth cumulative
@@ -554,9 +555,10 @@ percentage of the total time. This works because even though flow rates
 are rearranged, the same amount of data points exist within the dataset
 with the same time increment occurring between each value. Wk% values
 can then be plotted as a function of the percentage of the total time.
-This is what is referred to as Flow Duration Curves. This provides a way
-of demonstrating of how relatively flashy the watershed may be, either
-relatively to other watersheds or to previous years.<br />
+This is what is referred to as Flow Volume Duration Curves. This
+provides a way of demonstrating of how relatively flashy the watershed
+may be, either relatively to other watersheds or to previous
+years.<br />
 <br/><br/></p>
 <p>The flashiness of a watershed refers to how rapidly flow is altered
 as a result of storm events/varying conditions. More frequent spikes in
@@ -570,8 +572,9 @@ streamflow.<br />
 Mk=quantile(cumLSort,probs=seq(0.01,1,0.01))/tail(cumLSort,1)</code></pre>
 <p><br/><br/><br/></p>
 </div>
-<div id="flow-and-load-duration-curves" class="section level2">
-<h2>Flow and Load duration curves</h2>
+<div id="flow-volume-and-cumulative-load-duration-curves"
+class="section level2">
+<h2>Flow Volume and Cumulative Load duration curves</h2>
 <p>This method allows us to see the percentage of the total discharge
 that occurs in a fraction of the total time with the lowest
 probabilities of occurrence corresponding with the highest flow rates
@@ -602,7 +605,7 @@ watershed would be somewhat flatter. <br/><br/><br/></p>
           pch=c(19,19),
           col=c(&quot;blue&quot;,ColElmt),
           bg=&quot;white&quot;)
-    title(main=&quot;Nitrate Load and flow duration curves&quot;) # the \n in the text allows for line break in the title</code></pre>
+    title(main=&quot;Nitrate Cumulative Load and flow volume duration curves&quot;) # the \n in the text allows for line break in the title</code></pre>
 <p><img src="blog-flow-and-load-duration-curves_files/figure-html/unnamed-chunk-7-1.png" width="864" /></p>
 <pre class="r"><code>#Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails 
 # Q is understood as the entire time series of flow
@@ -635,7 +638,7 @@ watershed would be somewhat flatter. <br/><br/><br/></p>
   
     axis(1,at=qnormSelectPerc,labels=SelectPerc)
     axis(2,at=qnormSelectPerc,labels=SelectPerc)
-    mtext(&quot;Flow and mass duration curve for the \nMaudouve River at Saint-Donan, France&quot;, side=3, line = 1) # the \n in the text allows for line break in the title
+    mtext(&quot;Flow volume and cumulative mass duration curve for the \nMaudouve River at Saint-Donan, France&quot;, side=3, line = 1) # the \n in the text allows for line break in the title
     abline(h=qnormSelectPerc,lty=3,col=&quot;grey&quot;) #Plots gridlines
     abline(v=qnormSelectPerc,lty=3,col=&quot;grey&quot;)
     legend(&quot;bottomright&quot;,c(&quot;Cumul Q&quot;,&quot;Cumul NO3 load&quot;),
@@ -660,10 +663,11 @@ event flow.</p>
 1997-1998 is not very flashy as only 10% of the flow occurs in 2% of the
 time. Some watersheds are a lot flashier and can export more than 25% of
 the flow volume in 2% of the time. We can also see that there is a very
-slight difference between the flow and the load duration curves, with
-the load duration tending to be a bit lower. This is due to the
-“dilution” effect of nitrate concentrations during flow events: nitrate
-concentrations exhibit troughs during flow peaks.</p>
+slight difference between the flow volume and the cumulative load
+duration curves, with the cumulative load duration tending to be a bit
+lower. This is due to the “dilution” effect of nitrate concentrations
+during flow events: nitrate concentrations exhibit troughs during flow
+peaks.</p>
 <p>It is helpful to use the <code>qnorm</code> function in R to zoom in
 on the very low and high probabilities of occurrence, or on the tails of
 the normal distribution curve.</p>

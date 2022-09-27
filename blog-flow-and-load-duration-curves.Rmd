@@ -24,7 +24,7 @@ cat("*",gsub(";","\n * ",selection$keywords))
 
 ## In search of additional water quality indicators
 
-Lately, we have been researching and developing techniques of analyzing continuous water quality and hydrology data in order to explain hydrological and biogeochemical processes controlling stream chemistry in watersheds.  One of the techniques in which we have applied to an entire year of water quality and hydrology data is a method that assesses how relatively reactive nutrient/sediment loading is to flow and the relative flashiness of a watershed.  This method, referred to as load and flow duration curves, determines the percentages of the total load or Mass (Mk%) and volume of Water (Wk%) that occur in a percentage of the total sampling time, termed probability of occurrence.  
+Lately, we have been researching and developing techniques of analyzing continuous water quality and hydrology data in order to explain hydrological and biogeochemical processes controlling stream chemistry in watersheds.  One of the techniques in which we have applied to an entire year of water quality and hydrology data is a method that assesses how relatively reactive nutrient/sediment loading is to flow and the relative flashiness of a watershed.  This method, referred to as cumulative load and flow volume duration curves, determines the percentages of the total load or Mass (Mk%) and volume of Water (Wk%) that occur in a percentage of the total sampling time, termed probability of occurrence.  
 
 Mk% and Wk% duration curves can be plotted as a function of the probability of occurrence, which provides an interesting way of demonstrating how loading relates to flow and varies among water quality constituents.  This method can also be applied to individual storm events to assess if there is a first flush response.  
 <br/><br/><br/>
@@ -100,7 +100,7 @@ par(mar=c(4.5,4.5,4,4.5))     # defines the sizes, in number of lines, for the m
 
 ## Sorting flow and load values
 
-Flow duration curves represent the percentage of the total flow that occurred in x% of the time corresponding to the highest flows. The same applies for loads. This might sound a bit merky, but hopefully it will not with the further explanations below. To get there, one first needs to order flow and loads in descending order. 
+Flow volume duration curves represent the percentage of the total flow that occurred in x% of the time corresponding to the highest flows. The same applies for loads. This might sound a bit merky, but hopefully it will not with the further explanations below. To get there, one first needs to order flow and loads in descending order. 
 <br/><br/>
 
 ``` {r eval =TRUE, echo = TRUE}
@@ -151,9 +151,9 @@ mtext("%age of cumulative flow corresponding to\n the highest sorted flow rates 
 ```
 <br/><br/><br/>
 
-Notice that there is still no unit added for x axis because I decided that the cumulative number of flow value does not really add a lot to the analysis.  However, it becomes very interesting to transform these values in probability of occurence. Each value has 1/N the probability to occur. We can also calculate the cumulative probability of occurence of flow values.  Flow and load duration curves are thus derived this way.
+Notice that there is still no unit added for x axis because I decided that the cumulative number of flow value does not really add a lot to the analysis.  However, it becomes very interesting to transform these values in probability of occurence. Each value has 1/N the probability to occur. We can also calculate the cumulative probability of occurence of flow values.  Flow volume and cumulative load duration curves are thus derived this way.
 
-In more details, the cumulative discharge calculated at each instantaneous flow rate can be calculated as a percentage of the total discharge yielding Wk% values corresponding to the kth cumulative probability and the time elapsed at each point can be calculated as a percentage of the total time.  This works because even though flow rates are rearranged, the same amount of data points exist within the dataset with the same time increment occurring between each value. Wk% values can then be plotted as a function of the percentage of the total time.  This is what is referred to as Flow Duration Curves.  This provides a way of demonstrating of how relatively flashy the watershed may be, either relatively to other watersheds or to previous years.  
+In more details, the cumulative discharge calculated at each instantaneous flow rate can be calculated as a percentage of the total discharge yielding Wk% values corresponding to the kth cumulative probability and the time elapsed at each point can be calculated as a percentage of the total time.  This works because even though flow rates are rearranged, the same amount of data points exist within the dataset with the same time increment occurring between each value. Wk% values can then be plotted as a function of the percentage of the total time.  This is what is referred to as Flow Volume Duration Curves.  This provides a way of demonstrating of how relatively flashy the watershed may be, either relatively to other watersheds or to previous years.  
 <br/><br/>
 
 The flashiness of a watershed refers to how rapidly flow is altered as a result of storm events/varying conditions.  More frequent spikes in flow in response to precipitation events, in which flow increases and decreases more greatly and rapidly, are typically indicative of watersheds with predominant portions of streamflow being influenced by surface runoff, a quicker responding contributor of water to streamflow.  
@@ -165,7 +165,7 @@ Mk=quantile(cumLSort,probs=seq(0.01,1,0.01))/tail(cumLSort,1)
 ```
 <br/><br/><br/>
 
-## Flow and Load duration curves
+## Flow Volume and Cumulative Load duration curves
 
 This method allows us to see the percentage of the total discharge that occurs in a fraction of the total time with the lowest probabilities of occurrence corresponding with the highest flow rates associated with event flow.  Therefore, if one watershed produces a majority of the total discharge in 50% of the time versus a watershed that produces a majority of the total discharge in 80% of the time, that watershed may be considered relatively flashier because a greater portion of the total discharge occurs in association with higher flow rates.  In other words, streamflow would be considered more reactive to event water because the event hydrograph rises and recedes more quickly than the other watershed.  This quick rise and recession allows for most flow to occur in a smaller percentage of the time versus the watershed that has a much wider event hydrograph spanning across a greater range of instantaneous flow values over a greater period of time. Visually, this method can provide a relative comparison of the flashiness of multiple watersheds.  In the example above, the shape of the curve in the first watershed would have a greater slope towards the lower percentages/probabilities of occurrence and the curve for the second watershed would be somewhat flatter. 
 <br/><br/><br/>
@@ -182,7 +182,7 @@ This method allows us to see the percentage of the total discharge that occurs i
           pch=c(19,19),
           col=c("blue",ColElmt),
           bg="white")
-    title(main="Nitrate Load and flow duration curves") # the \n in the text allows for line break in the title
+    title(main="Nitrate Cumulative Load and flow volume duration curves") # the \n in the text allows for line break in the title
  
 
 #Code for plotting the double cumulative plot using the normal distribution probabilities to zoom in on the lower tails 
@@ -216,7 +216,7 @@ This method allows us to see the percentage of the total discharge that occurs i
   
     axis(1,at=qnormSelectPerc,labels=SelectPerc)
     axis(2,at=qnormSelectPerc,labels=SelectPerc)
-    mtext("Flow and mass duration curve for the \nMaudouve River at Saint-Donan, France", side=3, line = 1) # the \n in the text allows for line break in the title
+    mtext("Flow volume and cumulative mass duration curve for the \nMaudouve River at Saint-Donan, France", side=3, line = 1) # the \n in the text allows for line break in the title
     abline(h=qnormSelectPerc,lty=3,col="grey") #Plots gridlines
     abline(v=qnormSelectPerc,lty=3,col="grey")
     legend("bottomright",c("Cumul Q","Cumul NO3 load"),
@@ -230,7 +230,7 @@ This method allows us to see the percentage of the total discharge that occurs i
    
 Once again, the cumulative load calculated at each instantaneous flux value can be calculated as a percentage of the total load yielding Mk% values and the time elapsed at each point can be calculated as a percentage of the total time.  Mk% and Wk% values can be plotted as functions of the probability of occurrence and multiple Mk% curves for various water quality components can be plotted simultaneously for comparison of loading as a function of probability of occurrence.  For example, 50% of the nitrate load may be exported in 25% of the time whereas 50% of the ammonium load may be exported in only 5% of the time.  The interaction of flow and concentrations could be examined further to explain differences among loading and flashiness of concentrations with event flow.
 
-With the above plot, we see that the Maudouve River at Saint-Donan in 1997-1998 is not very flashy as only 10% of the flow occurs in 2% of the time. Some watersheds are a lot flashier and can export more than 25% of the flow volume in 2% of the time. We can also see that there is a very slight difference between the flow and the load duration curves, with the load duration tending to be a bit lower. This is due to the "dilution" effect of nitrate concentrations during flow events: nitrate concentrations exhibit troughs during flow peaks. 
+With the above plot, we see that the Maudouve River at Saint-Donan in 1997-1998 is not very flashy as only 10% of the flow occurs in 2% of the time. Some watersheds are a lot flashier and can export more than 25% of the flow volume in 2% of the time. We can also see that there is a very slight difference between the flow volume and the cumulative load duration curves, with the cumulative load duration tending to be a bit lower. This is due to the "dilution" effect of nitrate concentrations during flow events: nitrate concentrations exhibit troughs during flow peaks. 
 
 It is helpful to use the `qnorm` function in R to zoom in on the very low and high probabilities of occurrence, or on the tails of the normal distribution curve. 
 
