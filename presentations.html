@@ -13,7 +13,7 @@
 
 <title>presentations.knit</title>
 
-<script src="site_libs/header-attrs-2.15/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -184,8 +184,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -193,16 +193,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -464,11 +457,15 @@ div.tocify {
 
 
 <p><br/></p>
-<div id="oral-presentations-138" class="section level1">
-<h1>Oral Presentations <em>(138)</em></h1>
+<div id="oral-presentations-139" class="section level1">
+<h1>Oral Presentations <em>(139)</em></h1>
 <ul>
-<li>2022 <em>(1)</em>
+<li>2022 <em>(2)</em>
 <ul>
+<li>Birgand, F. “Recreating hot spots of nitrogen retention in
+watersheds: could drainage be an asset?” <em>Yangzhou University 2nd
+International Forum on Irrigation and Drainage, December 03, 2022.</em>
+– <strong><em>Invited speaker</em></strong></li>
 <li>Birgand, F. “Continuous water quality monitoring: what have we
 learned in the last 20 years?” <em>UMR-SAS Rennes, France, June 15,
 2022.</em> – <strong><em>Invited speaker</em></strong></li>
