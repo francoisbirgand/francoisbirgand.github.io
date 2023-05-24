@@ -13,7 +13,7 @@
 
 <title>blog-elementary-tidyr-ggplot.knit</title>
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -32,8 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -406,7 +406,7 @@ $(document).ready(function () {
 <h1>Blog: Elementary tidyr and ggplot</h1>
 <div id="by-françois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-23 and updated 2023-02-13</em></p>
+<p><em>started 2017-11-23 and updated 2023-05-24</em></p>
 <p><br/><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -614,7 +614,7 @@ minimum concentration difference required to be detected, per year.</p>
   geom_point(data = tidy_df[tidy_df$Year == &quot;1999-2000&quot;,]) +
   geom_smooth(data = tidy_df[tidy_df$Year == &quot;1999-2000&quot;,],method = &quot;lm&quot;, se = FALSE)
 print(p)</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot1-1.png" width="864" style="display: block; margin: auto;" />
 <br/><br/><br/></p>
 </div>
@@ -626,7 +626,7 @@ print(p)</code></pre>
   geom_smooth(method = &quot;lm&quot;, se = FALSE) +
   facet_grid(~Year)
 print(p)</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="blog-elementary-tidyr-ggplot_files/figure-html/use-ggplot2-1.png" width="864" style="display: block; margin: auto;" />
 <br/><br/><br/></p>
 </div>
