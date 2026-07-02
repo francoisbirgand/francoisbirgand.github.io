@@ -13,7 +13,7 @@
 
 <title>blog-elementary-tidyr-ggplot.knit</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -32,8 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -64,6 +64,7 @@ if (window.hljs) {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -406,7 +407,7 @@ $(document).ready(function () {
 <h1>Blog: Elementary tidyr and ggplot</h1>
 <div id="by-françois-birgand" class="section level3">
 <h3><em>by François Birgand</em></h3>
-<p><em>started 2017-11-23 and updated 2023-05-26</em></p>
+<p><em>started 2017-11-23 and updated 2026-04-14</em></p>
 <p><br/><br/></p>
 </div>
 <div id="keywords" class="section level3">
@@ -454,12 +455,11 @@ class="section level2">
 <h2>Minimum water quality improvement needed to be detectable</h2>
 <p>I have worked for quite a few years on calculating uncertainties on
 nutrient loads at the catchment scale<span class="citation"><sup><a
-href="#ref-Moatar2013-aa" role="doc-biblioref">1</a>–<a
-href="#ref-Birgand2004-fm" role="doc-biblioref">8</a></sup></span>, but
-there are many angles one can approach this problem. Recently, I have
-decided to illustrate minimum water quality improvement reauired for us
-to be confident that they are real, and that as a function of the
-sampling frequency.</p>
+href="#ref-Moatar2013-aa">1</a>–<a
+href="#ref-Birgand2004-fm">8</a></sup></span>, but there are many angles
+one can approach this problem. Recently, I have decided to illustrate
+minimum water quality improvement reauired for us to be confident that
+they are real, and that as a function of the sampling frequency.</p>
 <p>For that, I have written routines that take reference flow and
 concentration data collected hourly. To simulate water quality (WQ)
 improvements, I multiply concentrations by 0.99, for a 1% WQ
@@ -653,7 +653,8 @@ invested in sensors! <br/><br/><br/></p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>
-<div id="refs" class="references csl-bib-body" line-spacing="2">
+<div id="refs" class="references csl-bib-body" entry-spacing="0"
+line-spacing="2">
 <div id="ref-Moatar2013-aa" class="csl-entry">
 <div class="csl-left-margin">1. </div><div
 class="csl-right-inline">Moatar, F., Meybeck, M., Raymond, S., Birgand,

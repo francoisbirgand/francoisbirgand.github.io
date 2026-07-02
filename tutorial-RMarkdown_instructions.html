@@ -13,7 +13,7 @@
 
 <title>tutorial-RMarkdown_instructions.knit</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -29,14 +29,14 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -67,6 +67,7 @@ if (window.hljs) {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -484,7 +485,7 @@ div.tocify {
 <h3><em>by François Birgand</em></h3>
 <div class="row">
 <div class="col-md-9">
-<em>started 2017-10-17 and updated 2023-05-26</em>
+<em>started 2017-10-17 and updated 2026-04-14</em>
 </div>
 <div class="col-md-3" align="right">
 <em><a
@@ -499,9 +500,8 @@ for this document</a></em>
 <h1>Overview</h1>
 <p>The research world (and eventually the teaching world as well) is
 moving very fast towards requiring <em>reproducible research</em><span
-class="citation"><sup><a href="#ref-Buckheit1995-ls"
-role="doc-biblioref">1</a>–<a href="#ref-Peng2011-og"
-role="doc-biblioref">6</a></sup></span>. “The ultimate product of
+class="citation"><sup><a href="#ref-Buckheit1995-ls">1</a>–<a
+href="#ref-Peng2011-og">6</a></sup></span>. “The ultimate product of
 academic research is the paper along with the laboratory notebooks and
 full computational environment used to produce the results in the paper
 such as the code, data, etc. that can be used to reproduce the results
@@ -823,13 +823,12 @@ appears as</p>
 article. The identifier of this article is <code>Kuhne2009-tn</code>.
 When one wants to cite this article, one will say something like
 “reproducible research has been suggested to become the norm<span
-class="citation"><sup><a href="#ref-Kuhne2009-tn"
-role="doc-biblioref">2</a></sup></span>”. And you would code like</p>
+class="citation"><sup><a href="#ref-Kuhne2009-tn">2</a></sup></span>”.
+And you would code like</p>
 <pre><code>&quot;reproducible research has been suggested to become the norm [@Kuhne2009-tn]&quot;</code></pre>
 <p>If you want to say that “Kühne et al.<span class="citation"><sup><a
-href="#ref-Kuhne2009-tn" role="doc-biblioref">2</a></sup></span> have
-shown that etc.”, you would add a “dash” just before the “@” and code it
-as such:</p>
+href="#ref-Kuhne2009-tn">2</a></sup></span> have shown that etc.”, you
+would add a “dash” just before the “@” and code it as such:</p>
 <pre><code>Kühne et al. [-@Kuhne2009-tn] have shown that etc.&quot;</code></pre>
 <p>If you want to cite several references, you would add a semicolon
 between the two such as in:</p>
@@ -1170,11 +1169,11 @@ style="width:33.0%" />
 <p><br/></p>
 <p>You can add a caption by just adding the “Using a caption this time”
 in the brackets.</p>
-<div class="figure">
+<div class="float">
 <img
 src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png"
-style="width:33.0%" alt="" />
-<p class="caption">Using a caption this time</p>
+style="width:33.0%" alt="Using a caption this time" />
+<div class="figcaption">Using a caption this time</div>
 </div>
 <pre><code>![Using a caption this time ](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}</code></pre>
 <p>Now, you can add an image in the text like this <img
@@ -1193,11 +1192,11 @@ The caption does not appear.</p>
 ![Using a caption this time](https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png){width=33%}  
 The caption does not appear.</code></pre>
 <p>But if you leave a blank line before and after like this</p>
-<div class="figure">
+<div class="float">
 <img
 src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png"
-style="width:33.0%" alt="" />
-<p class="caption">Using a caption this time</p>
+style="width:33.0%" alt="Using a caption this time" />
+<div class="figcaption">Using a caption this time</div>
 </div>
 <p>The caption will appear.</p>
 <pre><code>But if you leave a blank line before and after like this 
@@ -1210,12 +1209,12 @@ you need to add <code>&lt;center&gt;</code> a blank line, the image
 code, a blank line, then <code>&lt;/center&gt;</code>, and it will
 appear like this:</p>
 <center>
-<div class="figure">
+<div class="float">
 <img
 src="https://www.bae.ncsu.edu/wp-content/themes/riddick/dist/images/ncstate-logos/ncstate-brick-2x2-red.png"
-style="width:33.0%" alt="" />
-<p class="caption"><em><strong>Using a caption this
-time</strong></em></p>
+style="width:33.0%" alt="Using a caption this time" />
+<div class="figcaption"><em><strong>Using a caption this
+time</strong></em></div>
 </div>
 </center>
 <pre><code>&lt;center&gt;
@@ -1626,7 +1625,8 @@ the “=” signs. For another example to display
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
-<div id="refs" class="references csl-bib-body" line-spacing="2">
+<div id="refs" class="references csl-bib-body" entry-spacing="0"
+line-spacing="2">
 <div id="ref-Buckheit1995-ls" class="csl-entry">
 <div class="csl-left-margin">1. </div><div
 class="csl-right-inline">Buckheit, J. B. &amp; Donoho, D. L. <em>Wavelab

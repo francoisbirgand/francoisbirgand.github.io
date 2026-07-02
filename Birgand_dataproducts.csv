@@ -1,0 +1,19 @@
+@misc{https://doi.org/10.6073/pasta/9755e7d161fa2684d1575f07ecf5fd79,
+  doi = {10.6073/PASTA/9755E7D161FA2684D1575F07ECF5FD79},
+  url = {https://portal.edirepository.org/nis/mapbrowse?packageid=edi.1360.1},
+  author = {Hammond,  Nicholas W. and Birgand,  Fran\c{c}ois and Carey,  Cayelan C. and Breef-Pilz,  Adrienne and Bookout,  Bethany and Schreiber,  Madeline E.},
+  language = {en},
+  title = {Time series of in situ Uv-Vis absorbance spectra and high-frequency predictions of total and soluble Fe and Mn concentrations measured at multiple depths in Falling Creek Reservoir (Vinton,  VA,  USA) in 2020 and 2021},
+  publisher = {Environmental Data Initiative},
+  year = {2023}
+}
+
+@misc{https://doi.org/10.6073/pasta/8d22a432aac5560b0f45aa1b21ae4746,
+  doi = {10.6073/PASTA/8D22A432AAC5560B0F45AA1B21AE4746},
+  url = {https://portal.edirepository.org/nis/mapbrowse?packageid=edi.202.7},
+  author = {Carey,  Cayelan C. and Hounshell,  Alexandria G. and Lofton,  Mary E. and Birgand,  Francois and Bookout,  Bethany J. and Corrigan,  Rachel S. and Gerling,  Alexandra B. and McClure,  Ryan P. and Woelmer,  Whitney M.},
+  language = {en},
+  title = {Discharge time series for the primary inflow tributary entering Falling Creek Reservoir,  Vinton,  Virginia,  USA 2013-2021},
+  publisher = {Environmental Data Initiative},
+  year = {2021}
+}

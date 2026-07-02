@@ -57,7 +57,7 @@ My team is exploring the possibility to, and the conditions for, use *water qual
 * 2018
     + [University Faculty Scholar](https://provost.ncsu.edu/strategic-initiatives/university-faculty-scholars/), NC State University
 * 2017
-    + Benjamin Meaker Visiting Professor, Bristol University, Bristol, U.K.
+    + Benjamin Meaker Visiting Professor, Bristol University, U.K.
 * 2000
     + Kenneth R. Keller Research Award for graduate excellence
 
@@ -65,9 +65,7 @@ My team is exploring the possibility to, and the conditions for, use *water qual
 
 # Academic Roles
 
-*	August 2020 - 
-    - Professor, NC State University, Bio & Ag Engineering
-*	2014 - 2020
+*	2014 - 
     - Associate Professor, NC State University, Bio & Ag Engineering
 *	2008 - 2014
     - Assistant Professor, NC State University, Bio & Ag Engineering
@@ -76,6 +74,49 @@ My team is exploring the possibility to, and the conditions for, use *water qual
 *	2000 - 2004
     - Engineering Researcher, Cemagref Research Institute, Rennes, France
 
+
+*************
+
+# Research Income and Grants
+
+```{r echo=FALSE}
+grants <- read.csv("Birgand_grants.csv")
+```
+
+This following section provides a summary of research income to date which totals __`r paste0("$",format(sum(grants$Amount), big.mark=","))`__, with **`r paste0("$",format(sum(grants[grants$PI_CO_PI == "Lead PI",]$Amount), big.mark=","))`** as Principal Investigator (PI) and `r paste0("$",format(sum(grants[grants$PI_CO_PI == "co-PI",]$Amount), big.mark=","))` as Co-Investigator (Co-PI).
+
+
+```{r echo=FALSE, results="asis",comment=FALSE}
+
+years <- unique(grants$Year)[order(unique(grants$Year),decreasing = TRUE)] #Get year list
+
+for (year in years){#years
+
+  cat("*",year,"\n")
+  
+  tmp_grant <- grants[grants$Year == year,]
+  
+for (i in 1:nrow(tmp_grant)){#line printing loop
+  cat(paste0("\t"))
+  cat("+ ",paste0("_",tmp_grant[i,]$Funder,"_ --")," ",paste0(tmp_grant[i,]$Title),". ",paste0("(",tmp_grant[i,]$PI_CO_PI,") "),paste0("**$",format(sum(tmp_grant[i,]$Amount), big.mark=",")),"**","\n", sep = "")
+  
+}#line print
+
+}#years
+
+```
+
+
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(RefManageR)
+
+file_journals_EN <- ReadBib("journal_articles_EN.bibtex")
+file_journals_FR <- ReadBib("journal_articles_FR.bibtex")
+art_nb_EN <- length(file_journals_EN)
+art_nb_FR <- length(file_journals_FR)
+
+```
+<br/>
 
 *************
 
@@ -88,20 +129,10 @@ My team is exploring the possibility to, and the conditions for, use *water qual
     - **BAE 474** – Principles and Applications of Ecological Engineering (3 hrs. Spring), 2012 – present (co-instructor)
 
 * Students directed and mentored (complete/current)
-    - Directed: M.S. – 8/0  Ph.D. – 5/3
-    - Mentored: graduate student : 15/1; undergraduates: 15+ 
+    - Directed: M.S. – 4/1  Ph.D. – 4/3
+    - Mentored: graduate student : 10/4; undergraduates: 10+ 
 
 *************
-
-```{r echo=FALSE,warning=FALSE,message=FALSE}
-library(RefManageR)
-
-file_journals_EN <- ReadBib("journal_articles_EN.bibtex")
-file_journals_FR <- ReadBib("journal_articles_FR.bibtex")
-art_nb_EN <- length(file_journals_EN)
-art_nb_FR <- length(file_journals_FR)
-
-```
 
 # Refereed Journal Articles *(`r art_nb_EN`)*
 
@@ -163,8 +194,6 @@ nbpres<-nrow(pres);nbposter<-nrow(poster)
 
 # Theses and Book Chapters
 
-* 2018-present: 
-    - working on textbook: Biogeochemical Processes for Environmental and Ecological Engineering
 * 2008
     - Augeard B., Y. Nédélec, F. Birgand, C. Chaumont, P. Ansart & C. Kao. 2008. Effect of a nonlinear runoff response on flood statistical properties: the case of a tile-drained watershed, IAHS Publ. 321, ISBN 978-1-901502-59-6.
 * 2000
@@ -186,8 +215,6 @@ years <- unique(pres$Year)[order(unique(pres$Year),decreasing = TRUE)] #Get year
 for (year in years){#years
 
   tmp_pres <- pres[pres$Year == year,]
-  tmp_pres <- tmp_pres[order(tmp_pres$Date,decreasing = TRUE),]
-  
   cat("\n")     
   cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
 
@@ -216,7 +243,6 @@ years <- unique(pres$Year)[order(unique(pres$Year),decreasing = TRUE)] #Get year
 for (year in years){#years
 
   tmp_pres <- pres[pres$Year == year,]
-  tmp_pres <- tmp_pres[order(tmp_pres$Date,decreasing = TRUE),]
   cat("\n")     
   cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
 
@@ -244,7 +270,6 @@ years <- unique(poster$Year)[order(unique(poster$Year),decreasing = TRUE)] #Get 
 for (year in years){#years
 
   tmp_pres <- poster[poster$Year == year,]
-  tmp_pres <- tmp_pres[order(tmp_pres$Date,decreasing = TRUE),]
   cat("\n")  
   cat("*",year,paste0("*(",nrow(tmp_pres),")*"),"\n")
 
@@ -263,44 +288,10 @@ for (i in 1:nrow(tmp_pres)){#line printing loop
 
 *************
 
-# Research Income and Grants
-
-```{r echo=FALSE}
-grants <- read.csv("Birgand_grants.csv")
-```
-
-This following section provides a summary of research income to date which totals __`r paste0("$",format(sum(grants$Amount), big.mark=","))`__, with **`r paste0("$",format(sum(grants[grants$PI_CO_PI == "Lead PI",]$Amount), big.mark=","))`** as Principal Investigator (PI) and `r paste0("$",format(sum(grants[grants$PI_CO_PI == "co-PI",]$Amount), big.mark=","))` as Co-Investigator (Co-PI).
-
-
-```{r echo=FALSE, results="asis",comment=FALSE}
-
-years <- unique(grants$Year)[order(unique(grants$Year),decreasing = TRUE)] #Get year list
-
-for (year in years){#years
-
-  cat("*",year,"\n")
-  
-  tmp_grant <- grants[grants$Year == year,]
-  
-for (i in 1:nrow(tmp_grant)){#line printing loop
-  cat(paste0("\t"))
-  cat("+ ",paste0("_",tmp_grant[i,]$Funder,"_ --")," ",paste0(tmp_grant[i,]$Title),". ",paste0("(",tmp_grant[i,]$PI_CO_PI,") "),paste0("**$",format(sum(tmp_grant[i,]$Amount), big.mark=",")),"**","\n", sep = "")
-  
-}#line print
-
-}#years
-
-```
-
-<br/>
-
-
-*************
-
 # Media exposure
 
-* 2019
-    - Coastwatch Currents – *[Wetland Chemical Composition Changes Hourly](https://ncseagrant.ncsu.edu/currents/2019/09/wetland-chemical-composition-changes-hourly/)* -- September 2019
+* 2022
+    - ASABE Resources -- *[Using Cumulative Indicators to Detect Management Effects on Water Quality](https://elibrary.asabe.org/abstract.asp?aid=53525)* -- July/August 2022
 * 2017
     - NSF -- *[Researchers to forecast water quality with NSF support](http://augustafreepress.com/researchers-forecast-water-quality-nsf-support/)* -- October 2017
 * 2014
@@ -335,15 +326,36 @@ for (i in 1:nrow(tmp_grant)){#line printing loop
 
 * American Society of Agricultural and Biological Engineers, member
 * American Geophysical Union, member
+* American Ecological Engineering Society, member
 
 **************
 
 # Professional services on campus
 
-* 2018-2019:
-    + Chair of Teaching Faculty search committee
+* 2023:
+    + College of Ag & Life Sciences Research committee, member
+    + Graduate studies committee, member
+* 2022:
+    + College of Engineering Research committee, member
+    + College of Ag & Life Sciences Research committee, member
+    + Graduate studies committee, member
+* 2021:
+    + College of Engineering Research committee, member
+    + College of Ag & Life Sciences Research committee, member
+    + Department Robotics Faculty search committee, chair
+    + Graduate studies committee, member
+* 2020:
+    + College of Engineering Research committee, member
+    + College of Ag & Life Sciences Research committee, member
+    + Graduate studies committee, member
+* 2018:
+    + College of Engineering Research committee, member
+    + College of Ag & Life Sciences Research committee, member
+    + Department head search at college level, member
+    + Department Data Analytics Faculty search committee, member
+    + Graduate studies committee, member
 * 2017:
-    + Department Data Analytics Faculty search committee 
+    + Department Data Analytics Faculty search committee
 * 2016-present:
     + College of Engineering Research Committee 
     + College of Ag and Life Sciences CRC Committee 
@@ -365,13 +377,15 @@ for (i in 1:nrow(tmp_grant)){#line printing loop
 
 # Professional services off campus
 
-* 2019: 
-    + Guest editor for *Sensors*, Associate editor in *Frontiers in Water*
+* 2023:
+    + Steering committee for Alexis Jeantet @ INRAE (France)
+* 2022:
+    + Steering committee for Alexis Jeantet @ INRAE (France)
+* 2021-present:
+    + Associate editor for Frontiers in Water
 * 2016: 
     + Advisory Board member for the NSF EPSCoR NEWRnet program
-    + panelist, NSF, Hydrological Sciences Program
-* 2015:
-    + International expert on environmental impacts and on compensation of wetland losses associated with the Airport ‘Notre Dame des Landes’, France
+    + panelist, NSF, Hydrological Sciences Program 
 * 2014: 
     + session chair, AGU Hydrology – new water quality sensors
 * 2011 -- present: 
@@ -379,18 +393,24 @@ for (i in 1:nrow(tmp_grant)){#line printing loop
 * 2011: 
     + panelist, NIFA Integrated Water Quality Program
 * 2009-present: 
-    + Ad hoc reviewer, Transactions of the ASABE
-    + Ad hoc reviewer, Journal of Hydrology
-    + Ad hoc reviewer, Ecological Engineering
-    + Ad hoc reviewer, Journal of the Total Environment
-    + Ad hoc reviewer, Water Resources Research
-    + Ad hoc reviewer, Environmental Science and Pollution Research
-    + Ad hoc reviewer, Geophysical Research Letters
-    + Ad hoc reviewer, Agricultural Water Management
-    + Ad hoc reviewer, Journal of Hydrological Engineering
-    + Ad hoc reviewer, Journal of Environmental Quality
-    
-* Peer Reviewer for professional journals:
-    + Journal of Environmental Quality (1), Transactions of the ASABE (5), Agricultural Water Management (1), Ecological Engineering (1), Hydrological Processes (1), Revue des sciences de l’eau (1), Journal of Hydrologic Engineering (1), Hydrological Sciences (1), Journal of Hydrology (3), Journal of the Total Environment (2), Water Resources Research (2).
+    + Peer reviewer, Journal of the ASABE
+    + Peer reviewer, Transactions of the ASABE
+    + Peer reviewer, Journal of Hydrology
+    + Peer reviewer, Ecological Engineering
+    + Peer reviewer, Journal of the Total Environment
+    + Peer reviewer, Water Resources Research
+    + Peer reviewer, Environmental Science and Pollution Research
+    + Peer reviewer, Geophysical Research Letters
+    + Peer reviewer, Agricultural Water Management
+    + Peer reviewer, Journal of Hydrological Engineering
+    + Peer reviewer, Journal of Environmental Quality
+    + Peer reviewer, Journal of Environmental Management
+    + Peer reviewer, Water
+    + Peer reviewer, Estuarine Coastal and Shelf Science
+    + Peer reviewer, Chemosphere
+    + Peer reviewer, Environment Monitoring and Assessment
+    + Peer reviewer, Limnology and Oceanograph, Methods
+    + Peer reviewer, Frontiers in Water
+    + Peer reviewer, Revue des sciences de l’eau 
 
 
